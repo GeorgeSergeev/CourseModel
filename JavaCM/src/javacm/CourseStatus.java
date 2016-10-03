@@ -15,6 +15,10 @@ public class CourseStatus {
     
     private List<String> score;
 
-
+    //конструкторы
+    public CourseStatus() {
+        
+    }
+    
     
 }

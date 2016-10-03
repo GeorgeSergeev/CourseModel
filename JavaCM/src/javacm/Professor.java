@@ -17,6 +17,17 @@ public class Professor {
     private String telephone;
     private float payment;
     
+    //конструкторы
+    public Professor() {
+        
+    }
+
+    public Professor(String name, String address, String telephone) {
+        this.name = name;
+        this.address = address;
+        this.telephone = telephone;
+    }
+    
     //методы
     public String getName() {
         return name;

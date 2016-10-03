@@ -16,7 +16,17 @@ public class EducCourse {
     private int Id;
     private float price;
     
-    //
+    //конструкторы
+    public EducCourse() {    
+        
+    }
+
+    public EducCourse(String name, int Id, float price) {
+        this.name = name;
+        this.Id = Id;
+        this.price = price;
+    }
+    
     //методы
     public String getName() {
         return name;

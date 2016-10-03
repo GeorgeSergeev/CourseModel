@@ -19,7 +19,20 @@ public class Student {
     private int recbookId;
     private float avrProgress;
     
-    //
+    //конструкторы
+    public Student() {
+        
+    }
+
+    public Student(String name, String address, String telephone, String email, int recbookId) {
+        this.name = name;
+        this.address = address;
+        this.telephone = telephone;
+        this.email = email;
+        this.recbookId = recbookId;
+    }
+    
+    
     //методы
     public String getName() {
         return name;
