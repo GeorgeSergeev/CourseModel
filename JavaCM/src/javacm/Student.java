@@ -12,7 +12,7 @@ package javacm;
 public class Student {
     
     //поля
-    private String name;
+    private String studentName;
     private String address;
     private String telephone;
     private String email;
@@ -24,8 +24,8 @@ public class Student {
         
     }
 
-    public Student(String name, String address, String telephone, String email, int recbookId) {
-        this.name = name;
+    public Student(String studentName, String address, String telephone, String email, int recbookId) {
+        this.studentName = studentName;
         this.address = address;
         this.telephone = telephone;
         this.email = email;
@@ -35,11 +35,11 @@ public class Student {
     
     //методы
     public String getName() {
-        return name;
+        return studentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String studentName) {
+        this.studentName = studentName;
     }
 
     public String getAddress() {

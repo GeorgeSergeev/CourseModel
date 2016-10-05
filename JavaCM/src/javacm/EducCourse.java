@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class EducCourse {
     
     //поля
-    private String name;
+    private String courseName;
     private int Id;
     private float price;
     private Professor professor;
@@ -24,19 +24,19 @@ public class EducCourse {
         
     }
 
-    public EducCourse(String name, int Id, float price) {
-        this.name = name;
+    public EducCourse(String courseName, int Id, float price) {
+        this.courseName = courseName;
         this.Id = Id;
         this.price = price;
     }
     
     //методы
     public String getName() {
-        return name;
+        return courseName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String courseName) {
+        this.courseName = courseName;
     }
 
     public int getId() {

@@ -12,7 +12,7 @@ package javacm;
 public class Professor {
     
     //поля
-    private String name;
+    private String professorName;
     private String address;
     private String telephone;
     private float payment;
@@ -22,19 +22,19 @@ public class Professor {
         
     }
 
-    public Professor(String name, String address, String telephone) {
-        this.name = name;
+    public Professor(String professorName, String address, String telephone) {
+        this.professorName = professorName;
         this.address = address;
         this.telephone = telephone;
     }
     
     //методы
     public String getName() {
-        return name;
+        return professorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String professorName) {
+        this.professorName = professorName;
     }
 
     public String getAddress() {
