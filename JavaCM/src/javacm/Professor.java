@@ -57,8 +57,9 @@ public class Professor {
         return payment;
     }
 
-    public void setPayment(float payment) {
-        this.payment = payment;
+    public void setPayment(int studentsCount, float coursePrice) {
+        
+        this.payment = studentsCount * coursePrice;
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package javacm;
 
+import java.util.ArrayList;
 /**
  *
  * @author serega
@@ -15,6 +16,8 @@ public class EducCourse {
     private String name;
     private int Id;
     private float price;
+    private Professor professor;
+    private ArrayList<Student> studentsList = new ArrayList<Student>();
     
     //конструкторы
     public EducCourse() {    
@@ -51,7 +54,49 @@ public class EducCourse {
     public void setPrice(float price) {
         this.price = price;
     }
-
+    
+    //курс может вести профессор
+    public void addProfessor(Professor professor) {
+        
+        this.professor = professor;
+    }
+    
+    //добавить студента в список
+    public void addStudent(Student newStudent) {
+        
+        studentsList.add(newStudent);
+        
+        //Если данный курс ведет профессор, то его оплата будет
+        //расти, пропорционально кол-ву обучаемых студентов
+        try {
+            this.professor.setPayment(studentsList.size(), price);
+        } catch (Exception e) {
+            
+        }
+    }
+    
+    //удалить студента из списка
+    public Student removeStudent(int recBookId) {
+        
+        Student currStudent = null;
+        
+        for(Student student : studentsList ) {
+            
+            if(student.getRecbookId() == recBookId) {
+                currStudent = student;
+                studentsList.remove(student);
+                
+                //Оплата профессора уменьшится (если он ведет курс)
+                try {
+                    this.professor.setPayment(studentsList.size(), price);
+                } catch (Exception e) {
+                    
+                }
+            }
+        }
+        
+        return currStudent;
+    }
     
     
 }
