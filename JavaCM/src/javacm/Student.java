@@ -109,4 +109,12 @@ public class Student {
         return null;
     }
     
+    //Получить список курсов
+    public void getCourseListNames() {
+        
+        for(CourseStatus currCourse : coursesList) {
+            System.out.println(currCourse.getListenCurse());
+        }
+    }
+    
 }
