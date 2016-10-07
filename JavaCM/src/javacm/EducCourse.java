@@ -64,18 +64,19 @@ public class EducCourse {
     //добавить студента в список
     public void addStudent(Student newStudent) {
         
+        newStudent.addCourse(this.getName());
         studentsList.add(newStudent);
         
         //Если данный курс ведет профессор, то его оплата будет
         //расти, пропорционально кол-ву обучаемых студентов
-        try {
+       try {
             this.professor.setPayment(studentsList.size(), price);
         } catch (Exception e) {
             
         }
     }
     
-    //удалить студента из списка
+    //удалить студента из списка по номеру зачетки
     public Student removeStudent(int recBookId) {
         
         Student currStudent = null;
@@ -99,4 +100,30 @@ public class EducCourse {
     }
     
     
+    //получить студента из списка по номеру зачетки
+    public Student getStudent(int recBookId) {
+        
+        Student currStudent = null;
+        
+        for(Student student : studentsList ) {
+            
+            if(student.getRecbookId() == recBookId) {
+                currStudent = student;
+            }
+        }
+        
+        return currStudent;
+    }    
+    
+    //поставить определенному студенту оценку по данному курсу
+    public void addScoreToStudent(int recBookId, float currScore) {
+        
+        Student student;
+        
+        student = getStudent(recBookId);
+        student.getCourse(courseName).setScore(currScore);
+        //каждая оценка влияет на общую успеваемость студента
+        student.setAvrProgress();
+        
+    }
 }
