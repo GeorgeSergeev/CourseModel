@@ -57,7 +57,7 @@ public class CourseStatus {
         for(i=0;i<total;i++) {
             sum += (float)score.get(i);
         }
-        return sum/1;
+        return sum/total;
     }
     
     //финальная оценка
