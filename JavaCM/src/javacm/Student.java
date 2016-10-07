@@ -5,6 +5,8 @@
  */
 package javacm;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author serega
@@ -18,6 +20,7 @@ public class Student {
     private String email;
     private int recbookId;
     private float avrProgress;
+    private ArrayList<CourseStatus> coursesList = new ArrayList<CourseStatus>();
     
     //конструкторы
     public Student() {
@@ -78,8 +81,32 @@ public class Student {
         return avrProgress;
     }
 
-    public void setAvrProgress(float avrProgress) {
-        this.avrProgress = avrProgress;
+    public void setAvrProgress() {
+        
+        float sum = 0;
+        
+        for(int i = 0; i < coursesList.size(); i++) {
+            sum += coursesList.get(i).getFinalScore();
+        }
+        this.avrProgress = sum/coursesList.size();
+    }
+    
+    //студент будет проходить еще один курс
+    public void addCourse(String nameCourse) {
+        
+        coursesList.add(new CourseStatus(nameCourse));
+       
+    }
+    
+    //посмотреть(получить) статус курса по названию курса
+    public CourseStatus getCourse(String nameCourse) {
+        
+        for(CourseStatus currCourse : coursesList) {
+            if(currCourse.getListenCurse().equals(nameCourse)) {
+                return currCourse;
+            }
+        }
+        return null;
     }
     
 }
