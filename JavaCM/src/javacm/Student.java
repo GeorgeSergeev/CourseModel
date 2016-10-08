@@ -1,8 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Сущность "Студент" имеет свойства: имя, адресс, телефон, емайл, 
+номер зачетной книжки, оценка средней успеваемости, и помнит курсы
+на которых обучается.
+Студент может:
+вычислить свою общую среднюю успеваемость calculateAvrProgress;
+записаться на другой дополнительный курс addCourse;
+посмотреть средний балл и финальную оценк по заданному курсу;
+получить список пройденых курсов
+
+Студент приписан к некоторому курсу
+*/
 package javacm;
 
 import java.util.ArrayList;
@@ -20,6 +27,7 @@ public class Student {
     private String email;
     private int recbookId;
     private float avrProgress;
+    //список для хранения пройденых курсов с оценками
     private ArrayList<CourseStatus> coursesList = new ArrayList<CourseStatus>();
     
     //конструкторы
@@ -81,14 +89,21 @@ public class Student {
         return avrProgress;
     }
 
-    public void setAvrProgress() {
+    public void setAvrProgress(float avrProgress) {
+        this.avrProgress = avrProgress;
+    }
+
+    
+    //вычисление средней успеваемости студента
+    //как (сумма финальных оценок по каждому курсу)/кол-во пройденых курсов
+    public void calculateAvrProgress() {
         
         float sum = 0;
         
         for(int i = 0; i < coursesList.size(); i++) {
             sum += coursesList.get(i).getFinalScore();
         }
-        this.avrProgress = sum/coursesList.size();
+        setAvrProgress(sum/coursesList.size());
     }
     
     //студент будет проходить еще один курс

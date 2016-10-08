@@ -1,7 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Сущность "Образовательный курс" имеет свойста: название, идентификатор курса,
+стоимость, может преподаваться профессором, знает всех записанных студентов.
+Курс может
+иметь проподавателя addProfessor
+принять нового студента для обучения addStudent
+удалить студента из списка removeStudent
+посмотреть на студента getStudent
+оценить знания студента некоторым баллом addScoreToStudent
+
+К образовательному курсу может быть приписан профессор, и могут быть
+приписаны студенты
  */
 package javacm;
 
@@ -17,6 +25,8 @@ public class EducCourse {
     private int Id;
     private float price;
     private Professor professor;
+    //Курс могут проходить несколько студентов, 
+    //будем сохранять их в списке
     private ArrayList<Student> studentsList = new ArrayList<Student>();
     
     //конструкторы
@@ -70,7 +80,7 @@ public class EducCourse {
         //Если данный курс ведет профессор, то его оплата будет
         //расти, пропорционально кол-ву обучаемых студентов
        try {
-            this.professor.setPayment(studentsList.size(), price);
+            this.professor.calculatePayment(studentsList.size(), price);
         } catch (Exception e) {
             
         }
@@ -89,7 +99,7 @@ public class EducCourse {
                 
                 //Оплата профессора уменьшится (если он ведет курс)
                 try {
-                    this.professor.setPayment(studentsList.size(), price);
+                    this.professor.calculatePayment(studentsList.size(), price);
                 } catch (Exception e) {
                     
                 }
@@ -123,7 +133,7 @@ public class EducCourse {
         student = getStudent(recBookId);
         student.getCourse(courseName).setScore(currScore);
         //каждая оценка влияет на общую успеваемость студента
-        student.setAvrProgress();
+        student.calculateAvrProgress();
         
     }
 }

@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Сущность "Прохождение курса" имеет свойста: имя курса, оценки по данному курсу
+Сущность может
+просчитать средний балл getAverageScore
+выдать финальную оценку getFinalScore
+
+Сущность принадлежит некоторому студенту
  */
 package javacm;
 
@@ -16,6 +19,7 @@ public class CourseStatus {
     
     //поля
     private String listenCurse;
+    //оценки по конкретному курсу храним в списке
     private List score = new ArrayList();
 
     //конструкторы
@@ -44,7 +48,7 @@ public class CourseStatus {
         this.score.add(score);
     }
     
-    //текуцщий средний балл
+    //расчет текущего среднего балла по конкретному курсу
     public float getAverageScore() {
         
         float sum = 0;

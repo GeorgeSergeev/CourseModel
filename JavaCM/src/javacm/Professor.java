@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Сущность "Профессор" имеет свойста: имя, адресс, телефон, заработную палту
+Профессор может
+вычеслить совю заработную плату calculatePayment
+
+Профессор приписан у некоторому курсу
  */
 package javacm;
 
@@ -57,9 +59,15 @@ public class Professor {
         return payment;
     }
 
-    public void setPayment(int studentsCount, float coursePrice) {
+    public void setPayment(float payment) {
+        this.payment = payment;
+    }
+
+    //Вычисление заработной платы профессора,
+    //кол-во студетов * стоимость проводимого курса
+    public void calculatePayment(int studentsCount, float coursePrice) {
         
-        this.payment = studentsCount * coursePrice;
+        setPayment(studentsCount * coursePrice);
     }
     
 }
