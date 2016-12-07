@@ -16,23 +16,16 @@ public class PassingCourse implements Serializable {
         this.course = course;
     }
 
-    public void addMark(int n) {
-        if (n > 1 && n < 6) {marks.add(n);}
+    public void addMark(int mark) {
+        if (TaskUtils.isValidMark(mark)) {marks.add(mark);}
     }
 
     public float getAverageMark() {
-        // Переменная sum - сумма оценок по курсу
-        float sum = 0;
-        int index, total;
-        // total - хранит в себе количество поставленных оценок
-        total = marks.size();
-        if (total == 0) {
-            return 0;
-        }
-        for (index = 0; index < total; index++) {
-            sum += (float) marks.get(index);
-        }
-        return sum / total;
+        OptionalDouble average = marks
+                .stream()
+                .mapToDouble(a -> a)
+                .average();
+        return (average.isPresent() ? (float) average.getAsDouble() : 0);
     }
     public Integer getFinalMark() {
 
