@@ -23,7 +23,7 @@ public class Student implements Serializable {
 
     public Student(String name, String address, String phone, String email) {
         //
-        if ((name == null) || (address == null) || (phone == null) || (email==null)) {
+        if (TaskUtils.isStudentValid(name,address,phone,email)) {
             throw new RuntimeException("Некорректный ввод данных для объекта 'Студент'");
         }
         this.name = name;
@@ -35,7 +35,7 @@ public class Student implements Serializable {
 
 
     public void addStudent(Course course) {
-        if ((course != null) && !courses.contains(course)) {
+        if (TaskUtils.canUpdateWithObject(course,courses)) {
             courses.add(course);
             passing.add(new PassingCourse(course));
             course.addStudent(this);
@@ -43,7 +43,7 @@ public class Student implements Serializable {
     }
 
     public void removeStudent(Course course) {
-        if ((course == null) || !courses.contains(course)) {
+        if (TaskUtils.canUpdateWithObject(course,courses)) {
             return;
         }
         //Если курс завершен(есть финальная оценка) - мы не можем удалить студента
