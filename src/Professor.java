@@ -16,7 +16,7 @@ public class Professor implements Serializable {
 
     public Professor(String name, String address, String phone, float salary) {
 
-        if ((name == null) || (address == null) || (phone == null) || (salary < 0)) {
+        if (TaskUtils.isProfessorValid(name,address,phone,salary)) {
             throw new RuntimeException("Некорректный ввод данных для объекта 'Профессор'");
         }
         this.name = name;
@@ -26,13 +26,13 @@ public class Professor implements Serializable {
     }
 
     void addCourse(Course course) {
-        if ((course != null) && !courses.contains(course)) {
+        if (TaskUtils.canUpdateWithObject(course,courses)) {
             courses.add(course);
         }
     }
 
     void removeCourse(Course course) {
-        if ((course != null) && courses.contains(course)) {
+        if (TaskUtils.canUpdateWithObject(course,courses)) {
             courses.remove(course);
         }
     }
