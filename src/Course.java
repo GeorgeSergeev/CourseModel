@@ -10,12 +10,11 @@ public class Course implements Serializable {
     private String name;
     private int courseId;
     private float costs;
-
     private List<Professor> professors = new ArrayList<>();
     private List<Student> students = new ArrayList<>();
 
     public Course(String name, int courseId, float cost) {
-        if ((name == null) || (courseId < 1) || (cost < 0)){
+        if (TaskUtils.isCourseValid(name,courseId,cost)){
             throw new RuntimeException("Некорректный ввод для объекта 'Курс'");
         }
         this.name = name;
@@ -24,27 +23,27 @@ public class Course implements Serializable {
     }
 
     public void addProfessor(Professor professor) {
-        if ((professor != null) && !professors.contains(professor)) {
+        if (TaskUtils.canUpdateWithObject(professor,professors)) {
             professors.add(professor);
             professor.addCourse(this);
         }
     }
 
     public void removeProfessor(Professor professor) {
-        if ((professor != null) && professors.contains(professor)) {
+        if (TaskUtils.canUpdateWithObject(professor,professors)) {
             professors.remove(professor);
             professor.removeCourse(this);
         }
     }
 
     public void addStudent(Student student) {
-        if ((student != null) && !students.contains(student)) {
+        if (TaskUtils.canUpdateWithObject(student,students)) {
             students.add(student);
         }
     }
 
     public void removeStudent(Student student) {
-        if ((student != null) && students.contains(student)) {
+        if (TaskUtils.canUpdateWithObject(student,students)) {
             students.remove(student);
         }
     }
