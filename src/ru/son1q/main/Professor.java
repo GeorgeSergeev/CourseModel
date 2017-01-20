@@ -2,7 +2,7 @@ package ru.son1q.main;
 
 import java.io.Serializable;
 
-public class Professor implements Serializable{
+public class Professor implements Serializable {
 	private String name;
 	private String address;
 	private String phoneNumber;
