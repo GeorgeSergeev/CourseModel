@@ -20,7 +20,7 @@ public abstract class ValidFormat {
         return (name == null) || (address == null) || (phoneNumber == null) || (salary < 0);
     }
     
-	public static boolean checkContaints(Object object, List<?> objects) {
+    public static boolean checkContaints(Object object, List<?> objects) {
         return (object != null) && !objects.contains(object);
     }
 }
