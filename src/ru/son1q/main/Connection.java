@@ -38,6 +38,8 @@ public class Connection {
 	public static void setInsert(String query) {
 		try {
 			stmt.executeUpdate(query);
-		} catch (SQLException e) { }
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		}
 	}
 }
