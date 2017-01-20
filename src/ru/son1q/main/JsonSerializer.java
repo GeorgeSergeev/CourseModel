@@ -72,9 +72,7 @@ public class JsonSerializer {
                     result.add(in.readObject());
                 }
             }
-        } catch (IOException | ClassNotFoundException e) {
-        }
-
+        } catch (IOException | ClassNotFoundException e) { }
         return result;
     }
 
