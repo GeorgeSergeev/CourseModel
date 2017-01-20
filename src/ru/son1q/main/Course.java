@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.management.RuntimeErrorException;
 
-public class Course implements Serializable{
+public class Course implements Serializable {
 	private String name;
 	private int number;
 	private float price;
