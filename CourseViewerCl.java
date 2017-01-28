@@ -20,11 +20,26 @@ public class CourseViewerCl implements Serializable {  // CourseViewerCl
     } 
  
     public void addScore(int score) { 
-        if ((scores.size() <= NUM_SCR) && (score >= MIN_SCR && score <= MAX_SCR)) { 
-            scores.add(score); 
-        } 
+       if ((scores.size() <= NUM_SCR) && (score >= MIN_SCR && score <= MAX_SCR)) { 
+           scores.add(score); 
+           setAverGrade();
+       } 
     } 
- 
+    void setAverGrade(){
+      float sum=(float)0.0;
+      int count=0;
+      CourseDBaseCl db=GsonBuildCl.db;
+      for(int i=0;i<db.cours_v.size();i++)
+        if(db.cours_v.get(i).studbook_id == this.studbook_id){
+              sum += db.cours_v.get(i).getAverageScore(); 
+              count++;
+        } 
+      for(int i=0;i<db.students.size();i++)
+        if(db.students.get(i).studbook_id == this.studbook_id){  
+             db.students.get(i).aver_grade=sum/count;
+             break;
+        }
+    }
     public float getAverageScore() { 
         
       int sum = 0;   // sum of scores 

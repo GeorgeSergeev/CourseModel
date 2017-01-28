@@ -14,11 +14,7 @@ public class CourseDBaseCl implements Serializable {
    List<ProfCoursRelCl> prof_rel=new ArrayList<>();
    String file_name;
 
-   public CourseDBaseCl(String filename){
-      file_name=filename+"";
-      if(fileExists(fn(1)))
-        readFromJson();
-   }
+   
   
    public void addStudent(int std_id,String name,String telefon,String email) { 
       StudentCl st=new StudentCl(std_id,name,telefon,email);
@@ -107,6 +103,9 @@ public class CourseDBaseCl implements Serializable {
          case 4:
             readList(proffs,n);
          break;
+         case 5:
+            readList(prof_rel,n);
+         break;   
       }
    }
    void readList(List lst,int n){
@@ -130,6 +129,9 @@ public class CourseDBaseCl implements Serializable {
          break;
          case 4:
             delProf(proffs.get(n).prof_id);
+         break;
+         case 5:
+            delProfRel(prof_rel.get(n).prof_id,prof_rel.get(n).course_id);
          break;
       }
    }
@@ -155,15 +157,7 @@ public class CourseDBaseCl implements Serializable {
        e.printStackTrace(); 
      }  
    }
-   boolean fileExists(String filename){
-     File f = null;
-     try{ 
-        f = new File(filename);
-        return f.exists();
-     }catch(Exception e){
-        return false;
-     } 
-   }
+   
    String fn(int n){
     return file_name.substring(0,file_name.indexOf(".json")-1)+String.valueOf(n)+".json";
    }

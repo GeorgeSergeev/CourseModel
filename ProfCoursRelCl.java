@@ -12,4 +12,8 @@ public class ProfCoursRelCl implements Serializable {  // ProfCl
         this.prof_id = prof_id;
         this.course_id = course_id;
    }
+   @Override 
+   public String toString() { 
+        return  "ProfCoursRelCl {course_id="+course_id+";prof_id="+ prof_id +  "}"; 
+    } 
 }

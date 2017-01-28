@@ -1,0 +1,44 @@
+{
+  "students": [
+    {
+      "studbook_id": 100101,
+      "name": "Ivanov",
+      "telefon": "11223",
+      "email": "11223mail",
+      "aver_grade": 4.5
+    }
+  ],
+  "courses": [
+    {
+      "course_id": 101,
+      "name": "Math",
+      "cost": 500.0
+    }
+  ],
+  "cours_v": [
+    {
+      "status": 0,
+      "course_id": 101,
+      "studbook_id": 100101,
+      "scores": [
+        4,
+        5
+      ]
+    }
+  ],
+  "proffs": [
+    {
+      "prof_id": 1,
+      "name": "Gusev",
+      "address": "Sev.12",
+      "phone": "223344",
+      "salary": 564.0
+    }
+  ],
+  "prof_rel": [
+    {
+      "prof_id": 1,
+      "course_id": 101
+    }
+  ]
+}

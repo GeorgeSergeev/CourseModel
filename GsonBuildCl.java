@@ -11,7 +11,7 @@
 5) Разработать процедуру десериализации из JSON-файла в объекты модели.
 
 6) Создать pull request 
-cd /home/maria/V_prog/DBJV  javac -cp .:gson-2.2.2.jar CourseCl.java java -cp .:gson-2.2.2.jar GsonBuildCl  javac CourseCl.java */
+cd /home/maria/V_prog/DBJV   javac -cp .:gson-2.2.2.jar GsonBuildCl.java java -cp .:gson-2.2.2.jar GsonBuildCl    cd /home/maria/V_prog/CourseModel*/
 
 import com.google.gson.Gson; 
 import com.google.gson.GsonBuilder; 
@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.FileReader; 
 import java.io.FileWriter; 
 import java.io.IOException; 
+import java.io.File;
 import java.io.Reader; 
 import java.io.Writer; 
 import java.util.Scanner;
@@ -26,28 +27,35 @@ import java.util.List;
 
 public class GsonBuildCl{
 
-/* Предложенная модель представляет собой пример базы данных на которой изображены некоторые сущности и реляционные отношения между ними. Кроме классов сущностей были описаны классы отношений и класс CourseDBaseCl хранящий объектную инфу в виде набора ArrayList созданных для каждого класса. Эти же списки отправляются на сериализацию в JSON и читаются обратно. */
+/* Предложенная модель представляет собой пример базы данных на которой изображены некоторые сущности и реляционные отношения между ними. Кроме классов сущностей были описаны классы отношений и класс CourseDBaseCl хранящий объектную инфу в виде набора ArrayList созданных для каждого класса. Эти же списки отправляются на сериализацию в JSON и читаются обратно. Имя файла расширяется цыфрами до 5, в каждом хранится одна таблица.  Для работы с прогой было создано простое екранное меню позволяющее опробовать различные CRUD методы. Ф-ии класса становятся доступны в меню при выборе конкретного члена списка. Отдельно хочу отметить что у меня при вводе чисел с пл.запятой нужно задавать именно ЗАПЯТУЮ иначе выбивает ошибку ввода. Видимо зависит от настроек. Также нужно отметить что это тестовая модель, поэтому ошибки ввода на совести тестера. Никаких проверок обязательных для коммерческих продуктов не осуществлялось.  */
 
-    static CourseDBaseCl db; 
+   static CourseDBaseCl db; 
 
-    public static void main(String[] args) {
+   public static void main(String[] args) {
 
        String filename=getFilename(); 
        try { 
         // Если файл - filename существ. из него будут прочитаны таблицы
-           db = new CourseDBaseCl(filename);
+           db = new CourseDBaseCl();
+         try{
+           if(fileExists(filename))            
+               db=(CourseDBaseCl)readFromJson(db.getClass(),filename);
         // Простое меню дем.работу с БД
            callMenu();   
         //  writeToJson if work is already completed; 
-           db.writeToJson(); 
+           writeToJson(db, filename); 
+          }catch(IOException e){
+               e.printStackTrace(); 
+          } 
        } catch (Exception ex) { 
             ex.printStackTrace(); 
        }           
-    }
+   }
 
-    static String getFilename(){
+    
+   static String getFilename(){
       return "Test_DB.json";
-    }
+   }
 
   // объект => в формат json и запишем результат в файл 
    public static void writeToJson(Object obj, String fileName) throws IOException{ 
@@ -77,6 +85,16 @@ public class GsonBuildCl{
        return obj; 
    } 
 
+   static boolean fileExists(String filename){
+     File f = null;
+     try{ 
+        f = new File(filename);
+        return f.exists();
+     }catch(Exception e){
+        return false;
+     } 
+   }
+
    static void callMenu(){
      Scanner sc = new Scanner(System.in);
      int i_choice;
@@ -85,12 +103,13 @@ public class GsonBuildCl{
        System.out.println(" Work with the Student list- 2 ");
        System.out.println(" Work with the CourseViewer list- 3 ");
        System.out.println(" Work with the Prof list  - 4 ");
-       System.out.println(" To finish the work  — 5 ");
+       System.out.println(" Work with the ProfRelCourse list - 5 ");
+       System.out.println(" To finish the work  — 6 ");
        System.out.println(" Input number of you choice:");    
        i_choice=sc.nextInt();
-       if(i_choice>0 && i_choice<5)
+       if(i_choice>0 && i_choice<6)
           callMenuList(i_choice,sc);
-     }while(i_choice!=5);
+     }while(i_choice!=6);
    }
    static void callMenuList(int ich,Scanner sc){
      int i_choice,n=-1;
@@ -171,6 +190,13 @@ public class GsonBuildCl{
              System.out.println(" Input salary of Prof:"); 
              cost=(float)sc.nextDouble();
              db.addProf(name,email,telefon, cost);
+         break; 
+         case 5:
+             System.out.println("\n Input course_id(number of Course):");  
+             id=sc.nextInt(); 
+             System.out.println(" Input prof_id:");  
+             id1=sc.nextInt(); 
+             db.addProfRel(id1,id);
          break; 
       }
    }
