@@ -105,8 +105,9 @@ public class GsonBuildCl{
      }while(i_choice!=6);
    }
    static void callMenuList(int ich,Scanner sc){
-     int i_choice,n=-1;
+     int i_choice,n;
      do  {
+       n=-1;
       System.out.println("\n Show all elements in the list - 1 ");
       System.out.println(" Show N-th element in the list - 2 ");
       System.out.println(" To insert an element in the list — 3 ");
