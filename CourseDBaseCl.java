@@ -1,9 +1,8 @@
-/*      */
+/* Класс содержит таблицы сущностей и реляционные таблицы БД в виде набора списков,а также CRUD методы для работы с ними */
+
 import java.io.Serializable; 
 import java.util.ArrayList; 
 import java.util.List; 
-import java.io.File;
-import java.io.IOException; 
  
 public class CourseDBaseCl implements Serializable { 
 
@@ -12,8 +11,6 @@ public class CourseDBaseCl implements Serializable {
    List<CourseViewerCl> cours_v=new ArrayList<>();
    List<ProfCl> proffs=new ArrayList<>();
    List<ProfCoursRelCl> prof_rel=new ArrayList<>();
-   String file_name;
-
    
   
    public void addStudent(int std_id,String name,String telefon,String email) { 
@@ -109,11 +106,11 @@ public class CourseDBaseCl implements Serializable {
       }
    }
    void readList(List lst,int n){
-      if(n<0)  // n=-1 read full list
+      if(n<0)  // n=-1 - read full list
          for(int i=0;i<lst.size();i++)
-            System.out.println("\n"+String.valueOf(i+1)+" "+lst.get(i).toString());
+            System.out.println(String.valueOf(i+1)+" "+lst.get(i).toString());
       else  
-          System.out.println("\n"+String.valueOf(n+1)+" "+lst.get(n).toString());
+          System.out.println(String.valueOf(n+1)+" "+lst.get(n).toString());
    }
    
    public void delInList(int iL,int n){
@@ -134,31 +131,9 @@ public class CourseDBaseCl implements Serializable {
             delProfRel(prof_rel.get(n).prof_id,prof_rel.get(n).course_id);
          break;
       }
-   }
-   public void writeToJson(){
-     try{
-       GsonBuildCl.writeToJson(students, fn(1)); 
-       GsonBuildCl.writeToJson(courses, fn(2)); 
-       GsonBuildCl.writeToJson(cours_v, fn(3)); 
-       GsonBuildCl.writeToJson(proffs, fn(4)); 
-       GsonBuildCl.writeToJson(prof_rel, fn(5)); 
-     }catch(IOException e){
-       e.printStackTrace(); 
-     }     
-   }
-   void readFromJson(){
-      try{
-        students=(ArrayList<StudentCl>)GsonBuildCl.readFromJson(students.getClass(), fn(1)); 
-        courses=(ArrayList<CourseCl>)GsonBuildCl.readFromJson(courses.getClass(), fn(2)); 
-        cours_v=(ArrayList<CourseViewerCl>)GsonBuildCl.readFromJson(cours_v.getClass(), fn(3)); 
-        proffs=(ArrayList<ProfCl>)GsonBuildCl.readFromJson(proffs.getClass(), fn(4));
-        prof_rel=(ArrayList<ProfCoursRelCl>)GsonBuildCl.readFromJson(prof_rel.getClass(), fn(5));
-     }catch(IOException e){
-       e.printStackTrace(); 
-     }  
-   }
-   
+   }   
+/*   
    String fn(int n){
     return file_name.substring(0,file_name.indexOf(".json")-1)+String.valueOf(n)+".json";
-   }
+   } */
 }  

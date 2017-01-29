@@ -1,17 +1,11 @@
-/* Тестовое задание для кандидатов без опыта работы на Java проектах
-
-1) Создать клон данного репозитория 
-
+/* 1) Создать клон данного репозитория 
 2) Разработать средствами языка Java код в соответствии с диаграммой классов (см. courses.gif)
-
 3) Дополнить модель необходимыми CRUD методами.
-
 4) Сериализовать объекты модели в файл формата JSON. 
-
 5) Разработать процедуру десериализации из JSON-файла в объекты модели.
-
 6) Создать pull request 
-cd /home/maria/V_prog/DBJV   javac -cp .:gson-2.2.2.jar GsonBuildCl.java java -cp .:gson-2.2.2.jar GsonBuildCl    cd /home/maria/V_prog/CourseModel*/
+cd /home/maria/V_prog/CourseModel   java -cp .:gson-2.2.2.jar GsonBuildCl 
+javac -cp .:gson-2.2.2.jar GsonBuildCl.java CourseCl.java CourseDBaseCl.java CourseViewerCl.java ProfCl.java ProfCoursRelCl.java StudentCl.java */
 
 import com.google.gson.Gson; 
 import com.google.gson.GsonBuilder; 
@@ -27,7 +21,7 @@ import java.util.List;
 
 public class GsonBuildCl{
 
-/* Предложенная модель представляет собой пример базы данных на которой изображены некоторые сущности и реляционные отношения между ними. Кроме классов сущностей были описаны классы отношений и класс CourseDBaseCl хранящий объектную инфу в виде набора ArrayList созданных для каждого класса. Эти же списки отправляются на сериализацию в JSON и читаются обратно. Имя файла расширяется цыфрами до 5, в каждом хранится одна таблица.  Для работы с прогой было создано простое екранное меню позволяющее опробовать различные CRUD методы. Ф-ии класса становятся доступны в меню при выборе конкретного члена списка. Отдельно хочу отметить что у меня при вводе чисел с пл.запятой нужно задавать именно ЗАПЯТУЮ иначе выбивает ошибку ввода. Видимо зависит от настроек. Также нужно отметить что это тестовая модель, поэтому ошибки ввода на совести тестера. Никаких проверок обязательных для коммерческих продуктов не осуществлялось.  */
+/* Предложенная модель представляет собой пример базы данных на которой изображены некоторые сущности и реляционные отношения между ними. Кроме классов сущностей в данной проге были описаны классы отношений и класс CourseDBaseCl хранящий объектную инфу в виде набора ArrayList созданных для каждого класса. Этот же класс отправляется на сериализацию в JSON и читается обратно. Для работы с прогой было создано простое екранное меню позволяющее опробовать различные CRUD методы. Ф-ии класса становятся доступны в меню при выборе конкретного члена списка. Также нужно отметить что это тестовая модель, поэтому ошибки ввода на совести тестера. Никаких проверок обязательных для коммерческих продуктов не осуществлялось. (Отдельно хочу отметить что у меня при вводе чисел с пл.запятой нужно задавать именно ЗАПЯТУЮ иначе выбивает ошибку ввода. Видимо зависит от настроек.)  */
 
    static CourseDBaseCl db; 
 
@@ -35,9 +29,9 @@ public class GsonBuildCl{
 
        String filename=getFilename(); 
        try { 
-        // Если файл - filename существ. из него будут прочитаны таблицы
            db = new CourseDBaseCl();
          try{
+             // Если файл - filename существ. из него будет прочитана БД
            if(fileExists(filename))            
                db=(CourseDBaseCl)readFromJson(db.getClass(),filename);
         // Простое меню дем.работу с БД
@@ -57,8 +51,8 @@ public class GsonBuildCl{
       return "Test_DB.json";
    }
 
-  // объект => в формат json и запишем результат в файл 
-   public static void writeToJson(Object obj, String fileName) throws IOException{ 
+  
+    public static void writeToJson(Object obj, String fileName) throws IOException{ 
          
         String gstring; 
         Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
@@ -69,8 +63,7 @@ public class GsonBuildCl{
         os.close();          
     } 
      
-   //Прочтем объект из файла json  
-   public static Object readFromJson(Class cls, String fileName) throws IOException{ 
+    public static Object readFromJson(Class cls, String fileName) throws IOException{ 
          
        Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
        Reader is = new FileReader(fileName); 
@@ -157,7 +150,7 @@ public class GsonBuildCl{
              System.out.println("\n Input course_id (number of Course):");  
              id=sc.nextInt(); 
              System.out.println(" Input name of Course:");  
-              do {name=sc.nextLine();}while(name.length()<3);      
+              do name=sc.nextLine(); while(name.length()<3);      
              System.out.println(" Input cost of Course:"); 
              cost=(float)sc.nextDouble();
              db.addCourse(id,name,cost);
@@ -237,7 +230,7 @@ public class GsonBuildCl{
               for(int i=0;i<course_ids.size();i++)
                  for(int j=0;j<db.courses.size();j++)
                     if(db.courses.get(j).course_id==course_ids.get(i)){
-                       System.out.println("\n"+db.courses.get(j).toString());
+                       System.out.println(db.courses.get(j).toString());
                        break;
                     } 
            }

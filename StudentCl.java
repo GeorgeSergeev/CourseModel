@@ -1,4 +1,4 @@
-/*              */
+/*   Класс описывает сущность студента     */
 import java.io.Serializable; 
 import java.util.ArrayList; 
 import java.util.List; 
@@ -57,6 +57,6 @@ public class StudentCl implements Serializable {
  
     @Override 
     public String toString() { 
-     return  "Student {name = " + name + "; phone = " + telefon + "; email = " + email + "; studbook_id = " + studbook_id + "; aver_grade = " + aver_grade; 
+     return  "Student {name = " + name + "; phone = " + telefon + "; email = " + email + "; studbook_id = " + studbook_id + "; aver_grade = " + aver_grade+ "}"; 
     } 
 }

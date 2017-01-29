@@ -1,4 +1,4 @@
-/*    */
+/* Класс описывает один из преподаваемых курсов   */
 import java.io.Serializable; 
 import java.util.ArrayList; 
 import java.util.List; 
@@ -27,8 +27,7 @@ public class CourseCl implements Serializable {
    }
 
    public void logStudentInThis(int std_id) { 
-      CourseDBaseCl db=GsonBuildCl.db;
-      db.addInCourseV(std_id,course_id);
+      GsonBuildCl.db.addInCourseV(std_id,course_id);
    } 
  
    public void removeStudentFromThis(int std_id,int status) { 

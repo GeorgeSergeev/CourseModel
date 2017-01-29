@@ -6,6 +6,20 @@
       "telefon": "11223",
       "email": "11223mail",
       "aver_grade": 4.5
+    },
+    {
+      "studbook_id": 100102,
+      "name": "Sidorov",
+      "telefon": "12312",
+      "email": "12312mail",
+      "aver_grade": 3.0
+    },
+    {
+      "studbook_id": 100103,
+      "name": "�Petrov",
+      "telefon": "12341",
+      "email": "1234mail",
+      "aver_grade": 3.5
     }
   ],
   "courses": [
@@ -13,6 +27,11 @@
       "course_id": 101,
       "name": "Math",
       "cost": 500.0
+    },
+    {
+      "course_id": 102,
+      "name": "Programming",
+      "cost": 640.0
     }
   ],
   "cours_v": [
@@ -23,6 +42,30 @@
       "scores": [
         4,
         5
+      ]
+    },
+    {
+      "status": 0,
+      "course_id": 102,
+      "studbook_id": 100102,
+      "scores": [
+        3
+      ]
+    },
+    {
+      "status": 0,
+      "course_id": 101,
+      "studbook_id": 100103,
+      "scores": [
+        3
+      ]
+    },
+    {
+      "status": 0,
+      "course_id": 102,
+      "studbook_id": 100103,
+      "scores": [
+        4
       ]
     }
   ],

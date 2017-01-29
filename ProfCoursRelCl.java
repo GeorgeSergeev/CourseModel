@@ -1,4 +1,4 @@
-/*   */
+/*  Класс отношений сущ. проффа и курса. */
 import java.io.Serializable; 
 import java.util.ArrayList; 
 import java.util.List; 

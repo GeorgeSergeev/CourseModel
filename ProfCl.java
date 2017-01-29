@@ -1,9 +1,9 @@
-/*   */
+/* Класс описывает сущность проффа :)  */
 import java.io.Serializable; 
 import java.util.ArrayList; 
 import java.util.List; 
  
-public class ProfCl implements Serializable {  // ProfCl
+public class ProfCl implements Serializable {  
 
     int prof_id;
     String name; 

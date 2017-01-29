@@ -1,11 +1,11 @@
-/*      */
+/* Класс отношений сущ. студента и курса. Также содержит текущие отметки и финальную в списке scores    */
 import java.io.Serializable; 
 import java.util.ArrayList; 
 import java.util.List; 
  
 public class CourseViewerCl implements Serializable {  // CourseViewerCl
 
-    final static int MIN_SCR=2,MAX_SCR=5, NUM_SCR=10; 
+    final static int MIN_SCR=2,MAX_SCR=5, NUM_FIN_SCR=10; 
     public final static int ACTIVE=0, ENDED=1, INTERRUPTED=2; 
 
     int status=ACTIVE; 
@@ -20,12 +20,36 @@ public class CourseViewerCl implements Serializable {  // CourseViewerCl
     } 
  
     public void addScore(int score) { 
-       if ((scores.size() <= NUM_SCR) && (score >= MIN_SCR && score <= MAX_SCR)) { 
+       if ((scores.size() <= NUM_FIN_SCR) && (score >= MIN_SCR && score <= MAX_SCR)) { 
            scores.add(score); 
            setAverGrade();
        } 
     } 
-    void setAverGrade(){
+    
+    public float getAverageScore() { 
+        
+      int sum = 0;   // sum of scores 
+
+      for (int i = 0; i < scores.size(); i++) 
+            if (i != NUM_FIN_SCR) 
+                sum += scores.get(i); 
+             
+ 
+        if (scores.size() == 0)    // if we have no scores 
+            return (float)0.0; 
+        else                  // if we have some scores 
+            return  (float)(sum * 1.0/scores.size()); 
+    } 
+ 
+    public int getFinalScore() { 
+        
+        if (scores.size() < NUM_FIN_SCR) {   // if we have no special score 
+            return 0; 
+        } else {                    // if we have special score 
+            return  scores.get(NUM_FIN_SCR); 
+        } 
+    } 
+    void setAverGrade(){  // in class Stud
       float sum=(float)0.0;
       int count=0;
       CourseDBaseCl db=GsonBuildCl.db;
@@ -40,30 +64,6 @@ public class CourseViewerCl implements Serializable {  // CourseViewerCl
              break;
         }
     }
-    public float getAverageScore() { 
-        
-      int sum = 0;   // sum of scores 
-
-      for (int i = 0; i < scores.size(); i++) 
-            if (i != NUM_SCR) 
-                sum += scores.get(i); 
-             
- 
-        if (scores.size() == 0)    // if we have no scores 
-            return (float)0.0f; 
-        else                  // if we have some scores 
-            return  (float)sum * 1.0f/scores.size(); 
-    } 
- 
-    public int getFinalScore() { 
-        
-        if (scores.size() < NUM_SCR) {   // if we have no special score 
-            return 0; 
-        } else {                    // if we have special score 
-            return  scores.get(NUM_SCR); 
-        } 
-    } 
- 
  
     @Override 
     public String toString() { 
