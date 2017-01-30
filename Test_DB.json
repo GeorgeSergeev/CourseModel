@@ -1,0 +1,87 @@
+{
+  "students": [
+    {
+      "studbook_id": 100101,
+      "name": "Ivanov",
+      "telefon": "11223",
+      "email": "11223mail",
+      "aver_grade": 4.5
+    },
+    {
+      "studbook_id": 100102,
+      "name": "Sidorov",
+      "telefon": "12312",
+      "email": "12312mail",
+      "aver_grade": 3.0
+    },
+    {
+      "studbook_id": 100103,
+      "name": "�Petrov",
+      "telefon": "12341",
+      "email": "1234mail",
+      "aver_grade": 3.5
+    }
+  ],
+  "courses": [
+    {
+      "course_id": 101,
+      "name": "Math",
+      "cost": 500.0
+    },
+    {
+      "course_id": 102,
+      "name": "Programming",
+      "cost": 640.0
+    }
+  ],
+  "cours_v": [
+    {
+      "status": 0,
+      "course_id": 101,
+      "studbook_id": 100101,
+      "scores": [
+        4,
+        5
+      ]
+    },
+    {
+      "status": 0,
+      "course_id": 102,
+      "studbook_id": 100102,
+      "scores": [
+        3
+      ]
+    },
+    {
+      "status": 0,
+      "course_id": 101,
+      "studbook_id": 100103,
+      "scores": [
+        3
+      ]
+    },
+    {
+      "status": 0,
+      "course_id": 102,
+      "studbook_id": 100103,
+      "scores": [
+        4
+      ]
+    }
+  ],
+  "proffs": [
+    {
+      "prof_id": 1,
+      "name": "Gusev",
+      "address": "Sev.12",
+      "phone": "223344",
+      "salary": 564.0
+    }
+  ],
+  "prof_rel": [
+    {
+      "prof_id": 1,
+      "course_id": 101
+    }
+  ]
+}
