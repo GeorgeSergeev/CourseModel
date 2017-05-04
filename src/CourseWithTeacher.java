@@ -1,4 +1,4 @@
-package CourseModel;
+
 
 /**
  * Created by TheEndl on 04.05.2017.

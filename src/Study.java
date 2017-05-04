@@ -1,4 +1,4 @@
-package CourseModel;
+
 
 import com.google.gson.annotations.SerializedName;
 
