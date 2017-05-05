@@ -18,7 +18,7 @@ public class Student{
     private String mail;
     private Integer recordBookNumber;
     private float studyLevel;
-    Map<Course, Study> studentInfo = new HashMap<>();
+    private Map<Course, Study> studentInfo = new HashMap<>();
     private ArrayList<Course> courses = new ArrayList<>();
 
 
