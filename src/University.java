@@ -53,7 +53,7 @@ public class University {
         }
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Public\\Documents\\Courses.json"));
+            BufferedReader reader = new BufferedReader(new FileReader("JSON/result.json"));
             ArrayList<Course> coursesFromJson = gson.fromJson(reader,new TypeToken<ArrayList<Course>>() {}.getType());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
