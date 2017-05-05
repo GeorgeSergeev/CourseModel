@@ -23,9 +23,7 @@ public class University {
         // Create Courses List
         ArrayList<Course> courses = new ArrayList<>();
 
-        // Create new Course - Mathematics
-
-        // Create Student
+               // Create Student
         Student student1 = new Student("Vasya", "Moscow", "+0123456789", "vasya@gmail.com", 1);
 
 
@@ -41,9 +39,8 @@ public class University {
         courses.add(groupMathematics);
 
         Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
-        String filename="c:\\coursemodel";
-        String filename2="json.json";
-        File file = new File(filename + File.separator + filename2);
+
+        File file = new File("JSON/result.json");
         file.getParentFile().mkdirs();
         try(Writer writer = new FileWriter(file))
         {
