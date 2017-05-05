@@ -20,7 +20,7 @@ public class Student{
     public float studyLevel;
     Map<Course, Study> studentInfo = new HashMap<>();
     public ArrayList<Course> courses = new ArrayList<>();
-    public ArrayList<Integer> evaluations = new ArrayList<>();
+
 
     public Student(String name, String address, String phone, String mail, Integer recordBookNumber) {
         this.name = name;
@@ -95,6 +95,20 @@ public class Student{
 
 
     @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", mail='" + mail + '\'' +
+                ", recordBookNumber=" + recordBookNumber +
+                ", studyLevel=" + studyLevel +
+                ", studentInfo=" + studentInfo +
+                ", courses=" + courses +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -108,8 +122,7 @@ public class Student{
         if (!mail.equals(student.mail)) return false;
         if (!recordBookNumber.equals(student.recordBookNumber)) return false;
         if (!studentInfo.equals(student.studentInfo)) return false;
-        if (!courses.equals(student.courses)) return false;
-        return evaluations.equals(student.evaluations);
+        return courses.equals(student.courses);
     }
 
     @Override
@@ -122,22 +135,6 @@ public class Student{
         result = 31 * result + (studyLevel != +0.0f ? Float.floatToIntBits(studyLevel) : 0);
         result = 31 * result + studentInfo.hashCode();
         result = 31 * result + courses.hashCode();
-        result = 31 * result + evaluations.hashCode();
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", mail='" + mail + '\'' +
-                ", recordBookNumber=" + recordBookNumber +
-                ", studyLevel=" + studyLevel +
-                ", studentInfo=" + studentInfo +
-                ", courses=" + courses +
-                ", evaluations=" + evaluations +
-                '}';
     }
 }

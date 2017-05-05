@@ -2,8 +2,6 @@
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
@@ -23,10 +21,8 @@ public class University {
 
         // Create Courses List
         ArrayList<Course> courses = new ArrayList<>();
-            //test//
-        int i;
+
         // Create new Course - Mathematics
-        Mathematik mathematics = new Mathematik("Mathematics", 1, 100);
 
         // Create Student
         Student student1 = new Student("Vasya", "Moscow", "+0123456789", "vasya@gmail.com", 1);
@@ -34,14 +30,14 @@ public class University {
 
         Study studyMathForStudent1 = new Study();
         Course mathematicsMain = new Course("Mathematics", 1, 100);
-
+        student1.studyInfo(mathematicsMain, studyMathForStudent1);
+        CourseGroup groupMathematics = new CourseGroup("Mathematics", 1, 100);
+        groupMathematics.addStudent(student1);
         studyMathForStudent1.setMarkForStudent(student1,2);
         studyMathForStudent1.setMarkForStudent(student1,3);
         studyMathForStudent1.setMarkForStudent(student1,4);
-
-        student1.studyInfo(mathematicsMain, studyMathForStudent1);
-        mathematics.addStudentToCourse(student1);
-        courses.add(mathematics);
+        studyMathForStudent1.getMiddleGrade(student1);
+        courses.add(groupMathematics);
 
         Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
         String json = gson.toJson(courses);

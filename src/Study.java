@@ -12,26 +12,28 @@ import java.util.Random;
 
 
 public class Study {
-
+    public ArrayList<Integer> evaluations = new ArrayList<>();
+    float middle = 0;
     public float getMiddleGrade(Student student)
     {
         float sum = 0;
-        float middle = 0;
-        for (int i = 0; i < student.evaluations.size(); i++)
+
+        for (int i = 0; i < this.evaluations.size(); i++)
         {
-            sum = sum + student.evaluations.get(i);
+            sum = sum + this.evaluations.get(i);
         }
-        middle = sum / student.evaluations.size();
+        middle = sum / this.evaluations.size();
         if (middle > 0)
             student.setStudyLevel(middle);
         else System.out.println("Студент" + student + " еще не получал оценок");
+
         return middle;
     }
 
    // Set new evaluate for student
     public void setMarkForStudent(Student student, int evaluation)
     {
-        student.evaluations.add(evaluation);
+        this.evaluations.add(evaluation);
     }
 
 
