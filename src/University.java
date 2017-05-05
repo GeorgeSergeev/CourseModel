@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 /**
@@ -33,19 +34,20 @@ public class University {
         student1.studyInfo(mathematicsMain, studyMathForStudent1);
         CourseGroup groupMathematics = new CourseGroup("Mathematics", 1, 100);
         groupMathematics.addStudent(student1);
-        /*studyMathForStudent1.setMarkForStudent(student1,2);
-        studyMathForStudent1.setMarkForStudent(student1,3);
-        studyMathForStudent1.setMarkForStudent(student1,4);*/
-        studyMathForStudent1.getMiddleGrade(student1);
+        studyMathForStudent1.setMarkForStudent(2);
+        studyMathForStudent1.setMarkForStudent(3);
+        studyMathForStudent1.setMarkForStudent(4);
+        studyMathForStudent1.initMiddleGrade(student1);
         courses.add(groupMathematics);
 
         Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
-        String json = gson.toJson(courses);
-        try
+        String filename="c:\\coursemodel";
+        String filename2="json.json";
+        File file = new File(filename + File.separator + filename2);
+        file.getParentFile().mkdirs();
+        try(Writer writer = new FileWriter(file))
         {
-            File file = new File("C:\\user\\Desktop\\dir1\\dir2\\filename.txt");
-            file.getParentFile().mkdirs();
-            FileWriter writer = new FileWriter(file);
+
             gson.toJson(courses,writer);
         }
         catch (IOException e)

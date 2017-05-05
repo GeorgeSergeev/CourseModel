@@ -19,26 +19,28 @@ public class Study {
     {
        this.middle = middle;
        this.evaluations = evaluations;
+
     }
 
-    public float getMiddleGrade(Student student)
+    public void initMiddleGrade(Student student)
     {
         float sum = 0;
-
-        for (int i = 0; i < this.evaluations.size(); i++)
+        if (this.evaluations.size() > 0 )
         {
-            sum = sum + this.evaluations.get(i);
-        }
-        middle = sum / this.evaluations.size();
-        if (middle > 0)
-            student.setStudyLevel(student.studyLevel);
-        else System.out.println("Студент" + student + " еще не получал оценок");
+            for (int i = 0; i < this.evaluations.size(); i++)
+            {
+                sum = sum + this.evaluations.get(i);
+            }
+            middle = sum / this.evaluations.size();
 
-        return student.studyLevel;
+                student.setStudyLevel(middle);
+
+        }
+        else System.out.println("Студент" + student + " еще не получал оценок");
     }
 
    // Set new evaluate for student
-    public void setMarkForStudent(Student student, int evaluation)
+    public void setMarkForStudent(int evaluation)
     {
         this.evaluations.add(evaluation);
     }
