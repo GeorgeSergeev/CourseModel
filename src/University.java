@@ -28,7 +28,7 @@ public class University {
         Student student1 = new Student("Vasya", "Moscow", "+0123456789", "vasya@gmail.com", 1);
 
 
-        Study studyMathForStudent1 = new Study();
+        Study studyMathForStudent1 = new Study(1,new ArrayList<Integer>());
         Course mathematicsMain = new Course("Mathematics", 1, 100);
         student1.studyInfo(mathematicsMain, studyMathForStudent1);
         CourseGroup groupMathematics = new CourseGroup("Mathematics", 1, 100);
@@ -41,8 +41,11 @@ public class University {
 
         Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
         String json = gson.toJson(courses);
-        try(FileWriter writer = new FileWriter("C:\\Users\\Public\\Documents\\Courses.json"))
+        try
         {
+            File file = new File("C:\\user\\Desktop\\dir1\\dir2\\filename.txt");
+            file.getParentFile().mkdirs();
+            FileWriter writer = new FileWriter(file);
             gson.toJson(courses,writer);
         }
         catch (IOException e)

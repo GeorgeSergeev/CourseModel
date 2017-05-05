@@ -28,7 +28,7 @@ public class Student{
         this.phone = phone;
         this.mail = mail;
         this.recordBookNumber = recordBookNumber;
-        this.studyLevel = 0;
+        this.studyLevel = studyLevel;
     }
 
 

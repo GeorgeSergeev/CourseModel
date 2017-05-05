@@ -12,7 +12,14 @@ import java.util.Random;
 
 
 public class Study {
-    public ArrayList<Integer> evaluations = new ArrayList<>();
+
+    ArrayList<Integer> evaluations;
+    float middle;
+    Study (float middle, ArrayList<Integer> evaluations)
+    {
+       this.middle = middle;
+       this.evaluations = evaluations;
+    }
 
     public float getMiddleGrade(Student student)
     {
@@ -22,8 +29,8 @@ public class Study {
         {
             sum = sum + this.evaluations.get(i);
         }
-        student.studyLevel = sum / this.evaluations.size();
-        if (student.studyLevel > 0)
+        middle = sum / this.evaluations.size();
+        if (middle > 0)
             student.setStudyLevel(student.studyLevel);
         else System.out.println("Студент" + student + " еще не получал оценок");
 
