@@ -9,13 +9,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class Teacher {
 
-    public String name;
-
-    public String address;
-
-    public String phone;
-
-    public Float payment;
+    private String name;
+    private String address;
+    private String phone;
+    private Float payment;
 
     public Teacher(String name, String address, String phone, Float payment) {
         this.name = name;

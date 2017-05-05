@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 /**
@@ -16,14 +15,14 @@ import java.util.ArrayList;
 
 public class University {
 
-    public static final String JSON_Path = "JSON/result.json";
+    private static final String JSON_PATH = "JSON/result.json";
 
     public static void main(String[] args) {
 
         // Create Courses List
         ArrayList<Course> courses = new ArrayList<>();
 
-               // Create Student
+        // Create Student
         Student student1 = new Student("Vasya", "Moscow", "+0123456789", "vasya@gmail.com", 1);
 
 
@@ -40,7 +39,7 @@ public class University {
 
         Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
 
-        File file = new File(JSON_Path);
+        File file = new File(JSON_PATH);
         file.getParentFile().mkdirs();
         try(Writer writer = new FileWriter(file))
         {

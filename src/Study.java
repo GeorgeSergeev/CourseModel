@@ -13,8 +13,8 @@ import java.util.Random;
 
 public class Study {
 
-    ArrayList<Integer> evaluations;
-    float middle;
+    private ArrayList<Integer> evaluations;
+    private float middle;
     Study (float middle, ArrayList<Integer> evaluations)
     {
        this.middle = middle;

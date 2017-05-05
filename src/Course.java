@@ -10,10 +10,10 @@ import java.util.Iterator;
 
 
 public class Course {
-    public String courseName;
-    public int courseNumber;
-    public float courseCost;
-    public Teacher teacher;
+    private String courseName;
+    private int courseNumber;
+    private float courseCost;
+    private Teacher teacher;
 
     public Course(String courseName, int courseNumber, float courseCost) {
         this.courseName = courseName;

@@ -12,14 +12,14 @@ import java.util.Map;
 
 public class Student{
 
-    public String name;
-    public String address;
-    public String phone;
-    public String mail;
-    public Integer recordBookNumber;
-    public float studyLevel;
+    private String name;
+    private String address;
+    private String phone;
+    private String mail;
+    private Integer recordBookNumber;
+    private float studyLevel;
     Map<Course, Study> studentInfo = new HashMap<>();
-    public ArrayList<Course> courses = new ArrayList<>();
+    private ArrayList<Course> courses = new ArrayList<>();
 
 
     public Student(String name, String address, String phone, String mail, Integer recordBookNumber) {
