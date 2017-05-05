@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class University {
 
-
+    public static final String JSON_Path = "JSON/result.json";
 
     public static void main(String[] args) {
 
@@ -40,7 +40,7 @@ public class University {
 
         Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
 
-        File file = new File("JSON/result.json");
+        File file = new File(JSON_Path);
         file.getParentFile().mkdirs();
         try(Writer writer = new FileWriter(file))
         {
@@ -53,7 +53,7 @@ public class University {
         }
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("JSON/result.json"));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             ArrayList<Course> coursesFromJson = gson.fromJson(reader,new TypeToken<ArrayList<Course>>() {}.getType());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
