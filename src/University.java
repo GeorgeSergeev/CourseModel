@@ -33,9 +33,9 @@ public class University {
         student1.studyInfo(mathematicsMain, studyMathForStudent1);
         CourseGroup groupMathematics = new CourseGroup("Mathematics", 1, 100);
         groupMathematics.addStudent(student1);
-        studyMathForStudent1.setMarkForStudent(student1,2);
+        /*studyMathForStudent1.setMarkForStudent(student1,2);
         studyMathForStudent1.setMarkForStudent(student1,3);
-        studyMathForStudent1.setMarkForStudent(student1,4);
+        studyMathForStudent1.setMarkForStudent(student1,4);*/
         studyMathForStudent1.getMiddleGrade(student1);
         courses.add(groupMathematics);
 
