@@ -26,15 +26,41 @@ public class CourseLearningImpl implements CourseLearning
     private Course course;
     private Professor teacher;
 
-    @Override
-    public void getCurrentAverageScore()
+    public CourseLearningImpl(Course course)
     {
+        this.course = course;
+    }
 
+    public CourseLearningImpl(Course course, Professor teacher)
+    {
+        this(course);
+        this.teacher = teacher;
+    }
+
+    public Course getCourse()
+    {
+        return course;
+    }
+
+    public Professor getTeacher()
+    {
+        return teacher;
     }
 
     @Override
+    public void getCurrentAverageScore()
+    {
+        System.out.println("Current average score is " +
+                scores.stream().mapToInt(Integer::intValue).sum() / (double) scores.size()
+        );
+    }
+
+    @Override
+    // What is final score?.. Just floored average?.. TODO: rethink it.
     public void getFinalScore()
     {
-
+        System.out.println("Final score is " + Math.floor(
+                scores.stream().mapToInt(Integer::intValue).sum() / (double) scores.size()
+        ));
     }
 }
