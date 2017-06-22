@@ -1,6 +1,9 @@
 package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
 
+import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Course;
 import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Professor;
+
+import java.util.Set;
 
 /**
  * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 12:33.
@@ -22,4 +25,13 @@ public class ProfessorImpl implements Professor
     private String address;
     private String phone;
     private Float salary;
+    private Set<Course> teachCourses;
+
+    public ProfessorImpl(String name, String address, String phone, Float salary)
+    {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.salary = salary;
+    }
 }
