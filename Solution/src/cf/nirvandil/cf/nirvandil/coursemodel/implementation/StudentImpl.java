@@ -1,5 +1,6 @@
 package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
 
+import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Course;
 import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.CourseLearning;
 import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Student;
 
@@ -28,6 +29,7 @@ public class StudentImpl implements Student
     private Integer recordBookNumber;
     private float averageAcademPerformance;
     private Set<CourseLearning> learnings;
+    private Set<Course> finishedCourses;
 
     @Override
     public void canListen()
@@ -38,6 +40,10 @@ public class StudentImpl implements Student
     @Override
     public void getFinishedCourses()
     {
-
+        System.out.println("This student finished: ");
+        for (Course course : finishedCourses)
+        {
+            System.out.println(course);
+        }
     }
 }

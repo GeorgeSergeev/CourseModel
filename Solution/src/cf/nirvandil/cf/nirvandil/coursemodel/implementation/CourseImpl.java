@@ -64,4 +64,10 @@ public class CourseImpl implements Course
     {
         students.remove(student);
     }
+
+    @Override
+    public String toString()
+    {
+        return "Course: " + this.name + " with number " + this.number;
+    }
 }
