@@ -27,6 +27,10 @@ public class ProfessorImpl implements Professor
     private Float salary;
     private Set<Course> teachCourses;
 
+    public ProfessorImpl()
+    {
+    }
+
     public ProfessorImpl(String name, String address, String phone, Float salary)
     {
         this.name = name;

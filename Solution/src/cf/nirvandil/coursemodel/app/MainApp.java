@@ -1,5 +1,17 @@
 package cf.nirvandil.coursemodel.app;
 
+import cf.nirvandil.coursemodel.implementation.CourseImpl;
+import cf.nirvandil.coursemodel.implementation.CourseLearningImpl;
+import cf.nirvandil.coursemodel.implementation.ProfessorImpl;
+import cf.nirvandil.coursemodel.implementation.StudentImpl;
+import cf.nirvandil.coursemodel.interfaces.Course;
+import cf.nirvandil.coursemodel.interfaces.CourseLearning;
+import cf.nirvandil.coursemodel.interfaces.Professor;
+import cf.nirvandil.coursemodel.interfaces.Student;
+
+import java.io.IOException;
+import java.util.HashSet;
+
 /**
  * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 18:39.
  * This program is part of CourseModel.
@@ -16,8 +28,24 @@ package cf.nirvandil.coursemodel.app;
  */
 public class MainApp
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-
+        // So, create some model objects, write them to JSON files, than read some of it back
+        // and print to stdout some data
+        Course course = new CourseImpl("JavaSE", 42, 4200, new HashSet<>());
+        CourseLearning courseLearning = new CourseLearningImpl(course);
+        Professor professor = new ProfessorImpl("Ross Geller", "New-York", "+42", 42000.0f);
+        Student student = new StudentImpl("Joe", "New-York", "+24", "boss@gmail.com", 42);
+        course.addStudent(student);
+        Serializer.writeCourseLearning("learning.json", courseLearning);
+        Serializer.writeCourse("course.json", course);
+        Serializer.writeProfessor("professor.json", professor);
+        Serializer.writeStudent("student.json", student);
+        System.out.println(((StudentImpl)Serializer.readStudent("student.json")).getName());
+        System.out.println(((CourseLearningImpl) Serializer.readCourseLearning("learning.json")).getCourse());
+        course = Serializer.readCourse("course.json");
+        // Add one more student to this course
+        course.addStudent(new StudentImpl("Rachel", "Paris", "+422", "NONE", 24));
+        System.out.println(((CourseImpl) course).getStudents());
     }
 }

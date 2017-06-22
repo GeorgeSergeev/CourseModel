@@ -1,5 +1,9 @@
 package cf.nirvandil.coursemodel.interfaces;
 
+import cf.nirvandil.coursemodel.implementation.CourseImpl;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 /**
  * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 11:44.
  * This program is part of CourseModel.
@@ -14,6 +18,10 @@ package cf.nirvandil.coursemodel.interfaces;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see http://www.gnu.org/licenses/.
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = CourseImpl.class, name = "CourseImpl") }
+)
 public interface Course
 {
     void addStudent(Student student);

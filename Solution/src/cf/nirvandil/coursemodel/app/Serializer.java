@@ -1,10 +1,15 @@
 package cf.nirvandil.coursemodel.app;
 
+import cf.nirvandil.coursemodel.implementation.CourseImpl;
+import cf.nirvandil.coursemodel.implementation.CourseLearningImpl;
+import cf.nirvandil.coursemodel.implementation.ProfessorImpl;
+import cf.nirvandil.coursemodel.implementation.StudentImpl;
 import cf.nirvandil.coursemodel.interfaces.Course;
 import cf.nirvandil.coursemodel.interfaces.CourseLearning;
 import cf.nirvandil.coursemodel.interfaces.Professor;
 import cf.nirvandil.coursemodel.interfaces.Student;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +31,9 @@ import java.io.IOException;
 public class Serializer
 {
     private static ObjectMapper mapper = new ObjectMapper();
+    static {
+        mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+    }
 
     public static void writeStudent(String fileName, Student student) throws IOException
     {
@@ -42,5 +50,21 @@ public class Serializer
     public static void writeProfessor(String fileName, Professor professor) throws IOException
     {
         mapper.writeValue(new File(fileName), professor);
+    }
+    public static Student readStudent(String fileName) throws IOException
+    {
+        return mapper.readValue(new File(fileName), StudentImpl.class);
+    }
+    public static Course readCourse(String fileName) throws IOException
+    {
+        return mapper.readValue(new File(fileName), CourseImpl.class);
+    }
+    public static Professor readProfessor(String fileName) throws IOException
+    {
+        return mapper.readValue(new File(fileName), ProfessorImpl.class);
+    }
+    public static CourseLearning readCourseLearning(String fileName) throws IOException
+    {
+        return mapper.readValue(new File(fileName), CourseLearningImpl.class);
     }
 }

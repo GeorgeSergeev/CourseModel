@@ -31,6 +31,10 @@ public class StudentImpl implements Student
     private Set<CourseLearning> learnings;
     private Set<Course> finishedCourses;
 
+    public StudentImpl()
+    {
+    }
+
     public StudentImpl(String name, String address, String phone, String email, Integer recordBookNumber)
     {
         this.name = name;

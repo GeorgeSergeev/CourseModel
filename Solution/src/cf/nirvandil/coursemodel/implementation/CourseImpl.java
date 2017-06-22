@@ -1,7 +1,11 @@
 package cf.nirvandil.coursemodel.implementation;
 
 import cf.nirvandil.coursemodel.interfaces.Course;
+import cf.nirvandil.coursemodel.interfaces.Professor;
 import cf.nirvandil.coursemodel.interfaces.Student;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.Set;
 
@@ -25,12 +29,25 @@ public class CourseImpl implements Course
     private int number;
     private float price;
     private Set<Student> students;
+    @JsonDeserialize(as=ProfessorImpl.class)
+    private Professor teacher;
 
-    public CourseImpl(String name, int number, float price)
+    public CourseImpl()
+    {
+    }
+
+    public CourseImpl(String name, int number, float price, Set <Student> students)
     {
         this.name = name;
         this.number = number;
         this.price = price;
+        this.students = students;
+    }
+    public CourseImpl(String name, int number, float price,
+                      Set<Student> students, Professor teacher)
+    {
+        this(name, number, price, students);
+        this.teacher = teacher;
     }
 
     public String getName()
@@ -48,11 +65,6 @@ public class CourseImpl implements Course
         return price;
     }
 
-    public Set<Student> getStudents()
-    {
-        return students;
-    }
-
     public void setName(String name)
     {
         this.name = name;
@@ -68,9 +80,24 @@ public class CourseImpl implements Course
         this.price = price;
     }
 
+    public Set<Student> getStudents()
+    {
+        return students;
+    }
+
     public void setStudents(Set<Student> students)
     {
         this.students = students;
+    }
+
+    public void setTeacher(Professor teacher)
+    {
+        this.teacher = teacher;
+    }
+
+    public Professor getTeacher()
+    {
+        return teacher;
     }
 
     @Override

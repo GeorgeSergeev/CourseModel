@@ -2,7 +2,7 @@ package cf.nirvandil.coursemodel.implementation;
 
 import cf.nirvandil.coursemodel.interfaces.Course;
 import cf.nirvandil.coursemodel.interfaces.CourseLearning;
-import cf.nirvandil.coursemodel.interfaces.Professor;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.List;
 
@@ -23,8 +23,12 @@ import java.util.List;
 public class CourseLearningImpl implements CourseLearning
 {
     private List<Integer> scores;
+    @JsonDeserialize(as=CourseImpl.class)
     private Course course;
-    private Professor teacher;
+
+    public CourseLearningImpl()
+    {
+    }
 
     public CourseLearningImpl(Course course)
     {
@@ -46,26 +50,11 @@ public class CourseLearningImpl implements CourseLearning
         this.course = course;
     }
 
-    public void setTeacher(Professor teacher)
-    {
-        this.teacher = teacher;
-    }
-
-    public CourseLearningImpl(Course course, Professor teacher)
-    {
-        this(course);
-        this.teacher = teacher;
-    }
-
     public Course getCourse()
     {
         return course;
     }
 
-    public Professor getTeacher()
-    {
-        return teacher;
-    }
 
     @Override
     public void getCurrentAverageScore()
