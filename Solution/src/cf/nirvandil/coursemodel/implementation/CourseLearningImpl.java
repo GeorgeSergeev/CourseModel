@@ -1,8 +1,8 @@
-package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
+package cf.nirvandil.coursemodel.implementation;
 
-import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Course;
-import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.CourseLearning;
-import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Professor;
+import cf.nirvandil.coursemodel.interfaces.Course;
+import cf.nirvandil.coursemodel.interfaces.CourseLearning;
+import cf.nirvandil.coursemodel.interfaces.Professor;
 
 import java.util.List;
 
@@ -29,6 +29,26 @@ public class CourseLearningImpl implements CourseLearning
     public CourseLearningImpl(Course course)
     {
         this.course = course;
+    }
+
+    public List<Integer> getScores()
+    {
+        return scores;
+    }
+
+    public void setScores(List<Integer> scores)
+    {
+        this.scores = scores;
+    }
+
+    public void setCourse(Course course)
+    {
+        this.course = course;
+    }
+
+    public void setTeacher(Professor teacher)
+    {
+        this.teacher = teacher;
     }
 
     public CourseLearningImpl(Course course, Professor teacher)

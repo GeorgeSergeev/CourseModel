@@ -1,4 +1,4 @@
-package cf.nirvandil.cf.nirvandil.coursemodel.app;
+package cf.nirvandil.coursemodel.app;
 
 /**
  * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 18:39.

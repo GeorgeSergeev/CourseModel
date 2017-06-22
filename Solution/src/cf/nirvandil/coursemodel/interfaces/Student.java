@@ -1,4 +1,4 @@
-package cf.nirvandil.cf.nirvandil.coursemodel.interfaces;
+package cf.nirvandil.coursemodel.interfaces;
 
 /**
  * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 11:45.
@@ -14,7 +14,8 @@ package cf.nirvandil.cf.nirvandil.coursemodel.interfaces;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see http://www.gnu.org/licenses/.
  */
-public interface Professor
+public interface Student
 {
-
+    void canListen();
+    void getFinishedCourses();
 }

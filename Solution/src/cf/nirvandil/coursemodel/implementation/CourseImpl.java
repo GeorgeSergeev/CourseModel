@@ -1,7 +1,7 @@
-package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
+package cf.nirvandil.coursemodel.implementation;
 
-import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Course;
-import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Student;
+import cf.nirvandil.coursemodel.interfaces.Course;
+import cf.nirvandil.coursemodel.interfaces.Student;
 
 import java.util.Set;
 
@@ -51,6 +51,26 @@ public class CourseImpl implements Course
     public Set<Student> getStudents()
     {
         return students;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public void setNumber(int number)
+    {
+        this.number = number;
+    }
+
+    public void setPrice(float price)
+    {
+        this.price = price;
+    }
+
+    public void setStudents(Set<Student> students)
+    {
+        this.students = students;
     }
 
     @Override

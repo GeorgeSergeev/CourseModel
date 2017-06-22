@@ -1,7 +1,7 @@
-package cf.nirvandil.cf.nirvandil.coursemodel.interfaces;
+package cf.nirvandil.coursemodel.interfaces;
 
 /**
- * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 11:44.
+ * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 11:45.
  * This program is part of CourseModel.
  * CourseModel is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,8 +14,8 @@ package cf.nirvandil.cf.nirvandil.coursemodel.interfaces;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see http://www.gnu.org/licenses/.
  */
-public interface Course
+public interface CourseLearning
 {
-    void addStudent(Student student);
-    void removeStudent(Student student);
+    void getCurrentAverageScore();
+    void getFinalScore();
 }

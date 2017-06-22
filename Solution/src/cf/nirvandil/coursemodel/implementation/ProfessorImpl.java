@@ -1,7 +1,7 @@
-package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
+package cf.nirvandil.coursemodel.implementation;
 
-import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Course;
-import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Professor;
+import cf.nirvandil.coursemodel.interfaces.Course;
+import cf.nirvandil.coursemodel.interfaces.Professor;
 
 import java.util.Set;
 
@@ -33,5 +33,55 @@ public class ProfessorImpl implements Professor
         this.address = address;
         this.phone = phone;
         this.salary = salary;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
+
+    public void setPhone(String phone)
+    {
+        this.phone = phone;
+    }
+
+    public Float getSalary()
+    {
+        return salary;
+    }
+
+    public void setSalary(Float salary)
+    {
+        this.salary = salary;
+    }
+
+    public Set<Course> getTeachCourses()
+    {
+        return teachCourses;
+    }
+
+    public void setTeachCourses(Set<Course> teachCourses)
+    {
+        this.teachCourses = teachCourses;
     }
 }

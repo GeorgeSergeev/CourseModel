@@ -1,8 +1,8 @@
-package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
+package cf.nirvandil.coursemodel.implementation;
 
-import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Course;
-import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.CourseLearning;
-import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Student;
+import cf.nirvandil.coursemodel.interfaces.Course;
+import cf.nirvandil.coursemodel.interfaces.CourseLearning;
+import cf.nirvandil.coursemodel.interfaces.Student;
 
 import java.util.Set;
 
@@ -38,6 +38,81 @@ public class StudentImpl implements Student
         this.phone = phone;
         this.email = email;
         this.recordBookNumber = recordBookNumber;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
+
+    public void setPhone(String phone)
+    {
+        this.phone = phone;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public Integer getRecordBookNumber()
+    {
+        return recordBookNumber;
+    }
+
+    public void setRecordBookNumber(Integer recordBookNumber)
+    {
+        this.recordBookNumber = recordBookNumber;
+    }
+
+    public float getAverageAcademPerformance()
+    {
+        return averageAcademPerformance;
+    }
+
+    public void setAverageAcademPerformance(float averageAcademPerformance)
+    {
+        this.averageAcademPerformance = averageAcademPerformance;
+    }
+
+    public Set<CourseLearning> getLearnings()
+    {
+        return learnings;
+    }
+
+    public void setLearnings(Set<CourseLearning> learnings)
+    {
+        this.learnings = learnings;
+    }
+
+    public void setFinishedCourses(Set<Course> finishedCourses)
+    {
+        this.finishedCourses = finishedCourses;
     }
 
     @Override
