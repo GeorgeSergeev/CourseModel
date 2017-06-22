@@ -32,7 +32,7 @@ public class MainApp
     {
         // So, create some model objects
         Professor professor = new ProfessorImpl("Ross Geller", "New York", "+42...", 42000.0f);
-        Course course = new CourseImpl("Java SE", 42, 4200, new HashSet<>(), professor);
+        Course course = new CourseImpl("Paleontology", 42, 4200, new HashSet<>(), professor);
         CourseLearning courseLearning = new CourseLearningImpl(course);
         Student student = new StudentImpl("Joey Tribbiani", "New York", "+42..", "jtboss@gmail.com", 42);
         // Add student to course
