@@ -1,6 +1,9 @@
 package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
 
+import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.CourseLearning;
 import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Student;
+
+import java.util.Set;
 
 /**
  * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 12:32.
@@ -24,6 +27,7 @@ public class StudentImpl implements Student
     private String email;
     private Integer recordBookNumber;
     private float averageAcademPerformance;
+    private Set<CourseLearning> learnings;
 
     @Override
     public void canListen()

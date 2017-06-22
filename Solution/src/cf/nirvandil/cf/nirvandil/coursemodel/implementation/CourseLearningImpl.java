@@ -1,6 +1,8 @@
 package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
 
+import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Course;
 import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.CourseLearning;
+import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Professor;
 
 import java.util.List;
 
@@ -21,6 +23,8 @@ import java.util.List;
 public class CourseLearningImpl implements CourseLearning
 {
     private List<Integer> scores;
+    private Course course;
+    private Professor teacher;
 
     @Override
     public void getCurrentAverageScore()

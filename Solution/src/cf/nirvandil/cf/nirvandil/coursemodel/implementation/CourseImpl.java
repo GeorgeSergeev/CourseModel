@@ -3,6 +3,8 @@ package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
 import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Course;
 import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Student;
 
+import java.util.Set;
+
 /**
  * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 12:33.
  * This program is part of CourseModel.
@@ -22,6 +24,7 @@ public class CourseImpl implements Course
     private String name;
     private int number;
     private float price;
+    private Set<Student> students;
 
     @Override
     public void addStudent(Student student)
