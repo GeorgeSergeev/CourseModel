@@ -26,15 +26,42 @@ public class CourseImpl implements Course
     private float price;
     private Set<Student> students;
 
-    @Override
-    public void addStudent(Student student)
+    public CourseImpl(String name, int number, float price)
     {
+        this.name = name;
+        this.number = number;
+        this.price = price;
+    }
 
+    public String getName()
+    {
+        return name;
+    }
+
+    public int getNumber()
+    {
+        return number;
+    }
+
+    public float getPrice()
+    {
+        return price;
+    }
+
+    public Set<Student> getStudents()
+    {
+        return students;
     }
 
     @Override
-    public void removeStudent(Integer recordBookNumber)
+    public void addStudent(Student student)
     {
+        students.add(student);
+    }
 
+    @Override
+    public void removeStudent(Student student)
+    {
+        students.remove(student);
     }
 }
