@@ -28,24 +28,31 @@ import java.util.HashSet;
  */
 public class MainApp
 {
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args) throws IOException // TODO: Handle exceptions
     {
-        // So, create some model objects, write them to JSON files, than read some of it back
-        // and print to stdout some data
-        Course course = new CourseImpl("JavaSE", 42, 4200, new HashSet<>());
+        // So, create some model objects
+        Professor professor = new ProfessorImpl("Ross Geller", "New York", "+42...", 42000.0f);
+        Course course = new CourseImpl("Java SE", 42, 4200, new HashSet<>(), professor);
         CourseLearning courseLearning = new CourseLearningImpl(course);
-        Professor professor = new ProfessorImpl("Ross Geller", "New-York", "+42", 42000.0f);
-        Student student = new StudentImpl("Joe", "New-York", "+24", "boss@gmail.com", 42);
+        Student student = new StudentImpl("Joey Tribbiani", "New York", "+42..", "jtboss@gmail.com", 42);
+        // Add student to course
         course.addStudent(student);
+        // Serialize objects
         Serializer.writeCourseLearning("learning.json", courseLearning);
         Serializer.writeCourse("course.json", course);
         Serializer.writeProfessor("professor.json", professor);
         Serializer.writeStudent("student.json", student);
-        System.out.println(((StudentImpl)Serializer.readStudent("student.json")).getName());
-        System.out.println(((CourseLearningImpl) Serializer.readCourseLearning("learning.json")).getCourse());
-        course = Serializer.readCourse("course.json");
+        // Read back some objects, with cast to concrete classes
+        StudentImpl studentImpl = (StudentImpl)Serializer.readStudent("student.json");
+        CourseLearningImpl courseLearningImpl = (CourseLearningImpl)Serializer.readCourseLearning("learning.json");
+        CourseImpl courseImpl = (CourseImpl) Serializer.readCourse("course.json");
         // Add one more student to this course
-        course.addStudent(new StudentImpl("Rachel", "Paris", "+422", "NONE", 24));
-        System.out.println(((CourseImpl) course).getStudents());
+        courseImpl.addStudent(new StudentImpl("Rachel Green", "Paris", "+422", "NONE", 24));
+        ProfessorImpl professorImpl = (ProfessorImpl)courseImpl.getTeacher();
+        System.out.println(studentImpl.getName());
+        System.out.println(courseLearningImpl.getCourse());
+        System.out.println(professorImpl.getName());
+        // TODO: override toString for StudentImpl?
+        System.out.println(courseImpl.getStudents());
     }
 }
