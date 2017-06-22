@@ -2,6 +2,8 @@ package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
 
 import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.CourseLearning;
 
+import java.util.List;
+
 /**
  * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 12:33.
  * This program is part of CourseModel.
@@ -18,4 +20,17 @@ import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.CourseLearning;
  */
 public class CourseLearningImpl implements CourseLearning
 {
+    private List<Integer> scores;
+
+    @Override
+    public void getCurrentAverageScore()
+    {
+
+    }
+
+    @Override
+    public void getFinalScore()
+    {
+
+    }
 }

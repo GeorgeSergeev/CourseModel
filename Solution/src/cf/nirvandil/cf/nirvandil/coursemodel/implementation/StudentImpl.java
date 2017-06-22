@@ -18,4 +18,22 @@ import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Student;
  */
 public class StudentImpl implements Student
 {
+    private String name;
+    private String address;
+    private String phone;
+    private String email;
+    private Integer recordBookNumber;
+    private float averageAcademPerformance;
+
+    @Override
+    public void canListen()
+    {
+
+    }
+
+    @Override
+    public void getFinishedCourses()
+    {
+
+    }
 }

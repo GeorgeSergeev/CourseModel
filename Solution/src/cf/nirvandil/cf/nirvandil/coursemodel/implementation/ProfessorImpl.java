@@ -18,4 +18,8 @@ import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Professor;
  */
 public class ProfessorImpl implements Professor
 {
+    private String name;
+    private String address;
+    private String phone;
+    private Float salary;
 }

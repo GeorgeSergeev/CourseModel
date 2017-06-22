@@ -16,4 +16,6 @@ package cf.nirvandil.cf.nirvandil.coursemodel.interfaces;
  */
 public interface Course
 {
+    void addStudent(Student student);
+    void removeStudent(Integer recordBookNumber);
 }

@@ -16,4 +16,5 @@ package cf.nirvandil.cf.nirvandil.coursemodel.interfaces;
  */
 public interface Professor
 {
+
 }

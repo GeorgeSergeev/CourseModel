@@ -16,4 +16,6 @@ package cf.nirvandil.cf.nirvandil.coursemodel.interfaces;
  */
 public interface Student
 {
+    void canListen();
+    void getFinishedCourses();
 }

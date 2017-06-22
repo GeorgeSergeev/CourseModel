@@ -1,6 +1,7 @@
 package cf.nirvandil.cf.nirvandil.coursemodel.implementation;
 
 import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Course;
+import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Student;
 
 /**
  * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 12:33.
@@ -18,4 +19,19 @@ import cf.nirvandil.cf.nirvandil.coursemodel.interfaces.Course;
  */
 public class CourseImpl implements Course
 {
+    private String name;
+    private int number;
+    private float price;
+
+    @Override
+    public void addStudent(Student student)
+    {
+
+    }
+
+    @Override
+    public void removeStudent(Integer recordBookNumber)
+    {
+
+    }
 }
