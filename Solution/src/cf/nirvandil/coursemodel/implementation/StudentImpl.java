@@ -36,13 +36,15 @@ public class StudentImpl implements Student
     {
     }
 
-    public StudentImpl(String name, String address, String phone, String email, Integer recordBookNumber)
+    public StudentImpl(String name, String address, String phone, String email,
+                       Integer recordBookNumber, CourseLearning cl)
     {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.email = email;
         this.recordBookNumber = recordBookNumber;
+        this.learnings.add(cl);
     }
 
     public String getName()

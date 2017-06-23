@@ -34,7 +34,8 @@ public class MainApp
         Professor professor = new ProfessorImpl("Ross Geller", "New York", "+42...", 42000.0f);
         Course course = new CourseImpl("Paleontology", 42, 4200, new HashSet<>(), professor);
         CourseLearning courseLearning = new CourseLearningImpl(course);
-        Student student = new StudentImpl("Joey Tribbiani", "New York", "+42..", "jtboss@gmail.com", 42);
+        Student student = new StudentImpl("Joey Tribbiani", "New York", "+42..", "jtboss@gmail.com",
+                42, new CourseLearningImpl(new CourseImpl()));
         // Add student to course
         course.addStudent(student);
         // Serialize objects
@@ -47,7 +48,8 @@ public class MainApp
         CourseLearningImpl courseLearningImpl = (CourseLearningImpl)Serializer.readCourseLearning("learning.json");
         CourseImpl courseImpl = (CourseImpl) Serializer.readCourse("course.json");
         // Add one more student to this course
-        courseImpl.addStudent(new StudentImpl("Rachel Green", "Paris", "+422", "NONE", 24));
+        courseImpl.addStudent(new StudentImpl("Rachel Green", "Paris", "+422", "NONE",
+                24, new CourseLearningImpl(new CourseImpl())));
         ProfessorImpl professorImpl = (ProfessorImpl)courseImpl.getTeacher();
         System.out.println(studentImpl.getName());
         System.out.println(courseLearningImpl.getCourse());
