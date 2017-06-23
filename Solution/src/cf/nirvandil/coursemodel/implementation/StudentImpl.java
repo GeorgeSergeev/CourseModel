@@ -4,6 +4,7 @@ import cf.nirvandil.coursemodel.interfaces.Course;
 import cf.nirvandil.coursemodel.interfaces.CourseLearning;
 import cf.nirvandil.coursemodel.interfaces.Student;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -120,18 +121,22 @@ public class StudentImpl implements Student
     }
 
     @Override
-    public void canListen()
+    // What exactly do this method?
+    // Assume it takes set of all available courses
+    // then excludes already listened or finished
+    public void canListen(Set<Course> allCourses)
     {
-
+        Set<Course> available = new HashSet<>(allCourses);
+        available.removeAll(finishedCourses);
+        for (CourseLearning learning : learnings)
+            available.remove(((CourseLearningImpl)learning).getCourse());
+        available.forEach(System.out::println);
     }
 
     @Override
     public void getFinishedCourses()
     {
         System.out.println("This student finished: ");
-        for (Course course : finishedCourses)
-        {
-            System.out.println(course);
-        }
+        finishedCourses.forEach(System.out::println);
     }
 }

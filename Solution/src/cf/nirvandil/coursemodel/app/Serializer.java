@@ -28,6 +28,7 @@ import java.io.IOException;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see http://www.gnu.org/licenses/.
  */
+// TODO: Use polymorphism for write/read objects, may be by adding marker interface for model classes
 public class Serializer
 {
     private static ObjectMapper mapper = new ObjectMapper();

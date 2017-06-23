@@ -4,6 +4,8 @@ import cf.nirvandil.coursemodel.implementation.StudentImpl;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import java.util.Set;
+
 /**
  * Created by Vladimir Sukharev aka Nirvandil on 22.06.17 at 11:45.
  * This program is part of CourseModel.
@@ -24,6 +26,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 )
 public interface Student
 {
-    void canListen();
+    void canListen(Set<Course> allCourses);
     void getFinishedCourses();
 }
