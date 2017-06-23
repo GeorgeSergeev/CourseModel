@@ -4,6 +4,7 @@ import cf.nirvandil.coursemodel.interfaces.Course;
 import cf.nirvandil.coursemodel.interfaces.CourseLearning;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ import java.util.List;
  */
 public class CourseLearningImpl implements CourseLearning
 {
-    private List<Integer> scores;
+    private List<Integer> scores = new ArrayList<>();
     @JsonDeserialize(as=CourseImpl.class)
     private Course course;
 

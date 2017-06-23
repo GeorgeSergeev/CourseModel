@@ -3,6 +3,7 @@ package cf.nirvandil.coursemodel.implementation;
 import cf.nirvandil.coursemodel.interfaces.Course;
 import cf.nirvandil.coursemodel.interfaces.Professor;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -25,7 +26,7 @@ public class ProfessorImpl implements Professor
     private String address;
     private String phone;
     private Float salary;
-    private Set<Course> teachCourses;
+    private Set<Course> teachCourses = new HashSet<>();
 
     public ProfessorImpl()
     {

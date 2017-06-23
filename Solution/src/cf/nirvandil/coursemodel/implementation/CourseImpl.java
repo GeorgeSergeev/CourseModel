@@ -3,10 +3,9 @@ package cf.nirvandil.coursemodel.implementation;
 import cf.nirvandil.coursemodel.interfaces.Course;
 import cf.nirvandil.coursemodel.interfaces.Professor;
 import cf.nirvandil.coursemodel.interfaces.Student;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -28,7 +27,7 @@ public class CourseImpl implements Course
     private String name;
     private int number;
     private float price;
-    private Set<Student> students;
+    private Set<Student> students = new HashSet<>();
     @JsonDeserialize(as=ProfessorImpl.class)
     private Professor teacher;
 

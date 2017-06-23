@@ -29,8 +29,8 @@ public class StudentImpl implements Student
     private String email;
     private Integer recordBookNumber;
     private float averageAcademPerformance;
-    private Set<CourseLearning> learnings;
-    private Set<Course> finishedCourses;
+    private Set<CourseLearning> learnings = new HashSet<>();
+    private Set<Course> finishedCourses = new HashSet<>();
 
     public StudentImpl()
     {
