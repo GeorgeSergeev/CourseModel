@@ -1,0 +1,71 @@
+{
+  "caption": "kyrs 1",
+  "number": 1,
+  "price": 123.11,
+  "studList": [
+    {
+      "name": "Иван",
+      "adres": "Tixonova,24",
+      "phone": "123-4531",
+      "eMeail": "test@mail.ru",
+      "nZach": 1,
+      "avgBall": 10.0,
+      "listFinishedKyrs": [
+        {
+          "nameKyrs": "kyrs 21",
+          "nKyrs": 21,
+          "state": "IN_PROCESS"
+        },
+        {
+          "nameKyrs": "kyrs 22",
+          "nKyrs": 22,
+          "state": "IN_PROCESS"
+        },
+        {
+          "nameKyrs": "kyrs 23",
+          "nKyrs": 23,
+          "state": "IN_PROCESS"
+        },
+        {
+          "nameKyrs": "kyrs 1",
+          "nKyrs": 1,
+          "state": "IN_PROCESS"
+        }
+      ]
+    },
+    {
+      "name": "Михаил",
+      "adres": "Testovaya, 23",
+      "phone": "11-11-11",
+      "eMeail": "mail@mail.test",
+      "nZach": 123,
+      "avgBall": 123.0,
+      "listFinishedKyrs": [
+        {
+          "nameKyrs": "kyrs 1",
+          "nKyrs": 1,
+          "state": "IN_PROCESS"
+        }
+      ]
+    }
+  ],
+  "ballList": [
+    {
+      "nZachetkiStud": 1,
+      "ballVal": 12
+    },
+    {
+      "nZachetkiStud": 1,
+      "ballVal": 6
+    },
+    {
+      "nZachetkiStud": 11,
+      "ballVal": 11
+    },
+    {
+      "nZachetkiStud": 16,
+      "ballVal": 8
+    }
+  ],
+  "profList": []
+}
