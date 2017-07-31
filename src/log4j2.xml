@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ -->
+<Configuration status="WARN">
+  <Properties>
+     <Property name="logDir">${log4j:configParentLocation}/logs</Property>
+  </Properties>
+  <Appenders> 
+    <Console name="console">
+	   	<PatternLayout pattern="%d{HH:mm:ss} %-5level %logger{1} :: %msg%n"/>
+    </Console>
+    <RollingFile name="all" fileName="${logDir}/app_ALL.txt" filePattern="${logDir}/app_ALL.%i.txt">
+      <PatternLayout>
+        <Pattern>%d{HH:mm:ss}{GMT+3} %-5level %logger{1} :: %msg%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="100 KB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="3" fileIndex="min"/>
+    </RollingFile>
+    <RollingFile name="error_all" fileName="${logDir}/app_error.txt" filePattern="${logDir}/app_error__prev.txt">
+      <PatternLayout>
+        <Pattern>%d{HH:mm:ss}{GMT+3} %-5level %logger{1} :: %msg%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <OnStartupTriggeringPolicy/>
+      </Policies>
+      <DefaultRolloverStrategy max="2"/>
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <!--<logger name="sev.alvioneurope.coursemodel" level="info" /> -->
+    <logger name="sev.alvioneurope.coursemodel" level="debug" />			<!-- debug -->
+ 	<Root level="warn">														<!-- для всех неявных только warn уровень проходит -->
+    	<AppenderRef ref="console"/>
+    	<AppenderRef ref="all"/>
+    	<AppenderRef ref="error_all" level="error"/> 
+    </Root>
+  </Loggers>
+</Configuration>
