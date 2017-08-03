@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="282.0" prefWidth="281.0" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxComponents.Controllers.AddStudentController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Введите информацию о студенте:" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="281.0">
+         <children>
+            <Label text="Имя: " />
+            <TextField fx:id="nameStudent" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="12.0" prefWidth="281.0">
+         <children>
+            <Label text="Адрес: " />
+            <TextField fx:id="adresStudent" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="307.0">
+         <children>
+            <Label text="Телефон: " />
+            <TextField fx:id="phoneStudent" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="281.0">
+         <children>
+            <Label text="E-mail: " />
+            <TextField fx:id="emailStudent" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="281.0">
+         <children>
+            <Label text="Номер зачётки:" />
+            <TextField fx:id="numStudent" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
+         <children>
+            <Button fx:id="defaultButton" defaultButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#actionAdd" text="Добавить" />
+            <Button cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#actionClose" text="Отмена" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

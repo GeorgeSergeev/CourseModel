@@ -1,0 +1,42 @@
+[
+  {
+    "averageRating": 0.0,
+    "name": "Терун С.О.",
+    "adress": "г. Москва",
+    "phone": "+79846545123",
+    "email": "sgjf@mail.ru",
+    "num": 2282
+  },
+  {
+    "averageRating": 0.0,
+    "name": "Сфынад А.А.",
+    "adress": "г. Мурманск",
+    "phone": "+79786065410",
+    "email": "pkgf@gmail.com",
+    "num": 5675
+  },
+  {
+    "averageRating": 0.0,
+    "name": "Сливенко А. С.",
+    "adress": "г. Ялта",
+    "phone": "+78985456454",
+    "email": "nagibator@ukr.net",
+    "num": 2234
+  },
+  {
+    "averageRating": 0.0,
+    "name": "Иванов Т.А.",
+    "adress": "г. Севастополь",
+    "phone": "+79782306546",
+    "email": "iv@gmail.com",
+    "num": 1234
+  },
+  {
+    "averageRating": 0.0,
+    "name": "Гром О.О.",
+    "adress": "г. Симферополь",
+    "phone": "+79780546056",
+    "email": "gr12434@mail.ru",
+    "num": 3455
+  }
+]
