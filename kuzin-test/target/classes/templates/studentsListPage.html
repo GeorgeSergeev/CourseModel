@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Список студентов</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{css/style.css}" href="css/style.css" rel="stylesheet"
+	type="text/css" />
+</head>
+<body>
+	<div id="box1" class="box blurred-bg tinted">
+		<div class="content">
+			<table>
+				<tr>
+					<td>№ зачетной книжки</td>
+					<td>Имя</td>
+					<td>Действия</td>
+				</tr>
+				<tr th:each="student : ${students}">
+					<td th:text="${student.scoreBookNum}"></td>
+					<td th:text="${student.name}"></td>
+					<td><a th:href="@{/student(t=0,id=${student.scoreBookNum})}">Удалить</a>
+						<a th:href="@{/student(t=1,id=${student.scoreBookNum})}">Редактировать</a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3"><a th:href="@{/student(t=2,id=0)}">Добавить
+							студента</a></td>
+				</tr>
+			</table>
+			<section>
+				<a href="/">Индекс</a> 
+				<a href="courses">Курсы</a> 
+				<a href="professors">Профессора</a>
+			</section>
+		</div>
+	</div>
+</body>
+</html>

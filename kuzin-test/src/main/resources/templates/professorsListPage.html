@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список профессоров</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{css/style.css}" href="css/style.css" rel="stylesheet"
+	type="text/css" />
+</head>
+<body>
+<div id="box1" class="box blurred-bg tinted">
+		<div class="content" >
+    <table>
+		<tr>
+			<td>№ телефона</td>
+			<td>Имя</td>
+			<td>Адрес</td>
+			<td>Зарплата</td>
+			<td>Действия</td>
+		</tr>
+		<tr th:each="professor : ${professors}">
+			<td th:text="${professor.telephone}"></td>
+			<td th:text="${professor.name}"></td>
+			<td th:text="${professor.address}"></td>
+			<td th:text="${professor.salary}"></td>
+			<td>
+			<a th:href="@{/professor(t=0,id=${professor.telephone})}">Удалить</a> 
+			<a th:href="@{/professor(t=1,id=${professor.telephone})}">Редактировать</a>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5" style="text-align: center;"><a th:href="@{/professor(t=2,id=0)}">Добавить профессора</a></td>
+		</tr>
+	</table>
+	<section>
+		<a href="/">Индекс</a>
+		<a href="students">Студенты</a>
+		<a href="courses">Курсы</a>
+	</section>
+	</div>
+	</div>
+</body>
+</html>

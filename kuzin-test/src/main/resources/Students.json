@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Терун С.О.",
+    "adress": "г. Москва",
+    "phone": "+79846545123",
+    "email": "sgjf@mail.ru",
+    "scoreBookNum": 2282,
+    "courseFlowIds": "123,235"
+  },
+  {
+    "name": "Сфынад А.А.",
+    "adress": "г. Мурманск",
+    "phone": "+79786065410",
+    "email": "pkgf@gmail.com",
+    "scoreBookNum": 5675,
+    "courseFlowIds": "456"
+  },
+  {
+    "name": "Сливенко А. С.",
+    "adress": "г. Ялта",
+    "phone": "+78985456454",
+    "email": "nagibator@ukr.net",
+    "scoreBookNum": 2234,
+    "courseFlowIds": "789"
+  },
+  {
+    "name": "Иванов Т.А.",
+    "adress": "г. Севастополь",
+    "phone": "+79782306546",
+    "email": "iv@gmail.com",
+    "scoreBookNum": 1234,
+    "courseFlowIds": "135"
+  },
+  {
+    "name": "Гром О.О.",
+    "adress": "г. Симферополь",
+    "phone": "+79780546056",
+    "email": "gr12434@mail.ru",
+    "scoreBookNum": 3455,
+    "courseFlowIds": ""
+  }
+]
