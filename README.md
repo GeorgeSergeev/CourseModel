@@ -22,3 +22,13 @@
 + (1-3) Балла за оформление в виде CRUD REST сервиса
 + (1-5) Баллов за разработку SPA на Angular JS
 + (1-3) Балла за использование WEB-socket
+
+## Development
+1) npm install
+2) Система сборки gulp, поэтому - npm install -g gulp-cli
+3) Создать базу данных - CourseModel 
+В корне проекта есть дамп базы данных - CourseModel.sql
+Для доступа к базе данных, необходимо перейти в src\main\resources\config\application-dev.yml и установить username && password в строках 36-37.
+3) запуск -  ./mvnw
+             gulp
+

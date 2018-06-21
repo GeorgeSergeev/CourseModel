@@ -1,0 +1,36 @@
+<div class="sidebar-scroll">
+    <div class="account-info">
+        <img src="/content/images/user-account.png" alt="Account photo" style="max-width: 35%;">
+        <p>{{vm.account.login}}</p>
+        <span>{{vm.account.email}}</span>
+        <hr>
+    </div>
+    <nav>
+        <ul class="nav">
+            <li>
+                <a ui-sref="dashboard-home" ui-sref-active="active"><i class="fa fa-home"></i> <span>Главная</span></a>
+            </li>
+            <li  has-authority="ROLE_ADMIN">
+                <a ui-sref="course" ui-sref-active="active"><i class="fa fa-user-o"></i><span>Курсы</span></a>
+            </li>
+            <li has-authority="ROLE_ADMIN">
+                <a ui-sref="student" ui-sref-active="active"><i class="fa fa-user-o"></i> <span>Студенты</span></a>
+            </li>
+            <li has-authority="ROLE_ADMIN">
+                <a ui-sref="teacher" ui-sref-active="active"><i class="fa fa-list-alt"></i> <span>Учителя</span></a>
+            </li>
+            <li has-authority="ROLE_ADMIN">
+                <a ui-sref="subject" ui-sref-active="active"><i class="fa fa-bars"></i> <span>Предметы</span></a>
+            </li>
+            <!--<li>-->
+                <!--<a ui-sref-active="active"><i class="fa fa-cog"></i> <span>Настройки</span></a>-->
+            <!--</li>-->
+            <li>
+                <a ui-sref="docs" ui-sref-active="active"><i class="fa fa-book"></i> <span>API</span></a>
+            </li>
+            <li>
+                <a ng-click="vm.logout()" ui-sref-active="active"><i class="fa fa-sign-out"></i> <span>Выход</span></a>
+            </li>
+        </ul>
+    </nav>
+</div>

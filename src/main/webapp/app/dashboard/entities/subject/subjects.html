@@ -1,0 +1,72 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="panel">
+            <div class=" panel-headline">
+                <div class="panel-heading">
+                    <h2 class="panel-title" style="font-size: 30px;">Предметы (пока нет функционала)</h2>
+                </div>
+            </div>
+            <div class="panel-body">
+                <jhi-alert></jhi-alert>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-4 no-padding-left">
+                            <button class="btn btn-primary" ui-sref="subject.new" >
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <span >
+                            Create new Subject
+                        </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <thead>
+                        <tr>
+                            <th><span>ID</span></th>
+                            <th><span>Name</span></th>
+                            <th><span>Rating</span></th>
+                            <th><span>Course</span></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="subject in vm.subjects track by subject.id">
+                            <td><a ui-sref="subject-detail({id:subject.id})">{{subject.id}}</a></td>
+                            <td>{{subject.name}}</td>
+                            <td>{{subject.rating}}</td>
+                            <td>
+                                <a ui-sref="course-detail({id:subject.courseId})">{{subject.courseId}}</a>
+                            </td>
+                            <td class="text-right">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit"
+                                            ui-sref="subject-detail({id:subject.id})"
+                                            class="btn btn-info btn-sm">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                        <span class="hidden-sm-down"></span>
+                                    </button>
+                                    <button type="submit"
+                                            ui-sref="subject.edit({id:subject.id})"
+                                            class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        <span class="hidden-sm-down"></span>
+                                    </button>
+                                    <button type="submit"
+                                            ui-sref="subject.delete({id:subject.id})"
+                                            class="btn btn-danger btn-sm">
+                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                        <span class="hidden-sm-down"></span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
