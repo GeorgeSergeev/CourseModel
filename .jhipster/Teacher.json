@@ -1,0 +1,37 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "teacher",
+            "relationshipName": "course",
+            "otherEntityName": "course",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phonenumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "salary",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20180619121747",
+    "entityTableName": "teacher",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

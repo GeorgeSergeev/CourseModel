@@ -1,0 +1,48 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading">
+                <h2><span>Учитель</span> {{vm.teacher.name}}</h2>
+                <hr></div>
+            <div class="panel-body">
+                <jhi-alert-error></jhi-alert-error>
+                <dl class="dl-horizontal jh-entity-details">
+                    <dt><span>Name</span></dt>
+                    <dd>
+                        <span>{{vm.teacher.name}}</span>
+                    </dd>
+                    <dt><span>Address</span></dt>
+                    <dd>
+                        <span>{{vm.teacher.address}}</span>
+                    </dd>
+                    <dt><span>Phonenumber</span></dt>
+                    <dd>
+                        <span>{{vm.teacher.phonenumber}}</span>
+                    </dd>
+                    <dt><span>Salary</span></dt>
+                    <dd>
+                        <span>{{vm.teacher.salary}}</span>
+                    </dd>
+                    <dt><span>Course</span></dt>
+                    <dd>
+                <span ng-repeat="course in vm.teacher.courses">
+                    <a ui-sref="course-detail({id: course.id})">{{course.name}}</a>{{$last ? '' : ', '}}
+                </span>
+                    </dd>
+                </dl>
+            </div>
+            <div class="panel-footer">
+                <button type="submit"
+                        ui-sref="{{ vm.previousState }}"
+                        class="btn btn-info">
+                    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+                </button>
+
+                <button type="button" ui-sref="teacher-detail.edit({id:vm.teacher.id})" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span class="hidden-sm-down"> Edit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

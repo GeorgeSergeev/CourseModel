@@ -1,0 +1,82 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="panel">
+            <div class=" panel-headline">
+                <div class="panel-heading">
+                    <h2 class="panel-title" style="font-size: 30px;">Students</h2>
+                </div>
+            </div>
+            <div class="panel-body">
+                <jhi-alert></jhi-alert>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-4 no-padding-left">
+                            <button class="btn btn-primary" ui-sref="student.new" >
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <span >
+                            Create new Student
+                        </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <thead>
+                        <tr>
+                            <th><span>ID</span></th>
+                            <th><span>Имя</span></th>
+                            <th><span>Адрес</span></th>
+                            <th><span>Телефона</span></th>
+                            <th><span>Email</span></th>
+                            <th><span>№ зачетки</span></th>
+                            <th><span>Средний бал</span></th>
+                            <th><span>Курсы</span></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="student in vm.students track by student.id">
+                            <td><a ui-sref="student-detail({id:student.id})">{{student.id}}</a></td>
+                            <td>{{student.name}}</td>
+                            <td>{{student.address}}</td>
+                            <td>{{student.phone}}</td>
+                            <td>{{student.email}}</td>
+                            <td>{{student.idstudentbook}}</td>
+                            <td>{{student.avaragemark}}</td>
+                            <td>
+                            <span ng-repeat="course in student.courses">
+                                <a class="form-control-static" ui-sref="course-detail({id: course.id})">{{course.name}}</a>{{$last ? '' : ', '}}
+                            </span>
+                            </td>
+                            <td class="text-right">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit"
+                                            ui-sref="student-detail({id:student.id})"
+                                            class="btn btn-info btn-sm">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                        <span class="hidden-sm-down"></span>
+                                    </button>
+                                    <button type="submit"
+                                            ui-sref="student.edit({id:student.id})"
+                                            class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        <span class="hidden-sm-down"></span>
+                                    </button>
+                                    <button type="submit"
+                                            ui-sref="student.delete({id:student.id})"
+                                            class="btn btn-danger btn-sm">
+                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                        <span class="hidden-sm-down"></span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

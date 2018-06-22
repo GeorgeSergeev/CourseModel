@@ -1,0 +1,130 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <h2 style="text-align: center;">{{vm.course.name}} <span>Course</span>
+        </h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal jh-entity-details">
+                            <dt><span>Название</span></dt>
+                            <dd>
+                                <span>{{vm.course.name}}</span>
+                            </dd>
+                            <dt><span>Номер курса</span></dt>
+                            <dd>
+                                <span>{{vm.course.number}}</span>
+                            </dd>
+                            <dt><span>Цена</span></dt>
+                            <dd>
+                                <span>{{vm.course.cost}}</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="text-center">
+                            <button type="submit"
+                                    ui-sref="{{ vm.previousState }}"
+                                    class="btn btn-info">
+                                <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+                            </button>
+
+                            <button type="button" ui-sref="course-detail.edit({id:vm.course.id})" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"> Edit</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <jhi-alert-error></jhi-alert-error>
+
+            </div>
+            <div class="col-md-9 show" >
+                <div class="panel">
+                    <div class="panel-heading" style="text-align: center">
+                        <h3>Добавление студента</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered " >
+                            <thead>
+                            <tr>
+                                <th>Имя</th>
+                                <th>Адрес</th>
+                                <th>E-mail</th>
+                                <th>Средний бал</th>
+                                <th>Выбрать</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="student in vm.request">
+                                <td>{{student.name}}</td>
+                                <td>{{student.address}}</td>
+                                <td>{{student.email}}</td>
+                                <td>{{student.avaragemark}}</td>
+                                <td>
+                                    <!--<tr>-->
+                                    <label class="fancy-checkbox" style="text-align: center;">
+                                        <input type="checkbox" data-ng-model="student.checked" ng-click="vm.save(student.id)">
+                                        <span></span>
+                                    </label>
+                                    <!--</tr>-->
+                                    <!--<label class="fancy-checkbox">-->
+                                    <!--<input type="checkbox">-->
+                                    <!--<span>Fancy Checkbox 1</span>-->
+                                    <!--</label>-->
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9" >
+            <div class="panel">
+                <div class="panel-heading" style="text-align: center">
+                    <h3>Удаление студента</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered " >
+                        <thead>
+                        <tr>
+                            <th>Имя</th>
+                            <th>Адрес</th>
+                            <th>E-mail</th>
+                            <th>Средний бал</th>
+                            <th>Выбрать</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="student in vm.studentForDelete">
+                            <td>{{student.name}}</td>
+                            <td>{{student.address}}</td>
+                            <td>{{student.email}}</td>
+                            <td>{{student.avaragemark}}</td>
+                            <td>
+                                <!--<tr>-->
+                                <label class="fancy-checkbox" style="text-align: center;">
+                                    <input type="checkbox" data-ng-model="student.checked" ng-click="vm.deleteStudents(student.id)">
+                                    <span></span>
+                                </label>
+                                <!--</tr>-->
+                                <!--<label class="fancy-checkbox">-->
+                                <!--<input type="checkbox">-->
+                                <!--<span>Fancy Checkbox 1</span>-->
+                                <!--</label>-->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

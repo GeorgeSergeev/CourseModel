@@ -1,0 +1,32 @@
+<div ng-cloak style="position: absolute;width: 100%;height: 100%;">
+    <div style="display: table; height: 100%; width: 100%; vertical-align: middle;">
+        <div class="auth-box" style="display: table-cell">
+            <div class="left"></div>
+            <div class="right">
+                <div class="content" style="width: 93%">
+                    <div class="header">
+                        <div class="alert alert-danger" ng-show="vm.authenticationError">
+                            <strong>Failed to sign in!</strong> Please check your credentials and try again.
+                        </div>
+                        <p class="lead" style="font-size: 26px; font-weight: 500; color: #bd7bff">Активация</p>
+                    </div>
+
+                    <div class="alert alert-success" ng-show="vm.success">
+                        <strong>Your user has been activated.</strong> Please <a class="alert-link" href="" ng-click="vm.login()">Авторизуйтесь</a>.
+                    </div>
+
+                    <div class="alert alert-danger" ng-show="vm.error">
+                        <strong>Your user could not be activated.</strong> Please use the registration form to sign up.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .navbar, .sidebar, .main {
+        display: none;
+    }
+</style>

@@ -1,0 +1,34 @@
+entity Student{
+	name String
+    address String
+    phone String
+    email String
+    id_student_book Long
+    avarage_mark Float
+}
+entity Teacher{
+	name String
+    address String
+    phone_number String
+    salary Float
+}
+entity Course{
+	name String
+    number Integer
+    cost Float
+}
+entity Subject{
+	name String
+    rating Integer
+}
+relationship OneToMany{
+	Course{subject} to Subject{course}
+}
+relationship ManyToMany{
+	Student{course} to Course{student}
+  	Teacher{course} to Course{teacher}
+}
+
+dto * with mapstruct
+service all with serviceImpl 
+

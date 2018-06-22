@@ -1,0 +1,73 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="panel">
+            <div class=" panel-headline">
+                <div class="panel-heading">
+                    <h2 class="panel-title" style="font-size: 30px;">Курсы</h2>
+                </div>
+            </div>
+            <div class="panel-body">
+                <jhi-alert></jhi-alert>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-4 no-padding-left">
+                            <button class="btn btn-primary" ui-sref="course.new" >
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <span>
+                                Создать новый курс
+                            </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <thead>
+                        <tr>
+                            <th><span>ID</span></th>
+                            <th><span>Название</span></th>
+                            <th><span>Номер</span></th>
+                            <th><span>Стоимость</span></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="course in vm.courses track by course.id">
+                            <td><a ui-sref="course-detail({id:course.id})">{{course.id}}</a></td>
+                            <td>{{course.name}}</td>
+                            <td>{{course.number}}</td>
+                            <td>{{course.cost}}</td>
+                            <td class="text-right">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit"
+                                            ui-sref="course-detail({id:course.id})"
+                                            class="btn btn-info btn-sm" style="font-size: 15px;">
+                                        <span>Детали</span>
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                        <span class="hidden-sm-down"></span>
+                                    </button>
+                                    <button type="submit"
+                                            ui-sref="course.edit({id:course.id})"
+                                            class="btn btn-primary btn-sm" style="font-size: 15px;">
+                                        <span>Изменить</span>
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        <span class="hidden-sm-down"></span>
+                                    </button>
+                                    <button type="submit"
+                                            ui-sref="course.delete({id:course.id})"
+                                            class="btn btn-danger btn-sm" style="font-size: 15px;">
+                                        <span>Удалить</span>
+                                        <span class="glyphicon glyphicon-remove-circle"></span>
+                                        <span class="hidden-sm-down"></span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
