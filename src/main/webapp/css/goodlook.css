@@ -1,0 +1,23 @@
+body {
+    color: black;
+    background: bisque;
+}
+
+input {
+    background: antiquewhite;
+}
+
+a {
+    color: green;
+}
+
+table {
+    width: 100%; 		/* Ширина таблицы */
+    border: 1px solid #399; 	/* Граница вокруг таблицы */
+    border-spacing: 7px 5px; 	/* Расстояние между границ */
+}
+td {
+    background: greenyellow; 		/* Цвет фона */
+    border: 1px solid #333; 	/* Граница вокруг ячеек */
+    padding: 5px; 		/* Поля в ячейках */
+}
