@@ -9,3 +9,5 @@ Frameworks and libraries:
     JSP,
     CSS,
     Oracle 11g XE.
+
+max.mustafin@gmail.com
