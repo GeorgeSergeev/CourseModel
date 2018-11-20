@@ -17,6 +17,7 @@ public class SerializeProcessor {
 
     private StringWriter writer = new StringWriter();
     private StringReader reader;
+    private List<Score> scores;
     private ObjectMapper mapper = new ObjectMapper();
     private Student student;
 
@@ -49,7 +50,7 @@ public class SerializeProcessor {
             courseService.addStudentToCourse(action.getCourse(), student);
             courseService.setProfessorForCourse(action.getCourse(), action.getCourse().getProfessor());
         });
-        List<Score> scores = new ArrayList<>(student.getScores());
+        scores = new ArrayList<>(student.getScores());
         scores.forEach(action -> studentService.addScoreForStudent(action.getStudent(), action.getCourse(), action.getScore()));
     }
 
