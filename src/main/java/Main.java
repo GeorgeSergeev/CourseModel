@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Course;
 import model.Professor;
 import model.Student;
