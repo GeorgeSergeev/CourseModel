@@ -11,7 +11,11 @@ public class ProfessorService {
     private ProfessorDAO dao = new ProfessorDAOImpl();
 
     public void addProfessor(Professor professor) {
-        dao.save(professor);
+        if (dao.findById(professor.getId()) == null) {
+            dao.save(professor);
+        } else {
+            System.out.println("Professor already exist");
+        }
     }
 
 }

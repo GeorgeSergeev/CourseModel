@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Course;
 import model.Professor;
 import model.Student;
@@ -5,12 +6,17 @@ import model.StudentStatus;
 import service.CourseService;
 import service.ProfessorService;
 import service.StudentService;
+import util.SerializeProcessor;
+
+import java.io.IOException;
 
 public class Main {
 
     StudentService studentService = new StudentService();
     ProfessorService professorService = new ProfessorService();
     CourseService courseService = new CourseService();
+
+    SerializeProcessor serializeProcessor = SerializeProcessor.getInstance();
 
     public static void main(String[] args) {
 
@@ -52,7 +58,20 @@ public class Main {
         main.courseService.changeStudentStatusOnCourse(course1, student2, StudentStatus.LISTENING);
 
         main.studentService.addScoreForStudent(student1, course1, 5);
-        main.studentService.addScoreForStudent(student2, course2, 5);
+
+        String s = null;
+        try {
+            s = main.serializeProcessor.serializeStudent(student1);
+            System.out.println(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            main.serializeProcessor.deSerializeStudentAndObjects(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("END TEST");
     }

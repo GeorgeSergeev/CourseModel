@@ -1,9 +1,6 @@
 package service;
 
-import dao.CourseDAO;
-import dao.CourseDAOImpl;
-import dao.GroupDAO;
-import dao.GroupDAOImpl;
+import dao.*;
 import lombok.NoArgsConstructor;
 import model.*;
 
@@ -12,14 +9,27 @@ public class CourseService {
 
     private CourseDAO dao = new CourseDAOImpl();
     private GroupDAO groupDAO = new GroupDAOImpl();
+    private StudentDAO studentDAO = new StudentDAOImpl();
 
     public void addCourse(Course course) {
-        dao.save(course);
+        if (dao.findById(course.getId()) == null) {
+            dao.save(course);
+        } else {
+            System.out.println("Course already exist");
+        }
     }
 
     public void addStudentToCourse(Course course, Student student) {
-        StudentsGroup studentsGroup = new StudentsGroup(course, student);
-        groupDAO.save(studentsGroup);
+        if (groupDAO.getGroupByStudentAndCourse(student, course) == null) {
+            StudentsGroup studentsGroup = new StudentsGroup(course, student);
+            student.addToGroup(studentsGroup);
+            course.addToGroup(studentsGroup);
+            groupDAO.save(studentsGroup);
+            dao.update(course);
+            studentDAO.update(student);
+        } else {
+            System.out.println("Student already joined this group");
+        }
     }
 
     public void changeStudentStatusOnCourse(Course course, Student student, StudentStatus status) {

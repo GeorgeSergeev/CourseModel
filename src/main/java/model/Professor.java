@@ -1,10 +1,13 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
 
+@JsonAutoDetect
 @Data
 @Entity
 @Table(name = "teachers")
@@ -27,6 +30,7 @@ public class Professor {
     @Column (name = "salary")
     private float salary;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Course> courses;
 

@@ -49,11 +49,11 @@
         </property>
 
         <property name="format_sql">
-            true
+            false
         </property>
 
         <property name="use_sql_comments">
-            true
+            false
         </property>
 
     </session-factory>

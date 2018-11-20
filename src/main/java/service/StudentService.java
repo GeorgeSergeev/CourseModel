@@ -13,17 +13,27 @@ public class StudentService {
     private StudentDAO dao = new StudentDAOImpl();
     private ScoreDAO scoreDAO = new ScoreDAOImpl();
     private GroupDAO groupDAO = new GroupDAOImpl();
+    private CourseDAO courseDAO = new CourseDAOImpl();
 
     public void addScoreForStudent(Student student, Course course, int score) {
         if (groupDAO.getGroupByStudentAndCourse(student, course) != null) {
-            scoreDAO.save(new Score(student, course, score));
+            Score newScore = new Score(student, course, score);
+            student.addSCore(newScore);
+            course.addSCore(newScore);
+            scoreDAO.save(newScore);
+            dao.update(student);
+            courseDAO.update(course);
         } else {
             throw new NoSuchStudentOnCourse("Student id '" + student.getId() + "' is not attending to course id '" + course.getId() + "'.");
         }
     }
 
     public void addStudent(Student student) {
-        dao.save(student);
+        if (dao.findById(student.getId()) == null) {
+            dao.save(student);
+        } else {
+            System.out.println("Student already exist");
+        }
     }
 
 }

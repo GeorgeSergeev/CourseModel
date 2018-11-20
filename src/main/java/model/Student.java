@@ -1,10 +1,15 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@JsonAutoDetect
 @Data
 @Entity
 @Table(name = "students")
@@ -30,11 +35,23 @@ public class Student {
     @Column (name = "grade_book_num")
     private int gradeBookNum;
 
+    @JsonUnwrapped
+    @JsonManagedReference
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<StudentsGroup> courseStudentsGroups;
+    private List<StudentsGroup> courseStudentsGroups = new ArrayList<>();
 
+    @JsonUnwrapped
+    @JsonManagedReference
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Score> scores;
+    private List<Score> scores = new ArrayList<>();
+
+    public void addToGroup(StudentsGroup group) {
+        courseStudentsGroups.add(group);
+    }
+
+    public void addSCore(Score score) {
+        scores.add(score);
+    }
 
     public Student() {
     }

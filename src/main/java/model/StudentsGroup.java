@@ -1,10 +1,13 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+@JsonAutoDetect
 @Data
 @Entity
 @IdClass(StudentsGroup.GroupKey.class)
@@ -16,6 +19,7 @@ public class StudentsGroup {
     @JoinColumn(name = "course")
     private Course course;
 
+    @JsonBackReference
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student")
