@@ -27,4 +27,10 @@ public class Score {
 
     public Score() {
     }
+
+    public Score(Student student, Course course, int score) {
+        this.student = student;
+        this.course = course;
+        this.score = score;
+    }
 }

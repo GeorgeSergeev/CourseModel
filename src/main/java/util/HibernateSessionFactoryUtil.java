@@ -1,9 +1,6 @@
 package util;
 
-import model.Course;
-import model.StudentsGroup;
-import model.Professor;
-import model.Student;
+import model.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -21,6 +18,7 @@ public class HibernateSessionFactoryUtil {
                 configuration.addAnnotatedClass(Professor.class);
                 configuration.addAnnotatedClass(Course.class);
                 configuration.addAnnotatedClass(StudentsGroup.class);
+                configuration.addAnnotatedClass(Score.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 
