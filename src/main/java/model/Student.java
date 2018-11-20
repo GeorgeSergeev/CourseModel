@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.Data;
+import service.StudentService;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -63,4 +64,15 @@ public class Student {
         this.email = email;
         this.gradeBookNum = gradeBookNum;
     }
+
+    public float calculateAverageScore() {
+        float result = 0f;
+        int i = 0;
+        for (Score score :scores) {
+            i += score.getScore();
+        }
+        result = 1.0f * i / scores.size();
+        return result;
+    }
+
 }
