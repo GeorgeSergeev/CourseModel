@@ -37,6 +37,13 @@ public class Professor {
     public Professor() {
     }
 
+    public Professor(Professor professor) {
+        this.name = professor.getName();
+        this.address = professor.getAddress();
+        this.phone = professor.getPhone();
+        this.salary = professor.getSalary();
+    }
+
     public Professor(String name, String address, String phone, float salary) {
         this.name = name;
         this.address = address;

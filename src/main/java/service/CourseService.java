@@ -13,6 +13,10 @@ public class CourseService {
 
     private StudentService studentService = new StudentService();
 
+    public Course getById(int id) {
+        return dao.findById(id);
+    }
+
     public void addCourse(Course course) {
         if (dao.findById(course.getId()) == null) {
             dao.save(course);

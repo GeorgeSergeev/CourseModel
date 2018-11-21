@@ -75,6 +75,15 @@ public class Student {
     public Student() {
     }
 
+    public Student(Student student) {
+        this.name = student.getName();
+        this.address = student.getAddress();
+        this.phone = student.getPhone();
+        this.email = student.getEmail();
+        this.gradeBookNum = student.getGradeBookNum();
+    }
+
+
     public Student(String name, String address, String phone, String email, int gradeBookNum) {
         this.name = name;
         this.address = address;

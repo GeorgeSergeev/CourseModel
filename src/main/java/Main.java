@@ -7,8 +7,16 @@ import service.ProfessorService;
 import service.StudentService;
 import util.SerializeProcessor;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
 
 public class Main {
+
+    Path jsonFile = Paths.get("json.txt");
 
     StudentService studentService = new StudentService();
     ProfessorService professorService = new ProfessorService();
@@ -22,6 +30,7 @@ public class Main {
 
         System.out.println("START TEST");
 
+/*
         Student student1 = new Student("Vasily", "Crimea", "02", "admin@fbi.gov", 16);
         Student student2 = new Student("Kolya", "Moscow", "03", "user@fbi.gov", 22);
         Student student3 = new Student("Emelya", "Novosibirsk", "04", "nospam@fbi.gov", 41);
@@ -79,22 +88,24 @@ public class Main {
         main.studentService.removeAllScoresForStudentOnCourse(student2, course1);
 
         System.out.println("== SERIALIZATION ==");
-/*
 
         String s = null;
         try {
             s = main.serializeProcessor.serializeStudent(student1);
             System.out.println(s);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            main.serializeProcessor.deSerializeStudentAndObjects(s, false);
+            Files.createFile(main.jsonFile);
+            Files.write(main.jsonFile, s.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
 */
+
+        try {
+            List<String> strings = Files.readAllLines(main.jsonFile);
+            main.serializeProcessor.deSerializeStudentAndObjects(strings.get(0), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("END TEST");
     }

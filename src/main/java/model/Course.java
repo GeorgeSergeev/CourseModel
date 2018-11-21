@@ -67,6 +67,11 @@ public class Course {
     public Course() {
     }
 
+    public Course(Course course) {
+        this.name = course.getName();
+        this.cost = course.getCost();
+    }
+
     public Course(String name, float cost) {
         this.name = name;
         this.cost = cost;
