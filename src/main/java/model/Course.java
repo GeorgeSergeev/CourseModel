@@ -3,6 +3,7 @@ package model;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -29,20 +30,38 @@ public class Course {
     @JoinColumn(name = "course_teacher")
     private Professor professor;
 
+    @SuppressWarnings("deprecation")
     @JsonIgnore
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     private List<StudentsGroup> courseStudentsGroups = new ArrayList<>();
 
+    @SuppressWarnings("deprecation")
     @JsonIgnore
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     private List<Score> scores = new ArrayList<>();
 
     public void addToGroup(StudentsGroup group) {
         courseStudentsGroups.add(group);
     }
 
+    public void remofeFromGroup(StudentsGroup group) {
+        courseStudentsGroups.remove(group);
+        List<Score> tmp = new ArrayList<>(scores);
+        for (Score score :tmp) {
+            if (score.getCourse().getId() == group.getCourse().getId()) {
+                scores.remove(score);
+            }
+        }
+    }
+
     public void addSCore(Score score) {
         scores.add(score);
+    }
+
+    public void removeScore(Score score) {
+        scores.remove(score);
     }
 
     public Course() {
@@ -52,4 +71,5 @@ public class Course {
         this.name = name;
         this.cost = cost;
     }
+
 }

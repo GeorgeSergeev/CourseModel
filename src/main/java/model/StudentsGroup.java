@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @JsonAutoDetect
 @Data
@@ -59,4 +60,17 @@ public class StudentsGroup {
         this.status = status;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudentsGroup that = (StudentsGroup) o;
+        return Objects.equals(course.getId(), that.course.getId()) &&
+                Objects.equals(student.getId(), that.student.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(course.getId(), student.getId());
+    }
 }

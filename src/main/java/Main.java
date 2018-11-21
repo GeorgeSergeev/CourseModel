@@ -7,7 +7,6 @@ import service.ProfessorService;
 import service.StudentService;
 import util.SerializeProcessor;
 
-import java.io.IOException;
 
 public class Main {
 
@@ -51,12 +50,36 @@ public class Main {
         main.courseService.setProfessorForCourse(course2, professor3);
 
         main.courseService.addStudentToCourse(course1, student1);
+        main.courseService.addStudentToCourse(course2, student1);
         main.courseService.addStudentToCourse(course1, student2);
         main.courseService.addStudentToCourse(course1, student3);
 
         main.courseService.changeStudentStatusOnCourse(course1, student2, StudentStatus.LISTENING);
 
         main.studentService.addScoreForStudent(student1, course1, 5);
+        main.studentService.addScoreForStudent(student1, course1, 4);
+        main.studentService.addScoreForStudent(student1, course2, 4);
+        main.studentService.addScoreForStudent(student1, course2, 4);
+
+        main.studentService.addScoreForStudent(student2, course1, 3);
+        main.studentService.addScoreForStudent(student2, course1, 3);
+
+        System.out.println("---");
+        System.out.println(student1.calculateAverageScore());
+        System.out.println(student1.averageScoreForCourse(course1));
+        System.out.println("---");
+
+        main.courseService.changeStudentStatusOnCourse(course1, student2, StudentStatus.GRADUATED);
+
+        System.out.println(student2.graduatedCourses().size());
+        System.out.println(student2.graduatedCourses().get(0).getName());
+
+        main.courseService.removeStudentFromCourse(course1, student2);
+
+        main.studentService.removeAllScoresForStudentOnCourse(student2, course1);
+
+        System.out.println("== SERIALIZATION ==");
+/*
 
         String s = null;
         try {
@@ -67,10 +90,11 @@ public class Main {
         }
 
         try {
-            main.serializeProcessor.deSerializeStudentAndObjects(s);
+            main.serializeProcessor.deSerializeStudentAndObjects(s, false);
         } catch (IOException e) {
             e.printStackTrace();
         }
+*/
 
         System.out.println("END TEST");
     }

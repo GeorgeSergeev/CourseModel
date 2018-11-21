@@ -43,4 +43,5 @@ public class Professor {
         this.phone = phone;
         this.salary = salary;
     }
+
 }

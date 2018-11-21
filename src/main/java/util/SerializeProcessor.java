@@ -39,7 +39,7 @@ public class SerializeProcessor {
         return writer.toString();
     }
 
-    public synchronized void deSerializeStudentAndObjects(String json) throws IOException {
+    public synchronized void deSerializeStudentAndObjects(String json, boolean addScores) throws IOException {
         reader = new StringReader(json);
         student = mapper.readValue(reader, Student.class);
         studentService.addStudent(student);
@@ -50,8 +50,10 @@ public class SerializeProcessor {
             courseService.addStudentToCourse(action.getCourse(), student);
             courseService.setProfessorForCourse(action.getCourse(), action.getCourse().getProfessor());
         });
-        scores = new ArrayList<>(student.getScores());
-        scores.forEach(action -> studentService.addScoreForStudent(action.getStudent(), action.getCourse(), action.getScore()));
+        if (addScores) {
+            scores = new ArrayList<>(student.getScores());
+            scores.forEach(action -> studentService.addScoreForStudent(action.getStudent(), action.getCourse(), action.getScore()));
+        }
     }
 
 }

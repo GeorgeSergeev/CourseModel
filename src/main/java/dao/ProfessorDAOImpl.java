@@ -2,8 +2,7 @@ package dao;
 
 import lombok.NoArgsConstructor;
 import model.Professor;
-import org.hibernate.Session;
-import util.HibernateSessionFactoryUtil;
+import util.SessionInstance;
 
 import java.util.List;
 
@@ -12,24 +11,16 @@ public class ProfessorDAOImpl extends AbstractDAOImpl<Professor> implements Prof
 
     @Override
     public Professor findById(int id) {
-        Session session = HibernateSessionFactoryUtil
-                .getSessionFactory()
-                .openSession();
-        Professor professor = session
+        Professor professor = SessionInstance.getInstance().getSession()
                 .get(Professor.class, id);
-        session.close();
         return professor;
     }
 
     @Override
     public List<Professor> findAll() {
-        Session session = HibernateSessionFactoryUtil
-                .getSessionFactory()
-                .openSession();
-        List<Professor> professors = session
+        List<Professor> professors = SessionInstance.getInstance().getSession()
                 .createQuery("FROM Professor")
                 .list();
-        session.close();
         return professors;
     }
 }

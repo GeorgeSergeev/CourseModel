@@ -4,8 +4,7 @@ import lombok.NoArgsConstructor;
 import model.Course;
 import model.StudentsGroup;
 import model.Student;
-import org.hibernate.Session;
-import util.HibernateSessionFactoryUtil;
+import util.SessionInstance;
 
 import java.util.List;
 
@@ -14,13 +13,9 @@ public class GroupDAOImpl extends AbstractDAOImpl<StudentsGroup> implements Grou
 
     @Override
     public StudentsGroup getGroupByStudentAndCourse(Student student, Course course) {
-        Session session = HibernateSessionFactoryUtil
-                .getSessionFactory()
-                .openSession();
-        List<StudentsGroup> list = ((List<StudentsGroup>) session
+        List<StudentsGroup> list = ((List<StudentsGroup>) SessionInstance.getInstance().getSession()
                 .createQuery("FROM StudentsGroup WHERE student = '" + student.getId() + "' AND course = '" + course.getId() + "'")
                 .list());
-        session.close();
         if (list.size() > 0) {
             return list.get(0);
         } else {

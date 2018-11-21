@@ -7,6 +7,8 @@ import model.Course;
 import model.Score;
 import model.Student;
 
+import java.util.List;
+
 @NoArgsConstructor
 public class StudentService {
 
@@ -18,13 +20,25 @@ public class StudentService {
     public void addScoreForStudent(Student student, Course course, int score) {
         if (groupDAO.getGroupByStudentAndCourse(student, course) != null) {
             Score newScore = new Score(student, course, score);
-            student.addSCore(newScore);
-            course.addSCore(newScore);
             scoreDAO.save(newScore);
+            student.addSCore(newScore);
             dao.update(student);
+            course.addSCore(newScore);
             courseDAO.update(course);
         } else {
             throw new NoSuchStudentOnCourse("Student id '" + student.getId() + "' is not attending to course id '" + course.getId() + "'.");
+        }
+    }
+
+    public void removeAllScoresForStudentOnCourse(Student student, Course course) {
+        List<Score> scores = scoreDAO.getScoresByStudentAndCourse(student, course);
+        if (scores != null && scores.size() > 0) {
+            for (Score score :scores) {
+                student.removeScore(score);
+                course.removeScore(score);
+                scoreDAO.delete(score);
+            }
+
         }
     }
 
