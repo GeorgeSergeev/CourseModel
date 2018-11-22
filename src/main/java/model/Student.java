@@ -54,7 +54,7 @@ public class Student {
         courseStudentsGroups.add(group);
     }
 
-    public void remofeFromGroup(StudentsGroup group) {
+    public void removeFromGroup(StudentsGroup group) {
         courseStudentsGroups.remove(group);
         List<Score> tmp = new ArrayList<>(scores);
         for (Score score :tmp) {

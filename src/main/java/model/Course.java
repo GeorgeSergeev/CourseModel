@@ -46,11 +46,11 @@ public class Course {
         courseStudentsGroups.add(group);
     }
 
-    public void remofeFromGroup(StudentsGroup group) {
+    public void removeFromGroup(StudentsGroup group) {
         courseStudentsGroups.remove(group);
         List<Score> tmp = new ArrayList<>(scores);
         for (Score score :tmp) {
-            if (score.getCourse().getId() == group.getCourse().getId()) {
+            if (score.getCourse().getId() == group.getCourse().getId() && score.getStudent().getId() == group.getStudent().getId()) {
                 scores.remove(score);
             }
         }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @JsonAutoDetect
@@ -31,8 +32,16 @@ public class Professor {
     private float salary;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Course> courses;
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
+    private List<Course> courses = new ArrayList<>();
+
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+
+    public void removeCourse(Course course) {
+        courses.remove(course);
+    }
 
     public Professor() {
     }
@@ -50,5 +59,4 @@ public class Professor {
         this.phone = phone;
         this.salary = salary;
     }
-
 }

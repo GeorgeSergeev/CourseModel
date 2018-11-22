@@ -3,6 +3,7 @@ package service;
 import dao.*;
 import lombok.NoArgsConstructor;
 import model.*;
+import util.Services;
 
 @NoArgsConstructor
 public class CourseService {
@@ -11,7 +12,7 @@ public class CourseService {
     private GroupDAO groupDAO = new GroupDAOImpl();
     private StudentDAO studentDAO = new StudentDAOImpl();
 
-    private StudentService studentService = new StudentService();
+    private StudentService studentService;
 
     public Course getById(int id) {
         return dao.findById(id);
@@ -39,16 +40,21 @@ public class CourseService {
     }
 
     public void removeStudentFromCourse(Course course, Student student) {
-        System.out.println("...");
+        if (studentService == null) {
+            studentService = Services.getInstance().getStudentService();
+        }
+        System.out.println("..." + course.getId() + " " + student.getId());
         StudentsGroup studentsGroup = groupDAO.getGroupByStudentAndCourse(student, course);
         if (studentsGroup != null) {
-            student.remofeFromGroup(studentsGroup);
-            course.remofeFromGroup(studentsGroup);
+            student.removeFromGroup(studentsGroup);
+            course.removeFromGroup(studentsGroup);
+            System.out.println("..");
             groupDAO.delete(studentsGroup);
+            System.out.println(".");
         } else {
             System.out.println("Student doesn't exist on this course");
         }
-        studentService.removeAllScoresForStudentOnCourse(student, course);
+        //studentService.removeAllScoresForStudentOnCourse(student, course);
     }
 
     public void changeStudentStatusOnCourse(Course course, Student student, StudentStatus status) {
@@ -59,6 +65,14 @@ public class CourseService {
 
     public void setProfessorForCourse(Course course, Professor professor) {
         course.setProfessor(professor);
+        professor.addCourse(course);
+        dao.update(course);
+    }
+
+    public void removeProfessorFromCourse(Course course) {
+        Professor professor = course.getProfessor();
+        professor.removeCourse(course);
+        course.setProfessor(null);
         dao.update(course);
     }
 
