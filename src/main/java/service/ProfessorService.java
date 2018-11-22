@@ -20,12 +20,20 @@ public class ProfessorService {
         return dao.findById(id);
     }
 
+    public Professor getByName(String name) {
+        return dao.findByName(name);
+    }
+
     public void addProfessor(Professor professor) {
         if (dao.findById(professor.getId()) == null) {
             dao.save(professor);
         } else {
             System.out.println("Professor already exist");
         }
+    }
+
+    public List<Professor> getAll() {
+        return dao.findAll();
     }
 
     public void removeProfessor(Professor professor) {

@@ -10,6 +10,10 @@ public class SessionInstance {
             .getSessionFactory()
             .openSession();
 
+    public void closeSession() {
+        session.close();
+    }
+
     private static SessionInstance ourInstance = new SessionInstance();
 
     public static SessionInstance getInstance() {

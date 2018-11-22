@@ -4,6 +4,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import util.SessionInstance;
+
+import static java.lang.System.exit;
 
 public class Main extends Application {
     @Override
@@ -11,6 +14,11 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
         primaryStage.setTitle("Course Model UI");
         primaryStage.setResizable(false);
+        primaryStage.setOnCloseRequest(value -> {
+            System.out.println("Bye-bye");
+            SessionInstance.getInstance().closeSession();
+            exit(0);
+        });
         Scene scene = new Scene(root, 800, 600);
         scene.setFill(Color.TRANSPARENT);
 

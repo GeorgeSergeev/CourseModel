@@ -10,6 +10,17 @@ import java.util.List;
 public class ProfessorDAOImpl extends AbstractDAOImpl<Professor> implements ProfessorDAO {
 
     @Override
+    public Professor findByName(String name) {
+        List<Professor> list = ((List<Professor>) SessionInstance.getInstance().getSession()
+                .createQuery("FROM Professor WHERE name = '" + name + "'").list());
+        if (list.size() == 1) {
+            return list.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
     public Professor findById(int id) {
         Professor professor = SessionInstance.getInstance().getSession()
                 .get(Professor.class, id);

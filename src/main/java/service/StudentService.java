@@ -76,4 +76,12 @@ public class StudentService {
         System.out.println("complete");
     }
 
+    public List<Student> getAll() {
+        return dao.findAll();
+    }
+
+    public Student getByName(String name) {
+        return dao.findByName(name);
+    }
+
 }

@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import model.*;
 import util.Services;
 
+import java.util.List;
+
 @NoArgsConstructor
 public class CourseService {
 
@@ -16,6 +18,10 @@ public class CourseService {
 
     public Course getById(int id) {
         return dao.findById(id);
+    }
+
+    public Course getByName(String name) {
+        return dao.findByName(name);
     }
 
     public void addCourse(Course course) {
@@ -74,6 +80,10 @@ public class CourseService {
         professor.removeCourse(course);
         course.setProfessor(null);
         dao.update(course);
+    }
+
+    public List<Course> getAll() {
+        return dao.findAll();
     }
 
 }

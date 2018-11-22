@@ -96,6 +96,7 @@ public class MainTestClass {
 
         professorService.removeProfessor(professor3);
 
+
 /*        System.out.println("== SERIALIZATION ==");
 
         String s = null;

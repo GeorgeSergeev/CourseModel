@@ -30,16 +30,12 @@ public class Course {
     @JoinColumn(name = "course_teacher")
     private Professor professor;
 
-    @SuppressWarnings("deprecation")
     @JsonIgnore
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     private List<StudentsGroup> courseStudentsGroups = new ArrayList<>();
 
-    @SuppressWarnings("deprecation")
     @JsonIgnore
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     private List<Score> scores = new ArrayList<>();
 
     public void addToGroup(StudentsGroup group) {

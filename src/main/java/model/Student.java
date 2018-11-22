@@ -36,18 +36,14 @@ public class Student {
     @Column (name = "grade_book_num")
     private int gradeBookNum;
 
-    @SuppressWarnings("deprecation")
     @JsonUnwrapped
     @JsonManagedReference
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     private List<StudentsGroup> courseStudentsGroups = new ArrayList<>();
 
-    @SuppressWarnings("deprecation")
     @JsonUnwrapped
     @JsonManagedReference
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     private List<Score> scores = new ArrayList<>();
 
     public void addToGroup(StudentsGroup group) {
