@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="globParent" alignment="center" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewStudentController">
+    <TextField fx:id="studentName" maxWidth="200" promptText="Student Name">
+      <VBox.margin>
+         <Insets bottom="2.0" />
+      </VBox.margin></TextField>
+    <TextField fx:id="studentAddress" maxWidth="200" promptText="Student Address">
+        <VBox.margin>
+            <Insets bottom="2.0" />
+        </VBox.margin></TextField>
+    <TextField fx:id="studentPhone" maxWidth="200" promptText="Student Phone">
+        <VBox.margin>
+            <Insets bottom="2.0" />
+        </VBox.margin></TextField>
+    <TextField fx:id="studentEmail" maxWidth="200" promptText="Student Email">
+        <VBox.margin>
+            <Insets bottom="2.0" />
+        </VBox.margin></TextField>
+    <TextField fx:id="studentGBNum" maxWidth="200" promptText="Grade book number">
+        <VBox.margin>
+            <Insets bottom="10.0" />
+        </VBox.margin></TextField>
+    <Button fx:id="createBtn" onAction="#create" prefWidth="200" text="Create">
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <VBox.margin>
+         <Insets top="10.0" />
+      </VBox.margin></Button>
+    <Button onAction="#close" prefWidth="200" text="Cancel" />
+</VBox>

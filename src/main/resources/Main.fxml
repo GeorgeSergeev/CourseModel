@@ -21,12 +21,12 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="267.0">
                      <children>
-                        <Button fx:id="btnStudAdd" mnemonicParsing="false" text="Add Student">
+                        <Button fx:id="btnStudAdd" onAction="#addStudent" mnemonicParsing="false" text="Add Student">
                            <VBox.margin>
                               <Insets bottom="2.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btnStudDel" mnemonicParsing="false" text="Delete Student">
+                        <Button fx:id="btnStudDel" onAction="#delStudent" mnemonicParsing="false" text="Delete Student">
                            <VBox.margin>
                               <Insets bottom="2.0" />
                            </VBox.margin>

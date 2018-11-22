@@ -1,19 +1,25 @@
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import lombok.Getter;
 import model.Course;
 import model.Professor;
 import model.Student;
 import service.CourseService;
 import service.ProfessorService;
 import service.StudentService;
-import util.SerializeProcessor;
 import util.Services;
 import util.SessionInstance;
 
+import java.io.IOException;
 import java.net.URL;
 
 import java.util.List;
@@ -25,9 +31,16 @@ public class Controller implements Initializable {
     private List<Student> students;
     private List<Professor> professors;
     private List<Course> courses;
+
+    @Getter
     private StudentService studentService;
+
+    @Getter
     private ProfessorService professorService;
+
+    @Getter
     private CourseService courseService;
+
     private Services services;
 
     private Student selectedStudent;
@@ -69,16 +82,19 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        services = Services.getInstance();
-        studentService = services.getStudentService();
-        professorService = services.getProfessorService();
-        courseService = services.getCourseService();
-        sessionInstance = SessionInstance.getInstance();
-        sessionInstance.getSession();
+        new Thread(() -> {
+            services = Services.getInstance();
+            studentService = services.getStudentService();
+            professorService = services.getProfessorService();
+            courseService = services.getCourseService();
+            sessionInstance = SessionInstance.getInstance();
+            sessionInstance.getSession(); // Открываем подключение к БД (начинаем сессию)
 
-        initStudentsListView();
-        initProfessorsListView();
-        initCoursesListView();
+            initStudentsListView();
+            initProfessorsListView();
+            initCoursesListView();
+
+        }).start();
 
         btnStudDel.setDisable(true);
         btnProfAddToCourse.setDisable(true);
@@ -123,7 +139,28 @@ public class Controller implements Initializable {
         }));
     }
 
-    private void refreshCourseList() {
+    public void addStudent(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/NewStudent.fxml"));
+            Parent root = loader.load();
+            NewStudentController newStudentController = loader.getController();
+            newStudentController.controller = this;
+            stage.setTitle("Create student");
+            stage.setScene(new Scene(root, 400, 300));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delStudent(ActionEvent actionEvent) {
+        studentService.removeStudent(selectedStudent);
+        refreshStudentsList();
+    }
+
+    protected void refreshCourseList() {
         courses = courseService.getAll();
         listGroups.getItems().clear();
         for (int i = 0; i < courses.size(); i++) {
@@ -131,7 +168,7 @@ public class Controller implements Initializable {
         }
     }
 
-    private void refreshProfessorsList() {
+    protected void refreshProfessorsList() {
         professors = professorService.getAll();
         listProfessors.getItems().clear();
         for (int i = 0; i < professors.size(); i++) {
@@ -139,7 +176,7 @@ public class Controller implements Initializable {
         }
     }
 
-    private void refreshStudentsList() {
+    protected void refreshStudentsList() {
         students = studentService.getAll();
         listStudents.getItems().clear();
         for (int i = 0; i < students.size(); i++) {
@@ -155,4 +192,7 @@ public class Controller implements Initializable {
         }
     }
 
+    public void showAlert(String text) {
+        runFX(() -> new Alert(Alert.AlertType.WARNING, text, ButtonType.OK).showAndWait());
+    }
 }
