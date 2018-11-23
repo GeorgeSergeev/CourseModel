@@ -127,6 +127,16 @@ public class Student {
         return result;
     }
 
+    public List<Course> notGraduatedCourses() {
+        List<Course> result = new ArrayList<>();
+        for (StudentsGroup studentsGroup :courseStudentsGroups) {
+            if (!StudentStatus.GRADUATED.equals(studentsGroup.getStatus())) {
+                result.add(studentsGroup.getCourse());
+            }
+        }
+        return result;
+    }
+
     @Override
     public String toString() {
         return name + " <" + email + ">";

@@ -23,6 +23,7 @@ import util.SessionInstance;
 import java.io.IOException;
 import java.net.URL;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -31,6 +32,7 @@ public class Controller implements Initializable {
     private StringBuilder infoString = new StringBuilder();
     private SessionInstance sessionInstance;
     private List<Student> students;
+    private List<Course> selectedStudentCourses = new ArrayList<>();
     private List<Professor> professors;
 
     @Getter
@@ -252,26 +254,52 @@ public class Controller implements Initializable {
     private void buildInfoAboutSelectedObject(int objectId) {
         infoString.setLength(0);
         switch (objectId) {
-            case 1:
+            case 1: // Student
                 infoString.append("Name: ").append(selectedStudent.getName()).append("\n")
                         .append("Address: ").append(selectedStudent.getAddress()).append("\n")
                         .append("Phone: ").append(selectedStudent.getPhone()).append("\n")
                         .append("Email: ").append(selectedStudent.getEmail()).append("\n")
                         .append("Graduate Book Num:").append(selectedStudent.getGradeBookNum());
+                float averageScore = selectedStudent.calculateAverageScore();
+                if (!Float.isNaN(averageScore)) {
+                    infoString.append("\n").append("Average score: ").append(averageScore);
+                }
+                selectedStudentCourses = selectedStudent.graduatedCourses();
+                buildInfoAboutStudentCourses("Graduated courses:");
+                selectedStudentCourses = selectedStudent.notGraduatedCourses();
+                buildInfoAboutStudentCourses("Active courses:");
                 break;
-            case 2:
+            case 2: // Professor
                 infoString.append("Name: ").append(selectedProfessor.getName()).append("\n")
                         .append("Address: ").append(selectedProfessor.getAddress()).append("\n")
                         .append("Phone: ").append(selectedProfessor.getPhone()).append("\n")
                         .append("Salary:").append(selectedProfessor.getSalary());
                 break;
-            case 3:
+            case 3: // Course
                 infoString.append("Name: ").append(selectedCourse.getName()).append("\n")
                         .append("Cost:").append(selectedCourse.getCost());
+                Professor professor = selectedCourse.getProfessor();
+                if (professor != null) {
+                    infoString.append("\n").append("Professor: ").append(professor.toString());
+                }
                 break;
         }
 
         showAlert(infoString.toString());
+    }
+
+    private void buildInfoAboutStudentCourses(String value) {
+        float averageScore;
+        if (selectedStudentCourses.size() > 0) {
+            infoString.append("\n").append(value);
+            for (int i = 0; i < selectedStudentCourses.size(); i++) {
+                infoString.append("\n").append(i + 1).append(". ").append(" ").append(selectedStudentCourses.get(i).getName());
+                averageScore = selectedStudent.averageScoreForCourse(selectedStudentCourses.get(i));
+                if (!Float.isNaN(averageScore)) {
+                    infoString.append(", avg.score: ").append(averageScore);
+                }
+            }
+        }
     }
 
     private void runFX(Runnable r) {
@@ -283,6 +311,6 @@ public class Controller implements Initializable {
     }
 
     public void showAlert(String text) {
-        runFX(() -> new Alert(Alert.AlertType.WARNING, text, ButtonType.OK).showAndWait());
+        runFX(() -> new Alert(Alert.AlertType.NONE, text, ButtonType.OK).showAndWait());
     }
 }
