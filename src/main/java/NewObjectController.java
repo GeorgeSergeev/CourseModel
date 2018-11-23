@@ -12,6 +12,11 @@ import util.Math;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Окно для запроса данных при создании нового объекта
+ * Кнопка CREATE становится активной только тогда, когда все поля формы заполнены
+ */
+
 public class NewObjectController implements Initializable {
 
     protected Controller controller;

@@ -8,6 +8,10 @@ import util.SessionInstance;
 
 import static java.lang.System.exit;
 
+/**
+ * Главный класс для запуска десктоп приложения на JavaFX
+ */
+
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {

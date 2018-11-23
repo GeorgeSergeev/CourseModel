@@ -36,11 +36,24 @@ public class SerializeProcessor {
     private SerializeProcessor() {
     }
 
+    /**
+     * Сериализация идет от студента и захватывает все зависимости (курсы, оценки, профессоров)
+     * @param student
+     * @return
+     * @throws IOException
+     */
     public String serializeStudent(Student student) throws IOException {
         mapper.writeValue(writer, student);
         return writer.toString();
     }
 
+    /**
+     * Десериализация также происходит начиная от студента и постепенно создает все сотальные объекты,
+     * если они еще не созданы
+     * @param json
+     * @param addScores
+     * @throws IOException
+     */
     public synchronized void deSerializeStudentAndObjects(String json, boolean addScores) throws IOException {
         reader = new StringReader(json);
         student = mapper.readValue(reader, Student.class);

@@ -1,5 +1,4 @@
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +9,10 @@ import model.Course;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+/**
+ * Окно выбора курса при зачислении студента/назначении профессора на курс
+ */
 
 public class ChooseController implements Initializable {
 

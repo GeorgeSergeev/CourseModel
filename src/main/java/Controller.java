@@ -27,6 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Главное окно, содержит список студентов, преподавателей и курсов.
+ * По двойному клику на объект в списке показывает информацию об объекте.
+ * При выборе объекта из списка, становятся активными возможные действия с объектом - кнопки управления внизу формы.
+ */
+
 public class Controller implements Initializable {
 
     private StringBuilder infoString = new StringBuilder();
@@ -178,6 +184,12 @@ public class Controller implements Initializable {
         callAddingObjectWindow(3, "Create course");
     }
 
+    /**
+     * Вызывает окно создания нового объекта с использованием objectId:
+     * 1 - для студента, 2 - для профессора, 3 - для курса
+     * @param objectId
+     * @param windowTitle
+     */
     private void callAddingObjectWindow(int objectId, String windowTitle) {
         try {
             Stage stage = new Stage();
@@ -209,6 +221,10 @@ public class Controller implements Initializable {
         });
     }
 
+    /**
+     * Метод вызывает окно выбора курса, после подтверждения выбора - выполняет код из Runnable r
+     * @param r
+     */
     private void chooseCourseAndExecute(Runnable r) {
         try {
             Stage stage = new Stage();
@@ -302,6 +318,10 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * На случай, если код вызовется не из главного потока JavaFX
+     * @param r
+     */
     private void runFX(Runnable r) {
         if (Platform.isFxApplicationThread()) {
             r.run();
