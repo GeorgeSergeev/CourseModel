@@ -31,7 +31,7 @@
                               <Insets bottom="2.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btnStudAddToCourse" mnemonicParsing="false" text="Add Student To Course">
+                        <Button fx:id="btnStudAddToCourse" onAction="#addStudentToCourse" mnemonicParsing="false" text="Add Student To Course">
                            <VBox.margin>
                               <Insets bottom="2.0" />
                            </VBox.margin>
@@ -41,12 +41,12 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="266.0">
                      <children>
-                        <Button fx:id="btnProfAdd" mnemonicParsing="false" text="Add Professor">
+                        <Button fx:id="btnProfAdd" onAction="#addProfessor" mnemonicParsing="false" text="Add Professor">
                            <VBox.margin>
                               <Insets bottom="2.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btnProfDel" mnemonicParsing="false" text="Delete Professor">
+                        <Button fx:id="btnProfDel" onAction="#delProfessor" mnemonicParsing="false" text="Delete Professor">
                            <VBox.margin>
                               <Insets bottom="2.0" />
                            </VBox.margin>
@@ -55,12 +55,12 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="267.0">
                      <children>
-                        <Button fx:id="btnCourseAdd" mnemonicParsing="false" text="Add Course">
+                        <Button fx:id="btnCourseAdd" onAction="#addCourse" mnemonicParsing="false" text="Add Course">
                            <VBox.margin>
                               <Insets bottom="2.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btnProfAddToCourse" mnemonicParsing="false" text="Set Prof. to Course" />
+                        <Button fx:id="btnProfAddToCourse" onAction="#setProfessorToCourse" mnemonicParsing="false" text="Set Prof. to Course" />
                      </children>
                   </VBox>
                </children>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<VBox fx:id="globParent" alignment="center" xmlns="http://javafx.com/javafx/8.0.112-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChooseController">
+    <ChoiceBox fx:id="courseChoosen" maxWidth="200">
+        <VBox.margin>
+            <Insets bottom="10.0"/>
+        </VBox.margin></ChoiceBox>
+    <Button fx:id="createBtn" onAction="#add" prefWidth="200" text="Create">
+        <opaqueInsets>
+            <Insets/>
+        </opaqueInsets>
+        <VBox.margin>
+            <Insets top="10.0"/>
+        </VBox.margin></Button>
+    <Button onAction="#close" prefWidth="200" text="Cancel"/>
+</VBox>

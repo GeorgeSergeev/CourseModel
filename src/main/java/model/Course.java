@@ -73,4 +73,8 @@ public class Course {
         this.cost = cost;
     }
 
+    @Override
+    public String toString() {
+        return  name + " (" + cost + ")";
+    }
 }

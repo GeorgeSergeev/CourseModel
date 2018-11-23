@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
+import lombok.Setter;
 import model.Course;
 import model.Professor;
 import model.Student;
@@ -30,6 +31,8 @@ public class Controller implements Initializable {
     private SessionInstance sessionInstance;
     private List<Student> students;
     private List<Professor> professors;
+
+    @Getter
     private List<Course> courses;
 
     @Getter
@@ -45,6 +48,8 @@ public class Controller implements Initializable {
 
     private Student selectedStudent;
     private Professor selectedProfessor;
+
+    @Setter
     private Course selectedCourse;
 
     @FXML
@@ -140,13 +145,36 @@ public class Controller implements Initializable {
     }
 
     public void addStudent(ActionEvent actionEvent) {
+        callAddingObjectWindow(1, "Create student");
+    }
+
+    public void delStudent(ActionEvent actionEvent) {
+        studentService.removeStudent(selectedStudent);
+        refreshStudentsList();
+    }
+
+    public void addProfessor(ActionEvent actionEvent) {
+        callAddingObjectWindow(2, "Create professor");
+    }
+
+    public void delProfessor(ActionEvent actionEvent) {
+        professorService.removeProfessor(selectedProfessor);
+        refreshProfessorsList();
+    }
+
+    public void addCourse(ActionEvent actionEvent) {
+        callAddingObjectWindow(3, "Create course");
+    }
+
+    private void callAddingObjectWindow(int objectId, String windowTitle) {
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/NewStudent.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/NewObject.fxml"));
             Parent root = loader.load();
-            NewStudentController newStudentController = loader.getController();
-            newStudentController.controller = this;
-            stage.setTitle("Create student");
+            NewObjectController newObjectController = loader.getController();
+            newObjectController.controller = this;
+            newObjectController.configureView(objectId);
+            stage.setTitle(windowTitle);
             stage.setScene(new Scene(root, 400, 300));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
@@ -155,9 +183,36 @@ public class Controller implements Initializable {
         }
     }
 
-    public void delStudent(ActionEvent actionEvent) {
-        studentService.removeStudent(selectedStudent);
-        refreshStudentsList();
+    public void addStudentToCourse(ActionEvent actionEvent) {
+        chooseCourseAndExecute(() -> {
+            courseService.addStudentToCourse(selectedCourse, selectedStudent);
+            showAlert("Student added to course!");
+        });
+    }
+
+    public void setProfessorToCourse(ActionEvent actionEvent) {
+        chooseCourseAndExecute(() -> {
+            courseService.setProfessorForCourse(selectedCourse, selectedProfessor);
+            showAlert("Professor hired to course!");
+        });
+    }
+
+    private void chooseCourseAndExecute(Runnable r) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChooseCourse.fxml"));
+            Parent root = loader.load();
+            ChooseController chooseController = loader.getController();
+            chooseController.controller = this;
+            chooseController.fillList();
+            stage.setTitle("Choose course");
+            stage.setScene(new Scene(root, 400, 200));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            r.run();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void refreshCourseList() {

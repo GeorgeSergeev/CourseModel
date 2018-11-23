@@ -5,24 +5,24 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="globParent" alignment="center" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewStudentController">
-    <TextField fx:id="studentName" maxWidth="200" promptText="Student Name">
+<VBox fx:id="globParent" alignment="center" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewObjectController">
+    <TextField fx:id="objectName" maxWidth="200">
       <VBox.margin>
          <Insets bottom="2.0" />
       </VBox.margin></TextField>
-    <TextField fx:id="studentAddress" maxWidth="200" promptText="Student Address">
+    <TextField fx:id="objectAddress" maxWidth="200">
         <VBox.margin>
             <Insets bottom="2.0" />
         </VBox.margin></TextField>
-    <TextField fx:id="studentPhone" maxWidth="200" promptText="Student Phone">
+    <TextField fx:id="objectPhone" maxWidth="200">
         <VBox.margin>
             <Insets bottom="2.0" />
         </VBox.margin></TextField>
-    <TextField fx:id="studentEmail" maxWidth="200" promptText="Student Email">
+    <TextField fx:id="objectEmail" maxWidth="200">
         <VBox.margin>
             <Insets bottom="2.0" />
         </VBox.margin></TextField>
-    <TextField fx:id="studentGBNum" maxWidth="200" promptText="Grade book number">
+    <TextField fx:id="someNumberForObject" maxWidth="200">
         <VBox.margin>
             <Insets bottom="10.0" />
         </VBox.margin></TextField>
