@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
+    private StringBuilder infoString = new StringBuilder();
     private SessionInstance sessionInstance;
     private List<Student> students;
     private List<Professor> professors;
@@ -53,13 +54,13 @@ public class Controller implements Initializable {
     private Course selectedCourse;
 
     @FXML
-    ListView<String> listStudents;
+    ListView<Student> listStudents;
 
     @FXML
-    ListView<String> listProfessors;
+    ListView<Professor> listProfessors;
 
     @FXML
-    ListView<String> listGroups;
+    ListView<Course> listGroups;
 
     @FXML
     Button btnStudAdd;
@@ -111,7 +112,10 @@ public class Controller implements Initializable {
     private void initCoursesListView() {
         refreshCourseList();
         listGroups.setOnMouseClicked(value -> runFX(() -> {
-            selectedCourse = courseService.getByName(listGroups.getSelectionModel().getSelectedItem());
+            if (value.getClickCount() == 2) {
+                buildInfoAboutSelectedObject(3);
+            }
+            selectedCourse = listGroups.getSelectionModel().getSelectedItem();
             btnStudDel.setDisable(true);
             btnStudAddToCourse.setDisable(true);
             btnStudDelFromCourse.setDisable(true);
@@ -123,7 +127,10 @@ public class Controller implements Initializable {
     private void initProfessorsListView() {
         refreshProfessorsList();
         listProfessors.setOnMouseClicked(value -> runFX(() -> {
-            selectedProfessor = professorService.getByName(listProfessors.getSelectionModel().getSelectedItem());
+            if (value.getClickCount() == 2) {
+                buildInfoAboutSelectedObject(2);
+            }
+            selectedProfessor = listProfessors.getSelectionModel().getSelectedItem();
             btnStudDel.setDisable(true);
             btnStudAddToCourse.setDisable(true);
             btnStudDelFromCourse.setDisable(true);
@@ -135,7 +142,10 @@ public class Controller implements Initializable {
     private void initStudentsListView() {
         refreshStudentsList();
         listStudents.setOnMouseClicked(value -> runFX(() -> {
-            selectedStudent = studentService.getByName(listStudents.getSelectionModel().getSelectedItem());
+            if (value.getClickCount() == 2) {
+                buildInfoAboutSelectedObject(1);
+            }
+            selectedStudent = listStudents.getSelectionModel().getSelectedItem();
             btnStudDel.setDisable(false);
             btnStudAddToCourse.setDisable(false);
             btnStudDelFromCourse.setDisable(false);
@@ -219,7 +229,7 @@ public class Controller implements Initializable {
         courses = courseService.getAll();
         listGroups.getItems().clear();
         for (int i = 0; i < courses.size(); i++) {
-            listGroups.getItems().add(courses.get(i).getName());
+            listGroups.getItems().add(courses.get(i));
         }
     }
 
@@ -227,7 +237,7 @@ public class Controller implements Initializable {
         professors = professorService.getAll();
         listProfessors.getItems().clear();
         for (int i = 0; i < professors.size(); i++) {
-            listProfessors.getItems().add(professors.get(i).getName());
+            listProfessors.getItems().add(professors.get(i));
         }
     }
 
@@ -235,8 +245,33 @@ public class Controller implements Initializable {
         students = studentService.getAll();
         listStudents.getItems().clear();
         for (int i = 0; i < students.size(); i++) {
-            listStudents.getItems().add(students.get(i).getName());
+            listStudents.getItems().add(students.get(i));
         }
+    }
+
+    private void buildInfoAboutSelectedObject(int objectId) {
+        infoString.setLength(0);
+        switch (objectId) {
+            case 1:
+                infoString.append("Name: ").append(selectedStudent.getName()).append("\n")
+                        .append("Address: ").append(selectedStudent.getAddress()).append("\n")
+                        .append("Phone: ").append(selectedStudent.getPhone()).append("\n")
+                        .append("Email: ").append(selectedStudent.getEmail()).append("\n")
+                        .append("Graduate Book Num:").append(selectedStudent.getGradeBookNum());
+                break;
+            case 2:
+                infoString.append("Name: ").append(selectedProfessor.getName()).append("\n")
+                        .append("Address: ").append(selectedProfessor.getAddress()).append("\n")
+                        .append("Phone: ").append(selectedProfessor.getPhone()).append("\n")
+                        .append("Salary:").append(selectedProfessor.getSalary());
+                break;
+            case 3:
+                infoString.append("Name: ").append(selectedCourse.getName()).append("\n")
+                        .append("Cost:").append(selectedCourse.getCost());
+                break;
+        }
+
+        showAlert(infoString.toString());
     }
 
     private void runFX(Runnable r) {

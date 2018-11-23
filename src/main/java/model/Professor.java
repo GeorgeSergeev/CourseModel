@@ -59,4 +59,9 @@ public class Professor {
         this.phone = phone;
         this.salary = salary;
     }
+
+    @Override
+    public String toString() {
+        return name + " (call: " + phone + ")";
+    }
 }

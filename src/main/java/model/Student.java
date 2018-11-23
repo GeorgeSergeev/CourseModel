@@ -127,4 +127,8 @@ public class Student {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return name + " <" + email + ">";
+    }
 }
