@@ -2,6 +2,7 @@ package ru.latypov.service;
 
 
 
+import ru.latypov.exception.StatusKursNotFound;
 import ru.latypov.model.StatusKurs;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public interface StatusKursService {
     public List<StatusKurs> retrieveStatusKurs();
 
-    public StatusKurs getStatusKurs(Integer id);
+    public StatusKurs getStatusKurs(Integer id) throws StatusKursNotFound;
 
     public void savesStatusKurs(StatusKurs statusKurs);
     public void deleteStatusKurs(StatusKurs statusKurs);
