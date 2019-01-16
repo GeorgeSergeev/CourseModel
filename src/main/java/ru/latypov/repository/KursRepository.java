@@ -2,7 +2,7 @@ package ru.latypov.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.latypov.model.Office;
+import ru.latypov.model.Kurs;
 @Repository
-public interface OfficeRepository extends JpaRepository <Office, Integer> {
+public interface KursRepository extends JpaRepository <Kurs, Integer> {
 }
