@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="fragments/init :: head">
+    <title>Заглавная страница блога</title>
+</head>
+<body>
+
+<!-- Шаблон Header'а -->
+<div th:replace="fragments/header :: header">
+    ...
+</div>
+
+<div class="container-fluid">
+    <h2 th:text="${student}">...</h2>
+    <p>Редактировать данные о студенте:</p>
+
+    <div class="row content">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/student-community/edit-student}" th:object="${student}" method="post">
+
+                <div class="form-group">
+                    <label for="id">Внутренний идентификатор</label>
+                    <input class="form-control" type="text" th:field="*{id}" id="id" placeholder="#" readonly>
+                    <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="version">Версия данных</label>
+                    <input class="form-control" type="text" th:field="*{version}" id="version" placeholder="#" readonly>
+                    <span th:if="${#fields.hasErrors('version')}" th:errors="*{version}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Фамилия, имя, отчество</label>
+                    <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Иванов Иван Иванович">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="gradeBook">Номер зачётной книжки</label>
+                    <input class="form-control" type="text" th:field="*{gradeBook}" id="gradeBook" placeholder="1000000">
+                    <span th:if="${#fields.hasErrors('gradeBook')}" th:errors="*{gradeBook}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Место жительства</label>
+                    <input class="form-control" type="text" th:field="*{address}" id="address" placeholder="Адрес постоянного проживания">
+                    <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефонный номер</label>
+                    <input class="form-control" type="text" th:field="*{phone}" id="phone" placeholder="+7(XXX)XXX-XX-XX">
+                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+                </div>
+                <input type="submit" value="Применить изменения" class="btn btn-success">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Шаблон Footer'а -->
+<div th:replace="fragments/footer :: footer">...</div>
+
+</body>
+</html>

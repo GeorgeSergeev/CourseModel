@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="fragments/init :: head">
+    <title>Заглавная страница блога</title>
+</head>
+<body>
+
+<!-- Шаблон Header'а -->
+<div th:replace="fragments/header :: header">
+    ...
+</div>
+
+<div class="container-fluid">
+    <h2 th:text="${student}">...</h2>
+    <p>Сводная информация о студенте:</p>
+
+    <div class="row content">
+        <div class="col-md-8">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Свойство</th>
+                    <th>Значение</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Номер зачетной книжки:</td>
+                    <td th:text="${student.getGradeBook()}"></td>
+                </tr>
+                <tr>
+                    <td>Адрес:</td>
+                    <td th:text="${student.getAddress()}"></td>
+                </tr>
+                <tr>
+                    <td>Мобильный телефон:</td>
+                    <td th:text="${student.getPhone()}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <a th:href="@{/student-community/preview-student(id=${student.getId()})}" class="btn btn-info">Показать в json</a>
+            <a th:href="@{/student-community/edit-student(id=${student.getId()})}" class="btn btn-info">Редактировать</a>
+            <a th:href="@{/student-community/dismiss(id=${student.getId()})}" class="btn btn-danger">Удалить из базы</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Шаблон Footer'а -->
+<div th:replace="fragments/footer :: footer">...</div>
+
+</body>
+</html>

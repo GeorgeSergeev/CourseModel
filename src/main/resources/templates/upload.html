@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="fragments/init :: head">
+    <title>Настройки</title>
+</head>
+<body>
+
+<!-- Шаблон Header'а -->
+<div th:replace="fragments/header :: header">
+    ...
+</div>
+
+<div class="container-fluid">
+    <div class="row content">
+        <h2>Выгрузка объектов базы в файл json</h2>
+        <div class="col-md-8 text-left">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Путь к файлу</th>
+                    <th>Размер, байт</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <div th:each="fileFromList : ${listOfFiles}">
+                    <tr>
+                        <td><p th:text="${fileFromList.getId()}"></p></td>
+                        <td><p th:text="${fileFromList.getName()}"></p></td>
+                        <td><p th:text="${fileFromList.getSize()}"></p></td>
+                        <td><a href="#" th:href="@{/exchange/import(id=${fileFromList.getId()})}"><span class="glyphicon glyphicon-save" th:alt="Импортировать"></span></a></td>
+                        <td><a href="#" th:href="@{/exchange/delete(id=${fileFromList.getId()})}"><span class="glyphicon glyphicon-erase" th:alt="Удалить"></span></a></td>
+                        <td><a href="#" th:href="@{/exchange/preview(id=${fileFromList.getId()})}"><span class="glyphicon glyphicon-edit" th:alt="Просмотреть"></span></a></td>
+                    </tr>
+                </div>
+                </tbody>
+            </table>
+            <br><br>
+            <h3>Загрузить новый файл</h3>
+            <form method="POST" action="/exchange/upload" enctype="multipart/form-data">
+                <div class="form-group">
+                    <!--<label path="file">Выберите файл *.json для загрузки</label>-->
+                    <input type="file" name="file" class="form-control-file"/>
+                </div>
+                <input type="submit" value="Загрузить" class="btn btn-success" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Шаблон Footer'а -->
+<div th:replace="fragments/footer :: footer">...</div>
+
+</body>
+</html>

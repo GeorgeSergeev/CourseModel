@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="fragments/init :: head">
+    <title>Заглавная страница блога</title>
+</head>
+<body>
+
+<!-- Шаблон Header'а -->
+<div th:replace="fragments/header :: header">
+    ...
+</div>
+
+<div class="container-fluid">
+    <h2 th:text="${course}">...</h2>
+    <p>Редактировать курс:</p>
+
+    <div class="row content">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/activity/edit-course}" th:object="${course}" method="post">
+
+                <div class="form-group">
+                    <label for="id">Внутренний идентификатор</label>
+                    <input class="form-control" type="text" th:field="*{id}" id="id" placeholder="#" readonly>
+                    <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="version">Версия данных</label>
+                    <input class="form-control" type="text" th:field="*{version}" id="version" placeholder="#" readonly>
+                    <span th:if="${#fields.hasErrors('version')}" th:errors="*{version}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Название курса</label>
+                    <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Какой-то курс">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="number">Номер курса по ЕКК</label>
+                    <input class="form-control" type="text" th:field="*{number}" id="number" placeholder="1234">
+                    <span th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cost">Стоимость</label>
+                    <input class="form-control" type="text" th:field="*{cost}" id="cost" placeholder="25000.00">
+                    <span th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="modules">Количество модулей в курсе</label>
+                    <input class="form-control" type="text" th:field="*{modules}" id="modules" placeholder="10">
+                    <span th:if="${#fields.hasErrors('modules')}" th:errors="*{modules}"></span>
+                </div>
+                <input type="submit" value="Применить изменения" class="btn btn-success">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Шаблон Footer'а -->
+<div th:replace="fragments/footer :: footer">...</div>
+
+</body>
+</html>
