@@ -4,11 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import testgroup.dao.PersonDAO;
 import testgroup.model.Course;
-import testgroup.model.Lecturer;
-import testgroup.model.Person;
 import testgroup.model.Student;
-
-import javax.xml.ws.ServiceMode;
 import java.util.List;
 
 @Service
@@ -36,13 +32,4 @@ public class PersonServiceImpl implements PersonService
         personDAO.enrollCourse(studentID, course);
     }
 
-//    @Override
-//    public List<Lecturer> allLecturers(){
-//        return PersonDAO.allLecturers();
-//    }
-
-
-//
-//    void addCourse(); // может записаться на курс, вызывает CourseStudent
-//    List<Course> listListenCourses(Student student);
 }
