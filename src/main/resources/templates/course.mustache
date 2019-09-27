@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid #999;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="submit" value="Выход из учетной записи">
+        <p></p>
+    </form>
+</div>
+
+<h2>Courses</h2>
+<div>
+    <form method="post" action="/course_controller/course">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="number" placeholder="Number">
+        <input type="text" name="cost" placeholder="Cost">
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+<p></p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Cost</th>
+    </tr>
+
+    {{#course}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{number}}</td>
+            <td>{{cost}}</td>
+        </tr>
+    {{/course}}
+
+</table>
+<h2>Professor</h2>
+<p></p>
+<div>
+    <form method="post" action="/course_controller/professor">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="address" placeholder="Address">
+        <input type="text" name="phone" placeholder="Phone">
+        <input type="text" name="payment" placeholder="Payment">
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+<p></p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Payment</th>
+    </tr>
+
+    {{#professorIterable}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{address}}</td>
+            <td>{{phone}}</td>
+            <td>{{payment}}</td>
+        </tr>
+    {{/professorIterable}}
+
+</table>
+<p>______________________________</p>
+<a href="/student_controller/stud"><h3>Перейти на страницу студентов...</h3></a>
+</body>
+</html>
