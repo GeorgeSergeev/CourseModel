@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, td, th {
+        border: 1px solid #999;
+        padding: 5px;
+    }
+</style>
+</head>
+<body>
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="submit" value="Выход из учетной записи">
+        <p></p>
+    </form>
+</div>
+
+<h2>Students</h2>
+<div>
+    <form method="post" action="/student_controller/stud">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="text" name="name" placeholder="Имя" />
+        <input type="text" name="address" placeholder="Адрес">
+        <input type="text" name="phone" placeholder="Телефон">
+        <input type="text" name="email" placeholder="E-mail">
+        <input type="text" name="number_gradebook" placeholder="Номер зачетки">
+        <input type="text" name="average_performance" placeholder="Средняя успеваемость">
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+<p></p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>E-mail</th>
+        <th>Number_gradebook</th>
+        <th>Average_performance</th>
+    </tr>
+
+    {{#students}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{address}}</td>
+            <td>{{phone}}</td>
+            <td>{{email}}</td>
+            <td>{{number_gradebook}}</td>
+            <td>{{average_performance}}</td>
+        </tr>
+    {{/students}}
+</table>
+<p>______________________________</p>
+<a href="/course_controller/course"><h3>Перейти на страницу курсов...</h3></a>
+</body>
+</html>
