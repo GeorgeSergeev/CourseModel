@@ -1,0 +1,102 @@
+<html>
+<head>
+<link th:href="@{css/style.css}" href="css/style.css" rel="stylesheet"
+	type="text/css" />
+<title>Информация о студенте</title>
+</head>
+<body>
+<div id="box1" class="box blurred-bg tinted">
+		<div class="content" >
+
+	<section>
+		<table>
+			<tr>
+				<td>
+					<form action="/student" th:action="@{/student}"
+						th:object="${student}" method="post">
+						<table>
+							<tr>
+								<td>Имя:</td>
+								<td><input type="text" th:field="*{name}" /></td>
+								<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+									Error</td>
+							</tr>
+							<tr>
+								<td>Телефон:</td>
+								<td><input type="text" th:field="*{telephone}" /></td>
+								<td th:if="${#fields.hasErrors('telephone')}"
+									th:errors="*{telephone}"> Error</td>
+							</tr>
+							<tr>
+								<td>Адрес:</td>
+								<td><input type="text" th:field="*{address}" /></td>
+								<td th:if="${#fields.hasErrors('address')}"
+									th:errors="*{address}"> Error</td>
+							</tr>
+							<tr>
+								<td>E-mail:</td>
+								<td><input type="text" th:field="*{email}" /></td>
+								<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+									Error</td>
+							</tr>
+							<tr>
+								<td>Зачетка:</td>
+								<td><input type="text" th:field="*{scoreBookNum}" /></td>
+								<td th:if="${#fields.hasErrors('scoreBookNum')}"
+									th:errors="*{scoreBookNum}"> Error</td>
+							</tr>
+							<tr>
+								<td>Средний бал:</td>
+								<td><input type="text" th:field="${midScore}" /></td>
+								<td th:if="${#fields.hasErrors('midScore')}"
+									th:errors="${midScore}"> Error</td>
+							</tr>
+							<tr>
+								<td>Может ли записатся на новый курс:</td>
+								<td th:if="${canEnroll}">Может</td>
+								<td th:if="${!canEnroll}">Не Может</td>
+							</tr>							
+							<tr>
+								<td>Изучаемые курсы:</td>
+								<td style="overflow: auto; width: 150px; height: 100px">
+
+									<table>
+										<tr>
+											<td>Номер курса:</td>
+											<td>Название курса</td>
+											<td>Цена курса</td>
+										</tr>
+										<th:block th:each="course : ${courseList}">
+											<tr>
+												<td><a
+													th:href="@{/course(t=1,id=${course.number})}"><span
+														th:text="${course.number}" /></a></td>
+												<td th:text="${course.name}"></td>
+												<td th:text="${course.price}"></td>
+											</tr>
+										</th:block>
+									</table>
+								</td>
+								<td th:if="${#fields.hasErrors('courseFlow')}"
+									th:errors="*{courseFlow}">Error</td>
+							</tr>
+							<tr>
+								<td><button type="submit">Сохранить</button></td>
+							</tr>
+						</table>
+					</form>
+				</td>
+				<td></td>
+			</tr>
+		</table>
+	<section>
+		<a href="/">Индекс</a> 
+		<a href="courses">Курсы</a> 
+		<a href="students">Студенты</a>
+		<a href="professors">Профессора</a>
+	</section>
+	</section>
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link th:href="@{css/style.css}" href="css/style.css" rel="stylesheet"
+	type="text/css" />
+<title>Course info</title>
+</head>
+<body>
+<div id="box1" class="box blurred-bg tinted">
+		<div class="content">
+	<table>
+		<tr>
+			<td>
+				<form action="/course" th:action="@{/course}" th:object="${course}"
+					method="post">
+					<table>
+						<tr>
+							<td>Номер:</td>
+							<td><input type="text" th:field="*{name}" /></td>
+							<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+								Error</td>
+						</tr>
+						<tr>
+							<td>Название:</td>
+							<td><input type="text" th:field="*{number}" /></td>
+							<td th:if="${#fields.hasErrors('number')}" th:errors="*{number}">
+								Error</td>
+						</tr>
+						<tr>
+							<td>Цена:</td>
+							<td><input type="text" th:field="*{price}" /></td>
+							<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">
+								Error</td>
+						</tr>
+						<tr>
+							<td>Проффессор:</td>
+							<td><input type="text" th:field="*{professor.name}" /></td>
+							<td th:if="${#fields.hasErrors('professor.name')}"
+								th:errors="*{professor.name}">Error</td>
+						</tr>
+						<tr>
+							<td><button type="submit">Сохранить</button></td>
+						</tr>
+					</table>
+				</form>
+			</td>
+			<td>
+				<table>
+					<tr>
+						<td>№ зачетной книжки</td>
+						<td>Имя</td>
+						<td>Действия</td>
+					</tr>
+					<tr th:each="stud : ${courseStudents}">
+						<td th:text="${stud.scoreBookNum}"></td>
+						<td th:text="${stud.name}"></td>
+						<td><a
+							th:href="@{/update_course(a=2,s_id=${stud.scoreBookNum},c_id=${course.number})}">Удалить
+								сутдента из курса</a></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td>№ зачетной книжки</td>
+						<td>Имя</td>
+						<td>Действия</td>
+					</tr>
+					<tr th:each="student : ${students}">
+						<td th:text="${student.scoreBookNum}"></td>
+						<td th:text="${student.name}"></td>
+						<td><a
+							th:href="@{/update_course(a=1,s_id=${student.scoreBookNum},c_id=${course.number})}">Добавить
+								сутдента на курс</a></td>
+					</tr>
+				</table>
+			</td>
+			<td></td>
+		</tr>
+	</table>
+	<section>
+		<a href="/">Индекс</a> 
+		<a href="courses">Курсы</a> 
+		<a href="students">Студенты</a>
+		<a href="professors">Профессора</a>
+	</section>
+	</div>
+	</div>
+</body>
+</html>

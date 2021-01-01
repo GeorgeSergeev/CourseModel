@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link th:href="@{css/style.css}" href="css/style.css" rel="stylesheet"
+	type="text/css" />
+<title>Список курсов!</title>
+</head>
+<body>
+	<div id="box1" class="box blurred-bg tinted">
+		<div class="content">
+			<table>
+				<tr>
+					<td>№ курса</td>
+					<td>Название</td>
+					<td>Цена</td>
+					<td>Действия</td>
+				</tr>
+				<tr th:each="course : ${courses}">
+					<td th:text="${course.number}"></td>
+					<td th:text="${course.name}"></td>
+					<td th:text="${course.price}"></td>
+					<td><a th:href="@{/course(t=0,id=${course.number})}">Удалить</a>
+						<a th:href="@{/course(t=1,id=${course.number})}">Редактировать</a></td>
+				</tr>
+				<tr>
+					<td colspan="4" style="text-align: center;"><a th:href="@{/course(t=2,id=0)}">Добавить
+							курс</a></td>
+				</tr>
+			</table>
+			<section>
+				<a href="/" >Индекс</a> 
+				<a href="professors" >Профессоры</a> 
+				<a href="students">Студенты</a>
+			</section>
+		</div>
+	</div>
+
+</body>
+</html>

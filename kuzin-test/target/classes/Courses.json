@@ -1,0 +1,31 @@
+[
+	{
+		"name": "ООП",
+		"number": 1,
+		"price": 10000.0,
+		"studentIds": "2282",
+		"professorPhone":""
+	},
+	{
+		"name": "C#",
+		"number": 2,
+		"price": 8000.0,
+		"studentIds": "",
+		"professorPhone":""
+	},
+	{
+		"name": "Java",
+		"number": 3,
+		"price": 10000.0,
+		"studentIds": "2282",
+		"professorPhone":""
+	},
+	{
+		"name": "Реляционные БД",
+		"number": 4,
+		"price": 9000.0,
+		"studentIds": "",
+		"professorPhone":""
+	}
+
+  ]

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Информация о профессоре</title>
+</head>
+<body>
+<form action="/professor" th:action="@{/professor}" th:object="${professor}"
+		method="post">
+		<table>
+			<tr>
+				<td>Имя :</td>
+				<td><input type="text" th:field="*{name}" /></td>
+				<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+					Error</td>
+			</tr>
+			<tr>
+				<td>Номер тел :</td>
+				<td><input type="text" th:field="*{telephone}" /></td>
+				<td th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}">
+					Error</td>
+			</tr>
+			<tr>
+				<td>Адрес:</td>
+				<td><input type="text" th:field="*{address}" /></td>
+				<td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">
+					Error</td>
+			</tr>
+			<tr>
+				<td>Зарплата:</td>
+				<td><input type="text" th:field="*{salary}" /></td>
+				<td th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">
+					Error</td>
+			</tr>
+			<tr>
+				<td><button type="submit">Сохранить</button></td>
+			</tr>
+		</table>
+	</form>
+	<section>
+		<a href="/">Индекс</a> 
+		<a href="courses">Курсы</a> 
+		<a href="students">Студенты</a>
+		<a href="professors">Профессора</a>
+	</section>
+</body>
+</html>

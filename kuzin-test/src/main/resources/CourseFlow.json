@@ -1,0 +1,27 @@
+[
+	{
+		"id": "123",
+		"scores": "2,3,4",
+		"courseNum": 1
+	},
+	{
+		"id": "456",
+		"scores": "3,2,1",
+		"courseNum": 2
+	},
+	{
+		"id": "789",
+		"scores": "6,5,4",
+		"courseNum": 4
+	},
+	{
+		"id": "135",
+		"scores": "9,8,7",
+		"courseNum": 3
+	},
+	{
+		"id": "235",
+		"scores": "9,8,7",
+		"courseNum": 3
+	}
+ ]
