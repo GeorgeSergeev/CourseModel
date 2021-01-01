@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <VBox>
+         <children>
+            <HBox prefHeight="550.0" prefWidth="800.0">
+               <children>
+                  <ListView fx:id="listStudents" prefHeight="600.0" prefWidth="267.0" />
+                  <ListView fx:id="listProfessors" prefHeight="600.0" prefWidth="266.0" />
+                  <ListView fx:id="listGroups" prefHeight="200.0" prefWidth="267.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="200.0" prefWidth="800.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="267.0">
+                     <children>
+                        <Button fx:id="btnStudAdd" onAction="#addStudent" mnemonicParsing="false" text="Add Student">
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnStudDel" onAction="#delStudent" mnemonicParsing="false" text="Delete Student">
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnStudAddToCourse" onAction="#addStudentToCourse" mnemonicParsing="false" text="Add Student To Course">
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnStudDelFromCourse" mnemonicParsing="false" text="Remove Student From Course" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="266.0">
+                     <children>
+                        <Button fx:id="btnProfAdd" onAction="#addProfessor" mnemonicParsing="false" text="Add Professor">
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnProfDel" onAction="#delProfessor" mnemonicParsing="false" text="Delete Professor">
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="267.0">
+                     <children>
+                        <Button fx:id="btnCourseAdd" onAction="#addCourse" mnemonicParsing="false" text="Add Course">
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnProfAddToCourse" onAction="#setProfessorToCourse" mnemonicParsing="false" text="Set Prof. to Course" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

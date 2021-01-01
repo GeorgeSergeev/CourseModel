@@ -1,0 +1,10 @@
+DELETE FROM `course_model`.`teachers` WHERE 1;
+DELETE FROM `course_model`.`students` WHERE 1;
+DELETE FROM `course_model`.`courses` WHERE 1;
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE `course_model`.`course_scores`;
+TRUNCATE `course_model`.`courses_groups`;
+TRUNCATE `course_model`.`courses`;
+TRUNCATE `course_model`.`students`;
+TRUNCATE `course_model`.`teachers`;
+SET FOREIGN_KEY_CHECKS = 1;
