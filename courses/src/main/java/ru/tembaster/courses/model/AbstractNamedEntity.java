@@ -2,38 +2,40 @@ package ru.tembaster.courses.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Data
 @MappedSuperclass
-public abstract class AbstractEntity {
+public abstract class AbstractNamedEntity extends AbstractBaseEntity {
 
-    public static final int START_SEQ = 100_000;
-
-    @Id
-    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
-    Integer id;
-
+    @NotBlank
     @NotNull
     @Column(name = "name")
-    String name;
+    protected String name;
 
+    @NotBlank
     @NotNull
     @Column(name = "address")
-    String address;
+    protected String address;
 
+    @NotBlank
     @NotNull
     @Column(name = "phone")
-    String phone;
+    @Min(value = 10)
+    @Max(value = 10)
+    protected String phone;
 
-    protected AbstractEntity() {
+    protected AbstractNamedEntity() {
     }
 
-    protected AbstractEntity(Integer id, @NotNull String name, @NotNull String address, @NotNull String phone) {
-        this.id = id;
+    protected AbstractNamedEntity(Integer id, String name, String address, String phone) {
+        super(id);
         this.name = name;
         this.address = address;
         this.phone = phone;
@@ -52,8 +54,8 @@ public abstract class AbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof AbstractEntity)) return false;
-        AbstractEntity that = (AbstractEntity) o;
+        if (!(o instanceof AbstractNamedEntity)) return false;
+        AbstractNamedEntity that = (AbstractNamedEntity) o;
         return Objects.equals(id, that.id) && name.equals(that.name) && address.equals(that.address) && phone.equals(that.phone);
     }
 

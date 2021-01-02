@@ -6,14 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
 @Table(name = "students")
-public class Student extends AbstractEntity {
+public class Student extends AbstractNamedEntity {
 
     @Email
+    @NotBlank
     @NotNull
     @Column(name = "email")
     String email;
@@ -23,21 +25,21 @@ public class Student extends AbstractEntity {
     Integer gradeBookId;
 
     @NotNull
-    @Column(name = "avg_perf")
-    Float avgPerfomance;
+    @Column(name = "avg_performance")
+    Float avgPerformance;
 
     public Student() {
     }
 
-    public Student(Integer id, String name, String address, String phone,String email, Integer gradeBookId, Float avgPerfomance) {
+    public Student(Integer id, String name, String address, String phone, String email, Integer gradeBookId, Float avgPerformance) {
         super(id, name, address, phone);
         this.email = email;
         this.gradeBookId = gradeBookId;
-        this.avgPerfomance = avgPerfomance;
+        this.avgPerformance = avgPerformance;
     }
 
-    public Student(String name, String address, String phone,String email, Integer gradeBookId, Float avgPerfomance) {
-        this(null, name, address, phone, email, gradeBookId, avgPerfomance);
+    public Student(String name, String address, String phone,String email, Integer gradeBookId, Float avgPerformance) {
+        this(null, name, address, phone, email, gradeBookId, avgPerformance);
     }
 
     @Override
@@ -49,7 +51,7 @@ public class Student extends AbstractEntity {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", gradeBookId=" + gradeBookId +
-                ", avgPerfomance=" + avgPerfomance +
+                ", avgPerformance=" + avgPerformance +
                 '}';
     }
 }
