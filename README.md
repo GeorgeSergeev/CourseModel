@@ -1,3 +1,10 @@
+# RStyle Softlab Coding Interview Task
+
+dev: Stepanov Alexandr Mikhailovich
+
+email: stepanovam001@gmail.com
+
+
 # CourseModel
 Тестовое задание для кандидатов 
 
