@@ -32,9 +32,16 @@ public abstract class AbstractEntity {
     protected AbstractEntity() {
     }
 
+    protected AbstractEntity(Integer id, @NotNull String name, @NotNull String address, @NotNull String phone) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
-        return "AbstractEntity{" +
+        return getClass().getSimpleName() +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
