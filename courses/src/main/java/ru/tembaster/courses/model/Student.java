@@ -4,10 +4,12 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Data
 @Entity
@@ -18,15 +20,18 @@ public class Student extends AbstractNamedEntity {
     @NotBlank
     @NotNull
     @Column(name = "email")
-    String email;
+    private String email;
 
     @NotNull
     @Column(name = "grade_book_id")
-    Integer gradeBookId;
+    private Integer gradeBookId;
 
     @NotNull
     @Column(name = "avg_performance")
-    Float avgPerformance;
+    private Float avgPerformance;
+
+    @ManyToMany(mappedBy = "courses")
+    private Set<Course> course;
 
     public Student() {
     }
