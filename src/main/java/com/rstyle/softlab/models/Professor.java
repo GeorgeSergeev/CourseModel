@@ -51,5 +51,10 @@ public class Professor {
 	public void setCourses(Set<Course> courses) {
 		this.courses = courses;
 	}
-	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

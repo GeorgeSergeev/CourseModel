@@ -71,14 +71,23 @@ public class CourseResults {
 
 	public void setMarks(String marks) {
 		this.marks = marks;
+		floatMarks = convertMarks(marks);
 	}
 
 	public List<Float> getListMarks() {
-		return floatMarks == null || floatMarks.size()==0? (floatMarks = Stream.of(marks.split("\\s+")).map(x -> Float.parseFloat(x)).collect(Collectors.toList())) : floatMarks;
+		return floatMarks == null || floatMarks.size()==0 ? (floatMarks = convertMarks(marks)) : floatMarks;
 	}
 
-	public void setMarks(List<Float> floatMarks) {
+	public void setListMarks(List<Float> floatMarks) {
 		this.floatMarks = floatMarks;
-		marks = floatMarks.stream().map(x -> String.valueOf(x)).collect(Collectors.joining(" "));
+		marks = convertFloatMarks(floatMarks);
+	}
+	
+	private List<Float> convertMarks(String marks){
+		return Stream.of(marks.split("\\s+")).map(x -> Float.parseFloat(x)).collect(Collectors.toList());
+	}
+	
+	private String convertFloatMarks(List<Float> floatMarks) {
+		return floatMarks.stream().map(x -> String.valueOf(x)).collect(Collectors.joining(" "));
 	}
 }
