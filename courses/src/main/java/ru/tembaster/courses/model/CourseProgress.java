@@ -1,11 +1,13 @@
 package ru.tembaster.courses.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import lombok.Data;
 
+import javax.persistence.*;
+
+@Data
 @Entity
+@Table(name = "course_progress")
 public class CourseProgress extends AbstractBaseEntity {
 
     @ManyToOne
@@ -16,5 +18,6 @@ public class CourseProgress extends AbstractBaseEntity {
     @JoinColumn(name = "course_id")
     private Course course;
 
+    @Column(name = "grade")
     private Integer grade;
 }

@@ -2,13 +2,11 @@ package ru.tembaster.courses.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -23,8 +21,8 @@ public class Student extends AbstractNamedEntity {
     private String email;
 
     @NotNull
-    @Column(name = "grade_book_id")
-    private Integer gradeBookId;
+    @Column(name = "student_number")
+    private Integer studentNumber;
 
     @NotNull
     @Column(name = "avg_performance")
@@ -33,18 +31,22 @@ public class Student extends AbstractNamedEntity {
     @ManyToMany(mappedBy = "courses")
     private Set<Course> course;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id")
+    private List<CourseProgress> courseProgress;
+
     public Student() {
     }
 
-    public Student(Integer id, String name, String address, String phone, String email, Integer gradeBookId, Float avgPerformance) {
+    public Student(Integer id, String name, String address, String phone, String email, Integer studentNumber, Float avgPerformance) {
         super(id, name, address, phone);
         this.email = email;
-        this.gradeBookId = gradeBookId;
+        this.studentNumber = studentNumber;
         this.avgPerformance = avgPerformance;
     }
 
-    public Student(String name, String address, String phone,String email, Integer gradeBookId, Float avgPerformance) {
-        this(null, name, address, phone, email, gradeBookId, avgPerformance);
+    public Student(String name, String address, String phone, String email, Integer studentNumber, Float avgPerformance) {
+        this(null, name, address, phone, email, studentNumber, avgPerformance);
     }
 
     @Override
@@ -55,7 +57,7 @@ public class Student extends AbstractNamedEntity {
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", gradeBookId=" + gradeBookId +
+                ", studentNumber=" + studentNumber +
                 ", avgPerformance=" + avgPerformance +
                 '}';
     }

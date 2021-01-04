@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -24,17 +25,21 @@ public class Course extends AbstractBaseEntity {
     @Column(name = "price")
     private Float price;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "students")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "students")
     @JoinTable(name = "student_course",
                joinColumns = {@JoinColumn(name = "student_id", referencedColumnName = "id")},
                inverseJoinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")})
     private Set<Student> students;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = true)
     @JoinTable(name = "professor_course",
                joinColumns = {@JoinColumn(name = "professor_id", referencedColumnName = "id")},
                inverseJoinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")})
     private Professor professor;
+
+    @OneToMany
+    @JoinColumn(name = "course_id")
+    private List<CourseProgress> courseProgress;
 
     public Course() {
     }
