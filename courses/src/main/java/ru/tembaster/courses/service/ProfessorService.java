@@ -18,19 +18,19 @@ public class ProfessorService {
     }
 
     public Professor save(Professor professor) {
-        return professorRepository.saveAndFlush(professor);
+        return professorRepository.save(professor);
     }
 
-    public boolean delete(int id) {
-        return professorRepository.delete(id) != 0;
+    public void delete(Professor professor) {
+        professorRepository.delete(professor);
     }
 
     public Professor get(int id) {
-        return professorRepository.findById(id).orElse(null);
+        return professorRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid id: " + id));
     }
 
     public List<Professor> getAll() {
-        return professorRepository.findAll();
+        return (List<Professor>) professorRepository.findAll();
     }
 
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add Professor</title>
+</head>
+<body>
+    <form action="#" th:action="@{/addprofessor}" th:object="${professor}" method="post">
+        <label for="name">Name</label>
+        <input type="text" th:field="*{name}" id="name" placeholder="Name">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span><br>
+
+        <label for="address">Address</label>
+        <input type="text" th:field="*{address}" id="address" placeholder="Address"><br>
+
+        <label for="phone">Phone</label>
+        <input type="text" th:field="*{phone}" id="phone" placeholder="Phone"><br>
+
+        <label for="payment">Payment</label>
+        <input type="text" th:field="*{payment}" id="payment" placeholder="Payment"><br>
+
+        <input type="submit" value="Add Professor">
+    </form>
+</body>
+</html>

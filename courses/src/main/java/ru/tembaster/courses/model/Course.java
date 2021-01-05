@@ -25,16 +25,16 @@ public class Course extends AbstractBaseEntity {
     @Column(name = "price")
     private Float price;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "students")
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "student_course",
-               joinColumns = {@JoinColumn(name = "student_id", referencedColumnName = "id")},
-               inverseJoinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")})
+               joinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")},
+               inverseJoinColumns = {@JoinColumn(name = "student_id", referencedColumnName = "id")})
     private Set<Student> students;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = true)
+    @OneToOne
     @JoinTable(name = "professor_course",
-               joinColumns = {@JoinColumn(name = "professor_id", referencedColumnName = "id")},
-               inverseJoinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")})
+               joinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"))
     private Professor professor;
 
     @OneToMany

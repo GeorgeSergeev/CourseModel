@@ -1,5 +1,6 @@
 package ru.tembaster.courses.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.tembaster.courses.model.Student;
 import ru.tembaster.courses.repository.StudentRepository;
@@ -11,6 +12,7 @@ public class StudentService {
 
     StudentRepository studentRepository;
 
+    @Autowired
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }

@@ -28,7 +28,7 @@ public class Student extends AbstractNamedEntity {
     @Column(name = "avg_performance")
     private Float avgPerformance;
 
-    @ManyToMany(mappedBy = "courses")
+    @ManyToMany(mappedBy = "students")
     private Set<Course> course;
 
     @OneToMany(fetch = FetchType.LAZY)
