@@ -25,10 +25,6 @@ public class Student {
 	@OneToMany(mappedBy = "student", fetch=FetchType.LAZY)
 	private Set<CourseResults> courseResults;
 	
-	public void getCompletedCourses() {
-		
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -92,6 +88,4 @@ public class Student {
 	public void setCourseResults(Set<CourseResults> courseResults) {
 		this.courseResults = courseResults;
 	}
-	
-	
 }

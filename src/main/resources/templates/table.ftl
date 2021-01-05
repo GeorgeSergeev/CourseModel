@@ -31,6 +31,27 @@
 			.clear {
 			    clear: both;
 			}
+			
+			.button {
+			  display: inline-block;
+			  padding: 5px 10px;
+			  font-size: 15px;
+			  cursor: pointer;
+			  text-align: center;
+			  text-decoration: none;
+			  outline: none;
+			  color: #fff;
+			  background-color: #4CAF50;
+			  border: none;
+			  border-radius: 15px;
+			}
+			
+			.button:hover {background-color: #3e8e41}
+			
+			.button:active {
+			  background-color: #3e8e41;
+			  transform: translateY(4px);
+}
 		</style>
 		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -39,7 +60,7 @@
 	</head>
 	<body style="margin: 40;">
 		
-		<h2>Professors list editing</h2>
+		<h2>Editing list of professors</h2>
 		<p>To edit value, press twice the filed, remove previous and put your new one. When you're done, click update button to synchronize your data with database. </p>
 		
 		<div style="margin-left: 100; margin-right: 100">
@@ -56,20 +77,14 @@
 			    
 			    <#list data as entry>
 			  		<tr>
-			  			<td contenteditable='true'> ${entry.getName()}</td>
-			  			<td contenteditable='true'>${entry.getAddress()}</td>
-			  			<td contenteditable='true'><#if entry.getPhone()??>${entry.getPhone()}</#if></td>
-			  			<td contenteditable='true'>${entry.getPayment()} $</td>
+			  			<td id="name_${entry.getId()}" contenteditable='true'> ${entry.getName()}</td>
+			  			<td id="addr_${entry.getId()}" contenteditable='true'>${entry.getAddress()}</td>
+			  			<td id="phone_${entry.getId()}" contenteditable='true'><#if entry.getPhone()??>${entry.getPhone()}</#if></td>
+			  			<td id="payment_${entry.getId()}" contenteditable='true'>${entry.getPayment()}</td>
 			  			<td>
 					      	<div class="tile_div">
-					      		<form>
-					      			<input type=submit value="Update">
-					      		</form>
-					      		
-					      		<form action="/put" method="POST">
-						      		<input type=submit value="Delete"> 
-						      		<input type="hidden" id="id" name="id" value="${entry.getId()}">
-					      		</form>
+					      		<button onClick="updateProfessor(${entry.getId()})" class="button">Update</button>
+					      		<button onClick="deleteProfessor(${entry.getId()})" class="button" style="background-color: #FF0000;">Delete</button>
 						    </div>
 					      </td>
 			  		</tr>
@@ -77,5 +92,44 @@
 			  </table>
 			</div>
 		</div>
+		
+		
+		<script>
+   			function updateProfessor(id){
+   				var name = document.getElementById("name_" + id).innerText;
+   				var addr = document.getElementById("addr_" + id).innerText;
+   				var phone = document.getElementById("phone_" + id).innerText;
+   				var payment = parseFloat(document.getElementById("payment_" + id).innerText.replace(/,/, '.'));
+   				
+   				console.log(name + " " + addr + " " + phone + " " + payment);
+   				
+   				var http = new XMLHttpRequest();
+   				var params = 'id=' + id +'&name=' + name + '&address=' + addr + '&phone=' + phone + '&payment=' + payment;
+   				
+   				http.open('POST', '/putProfessor', true);
+   				http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+   				http.onreadystatechange = function() {
+   				    if(http.readyState == 4 && http.status == 200) {
+   				    	document.location.reload();
+   				    }
+   				}
+   				http.send(params);
+   			}
+   			
+   			function deleteProfessor(id){
+   				
+   				var http = new XMLHttpRequest();
+   				var params = 'id=' + id;
+   				
+   				http.open('POST', '/removeProfessor', true);
+   				http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+   				http.onreadystatechange = function() {
+   				    if(http.readyState == 4 && http.status == 200) {
+   				    	document.location.reload();
+   				    }
+   				}
+   				http.send(params);
+   			}
+   		</script>
 	</body>
 </html>

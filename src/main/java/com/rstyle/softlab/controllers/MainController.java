@@ -38,8 +38,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/findAllStudents")
-	public List<Student> findAllStudents(){
-		return stdSrvc.findAll();
+	public List<Student> allStudents(){
+		return stdSrvc.all();
 	}
 	
 	@GetMapping("/insertStudent")
@@ -50,7 +50,7 @@ public class MainController {
 		student.setPhone(phone);
 		student.setAddress(address);
 		student.setEmail(email);
-		return stdSrvc.save(student);
+		return stdSrvc.create(student);
 	}
 	
 	@GetMapping("/insertCourse")
@@ -59,7 +59,7 @@ public class MainController {
 		course.setName(name);
 		course.setNumber(number);
 		course.setPrice(price);
-		return cSrvc.save(course);
+		return cSrvc.create(course);
 	}
 	
 	@GetMapping("/insertProfessor")
@@ -69,18 +69,18 @@ public class MainController {
 		professor.setAddress(address);
 		professor.setPayment(payment);
 		professor.setPhone(phone);
-		return pSrvc.save(professor);
+		return pSrvc.create(professor);
 	}
 	
 	@GetMapping("/addStudentToCourse")
 	public String insertCourseResults(Long courseID, Long studentID) {
-		Course course = cSrvc.getById(courseID);
-		Student student = stdSrvc.getById(studentID);
+		Course course = cSrvc.read(courseID);
+		Student student = stdSrvc.read(studentID);
 		
 		CourseResults cr = new CourseResults();
 		cr.setStudent(student);
 		cr.setCourse(course);
-		crStvc.save(cr);
+		crStvc.create(cr);
 		return "ok";
 	}
 	

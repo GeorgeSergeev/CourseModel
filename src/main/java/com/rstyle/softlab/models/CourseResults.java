@@ -37,10 +37,6 @@ public class CourseResults {
 		return average.isPresent() ? (average.get()/floatMarks.size()) : 0.0f;
 	}
 	
-	public void getFinalMark() {
-		
-	}
-
 	public Long getId() {
 		return id;
 	}

@@ -18,14 +18,21 @@ public class TableController {
 	
 	@GetMapping("/table")
 	public String table(Model model) {
-        model.addAttribute("data", pSrvc.findAll());
+        model.addAttribute("data", pSrvc.all());
         return "table";
 	}
 
-	@PostMapping("/put")
+	@PostMapping("/putProfessor")
 	@ResponseBody
-	public String put(Professor p) {
-		System.out.println(p.getId());
+	public String putProfessor(Professor professor) {
+		pSrvc.update(professor);
+		return "ok";
+	}
+	
+	@PostMapping("/removeProfessor")
+	@ResponseBody
+	public String removeProfessor(Professor professor) {
+		pSrvc.delete(professor);
 		return "ok";
 	}
 }

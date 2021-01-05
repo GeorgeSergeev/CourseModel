@@ -2,8 +2,8 @@ package com.rstyle.softlab.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.rstyle.softlab.models.Course;
@@ -12,7 +12,7 @@ import com.rstyle.softlab.models.Student;
 import com.rstyle.softlab.projections.CustomProjection;
 
 @Repository
-public interface CourseResultsRepository extends CrudRepository<CourseResults, Long>{
+public interface CourseResultsRepository extends JpaRepository<CourseResults, Long>{
 	
 	CourseResults findByStudentAndCourse(Student student, Course course);
 	
@@ -22,5 +22,5 @@ public interface CourseResultsRepository extends CrudRepository<CourseResults, L
 			"LEFT JOIN professor ON course.professor_id=professor.id\r\n" + 
 			"GROUP BY course.name\r\n" + 
 			"ORDER BY professor.name DESC;", nativeQuery = true)
-	List<CustomProjection> getAll();
+	List<CustomProjection> getSuccessRate();
 }
