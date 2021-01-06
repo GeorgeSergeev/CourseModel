@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.tembaster.courses.model.Student;
+import ru.tembaster.courses.service.CourseService;
 import ru.tembaster.courses.service.StudentService;
 
 import javax.validation.Valid;
@@ -16,10 +17,12 @@ import java.util.List;
 public class StudentRestController {
 
     StudentService studentService;
+    CourseService courseService;
 
     @Autowired
-    public StudentRestController(StudentService studentService) {
+    public StudentRestController(StudentService studentService, CourseService courseService) {
         this.studentService = studentService;
+        this.courseService = courseService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

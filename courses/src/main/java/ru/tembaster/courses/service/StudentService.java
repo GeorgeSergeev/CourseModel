@@ -18,6 +18,7 @@ public class StudentService {
     }
 
     public Student save(Student student) {
+
         return studentRepository.saveAndFlush(student);
     }
 
@@ -37,5 +38,4 @@ public class StudentService {
     public List<Student> getAll() {
         return studentRepository.findAll();
     }
-
 }

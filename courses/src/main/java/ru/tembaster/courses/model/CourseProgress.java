@@ -20,6 +20,6 @@ public class CourseProgress extends AbstractBaseEntity {
     @JoinColumn(name = "course_id")
     private Course course;
 
-    @Column(name = "grade")
-    private Integer grade;
+    @Column(name = "mark")
+    private Integer mark;
 }
