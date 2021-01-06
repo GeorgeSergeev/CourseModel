@@ -1,6 +1,8 @@
 package ru.tembaster.courses.model;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -9,7 +11,8 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "students")
 public class Student extends AbstractNamedEntity {
@@ -28,11 +31,12 @@ public class Student extends AbstractNamedEntity {
     @Column(name = "avg_performance")
     private Float avgPerformance;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "students")
     private Set<Course> course;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id")
+    @JsonIgnore
+    @OneToMany(mappedBy = "student")
     private List<CourseProgress> courseProgress;
 
     public Student() {

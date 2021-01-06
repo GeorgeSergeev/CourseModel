@@ -32,24 +32,39 @@ public class ProfessorController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Integer id, Model model) {
-        Professor professor = professorService.get(id);
-        professorService.delete(professor);
+        professorService.delete(id);
         return "redirect:/professors/all";
     }
 
     @GetMapping("/signup")
     public String showSignUpForm(Professor professor) {
-        return "addprofessor";
+        return "add-professor";
     }
 
     @PostMapping("/addprofessor")
     public String create(@Valid Professor professor, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "addprofessor";
+            return "add-professor";
         }
         professorService.save(professor);
         return "redirect:/professors/all";
     }
 
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable("id") int id, Model model) {
+        Professor professor = professorService.get(id);
+        model.addAttribute("professor", professor);
+        return "update-professor";
+    }
 
+    @PostMapping("/update/{id}")
+    public String update(@PathVariable("id") Integer id, @Valid Professor professor,
+                            BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            professor.setId(id);
+            return "update-professor";
+        }
+        professorService.save(professor);
+        return "redirect:/professors/all";
+    }
 }

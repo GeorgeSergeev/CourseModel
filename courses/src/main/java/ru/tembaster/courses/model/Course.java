@@ -1,6 +1,10 @@
 package ru.tembaster.courses.model;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -8,7 +12,8 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "courses")
 public class Course extends AbstractBaseEntity {
@@ -25,20 +30,23 @@ public class Course extends AbstractBaseEntity {
     @Column(name = "price")
     private Float price;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToMany
     @JoinTable(name = "student_course",
                joinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")},
                inverseJoinColumns = {@JoinColumn(name = "student_id", referencedColumnName = "id")})
     private Set<Student> students;
 
+    @JsonIgnore
     @OneToOne
     @JoinTable(name = "professor_course",
                joinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"))
     private Professor professor;
 
-    @OneToMany
-    @JoinColumn(name = "course_id")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+    @Fetch(FetchMode.SELECT)
     private List<CourseProgress> courseProgress;
 
     public Course() {

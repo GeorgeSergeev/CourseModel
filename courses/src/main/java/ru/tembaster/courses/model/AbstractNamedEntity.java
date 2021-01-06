@@ -1,6 +1,7 @@
 package ru.tembaster.courses.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -10,7 +11,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class AbstractNamedEntity extends AbstractBaseEntity {
 

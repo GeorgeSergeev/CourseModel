@@ -35,7 +35,12 @@ public class CourseService {
     }
 
     public boolean delete(int id) {
-        return courseRepository.delete(id) != 0;
+        Course course = courseRepository.findById(id).orElse(null);
+        if (course != null) {
+            courseRepository.delete(course);
+            return true;
+        }
+        return false;
     }
 
     public boolean deleteStudentFromCourse(int studentId, int courseId) {

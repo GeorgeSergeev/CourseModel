@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Add Professor</title>
+    <meta charset="UTF-8">
+    <title>Add Professor</title>
 </head>
 <body>
-    <form action="#" th:action="@{/addprofessor}" th:object="${professor}" method="post">
+    <form action="#" th:action="@{/professors/addprofessor}" th:object="${professor}" method="post">
         <label for="name">Name</label>
         <input type="text" th:field="*{name}" id="name" placeholder="Name">
         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span><br>

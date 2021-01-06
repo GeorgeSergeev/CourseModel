@@ -22,11 +22,11 @@
                 <td th:text="${professor.address}"></td>
                 <td th:text="${professor.phone}"></td>
                 <td th:text="${professor.payment}"></td>
-                <td><a th:href="@{/add-professor}">edit</a></td>
+                <td><a th:href="@{edit/{id}(id=${professor.id})}">edit</a></td>
                 <td><a th:href="@{delete/{id}(id=${professor.id})}">delete</a></td>
             </tr>
         </tbody>
     </table>
-    <p><a href="/signup">create</a></p>
+    <p><a href="/professors/signup">create</a></p>
 </body>
 </html>

@@ -17,12 +17,17 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-        public Student save(Student professor) {
-        return studentRepository.saveAndFlush(professor);
+    public Student save(Student student) {
+        return studentRepository.saveAndFlush(student);
     }
 
     public boolean delete(int id) {
-        return studentRepository.delete(id) != 0;
+        Student student = studentRepository.findById(id).orElse(null);
+        if (student != null) {
+            studentRepository.delete(student);
+            return true;
+        }
+        return false;
     }
 
     public Student get(int id) {
