@@ -78,4 +78,6 @@ public class ProfessorRestController {
         professorService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
 }

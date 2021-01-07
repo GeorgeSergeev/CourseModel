@@ -1,14 +1,15 @@
 package ru.tembaster.courses.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -29,28 +30,22 @@ public class Student extends AbstractNamedEntity {
 
     @NotNull
     @Column(name = "avg_performance")
-    private Float avgPerformance;
+    private Double avgPerformance;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "students")
-    private Set<Course> course;
-
-    @JsonIgnore
     @OneToMany(mappedBy = "student")
-    private List<CourseProgress> courseProgress;
+    private Set<CourseProgress> courses;
 
     public Student() {
     }
 
-    public Student(Integer id, String name, String address, String phone, String email, Integer studentNumber, Float avgPerformance) {
+    public Student(Integer id, String name, String address, String phone, String email, Integer studentNumber) {
         super(id, name, address, phone);
         this.email = email;
         this.studentNumber = studentNumber;
-        this.avgPerformance = avgPerformance;
     }
 
-    public Student(String name, String address, String phone, String email, Integer studentNumber, Float avgPerformance) {
-        this(null, name, address, phone, email, studentNumber, avgPerformance);
+    public Student(String name, String address, String phone, String email, Integer studentNumber) {
+        this(null, name, address, phone, email, studentNumber);
     }
 
     @Override

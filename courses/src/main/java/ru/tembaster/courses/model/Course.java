@@ -3,13 +3,10 @@ package ru.tembaster.courses.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -31,23 +28,14 @@ public class Course extends AbstractBaseEntity {
     private Float price;
 
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "student_course",
-               joinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "id")},
-               inverseJoinColumns = {@JoinColumn(name = "student_id", referencedColumnName = "id")})
-    private Set<Student> students;
-
-    @JsonIgnore
     @OneToOne
     @JoinTable(name = "professor_course",
                joinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"))
     private Professor professor;
 
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
-    @Fetch(FetchMode.SELECT)
-    private List<CourseProgress> courseProgress;
+    @OneToMany(mappedBy = "course")
+    private Set<CourseProgress> students;
 
     public Course() {
     }

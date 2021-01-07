@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.tembaster.courses.model.Course;
 import ru.tembaster.courses.model.Student;
 import ru.tembaster.courses.repository.CourseRepository;
-import ru.tembaster.courses.repository.StudentRepository;
+import ru.tembaster.courses.repository.StudentJpaRepository;
 
 import java.util.List;
 import java.util.Set;
@@ -14,12 +14,12 @@ import java.util.Set;
 public class CourseService {
 
     private final CourseRepository courseRepository;
-    private final StudentRepository studentRepository;
+    private final StudentJpaRepository studentJpaRepository;
 
     @Autowired
-    public CourseService(CourseRepository courseRepository, StudentRepository studentRepository) {
+    public CourseService(CourseRepository courseRepository, StudentJpaRepository studentJpaRepository) {
         this.courseRepository = courseRepository;
-        this.studentRepository = studentRepository;
+        this.studentJpaRepository = studentJpaRepository;
     }
 
     public Course save(Course course) {
@@ -56,7 +56,7 @@ public class CourseService {
 
     public Student addStudentToCourse(int studentId, int courseId) {
         Set<Student> students = courseRepository.findById(courseId).get().getStudents();
-        Student studentToAdd = studentRepository.getOne(studentId);
+        Student studentToAdd = studentJpaRepository.getOne(studentId);
         if (!students.contains(studentToAdd)) {
             students.add(studentToAdd);
             return studentToAdd;

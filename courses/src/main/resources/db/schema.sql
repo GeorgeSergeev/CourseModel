@@ -2,7 +2,6 @@ DROP TABLE IF EXISTS courses CASCADE;
 DROP TABLE IF EXISTS professors CASCADE;
 DROP TABLE IF EXISTS STUDENTS CASCADE;
 DROP TABLE IF EXISTS professor_course CASCADE;
-DROP TABLE IF EXISTS student_course CASCADE;
 DROP TABLE IF EXISTS course_progress CASCADE;
 DROP SEQUENCE IF EXISTS GLOBAL_SEQ;
 
@@ -15,7 +14,7 @@ CREATE TABLE STUDENTS (
     phone           VARCHAR(10)         NOT NULL,
     email           VARCHAR(255)        NOT NULL,
     student_number  INTEGER             NOT NULL,
-    avg_performance FLOAT               NOT NULL
+    avg_performance DOUBLE              NOT NULL
 );
 
 CREATE TABLE PROFESSORS
@@ -50,13 +49,5 @@ CREATE TABLE professor_course
     professor_id    INTEGER         NOT NULL,
     course_id       INTEGER         NOT NULL,
     FOREIGN KEY (professor_id) REFERENCES professors(id) ON DELETE CASCADE,
-    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
-);
-
-CREATE TABLE student_course
-(
-    student_id      INTEGER         NOT NULL,
-    course_id       INTEGER         NOT NULL,
-    FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
     FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
