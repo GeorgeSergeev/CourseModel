@@ -5,8 +5,11 @@ import org.springframework.stereotype.Service;
 import ru.tembaster.courses.model.Professor;
 import ru.tembaster.courses.model.Student;
 import ru.tembaster.courses.repository.ProfessorRepository;
+import ru.tembaster.courses.to.ProfessorTo;
+import ru.tembaster.courses.util.ProfessorUtil;
 import ru.tembaster.courses.util.StudentUtil;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -49,5 +52,16 @@ public class ProfessorService {
     public Double getAvgPerformance(int id) {
         Set<Student> studentList = new HashSet<>(professorRepository.getAllStudentsByProfessorId(id));
         return StudentUtil.getAvgPerformanceByStudents(studentList);
+    }
+
+    public List<ProfessorTo> getProfessorToList() {
+        List<Professor> professorList = getAll();
+        List<ProfessorTo> result = new ArrayList<>();
+        for (Professor pr : professorList) {
+            if (pr != null) {
+                result.add(ProfessorUtil.CreateTo(pr, countAllStudents(pr.getId()), getAvgPerformance(pr.getId())));
+            }
+        }
+        return result;
     }
 }

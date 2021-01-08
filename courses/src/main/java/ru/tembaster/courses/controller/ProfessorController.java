@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.tembaster.courses.model.Professor;
 import ru.tembaster.courses.service.ProfessorService;
+import ru.tembaster.courses.to.ProfessorTo;
+import ru.tembaster.courses.util.ExportToXlsUtil;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/professors")
@@ -70,5 +74,11 @@ public class ProfessorController {
         return "redirect:/professors/all";
     }
 
-
+    @GetMapping("/excel")
+    public void exportToExcel(HttpServletResponse response) {
+        response.setHeader("Content-Disposition", "attachment; filename=file.xlsx");
+        List<ProfessorTo> professorTos = professorService.getProfessorToList();
+        ExportToXlsUtil exporter = new ExportToXlsUtil(professorTos);
+        exporter.export(response);
+    }
 }

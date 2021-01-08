@@ -18,7 +18,7 @@ public class Professor extends AbstractNamedEntity {
 
     @NotNull
     @Column(name = "payment")
-    private Float payment;
+    private Double payment;
 
     @JsonIgnore
     @OneToOne(mappedBy = "professor")
@@ -27,12 +27,12 @@ public class Professor extends AbstractNamedEntity {
     public Professor() {
     }
 
-    public Professor(Integer id, String name, String address, String phone, Float payment) {
+    public Professor(Integer id, String name, String address, String phone, Double payment) {
         super(id, name, address, phone);
         this.payment = payment;
     }
 
-    public Professor(String name, String address, String phone, Float payment) {
+    public Professor(String name, String address, String phone, Double payment) {
         this(null, name, address, phone, payment);
     }
 
