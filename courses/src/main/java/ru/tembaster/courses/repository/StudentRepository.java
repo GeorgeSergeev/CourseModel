@@ -1,6 +1,7 @@
 package ru.tembaster.courses.repository;
 
 import org.springframework.stereotype.Repository;
+import ru.tembaster.courses.model.Course;
 import ru.tembaster.courses.model.Student;
 
 import javax.persistence.EntityManager;
@@ -11,7 +12,7 @@ import java.util.List;
 public class StudentRepository {
 
     @PersistenceContext
-    EntityManager entityManager;
+    EntityManager em;
 
     private StudentJpaRepository studentJpaRepository;
 
@@ -39,5 +40,7 @@ public class StudentRepository {
         return studentJpaRepository.getAllMarksByStudentId(id);
     }
 
-
+    public List<Course> getWithCourses(Integer id) {
+        return studentJpaRepository.getWithCourses(id);
+    }
 }

@@ -8,7 +8,6 @@ import ru.tembaster.courses.repository.CourseRepository;
 import ru.tembaster.courses.repository.StudentJpaRepository;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class CourseService {
@@ -44,24 +43,12 @@ public class CourseService {
     }
 
     public boolean deleteStudentFromCourse(int studentId, int courseId) {
-        Set<Student> students = courseRepository.findById(courseId).get().getStudents();
-        for (Student st : students) {
-            if (st.getId().equals(studentId)) {
-                students.remove(st);
-                return true;
-            }
-        }
+        //TODO implement delete from course
         return false;
     }
 
     public Student addStudentToCourse(int studentId, int courseId) {
-        Set<Student> students = courseRepository.findById(courseId).get().getStudents();
-        Student studentToAdd = studentJpaRepository.getOne(studentId);
-        if (!students.contains(studentToAdd)) {
-            students.add(studentToAdd);
-            return studentToAdd;
-        } else {
-            return null;
-        }
+        //TODO implement add to course
+        return null;
     }
 }

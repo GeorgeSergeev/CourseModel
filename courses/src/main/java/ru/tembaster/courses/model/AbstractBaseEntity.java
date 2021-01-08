@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @MappedSuperclass
-public class AbstractBaseEntity implements Persistable<Integer> {
+public abstract class AbstractBaseEntity implements Persistable<Integer> {
 
     public static final int START_SEQ = 100_000;
 

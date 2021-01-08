@@ -40,14 +40,15 @@ public class Course extends AbstractBaseEntity {
     public Course() {
     }
 
-    public Course(Integer id, String name, Float price) {
-        super(id);
-        this.name = name;
-        this.price = price;
+    public Course(String name, Integer number, Float price) {
+        this(null, name, number, price);
     }
 
-    public Course(String name, Float price) {
-        this(null, name, price);
+    public Course(Integer id, String name, Integer number, Float price) {
+        super(id);
+        this.name = name;
+        this.number = number;
+        this.price = price;
     }
 
     @Override

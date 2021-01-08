@@ -37,7 +37,7 @@ public class ProfessorController {
     }
 
     @GetMapping("/signup")
-    public String showSignUpForm(Professor professor) {
+    public String showSignUpForm() {
         return "add-professor";
     }
 

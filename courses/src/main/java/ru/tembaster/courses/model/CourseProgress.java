@@ -3,7 +3,6 @@ package ru.tembaster.courses.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -24,10 +23,9 @@ public class CourseProgress extends AbstractBaseEntity {
     @Column(name = "mark")
     private Integer mark;
 
-    public CourseProgress(Student student, Course course, @Nullable Integer mark) {
+    public CourseProgress(Student student, Course course) {
         this.student = student;
         this.course = course;
-        this.mark = mark;
         student.getCourses().add(this);
         course.getStudents().add(this);
     }

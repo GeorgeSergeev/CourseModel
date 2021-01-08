@@ -23,6 +23,8 @@ public class StudentUtil {
         return stat.getAverage();
     }
 
+
+
     public static Double getAvgPerformanceByCourses(Set<Course> courses) {
         List<Integer> marksList = new ArrayList<>();
         for (Course c : courses) {
