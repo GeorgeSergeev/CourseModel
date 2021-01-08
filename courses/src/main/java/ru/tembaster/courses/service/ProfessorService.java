@@ -3,9 +3,13 @@ package ru.tembaster.courses.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.tembaster.courses.model.Professor;
+import ru.tembaster.courses.model.Student;
 import ru.tembaster.courses.repository.ProfessorRepository;
+import ru.tembaster.courses.util.StudentUtil;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProfessorService {
@@ -38,5 +42,12 @@ public class ProfessorService {
         return (List<Professor>) professorRepository.findAll();
     }
 
+    public Integer countAllStudents(int id) {
+        return professorRepository.getAllStudentsByProfessorId(id).size();
+    }
 
+    public Double getAvgPerformance(int id) {
+        Set<Student> studentList = new HashSet<>(professorRepository.getAllStudentsByProfessorId(id));
+        return StudentUtil.getAvgPerformanceByStudents(studentList);
+    }
 }

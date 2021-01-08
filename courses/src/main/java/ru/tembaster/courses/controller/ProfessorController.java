@@ -54,12 +54,14 @@ public class ProfessorController {
     public String showEditForm(@PathVariable("id") int id, Model model) {
         Professor professor = professorService.get(id);
         model.addAttribute("professor", professor);
+        model.addAttribute("professorStudents", professorService.countAllStudents(id));
+        model.addAttribute("professorStudentsAvgPerformance", professorService.getAvgPerformance(id));
         return "update-professor";
     }
 
     @PostMapping("/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid Professor professor,
-                            BindingResult bindingResult, Model model) {
+                         BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             professor.setId(id);
             return "update-professor";
@@ -67,4 +69,6 @@ public class ProfessorController {
         professorService.save(professor);
         return "redirect:/professors/all";
     }
+
+
 }
