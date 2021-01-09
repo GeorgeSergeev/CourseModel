@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <a href="/professors/all">professors</a><br>
-    <a href="/students/all">students</a><br>
-    <a href="/courses/all">courses</a>
+    <div class="container">
+        <div class="button">
+            <a href="/professors/all">professors</a><br>
+        </div>
+        <div class="button">
+            <a href="/students/all">students</a><br>
+        </div>
+        <div class="button">
+            <a href="/courses/all">courses</a>
+        </div>
+    </div>
 </body>
 </html>

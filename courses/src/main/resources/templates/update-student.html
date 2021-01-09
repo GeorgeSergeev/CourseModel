@@ -3,26 +3,37 @@
     xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Student List</title>
+<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>assigned courses</h1>
-    <h2 th:text="${student.name}"></h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>number</th>
-                <th>price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="course: ${courses}">
-                <td th:text="${course.name}"></td>
-                <td th:text="${course.number}"></td>
-                <td th:text="${course.price}"></td>
-            </tr>
-        </tbody>
-    </table>
-    <p><a href="/students/all">back</a></p>
+    <div class="container">
+        <div class="header">
+            <p>Assigned courses to<span th:text="${student.name}"></span></p>
+        </div>
+    </div>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>number</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="course: ${courses}">
+                    <td th:text="${course.name}"></td>
+                    <td th:text="${course.number}"></td>
+                    <td th:text="${course.price}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="button">
+        <a href="/students/all">back</a>
+    </div>
+    <div class="button">
+        <a href="/index">index</a>
+    </div>
 </body>
 </html>

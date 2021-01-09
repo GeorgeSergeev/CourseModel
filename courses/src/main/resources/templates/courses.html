@@ -2,30 +2,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Course List</title>
+    <title>Course List</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>Course List</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>number</th>
-                <th>price</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="course: ${courses}">
-                <td th:text="${course.name}"></td>
-                <td th:text="${course.number}"></td>
-                <td th:text="${course.price}"></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-    <p><a href="/index">index</a></p>
+    <div class="container">
+        <div class="header">
+            <p>Course List</p>
+        </div>
+    </div>
+    <div class="container">
+        <table class="courses">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>number</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="course: ${courses}">
+                    <td th:text="${course.name}"></td>
+                    <td th:text="${course.number}"></td>
+                    <td th:text="${course.price}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="button">
+        <a href="/index">Index</a>
+    </div>
 </body>
 </html>

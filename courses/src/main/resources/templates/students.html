@@ -3,35 +3,42 @@
     xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Student List</title>
+<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>Student List</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>address</th>
-                <th>phone</th>
-                <th>email</th>
-                <th>grade book No</th>
-                <th>average mark</th>
-                <th colspan="2"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="student: ${students}">
-                <td th:text="${student.name}"></td>
-                <td th:text="${student.address}"></td>
-                <td th:text="${student.phone}"></td>
-                <td th:text="${student.email}"></td>
-                <td th:text="${student.studentNumber}"></td>
-                <td th:text="${student.avgPerformance}"></td>
-                <td><a th:href="@{edit/{id}(id=${student.id})}">edit</a></td>
-                <td><a th:href="@{delete/{id}(id=${student.id})}">delete</a></td>
-            </tr>
-        </tbody>
-    </table>
-    <p><a href="/students/signup">create</a></p><br>
-    <p><a href="/index">index</a></p>
+    <div class="container">
+        <div class="header">
+            <p>Students List</p>
+        </div>
+    </div>
+    <div class="container">
+        <table class="students">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>address</th>
+                    <th>phone</th>
+                    <th>email</th>
+                    <th>Student No</th>
+                    <th>avg mark</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="student: ${students}">
+                    <td th:text="${student.name}"></td>
+                    <td th:text="${student.address}"></td>
+                    <td th:text="${student.phone}"></td>
+                    <td th:text="${student.email}"></td>
+                    <td th:text="${student.studentNumber}"></td>
+                    <td th:text="${student.avgPerformance}"></td>
+                    <td><a th:href="@{edit/{id}(id=${student.id})}">info</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="button">
+        <a href="/index">index</a>
+    </div>
 </body>
 </html>

@@ -41,7 +41,7 @@ public class ProfessorController {
     }
 
     @GetMapping("/signup")
-    public String showSignUpForm() {
+    public String showSignUpForm(@Valid Professor professor, Model model) {
         return "add-professor";
     }
 

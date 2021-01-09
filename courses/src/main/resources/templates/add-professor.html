@@ -4,23 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Professor</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
+
 <body>
-    <form action="#" th:action="@{/professors/addprofessor}" th:object="${professor}" method="post">
-        <label for="name">Name</label>
-        <input type="text" th:field="*{name}" id="name" placeholder="Name">
-        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span><br>
+    <div class="container">
+        <div class="header">
+            <p>Add new Professor</p>
+        </div>
+    </div>
+    <div class="container">
+        <form action="#" th:action="@{/professors/addprofessor}" th:object="${professor}" method="post">
+            <label for="name">Name</label>
+            <input type="text" th:field="*{name}" id="name" placeholder="Name">
 
-        <label for="address">Address</label>
-        <input type="text" th:field="*{address}" id="address" placeholder="Address"><br>
+            <label for="address">Address</label>
+            <input type="text" th:field="*{address}" id="address" placeholder="Address"><br>
 
-        <label for="phone">Phone</label>
-        <input type="text" th:field="*{phone}" id="phone" placeholder="Phone"><br>
+            <label for="phone">Phone</label>
+            <input type="text" th:field="*{phone}" id="phone" placeholder="Phone"><br>
 
-        <label for="payment">Payment</label>
-        <input type="text" th:field="*{payment}" id="payment" placeholder="Payment"><br>
-
-        <input type="submit" value="Add Professor">
-    </form>
+            <label for="payment">Payment</label>
+            <input type="text" th:field="*{payment}" id="payment" placeholder="Payment"><br>
+                
+            <div class="button">
+                <input type="submit" value="Add Professor">
+            </div>
+        </form>
+    </div>
+    <div class="button">
+        <a href="/professors/all">back</a>
+    </div>
+    <div class="button">
+        <a href="/index">index</a>
+    </div>
 </body>
 </html>
