@@ -1,0 +1,12 @@
+# 1. creating the mysql module in JBOSS_HOME/modules/mysql
+# put here correct path to your MySQL connection driver
+module add \
+  --name=com.mysql.driver \
+  --dependencies=javax.api,javax.transaction.api \
+  --resources=C:\git\mysql-connector-java-8.0.23.jar
+
+# 2. creating driver section in standalone.xml config
+/subsystem=datasources/jdbc-driver=mysql:add( driver-name=mysql, driver-module-name=com.mysql.driver, driver-class-name=com.mysql.jdbc.Driver )
+
+# 3. restarting Wildfly server
+:reload
