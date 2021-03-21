@@ -1,18 +1,15 @@
 package ru.khrebtov.repositories;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.khrebtov.entity.Student;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Named
-@ApplicationScoped
+@Stateless
 public class StudentRepo {
     private static final Logger logger = LoggerFactory.getLogger(StudentRepo.class);
 

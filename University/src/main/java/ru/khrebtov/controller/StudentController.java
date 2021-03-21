@@ -5,9 +5,9 @@ package ru.khrebtov.controller;
 import ru.khrebtov.entity.Student;
 import ru.khrebtov.repositories.StudentRepo;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 @SessionScoped
 public class StudentController implements Serializable {
 
-    @Inject
+    @EJB
     private StudentRepo studentRepo;
 
     private Student student;
@@ -36,7 +36,7 @@ public class StudentController implements Serializable {
         return "/student_form.xhtml?faces-redirect=true";
     }
 
-    public List<Student> getAllProducts() {
+    public List<Student> getAllStudents() {
         return students;
     }
 
