@@ -1,8 +1,7 @@
 package ru.khrebtov.controller;
 
 import ru.khrebtov.entity.Course;
-import ru.khrebtov.entity.Student;
-import ru.khrebtov.repositories.CourseRepo;
+import ru.khrebtov.repositories.CourseRepository;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -15,7 +14,7 @@ import java.util.List;
 @Named
 public class CourseController implements Serializable {
     @EJB
-    private CourseRepo courseRepo;
+    private CourseRepository courseRepo;
 
     private Course course;
     private List<Course> courses;

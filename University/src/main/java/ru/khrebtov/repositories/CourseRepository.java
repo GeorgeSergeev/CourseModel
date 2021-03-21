@@ -11,8 +11,8 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless
-public class CourseRepo {
-    private static final Logger logger = LoggerFactory.getLogger(CourseRepo.class);
+public class CourseRepository {
+    private static final Logger logger = LoggerFactory.getLogger(CourseRepository.class);
 
     @PersistenceContext(unitName = "ds")
     private EntityManager em;

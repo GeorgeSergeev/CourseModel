@@ -48,10 +48,10 @@
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <h:inputText styleClass="form-control" id="email"
+                        <h:inputText p:type="email" styleClass="form-control" id="email"
                                      value="#{studentController.student.email}"
                                      placeholder="Enter email">
-                            <f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+<!--                            <f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />-->
                         </h:inputText>
                     </div>
                     <div class="form-group">
@@ -59,6 +59,13 @@
                         <h:inputText p:type="number" styleClass="form-control" id="recordBook"
                                      value="#{studentController.student.recordBook}"
                                      placeholder="Enter record book number"/>
+                    </div>
+
+                    <label>Course</label>
+                    <div class="form-group">
+                        <h:selectManyCheckbox value="#{studentController.student.courses}" layout="pageDirection">
+                            <f:selectItems value="#{studentController.courses}" />
+                        </h:selectManyCheckbox>
                     </div>
 
                     <h:commandButton value="Submit" styleClass="btn btn-primary"

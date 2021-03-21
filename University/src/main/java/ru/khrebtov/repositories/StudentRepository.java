@@ -1,17 +1,19 @@
 package ru.khrebtov.repositories;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.khrebtov.entity.Course;
+import ru.khrebtov.entity.DTOentity.StudentRepr;
 import ru.khrebtov.entity.Student;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless
-public class StudentRepo {
-    private static final Logger logger = LoggerFactory.getLogger(StudentRepo.class);
+public class StudentRepository {
+    private static final Logger logger = LoggerFactory.getLogger(StudentRepository.class);
 
     @PersistenceContext(unitName = "ds")
     private EntityManager em;
@@ -32,15 +34,17 @@ public class StudentRepo {
                 .getSingleResult();
     }
 
-    @Transactional
-    public void saveOrUpdate(Student student) {
-        if (student.getId() == null) {
-            em.persist(student);
-        }
-        em.merge(student);
+//    public void saveOrUpdate(Student student) {
+//        if (student.getId() == null) {
+//            em.persist(student);
+//        }
+//        em.merge(student);
+//    }
+
+    public Student merge(Student student) {
+        return em.merge(student);
     }
 
-    @Transactional
     public void deleteById(Long id) {
         em.createNamedQuery("deleteById")
                 .setParameter("id", id)
@@ -53,4 +57,11 @@ public class StudentRepo {
                 .getSingleResult();
     }
 
+    public List<Course> getStudentCourses(StudentRepr student) {
+        if (student.getId() == null) {
+            throw new IllegalArgumentException();
+        }
+        return em.createNamedQuery("courseLeftJoin", Course.class)
+                .setParameter("studentId", student.getId()).getResultList();
+    }
 }

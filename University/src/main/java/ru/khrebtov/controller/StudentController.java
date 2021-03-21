@@ -2,8 +2,12 @@
 package ru.khrebtov.controller;
 
 
+import ru.khrebtov.entity.Course;
+import ru.khrebtov.entity.DTOentity.CourseRepr;
+import ru.khrebtov.entity.DTOentity.StudentRepr;
 import ru.khrebtov.entity.Student;
-import ru.khrebtov.repositories.StudentRepo;
+import ru.khrebtov.service.CourseService;
+import ru.khrebtov.service.StudentService;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -17,45 +21,62 @@ import java.util.List;
 public class StudentController implements Serializable {
 
     @EJB
-    private StudentRepo studentRepo;
+    private StudentService studentService;
+    @EJB
+    private CourseService courseService;
 
-    private Student student;
-    private List<Student> students;
+    private StudentRepr student;
+    private List<StudentRepr> students;
+    private List<CourseRepr> courses;
 
 
-    public Student getStudent() {
+
+    public StudentRepr getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(StudentRepr student) {
         this.student = student;
     }
 
     public String createStudent() {
-        this.student = new Student();
+        this.student = new StudentRepr();
         return "/student_form.xhtml?faces-redirect=true";
     }
 
-    public List<Student> getAllStudents() {
+    public List<StudentRepr> getAllStudents() {
         return students;
     }
 
-    public String editStudent(Student student) {
+    public String editStudent(StudentRepr student) {
         this.student = student;
         return "/student_form.xhtml?faces-redirect=true";
     }
 
     public void deleteStudent(Student student) {
-        studentRepo.deleteById(student.getId());
+        studentService.deleteById(student.getId());
     }
 
     public String saveStudent() {
-        studentRepo.saveOrUpdate(student);
+        studentService.merge(student);
         return "/student.xhtml?faces-redirect=true";
     }
 
     public void preloadData(ComponentSystemEvent componentSystemEvent) {
-        students = studentRepo.findAll();
+        this.students = studentService.findAll();
+        this.courses = courseService.getAll();
+
+    }
+
+    public List<Course> getStudentCourses(StudentRepr student) {
+        return studentService.getStudentCourses(student);
+    }
+    public List<CourseRepr> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<CourseRepr> courses) {
+        this.courses = courses;
     }
 }
 

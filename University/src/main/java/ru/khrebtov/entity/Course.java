@@ -1,7 +1,10 @@
 package ru.khrebtov.entity;
 
+import ru.khrebtov.entity.DTOentity.CourseRepr;
+
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
@@ -22,7 +25,11 @@ public class Course {
     @Column
     private int number;
     @Column
-    float cost;
+    private float cost;
+
+    @ManyToMany(mappedBy = "courses")
+    private Set<Student> students;
+
 
     public Course() {
     }
@@ -32,6 +39,13 @@ public class Course {
         this.name = name;
         this.number = number;
         this.cost = cost;
+    }
+
+    public Course(CourseRepr courseRepr) {
+        this.id = courseRepr.getId();
+        this.name = courseRepr.getName();
+        this.number = courseRepr.getNumber();
+        this.cost = courseRepr.getCost();
     }
 
     public String getName() {
@@ -66,17 +80,12 @@ public class Course {
         this.cost = cost;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Course course = (Course) o;
-        return number == course.number && Float.compare(course.cost, cost) == 0 && id.equals(course.id) && name.equals(course.name);
+    public Set<Student> getStudents() {
+        return students;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, number, cost);
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 
     @Override

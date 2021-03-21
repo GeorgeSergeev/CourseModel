@@ -61,6 +61,17 @@
                             <f:facet name="header">Progress</f:facet>
                             #{student.progress}
                         </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Corse</f:facet>
+                            <h:dataTable value="#{studentController.getStudentCourses(student)}" var="course"
+                                         styleClass="table table-bordered my-2">
+                                <h:column>
+                                    #{course.name}
+                                </h:column>
+                            </h:dataTable>
+                        </h:column>
+
                         <h:column>
                             <f:facet name="header">Actions</f:facet>
 
