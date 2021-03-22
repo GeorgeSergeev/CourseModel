@@ -1,12 +1,9 @@
 package ru.khrebtov.entity;
 
-import ru.khrebtov.entity.DTOentity.StudentRepr;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import java.util.function.Consumer;
 
 @Entity
 @Table(name = "students")
@@ -34,15 +31,19 @@ public class Student {
     @Column
     private float progress;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "students_courses",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "courses_id")
-    )
-    private Set<Course> courses;
+    @ManyToOne
+    private Course course;
+
+    @OneToMany(mappedBy = "student")
+    private Set<StudyCourse> studyCourses;
+
+    public Set<StudyCourse> getStudyCourses() {
+        return studyCourses;
+    }
+
+    public void setStudyCourses(Set<StudyCourse> studyCourses) {
+        this.studyCourses = studyCourses;
+    }
 
     public Student() {
     }
@@ -57,11 +58,11 @@ public class Student {
         this.progress = progress;
     }
 
-    public Student(StudentRepr student) {
-        this(student.getId(), student.getName(), student.getAddress(), student.getPhone(), student.getEmail(), student.getRecordBook(), student.getProgress());
-        courses = new HashSet<>();
-        student.getCourses().forEach(c->courses.add(new Course(c)));
-    }
+//    public Student(StudentRepr student) {
+//        this(student.getId(), student.getName(), student.getAddress(), student.getPhone(), student.getEmail(), student.getRecordBook(), student.getProgress());
+//        courses = new HashSet<>();
+//        student.getCourses().forEach(c->courses.add(new Course(c)));
+//    }
 
 
     public Long getId() {
@@ -120,12 +121,12 @@ public class Student {
         this.progress = progress;
     }
 
-    public Set<Course> getCourses() {
-        return courses;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @Override

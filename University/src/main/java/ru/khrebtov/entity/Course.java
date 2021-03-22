@@ -3,7 +3,6 @@ package ru.khrebtov.entity;
 import ru.khrebtov.entity.DTOentity.CourseRepr;
 
 import javax.persistence.*;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -27,8 +26,14 @@ public class Course {
     @Column
     private float cost;
 
-    @ManyToMany(mappedBy = "courses")
-    private Set<Student> students;
+
+
+    @OneToMany(mappedBy = "course")
+    private Set<Student> student;
+    @ManyToOne
+    private StudyCourse studyCourse;
+    @OneToOne
+    private Professor professor;
 
 
     public Course() {
@@ -80,12 +85,28 @@ public class Course {
         this.cost = cost;
     }
 
-    public Set<Student> getStudents() {
-        return students;
+    public Set<Student> getStudent() {
+        return student;
     }
 
-    public void setStudents(Set<Student> students) {
-        this.students = students;
+    public void setStudent(Set<Student> student) {
+        this.student = student;
+    }
+
+    public StudyCourse getStudyCourse() {
+        return studyCourse;
+    }
+
+    public void setStudyCourse(StudyCourse studyCourse) {
+        this.studyCourse = studyCourse;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
     @Override

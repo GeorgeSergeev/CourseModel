@@ -61,12 +61,10 @@ public class CourseRepr extends Course {
         this.cost = cost;
     }
 
-    @Override
     public Set<Student> getStudents() {
         return students;
     }
 
-    @Override
     public void setStudents(Set<Student> students) {
         this.students = students;
     }

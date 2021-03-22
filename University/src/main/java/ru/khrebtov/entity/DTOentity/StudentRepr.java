@@ -27,7 +27,7 @@ public class StudentRepr {
         this.recordBook = student.getRecordBook();
         this.progress = student.getProgress();
         this.courses = new HashSet<>();
-        student.getCourses().forEach(c -> this.courses.add(new CourseRepr(c)));
+//        student.getCourses().forEach(c -> this.courses.add(new CourseRepr(c)));
     }
 
     public Long getId() {

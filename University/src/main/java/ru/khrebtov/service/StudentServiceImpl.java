@@ -35,8 +35,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     @TransactionAttribute
     public void merge(StudentRepr student) {
-        Student merged = studentRepository.merge(new Student(student));
-        student.setId(merged.getId());
+//        Student merged = studentRepository.merge(new Student(student));
+//        student.setId(merged.getId());
     }
 
     @Override
