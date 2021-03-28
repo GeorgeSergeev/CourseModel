@@ -1,14 +1,18 @@
 package ru.khrebtov.repositories;
 
 import ru.khrebtov.entity.Course;
+import ru.khrebtov.entity.Professor;
 import ru.khrebtov.entity.Student;
+import ru.khrebtov.entity.StudyCourse;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Stateless
 public class CourseRepository {
@@ -70,5 +74,21 @@ public class CourseRepository {
                 .setParameter("courseId", courseId)
                 .setParameter("studentId", studentId)
                 .executeUpdate();
+    }
+
+    public Set<Student> getCourseStudents(Long courseId){
+        return new HashSet<>(em.createNamedQuery("getCourseStudents",Student.class)
+                .setParameter("courseId",courseId).getResultList()) ;
+
+    }
+
+    public Set<StudyCourse> getCourseStudy(Long courseId) {
+      return new HashSet<>(em.createNamedQuery("getCourseStudy",StudyCourse.class)
+              .setParameter("courseId",courseId).getResultList());
+    }
+
+    public Set<Professor> getCourseProfessor(Long courseId) {
+        return new HashSet<>(em.createNamedQuery("getCourseProfessor",Professor.class)
+                .setParameter("courseId",courseId).getResultList());
     }
 }

@@ -3,15 +3,18 @@ package ru.khrebtov.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.khrebtov.entity.Course;
+import ru.khrebtov.entity.Professor;
 import ru.khrebtov.entity.Student;
+import ru.khrebtov.entity.StudyCourse;
+import ru.khrebtov.entity.dtoEntity.DtoCourse;
 import ru.khrebtov.repositories.CourseRepository;
-import ru.khrebtov.repositories.StudentRepository;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
-import javax.ws.rs.PathParam;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Stateless
 public class CourseServiceImpl implements CourseServiceRest {
@@ -19,19 +22,30 @@ public class CourseServiceImpl implements CourseServiceRest {
 
     @EJB
     private CourseRepository courseRepository;
-    @EJB
-    private StudentRepository studentRepository;
 
     @Override
-    public List<Course> findAll() {
+    public List<DtoCourse> findAll() {
         logger.info("All courses");
-        return courseRepository.findAll();
+        List<DtoCourse> list = new ArrayList<>();
+        for (Course course : courseRepository.findAll()) {
+
+            Set<Student> students = courseRepository.getCourseStudents(course.getId());
+            Set<StudyCourse> studyCourses = courseRepository.getCourseStudy(course.getId());
+            Set<Professor> professors = courseRepository.getCourseProfessor(course.getId());
+
+            DtoCourse dtoCourse = new DtoCourse(course,students,studyCourses,professors);
+            list.add(dtoCourse);
+        }
+        return list;
     }
 
     @Override
-    public Course findById(Long id) {
+    public DtoCourse findById(Long id) {
         logger.info("find course by id = {}", id);
-        return courseRepository.findById(id);
+        Set<Student> students = courseRepository.getCourseStudents(id);
+        Set<StudyCourse> studyCourses = courseRepository.getCourseStudy(id);
+        Set<Professor> professors = courseRepository.getCourseProfessor(id);
+        return new DtoCourse(courseRepository.findById(id),students,studyCourses,professors) ;
     }
 
     @Override
@@ -41,7 +55,7 @@ public class CourseServiceImpl implements CourseServiceRest {
     }
 
     @Override
-    public void insert(Course course) {
+    public void insert(DtoCourse course) {
         logger.info("Try insert course with id {}", course.getId());
         if (course.getId() != null) {
             logger.error("Был передан существующий курс id!=null");
@@ -51,7 +65,7 @@ public class CourseServiceImpl implements CourseServiceRest {
     }
 
     @Override
-    public void update(Course course) {
+    public void update(DtoCourse course) {
         logger.info("Try insert course with id {}", course.getId());
         if (course.getId() == null) {
             logger.error("Был передан не существующий курс id==null");
@@ -61,9 +75,9 @@ public class CourseServiceImpl implements CourseServiceRest {
     }
 
     @TransactionAttribute
-    public void saveOrUpdate(Course course) {
+    public void saveOrUpdate(DtoCourse course) {
         logger.info("Saving student with id {}", course.getId());
-        courseRepository.saveOrUpdate(course);
+        courseRepository.saveOrUpdate(new Course(course));
     }
 
     @Override

@@ -1,6 +1,8 @@
 package ru.khrebtov.entity;
 
 
+import ru.khrebtov.entity.dtoEntity.DtoCourse;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,10 +14,15 @@ import java.util.Set;
         @NamedQuery(name = "deleteCourseById", query = "delete from Course c where c.id = :id"),
         @NamedQuery(name = "findCourseByNumber", query = "from Course c where c.number = :number"),
         @NamedQuery(name = "findCourseById", query = "from Course c where c.id = :id"),
-        @NamedQuery(name = "getStudentCourses", query = "select c from Course c left join CourseStudent cs on c.id=cs.courseId " +
-                "where cs.studentId = :studentId"),
-        @NamedQuery(name = "deleteStudentFromCourse", query = "delete from CourseStudent cs where cs.courseId=:courseId AND cs.studentId=:studentId")
-
+        @NamedQuery(name = "getCourseStudents", query = "select s from Student s left join CourseStudent cs " +
+                "on s.id=cs.studentId where cs.courseId = :courseId"),
+        @NamedQuery(name = "getStudentCourses", query = "select c from Course c left join CourseStudent cs " +
+                "on c.id=cs.courseId where cs.studentId = :studentId"),
+        @NamedQuery(name = "deleteStudentFromCourse", query = "delete from CourseStudent cs " +
+                "where cs.courseId=:courseId AND cs.studentId=:studentId"),
+        @NamedQuery(name = "getCourseStudy", query = "select sc from StudyCourse sc  where sc.course.id = :courseId "),
+        @NamedQuery(name = "getCourseProfessor", query = "select p from Professor p left join CourseProfessor cp" +
+                " on p.id=cp.professorsId where cp.courseId = :courseId")
 })
 public class Course {
     @Id
@@ -63,6 +70,13 @@ public class Course {
         this.name = name;
         this.number = number;
         this.cost = cost;
+    }
+
+    public Course(DtoCourse course) {
+        this(course.getId(), course.getName(), course.getNumber(), course.getCost());
+        this.students=course.getStudents();
+        this.studyCourses =course.getStudyCourses();
+        this.professors = course.getProfessors();
     }
 
 
