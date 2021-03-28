@@ -2,6 +2,7 @@ package ru.khrebtov.entity;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ import java.util.Set;
         @NamedQuery(name = "findByName", query = "from Student s where s.name = :name"),
         @NamedQuery(name = "findById", query = "from Student s where s.id = :id")
 })
-public class Student {
+public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,26 +30,21 @@ public class Student {
     @Column(unique = true)
     private Integer recordBook;
     @Column
-    private float progress;
+    private Float progress;
 
-    @ManyToOne
-    private Course course;
+    @ManyToMany(mappedBy = "students")
+    @Transient
+    private Set<Course> courses;
 
     @OneToMany(mappedBy = "student")
+    @Transient
     private Set<StudyCourse> studyCourses;
 
-    public Set<StudyCourse> getStudyCourses() {
-        return studyCourses;
-    }
-
-    public void setStudyCourses(Set<StudyCourse> studyCourses) {
-        this.studyCourses = studyCourses;
-    }
 
     public Student() {
     }
 
-    public Student(Long id, String name, String address, String phone, String email, Integer recordBook, float progress) {
+    public Student(Long id, String name, String address, String phone, String email, Integer recordBook, Float progress) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -57,13 +53,6 @@ public class Student {
         this.recordBook = recordBook;
         this.progress = progress;
     }
-
-//    public Student(StudentRepr student) {
-//        this(student.getId(), student.getName(), student.getAddress(), student.getPhone(), student.getEmail(), student.getRecordBook(), student.getProgress());
-//        courses = new HashSet<>();
-//        student.getCourses().forEach(c->courses.add(new Course(c)));
-//    }
-
 
     public Long getId() {
         return id;
@@ -113,20 +102,28 @@ public class Student {
         this.recordBook = recordBook;
     }
 
-    public float getProgress() {
+    public Float getProgress() {
         return progress;
     }
 
-    public void setProgress(float progress) {
+    public void setProgress(Float progress) {
         this.progress = progress;
     }
 
-    public Course getCourse() {
-        return course;
+    public Set<Course> getCourses() {
+        return courses;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+    public Set<StudyCourse> getStudyCourses() {
+        return studyCourses;
+    }
+
+    public void setStudyCourses(Set<StudyCourse> studyCourses) {
+        this.studyCourses = studyCourses;
     }
 
     @Override

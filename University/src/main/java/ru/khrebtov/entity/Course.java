@@ -1,6 +1,5 @@
 package ru.khrebtov.entity;
 
-import ru.khrebtov.entity.DTOentity.CourseRepr;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,7 +11,11 @@ import java.util.Set;
         @NamedQuery(name = "countAllCourse", query = "select count(*) from Course "),
         @NamedQuery(name = "deleteCourseById", query = "delete from Course c where c.id = :id"),
         @NamedQuery(name = "findCourseByNumber", query = "from Course c where c.number = :number"),
-        @NamedQuery(name = "findCourseById", query = "from Course c where c.id = :id")
+        @NamedQuery(name = "findCourseById", query = "from Course c where c.id = :id"),
+        @NamedQuery(name = "getStudentCourses", query = "select c from Course c left join CourseStudent cs on c.id=cs.courseId " +
+                "where cs.studentId = :studentId"),
+        @NamedQuery(name = "deleteStudentFromCourse", query = "delete from CourseStudent cs where cs.courseId=:courseId AND cs.studentId=:studentId")
+
 })
 public class Course {
     @Id
@@ -27,13 +30,29 @@ public class Course {
     private float cost;
 
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "course_students",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
+    private Set<Student> students;
 
     @OneToMany(mappedBy = "course")
-    private Set<Student> student;
-    @ManyToOne
-    private StudyCourse studyCourse;
-    @OneToOne
-    private Professor professor;
+    @Transient
+    private Set<StudyCourse> studyCourses;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "course_professor",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "professors_id")
+    )
+    private Set<Professor> professors;
 
 
     public Course() {
@@ -46,12 +65,6 @@ public class Course {
         this.cost = cost;
     }
 
-    public Course(CourseRepr courseRepr) {
-        this.id = courseRepr.getId();
-        this.name = courseRepr.getName();
-        this.number = courseRepr.getNumber();
-        this.cost = courseRepr.getCost();
-    }
 
     public String getName() {
         return name;
@@ -85,28 +98,28 @@ public class Course {
         this.cost = cost;
     }
 
-    public Set<Student> getStudent() {
-        return student;
+    public Set<Student> getStudents() {
+        return students;
     }
 
-    public void setStudent(Set<Student> student) {
-        this.student = student;
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 
-    public StudyCourse getStudyCourse() {
-        return studyCourse;
+    public Set<StudyCourse> getStudyCourses() {
+        return studyCourses;
     }
 
-    public void setStudyCourse(StudyCourse studyCourse) {
-        this.studyCourse = studyCourse;
+    public void setStudyCourses(Set<StudyCourse> studyCourses) {
+        this.studyCourses = studyCourses;
     }
 
-    public Professor getProfessor() {
-        return professor;
+    public Set<Professor> getProfessors() {
+        return professors;
     }
 
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setProfessors(Set<Professor> professors) {
+        this.professors = professors;
     }
 
     @Override

@@ -1,11 +1,9 @@
 package ru.khrebtov.repositories;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import ru.khrebtov.entity.Course;
-import ru.khrebtov.entity.DTOentity.StudentRepr;
 import ru.khrebtov.entity.Student;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,10 +11,11 @@ import java.util.List;
 
 @Stateless
 public class StudentRepository {
-    private static final Logger logger = LoggerFactory.getLogger(StudentRepository.class);
 
     @PersistenceContext(unitName = "ds")
     private EntityManager em;
+    @EJB
+    private CourseRepository courseRepository;
 
     public List<Student> findAll() {
         return em.createNamedQuery("findAll", Student.class)
@@ -34,15 +33,11 @@ public class StudentRepository {
                 .getSingleResult();
     }
 
-//    public void saveOrUpdate(Student student) {
-//        if (student.getId() == null) {
-//            em.persist(student);
-//        }
-//        em.merge(student);
-//    }
-
-    public Student merge(Student student) {
-        return em.merge(student);
+    public void saveOrUpdate(Student student) {
+        if (student.getId() == null) {
+            em.persist(student);
+        }
+        em.merge(student);
     }
 
     public void deleteById(Long id) {
@@ -51,17 +46,15 @@ public class StudentRepository {
                 .executeUpdate();
     }
 
-    public Student findByName(String name) {
-        return em.createNamedQuery("findByName", Student.class)
-                .setParameter("name", name)
-                .getSingleResult();
+    public void signIntoCourse(Course course, Student student) {
+    //TODO
+        courseRepository.addStudent(course.getId(), student.getId());
     }
 
-    public List<Course> getStudentCourses(StudentRepr student) {
-        if (student.getId() == null) {
-            throw new IllegalArgumentException();
+    public List<Course> getStudentCourses(Long studentId) {
+        if (studentId == null) {
+            throw new IllegalArgumentException("Передан  не существующий студент (id=null)");
         }
-        return em.createNamedQuery("courseLeftJoin", Course.class)
-                .setParameter("studentId", student.getId()).getResultList();
+        return em.createNamedQuery("getStudentCourses", Course.class).setParameter("studentId", studentId).getResultList();
     }
 }

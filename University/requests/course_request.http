@@ -1,0 +1,40 @@
+GET http://127.0.0.1:8080/university/api/v1/course/count
+
+###
+GET http://127.0.0.1:8080/university/api/v1/course/
+
+###
+GET http://127.0.0.1:8080/university/api/v1/course/5
+
+###
+DELETE http://127.0.0.1:8080/university/api/v1/course/6
+
+###
+POST http://127.0.0.1:8080/university/api/v1/course/
+Content-Type: application/json
+
+{
+  "cost": 500.0,
+  "name": "Английский",
+  "number": 777
+}
+
+###
+PUT http://localhost:8080/university/api/v1/course/
+Content-Type: application/json
+
+{
+  "cost": 2500.0,
+  "id": 5,
+  "name": "Физика",
+  "number": 666,
+  "professors": [],
+  "students": []
+}
+
+
+
+
+
+
+

@@ -3,11 +3,9 @@ package ru.khrebtov.controller;
 
 
 import ru.khrebtov.entity.Course;
-import ru.khrebtov.entity.DTOentity.CourseRepr;
-import ru.khrebtov.entity.DTOentity.StudentRepr;
 import ru.khrebtov.entity.Student;
-import ru.khrebtov.service.CourseService;
-import ru.khrebtov.service.StudentService;
+import ru.khrebtov.repositories.CourseRepository;
+import ru.khrebtov.repositories.StudentRepository;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -21,34 +19,34 @@ import java.util.List;
 public class StudentController implements Serializable {
 
     @EJB
-    private StudentService studentService;
+    private StudentRepository studentService;
     @EJB
-    private CourseService courseService;
+    private CourseRepository courseService;
 
-    private StudentRepr student;
-    private List<StudentRepr> students;
-    private List<CourseRepr> courses;
+    private Student student;
+    private List<Student> students;
+    private List<Course> courses;
 
 
 
-    public StudentRepr getStudent() {
+    public Student getStudent() {
         return student;
     }
 
-    public void setStudent(StudentRepr student) {
+    public void setStudent(Student student) {
         this.student = student;
     }
 
     public String createStudent() {
-        this.student = new StudentRepr();
+        this.student = new Student();
         return "/student_form.xhtml?faces-redirect=true";
     }
 
-    public List<StudentRepr> getAllStudents() {
+    public List<Student> getAllStudents() {
         return students;
     }
 
-    public String editStudent(StudentRepr student) {
+    public String editStudent(Student student) {
         this.student = student;
         return "/student_form.xhtml?faces-redirect=true";
     }
@@ -58,24 +56,24 @@ public class StudentController implements Serializable {
     }
 
     public String saveStudent() {
-        studentService.merge(student);
+        studentService.saveOrUpdate(student);
         return "/student.xhtml?faces-redirect=true";
     }
 
     public void preloadData(ComponentSystemEvent componentSystemEvent) {
         this.students = studentService.findAll();
-        this.courses = courseService.getAll();
+        this.courses = courseService.findAll();
 
     }
 
-    public List<Course> getStudentCourses(StudentRepr student) {
-        return studentService.getStudentCourses(student);
+    public List<Course> getStudentCourses(Long studentId) {
+        return studentService.getStudentCourses(studentId);
     }
-    public List<CourseRepr> getCourses() {
+    public List<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<CourseRepr> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 }

@@ -1,0 +1,106 @@
+GET http://127.0.0.1:8080/university/api/v1/study/count
+###
+GET http://127.0.0.1:8080/university/api/v1/study/
+###
+GET http://127.0.0.1:8080/university/api/v1/study/1
+###
+DELETE http://127.0.0.1:8080/university/api/v1/study/4
+###
+POST http://127.0.0.1:8080/university/api/v1/study/
+Content-Type: application/json
+
+{
+  "course": {
+    "cost": 1500.0,
+    "id": 1,
+    "name": "Математика",
+    "number": 555,
+    "professors": [
+      {
+        "address": "Спортивная 23",
+        "id": 1,
+        "name": "Амосов В.П.",
+        "payment": 2000.0,
+        "phone": "+79787594352"
+      }
+    ],
+    "students": [
+      {
+        "address": "Фрунзе 45",
+        "email": "ya2@ya.ru",
+        "id": 4,
+        "name": "Иванов Иван",
+        "phone": "+79787549394",
+        "recordBook": 565657
+      },
+      {
+        "address": "Фрунзе 43",
+        "email": "ya@ya.ru",
+        "id": 1,
+        "name": "Иванов Иван",
+        "phone": "+79787549393",
+        "progress": 5.0,
+        "recordBook": 565656
+      }
+    ]
+  },
+  "id": 4,
+  "student": {
+    "address": "Фрунзе 45",
+    "email": "ya2@ya.ru",
+    "id": 4,
+    "name": "Иванов Иван",
+    "phone": "+79787549394",
+    "recordBook": 565657
+  }
+}
+
+###
+PUT http://localhost:8080/university/api/v1/study/
+Content-Type: application/json
+
+{
+  "course": {
+    "cost": 1500.0,
+    "id": 1,
+    "name": "Математика",
+    "number": 555,
+    "professors": [
+      {
+        "address": "Спортивная 23",
+        "id": 1,
+        "name": "Амосов В.П.",
+        "payment": 2000.0,
+        "phone": "+79787594352"
+      }
+    ],
+    "students": [
+      {
+        "address": "Фрунзе 45",
+        "email": "ya2@ya.ru",
+        "id": 4,
+        "name": "Иванов Иван",
+        "phone": "+79787549394",
+        "recordBook": 565657
+      },
+      {
+        "address": "Фрунзе 43",
+        "email": "ya@ya.ru",
+        "id": 1,
+        "name": "Иванов Иван",
+        "phone": "+79787549393",
+        "progress": 5.0,
+        "recordBook": 565656
+      }
+    ]
+  },
+  "id": 6,
+  "student": {
+    "address": "Балашова 15",
+    "email": "ya3@ya.ru",
+    "id": 6,
+    "name": "Петров П.П.",
+    "phone": "+79787541212",
+    "recordBook": 565658
+  }
+}

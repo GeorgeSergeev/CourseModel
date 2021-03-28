@@ -1,23 +1,34 @@
 package ru.khrebtov.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Table(name = "professors")
+@NamedQueries({
+        @NamedQuery(name = "findAllProfessors", query = "from Professor "),
+        @NamedQuery(name = "countAllProfessors", query = "select count(*) from Professor "),
+        @NamedQuery(name = "deleteProfessorsById", query = "delete from Professor p where p.id = :id"),
+        @NamedQuery(name = "findProfessorById", query = "from Professor p where p.id = :id")
+})
 public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
+    @NotNull
     private String name;
     @Column
     private String address;
     @Column
+    @NotNull
     private String phone;
     @Column
     private Float payment;
-    @OneToOne
-    private Course course;
+    @ManyToMany(mappedBy = "professors")
+    @Transient
+    private Set<Course> course;
 
 
     public Professor() {
@@ -63,11 +74,11 @@ public class Professor {
         this.payment = payment;
     }
 
-    public Course getCourse() {
+    public Set<Course> getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
+    public void setCourse(Set<Course> course) {
         this.course = course;
     }
 }

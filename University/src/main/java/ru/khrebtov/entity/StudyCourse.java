@@ -1,14 +1,18 @@
 package ru.khrebtov.entity;
 
-import org.hibernate.annotations.CollectionType;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "study_course")
+@NamedQueries({
+        @NamedQuery(name = "findAllStudyCourse", query = "from StudyCourse "),
+        @NamedQuery(name = "countAllStudyCourse", query = "select count(*) from StudyCourse"),
+        @NamedQuery(name = "deleteStudyCourseById", query = "delete from StudyCourse sc where sc.id = :id"),
+        @NamedQuery(name = "findStudyCourseById", query = "from StudyCourse sc where sc.id = :id")
+})
 public class StudyCourse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,16 +21,17 @@ public class StudyCourse {
     @ElementCollection
     @CollectionTable(name = "ratings", joinColumns = @JoinColumn(name = "study_course_id"))
     @Column(name = "rating")
+    @Transient
     private List<Integer> rating;
 
 
-
     @ManyToOne
+    @NotNull
     private Student student;
 
-    @OneToMany(mappedBy = "studyCourse")
-    private Set<Course> courses;
-
+    @ManyToOne
+    @NotNull
+    private Course course;
 
 
     public StudyCourse() {
@@ -48,11 +53,19 @@ public class StudyCourse {
         this.student = student;
     }
 
-    public Set<Course> getCourses() {
-        return courses;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

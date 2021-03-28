@@ -1,0 +1,30 @@
+GET http://127.0.0.1:8080/university/api/v1/professor/count
+###
+GET http://127.0.0.1:8080/university/api/v1/professor/
+###
+GET http://127.0.0.1:8080/university/api/v1/professor/1
+###
+DELETE http://127.0.0.1:8080/university/api/v1/professor/3
+###
+POST http://127.0.0.1:8080/university/api/v1/professor/
+Content-Type: application/json
+
+{
+  "address": "Спортивная 23",
+  "name": "Павлов В.П.",
+  "payment": 1800.0,
+  "phone": "+79787594352"
+}
+
+###
+PUT http://localhost:8080/university/api/v1/professor/
+Content-Type: application/json
+
+{
+  "address": "Спортивная 258",
+  "id": 3,
+  "name": "Павлов В.П.",
+  "payment": 1800.0,
+  "phone": "+79787594352"
+}
+
