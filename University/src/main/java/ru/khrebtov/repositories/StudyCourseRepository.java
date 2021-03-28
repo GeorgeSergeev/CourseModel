@@ -42,4 +42,16 @@ public class StudyCourseRepository {
                 .setParameter("id", id)
                 .executeUpdate();
     }
+
+    public Float getAverageRating(Long studyCourseId){
+       return em.createNamedQuery("getAverageRating",Float.class)
+                .setParameter("id", studyCourseId)
+                .getSingleResult();
+    }
+
+    public List<Integer> getRatings(Long studyCourseId){
+        return em.createNamedQuery("getRatings",Integer.class)
+                .setParameter("id", studyCourseId)
+                .getResultList();
+    }
 }

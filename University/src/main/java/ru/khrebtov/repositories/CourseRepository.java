@@ -8,7 +8,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import javax.ws.rs.PathParam;
 import java.util.List;
 
 @Stateless
@@ -56,10 +55,6 @@ public class CourseRepository {
             throw new IllegalArgumentException("Передан не существующий курс (id=null) или не существующий " +
                     "студент (id=null)");
         }
-//        Course course = findById(courseId);
-//        Student student = studentRepository.findById(studentId);
-//        course.getStudents().add(student);
-//        saveOrUpdate(course);
         em.createNativeQuery("insert into course_students (course_id, student_id) VALUES (course_id=:courseId, student_id=:studentId)")
                 .setParameter("courseId", courseId)
                 .setParameter("studentId", studentId).executeUpdate();

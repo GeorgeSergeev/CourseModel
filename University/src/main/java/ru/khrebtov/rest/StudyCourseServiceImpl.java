@@ -3,12 +3,15 @@ package ru.khrebtov.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.khrebtov.entity.StudyCourse;
+import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 import ru.khrebtov.repositories.StudyCourseRepository;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
+import java.util.ArrayList;
 import java.util.List;
+
 
 @Stateless
 public class StudyCourseServiceImpl implements StudyCourseServiceRest {
@@ -18,15 +21,22 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
     private StudyCourseRepository studyCourseRepository;
 
     @Override
-    public List<StudyCourse> findAll() {
+    public List<DtoStudyCourse> findAll() {
         logger.info("all StudyCourse");
-        return studyCourseRepository.findAll();
+        List<DtoStudyCourse> list = new ArrayList<>();
+        for (StudyCourse studyCourse : studyCourseRepository.findAll()) {
+            List<Integer> rating = studyCourseRepository.getRatings(studyCourse.getId());
+            DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(studyCourse,  rating);
+            list.add(dtoStudyCourse);
+        }
+        return list;
     }
 
     @Override
-    public StudyCourse findById(Long id) {
+    public DtoStudyCourse findById(Long id) {
         logger.info("find studyCourse by id = {}",id);
-        return studyCourseRepository.findById(id);
+        List<Integer> rating = studyCourseRepository.getRatings(id);
+        return  new DtoStudyCourse(studyCourseRepository.findById(id),rating) ;
     }
 
     @Override
@@ -36,7 +46,7 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
     }
 
     @Override
-    public void insert(StudyCourse studyCourse) {
+    public void insert(DtoStudyCourse studyCourse) {
         logger.info("Try insert studyCourse with id {}", studyCourse.getId());
         if (studyCourse.getId() == null) {
             logger.error("Был передан не существующий studyCourse id==null");
@@ -46,7 +56,7 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
     }
 
     @Override
-    public void update(StudyCourse studyCourse) {
+    public void update(DtoStudyCourse studyCourse) {
         logger.info("Try update professor with id {}", studyCourse.getId());
         if (studyCourse.getId() == null) {
             logger.error("Был передан не существующий профессор id==null");
@@ -56,9 +66,9 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
     }
 
     @TransactionAttribute
-    public void saveOrUpdate(StudyCourse studyCourse) {
+    public void saveOrUpdate(DtoStudyCourse studyCourse) {
         logger.info("Saving studyCourse with id {}", studyCourse.getId());
-        studyCourseRepository.saveOrUpdate(studyCourse);
+        studyCourseRepository.saveOrUpdate(new StudyCourse(studyCourse));
     }
 
     @Override

@@ -1,6 +1,8 @@
 package ru.khrebtov.entity;
 
 
+import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -11,7 +13,10 @@ import java.util.List;
         @NamedQuery(name = "findAllStudyCourse", query = "from StudyCourse "),
         @NamedQuery(name = "countAllStudyCourse", query = "select count(*) from StudyCourse"),
         @NamedQuery(name = "deleteStudyCourseById", query = "delete from StudyCourse sc where sc.id = :id"),
-        @NamedQuery(name = "findStudyCourseById", query = "from StudyCourse sc where sc.id = :id")
+        @NamedQuery(name = "findStudyCourseById", query = "from StudyCourse sc where sc.id = :id"),
+        @NamedQuery(name = "getAverageRating",query = "select sum(rating)/count(*) from Rating r " +
+                "where r.studyCourseId=:id"),
+        @NamedQuery(name = "getRatings",query = "select r.rating from Rating r where r.studyCourseId=:id")
 })
 public class StudyCourse {
     @Id
@@ -35,6 +40,12 @@ public class StudyCourse {
 
 
     public StudyCourse() {
+    }
+    public StudyCourse(DtoStudyCourse dtoStudyCourse) {
+        this.id = dtoStudyCourse.getId();
+        this.rating = dtoStudyCourse.getRating();
+        this.student = dtoStudyCourse.getStudent();
+        this.course = dtoStudyCourse.getCourse();
     }
 
     public List<Integer> getRating() {

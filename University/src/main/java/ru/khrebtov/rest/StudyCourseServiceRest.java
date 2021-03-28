@@ -1,6 +1,6 @@
 package ru.khrebtov.rest;
 
-import ru.khrebtov.entity.StudyCourse;
+import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -10,12 +10,12 @@ import java.util.List;
 public interface StudyCourseServiceRest {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<StudyCourse> findAll();
+    List<DtoStudyCourse> findAll();
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    StudyCourse findById(@PathParam("id") Long id);
+    DtoStudyCourse findById(@PathParam("id") Long id);
 
     @GET
     @Path("/count")
@@ -24,11 +24,11 @@ public interface StudyCourseServiceRest {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    void insert(StudyCourse studyCourse);
+    void insert(DtoStudyCourse studyCourse);
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    void update(StudyCourse studyCourse);
+    void update(DtoStudyCourse studyCourse);
 
     @DELETE
     @Path("/{id}")
