@@ -1,14 +1,13 @@
 package ru.khrebtov.entity.dtoEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ratings")
 public class Rating {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name ="study_course_id" )
     private Long studyCourseId;
     @Column(name = "rating")
