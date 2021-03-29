@@ -38,7 +38,7 @@ public class DtoStudent {
         this.courses = new HashSet<>();
         this.studyCourses = new HashSet<>();
         student.getCourses().forEach(c -> courses.add(new DtoCourse(c)));
-        student.getStudyCourses().forEach(DtoStudyCourse::new);
+        student.getStudyCourses().forEach(sc -> studyCourses.add(new DtoStudyCourse(sc)));
     }
 
 

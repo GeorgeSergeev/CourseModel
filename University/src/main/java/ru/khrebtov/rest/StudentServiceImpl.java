@@ -26,8 +26,9 @@ public class StudentServiceImpl implements StudentServiceRest {
         logger.info("all students");
         List<DtoStudent> list = new ArrayList<>();
         for (Student student : studentRepository.findAll()) {
-            student.setCourses(studentRepository.getStudentCourses(student.getId()));
-            student.setStudyCourses(studentRepository.getStudentStudyCourse(student));
+            Long studentId = student.getId();
+            student.setCourses(studentRepository.getStudentCourses(studentId));
+            student.setStudyCourses(studentRepository.getStudentStudyCourse(studentId));
             DtoStudent dtoStudent = new DtoStudent(student);
             list.add(dtoStudent);
         }
@@ -37,10 +38,9 @@ public class StudentServiceImpl implements StudentServiceRest {
     @Override
     public DtoStudent findById(Long id) {
         logger.info("find student by id = {}", id);
-
         Student studentById = studentRepository.findById(id);
         studentById.setCourses(studentRepository.getStudentCourses(id));
-        studentById.setStudyCourses(studentRepository.getStudentStudyCourse(studentById));
+        studentById.setStudyCourses(studentRepository.getStudentStudyCourse(id));
         return new DtoStudent(studentById);
     }
 

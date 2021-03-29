@@ -19,7 +19,7 @@ import java.util.Set;
         @NamedQuery(name = "findById", query = "from Student s where s.id = :id"),
         @NamedQuery(name = "getStudentCourses", query = "select c from Course c left join CourseStudent cs " +
                 "on c.id=cs.courseId where cs.studentId = :studentId"),
-        @NamedQuery(name = "getStudentStudyCourse", query = "select sc from StudyCourse sc where sc.student = :student")
+        @NamedQuery(name = "getStudentStudyCourse", query = "select sc from StudyCourse sc where sc.student.id = :studentId")
 })
 public class Student implements Serializable {
     @Id
@@ -68,7 +68,6 @@ public class Student implements Serializable {
         this.courses = new HashSet<>();
         student.getStudyCourses().forEach(sc -> studyCourses.add(new StudyCourse(sc)));
         student.getCourses().forEach(c -> courses.add(new Course(c)));
-
     }
 
     public Long getId() {

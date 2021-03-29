@@ -62,11 +62,11 @@ public class StudentRepository {
                 .setParameter("studentId", studentId).getResultList());
     }
 
-    public Set<StudyCourse> getStudentStudyCourse(Student student) {
-        if (student.getId() == null) {
+    public Set<StudyCourse> getStudentStudyCourse(Long studentId) {
+        if (studentId == null) {
             throw new IllegalArgumentException("Передан  не существующий студент (id=null)");
         }
         return new HashSet<>(em.createNamedQuery("getStudentStudyCourse", StudyCourse.class)
-                .setParameter("student", student).getResultList());
+                .setParameter("studentId", studentId).getResultList());
     }
 }
