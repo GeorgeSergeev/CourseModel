@@ -1,7 +1,10 @@
 package ru.khrebtov.entity;
 
+import ru.khrebtov.entity.dtoEntity.DtoProfessor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -10,7 +13,9 @@ import java.util.Set;
         @NamedQuery(name = "findAllProfessors", query = "from Professor "),
         @NamedQuery(name = "countAllProfessors", query = "select count(*) from Professor "),
         @NamedQuery(name = "deleteProfessorsById", query = "delete from Professor p where p.id = :id"),
-        @NamedQuery(name = "findProfessorById", query = "from Professor p where p.id = :id")
+        @NamedQuery(name = "findProfessorById", query = "from Professor p where p.id = :id"),
+        @NamedQuery(name = "getProfessorCourse", query = "select c from Course c left join CourseProfessor cp" +
+                " on c.id=cp.courseId where cp.professorsId = :professorId")
 })
 public class Professor {
     @Id
@@ -32,6 +37,16 @@ public class Professor {
 
 
     public Professor() {
+    }
+
+    public Professor(DtoProfessor professor) {
+        this.id = professor.getId();
+        this.name = professor.getName();
+        this.address = professor.getAddress();
+        this.phone = professor.getPhone();
+        this.payment = professor.getPayment();
+        this.course = new HashSet<>();
+        professor.getCourse().forEach(c-> course.add(new Course(c)));
     }
 
     public Long getId() {

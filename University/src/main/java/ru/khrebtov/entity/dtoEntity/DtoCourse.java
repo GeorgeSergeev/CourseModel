@@ -19,6 +19,13 @@ public class DtoCourse {
     public DtoCourse() {
     }
 
+    public DtoCourse(Course course) {
+        this.id = course.getId();
+        this.name = course.getName();
+        this.number = course.getNumber();
+        this.cost = course.getCost();
+    }
+
     public DtoCourse(Course course, Set<Student> students, Set<StudyCourse> studyCourses, Set<Professor> professors) {
         this.id = course.getId();
         this.name = course.getName();

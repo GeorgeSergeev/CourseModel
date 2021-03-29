@@ -16,8 +16,6 @@ import java.util.Set;
         @NamedQuery(name = "findCourseById", query = "from Course c where c.id = :id"),
         @NamedQuery(name = "getCourseStudents", query = "select s from Student s left join CourseStudent cs " +
                 "on s.id=cs.studentId where cs.courseId = :courseId"),
-        @NamedQuery(name = "getStudentCourses", query = "select c from Course c left join CourseStudent cs " +
-                "on c.id=cs.courseId where cs.studentId = :studentId"),
         @NamedQuery(name = "deleteStudentFromCourse", query = "delete from CourseStudent cs " +
                 "where cs.courseId=:courseId AND cs.studentId=:studentId"),
         @NamedQuery(name = "getCourseStudy", query = "select sc from StudyCourse sc  where sc.course.id = :courseId "),

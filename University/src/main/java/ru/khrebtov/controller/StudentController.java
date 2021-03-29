@@ -13,6 +13,7 @@ import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Named
 @SessionScoped
@@ -26,7 +27,6 @@ public class StudentController implements Serializable {
     private Student student;
     private List<Student> students;
     private List<Course> courses;
-
 
 
     public Student getStudent() {
@@ -66,9 +66,10 @@ public class StudentController implements Serializable {
 
     }
 
-    public List<Course> getStudentCourses(Long studentId) {
+    public Set<Course> getStudentCourses(Long studentId) {
         return studentService.getStudentCourses(studentId);
     }
+
     public List<Course> getCourses() {
         return courses;
     }

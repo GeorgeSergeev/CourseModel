@@ -1,8 +1,11 @@
 package ru.khrebtov.entity;
 
 
+import ru.khrebtov.entity.dtoEntity.DtoStudent;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -13,7 +16,10 @@ import java.util.Set;
         @NamedQuery(name = "countAll", query = "select count(*) from Student "),
         @NamedQuery(name = "deleteById", query = "delete from Student s where s.id = :id"),
         @NamedQuery(name = "findByName", query = "from Student s where s.name = :name"),
-        @NamedQuery(name = "findById", query = "from Student s where s.id = :id")
+        @NamedQuery(name = "findById", query = "from Student s where s.id = :id"),
+        @NamedQuery(name = "getStudentCourses", query = "select c from Course c left join CourseStudent cs " +
+                "on c.id=cs.courseId where cs.studentId = :studentId"),
+        @NamedQuery(name = "getStudentStudyCourse", query = "select sc from StudyCourse sc where sc.student = :student")
 })
 public class Student implements Serializable {
     @Id
@@ -44,7 +50,8 @@ public class Student implements Serializable {
     public Student() {
     }
 
-    public Student(Long id, String name, String address, String phone, String email, Integer recordBook, Float progress) {
+    public Student(Long id, String name, String address, String phone, String email, Integer recordBook,
+                   Float progress) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -52,6 +59,16 @@ public class Student implements Serializable {
         this.email = email;
         this.recordBook = recordBook;
         this.progress = progress;
+    }
+
+    public Student(DtoStudent student) {
+        this(student.getId(), student.getName(), student.getAddress(), student.getPhone(), student.getEmail(),
+                student.getRecordBook(), student.getProgress());
+        this.studyCourses = new HashSet<>();
+        this.courses = new HashSet<>();
+        student.getStudyCourses().forEach(sc -> studyCourses.add(new StudyCourse(sc)));
+        student.getCourses().forEach(c -> courses.add(new Course(c)));
+
     }
 
     public Long getId() {

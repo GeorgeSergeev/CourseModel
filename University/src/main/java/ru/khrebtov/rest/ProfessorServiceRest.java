@@ -1,6 +1,7 @@
 package ru.khrebtov.rest;
 
-import ru.khrebtov.entity.Professor;
+
+import ru.khrebtov.entity.dtoEntity.DtoProfessor;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -10,12 +11,12 @@ import java.util.List;
 public interface ProfessorServiceRest {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<Professor> findAll();
+    List<DtoProfessor> findAll();
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    Professor findById(@PathParam("id") Long id);
+    DtoProfessor findById(@PathParam("id") Long id);
 
     @GET
     @Path("/count")
@@ -24,11 +25,11 @@ public interface ProfessorServiceRest {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    void insert(Professor professor);
+    void insert(DtoProfessor professor);
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    void update(Professor professor);
+    void update(DtoProfessor professor);
 
     @DELETE
     @Path("/{id}")

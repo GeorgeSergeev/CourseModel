@@ -4,12 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.khrebtov.entity.Course;
 import ru.khrebtov.entity.Student;
+import ru.khrebtov.entity.dtoEntity.DtoStudent;
 import ru.khrebtov.repositories.StudentRepository;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Stateless
 public class StudentServiceImpl implements StudentServiceRest {
@@ -19,15 +22,26 @@ public class StudentServiceImpl implements StudentServiceRest {
     private StudentRepository studentRepository;
 
     @Override
-    public List<Student> findAll() {
+    public List<DtoStudent> findAll() {
         logger.info("all students");
-        return studentRepository.findAll();
+        List<DtoStudent> list = new ArrayList<>();
+        for (Student student : studentRepository.findAll()) {
+            student.setCourses(studentRepository.getStudentCourses(student.getId()));
+            student.setStudyCourses(studentRepository.getStudentStudyCourse(student));
+            DtoStudent dtoStudent = new DtoStudent(student);
+            list.add(dtoStudent);
+        }
+        return list;
     }
 
     @Override
-    public Student findById(Long id) {
-        logger.info("find student by id = {}",id);
-        return studentRepository.findById(id);
+    public DtoStudent findById(Long id) {
+        logger.info("find student by id = {}", id);
+
+        Student studentById = studentRepository.findById(id);
+        studentById.setCourses(studentRepository.getStudentCourses(id));
+        studentById.setStudyCourses(studentRepository.getStudentStudyCourse(studentById));
+        return new DtoStudent(studentById);
     }
 
     @Override
@@ -37,7 +51,7 @@ public class StudentServiceImpl implements StudentServiceRest {
     }
 
     @Override
-    public void insert(Student student) {
+    public void insert(DtoStudent student) {
         logger.info("Try insert student with id {}", student.getId());
         if (student.getId() != null) {
             logger.error("Был передан существующий студент id!=null");
@@ -47,7 +61,7 @@ public class StudentServiceImpl implements StudentServiceRest {
     }
 
     @Override
-    public void update(Student student) {
+    public void update(DtoStudent student) {
         logger.info("Try update student with id {}", student.getId());
         if (student.getId() == null) {
             logger.error("Был передан новый студент id=null");
@@ -57,9 +71,9 @@ public class StudentServiceImpl implements StudentServiceRest {
     }
 
     @TransactionAttribute
-    public void saveOrUpdate(Student student) {
+    public void saveOrUpdate(DtoStudent student) {
         logger.info("Saving student with id {}", student.getId());
-        studentRepository.saveOrUpdate(student);
+        studentRepository.saveOrUpdate(new Student(student));
     }
 
     @Override
@@ -70,11 +84,11 @@ public class StudentServiceImpl implements StudentServiceRest {
 
     @Override
     public void signIntoCourse(Course course, Student student) {
-    //TODO
+        //TODO
     }
 
     @Override
-    public List<Course> getStudentCourses(Long studentId) {
+    public Set<Course> getStudentCourses(Long studentId) {
         logger.info("Get student Courses for student id {}", studentId);
         //TODO
         return studentRepository.getStudentCourses(studentId);

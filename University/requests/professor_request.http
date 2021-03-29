@@ -10,10 +10,11 @@ POST http://127.0.0.1:8080/university/api/v1/professor/
 Content-Type: application/json
 
 {
-  "address": "Спортивная 23",
-  "name": "Павлов В.П.",
-  "payment": 1800.0,
-  "phone": "+79787594352"
+  "address": "Василево 23",
+  "course": [],
+  "name": "Курчатов В.П.",
+  "payment": 2000.0,
+  "phone": "8800253256"
 }
 
 ###
@@ -21,10 +22,11 @@ PUT http://localhost:8080/university/api/v1/professor/
 Content-Type: application/json
 
 {
-  "address": "Спортивная 258",
-  "id": 3,
-  "name": "Павлов В.П.",
-  "payment": 1800.0,
-  "phone": "+79787594352"
+  "id": 4,
+  "address": "Василево 23",
+  "course": [],
+  "name": "Курчатов Ф.П.",
+  "payment": 2000.0,
+  "phone": "8800253256"
 }
 

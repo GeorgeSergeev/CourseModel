@@ -2,12 +2,15 @@ package ru.khrebtov.repositories;
 
 import ru.khrebtov.entity.Course;
 import ru.khrebtov.entity.Student;
+import ru.khrebtov.entity.StudyCourse;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Stateless
 public class StudentRepository {
@@ -47,14 +50,23 @@ public class StudentRepository {
     }
 
     public void signIntoCourse(Course course, Student student) {
-    //TODO
+        //TODO
         courseRepository.addStudent(course.getId(), student.getId());
     }
 
-    public List<Course> getStudentCourses(Long studentId) {
+    public Set<Course> getStudentCourses(Long studentId) {
         if (studentId == null) {
             throw new IllegalArgumentException("Передан  не существующий студент (id=null)");
         }
-        return em.createNamedQuery("getStudentCourses", Course.class).setParameter("studentId", studentId).getResultList();
+        return new HashSet<>(em.createNamedQuery("getStudentCourses", Course.class)
+                .setParameter("studentId", studentId).getResultList());
+    }
+
+    public Set<StudyCourse> getStudentStudyCourse(Student student) {
+        if (student.getId() == null) {
+            throw new IllegalArgumentException("Передан  не существующий студент (id=null)");
+        }
+        return new HashSet<>(em.createNamedQuery("getStudentStudyCourse", StudyCourse.class)
+                .setParameter("student", student).getResultList());
     }
 }

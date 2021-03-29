@@ -1,11 +1,14 @@
 package ru.khrebtov.repositories;
 
+import ru.khrebtov.entity.Course;
 import ru.khrebtov.entity.Professor;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Stateless
 public class ProfessorRepository {
@@ -41,6 +44,12 @@ public class ProfessorRepository {
         em.createNamedQuery("deleteProfessorsById")
                 .setParameter("id", id)
                 .executeUpdate();
+    }
+
+    public Set<Course> getProfessorCourse(Long professorId) {
+        return new HashSet<>(em.createNamedQuery("getProfessorCourse", Course.class)
+                .setParameter("professorId", professorId)
+                .getResultList());
     }
 
 }

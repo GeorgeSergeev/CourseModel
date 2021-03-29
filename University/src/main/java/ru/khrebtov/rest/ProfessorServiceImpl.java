@@ -3,11 +3,13 @@ package ru.khrebtov.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.khrebtov.entity.Professor;
+import ru.khrebtov.entity.dtoEntity.DtoProfessor;
 import ru.khrebtov.repositories.ProfessorRepository;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -18,15 +20,23 @@ public class ProfessorServiceImpl implements ProfessorServiceRest {
     private ProfessorRepository professorRepository;
 
     @Override
-    public List<Professor> findAll() {
+    public List<DtoProfessor> findAll() {
         logger.info("all professor");
-        return professorRepository.findAll();
+        List<DtoProfessor> list = new ArrayList<>();
+        for (Professor professor : professorRepository.findAll()) {
+            professor.setCourse(professorRepository.getProfessorCourse(professor.getId()));
+            DtoProfessor dtoProfessor = new DtoProfessor(professor);
+            list.add(dtoProfessor);
+        }
+        return list;
     }
 
     @Override
-    public Professor findById(Long id) {
-        logger.info("find professor by id = {}",id);
-        return professorRepository.findById(id);
+    public DtoProfessor findById(Long id) {
+        logger.info("find professor by id = {}", id);
+        Professor professorById = professorRepository.findById(id);
+        professorById.setCourse(professorRepository.getProfessorCourse(id));
+        return new DtoProfessor(professorById);
     }
 
     @Override
@@ -36,7 +46,7 @@ public class ProfessorServiceImpl implements ProfessorServiceRest {
     }
 
     @Override
-    public void insert(Professor professor) {
+    public void insert(DtoProfessor professor) {
         logger.info("Try insert professor with id {}", professor.getId());
         if (professor.getId() != null) {
             logger.error("Был передан существующий профессор id!=null");
@@ -46,7 +56,7 @@ public class ProfessorServiceImpl implements ProfessorServiceRest {
     }
 
     @Override
-    public void update(Professor professor) {
+    public void update(DtoProfessor professor) {
         logger.info("Try update professor with id {}", professor.getId());
         if (professor.getId() == null) {
             logger.error("Был передан не существующий профессор id==null");
@@ -56,9 +66,9 @@ public class ProfessorServiceImpl implements ProfessorServiceRest {
     }
 
     @TransactionAttribute
-    public void saveOrUpdate(Professor professor) {
+    public void saveOrUpdate(DtoProfessor professor) {
         logger.info("Saving professor with id {}", professor.getId());
-        professorRepository.saveOrUpdate(professor);
+        professorRepository.saveOrUpdate(new Professor(professor));
     }
 
     @Override

@@ -26,7 +26,8 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
         List<DtoStudyCourse> list = new ArrayList<>();
         for (StudyCourse studyCourse : studyCourseRepository.findAll()) {
             List<Integer> rating = studyCourseRepository.getRatings(studyCourse.getId());
-            DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(studyCourse,  rating);
+            studyCourse.setRating(rating);
+            DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(studyCourse);
             list.add(dtoStudyCourse);
         }
         return list;
@@ -34,9 +35,11 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
 
     @Override
     public DtoStudyCourse findById(Long id) {
-        logger.info("find studyCourse by id = {}",id);
+        logger.info("find studyCourse by id = {}", id);
         List<Integer> rating = studyCourseRepository.getRatings(id);
-        return  new DtoStudyCourse(studyCourseRepository.findById(id),rating) ;
+        StudyCourse studyCourseById = studyCourseRepository.findById(id);
+        studyCourseById.setRating(rating);
+        return new DtoStudyCourse(studyCourseById);
     }
 
     @Override

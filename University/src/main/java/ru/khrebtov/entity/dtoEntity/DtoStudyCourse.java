@@ -17,9 +17,9 @@ public class DtoStudyCourse {
     public DtoStudyCourse() {
     }
 
-    public DtoStudyCourse(StudyCourse studyCourse, List<Integer> rating) {
+    public DtoStudyCourse(StudyCourse studyCourse) {
         this.id = studyCourse.getId();
-        this.rating = rating;
+        this.rating = studyCourse.getRating();
         this.student = studyCourse.getStudent();
         this.course = studyCourse.getCourse();
     }
