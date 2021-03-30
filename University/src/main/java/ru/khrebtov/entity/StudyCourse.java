@@ -16,7 +16,9 @@ import java.util.List;
         @NamedQuery(name = "findStudyCourseById", query = "from StudyCourse sc where sc.id = :id"),
         @NamedQuery(name = "getAverageRating",query = "select sum(rating)/count(*) from Rating r " +
                 "where r.studyCourseId=:id"),
-        @NamedQuery(name = "getRatings",query = "select r.rating from Rating r where r.studyCourseId=:id")
+        @NamedQuery(name = "getRatings",query = "select r.rating from Rating r where r.studyCourseId=:id"),
+        @NamedQuery(name = "getCourseByStudyCourseId",query = "select c from Course c " +
+                "left join StudyCourse sc on c.id=sc.course.id where sc.id = :id")
 })
 public class StudyCourse {
     @Id
@@ -44,8 +46,8 @@ public class StudyCourse {
     public StudyCourse(DtoStudyCourse dtoStudyCourse) {
         this.id = dtoStudyCourse.getId();
         this.rating = dtoStudyCourse.getRating();
-        this.student = dtoStudyCourse.getStudent();
-        this.course = dtoStudyCourse.getCourse();
+        this.student = new Student(dtoStudyCourse.getStudent());
+        this.course = new Course(dtoStudyCourse.getCourse());
     }
 
     public List<Integer> getRating() {

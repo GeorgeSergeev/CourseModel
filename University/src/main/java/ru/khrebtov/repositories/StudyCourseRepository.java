@@ -1,5 +1,6 @@
 package ru.khrebtov.repositories;
 
+import ru.khrebtov.entity.Course;
 import ru.khrebtov.entity.StudyCourse;
 
 import javax.ejb.Stateless;
@@ -43,15 +44,22 @@ public class StudyCourseRepository {
                 .executeUpdate();
     }
 
-    public Float getAverageRating(Long studyCourseId){
-       return em.createNamedQuery("getAverageRating",Float.class)
+    public Float getAverageRating(Long studyCourseId) {
+        return em.createNamedQuery("getAverageRating", Float.class)
                 .setParameter("id", studyCourseId)
                 .getSingleResult();
     }
 
-    public List<Integer> getRatings(Long studyCourseId){
-        return em.createNamedQuery("getRatings",Integer.class)
+    public List<Integer> getRatings(Long studyCourseId) {
+        return em.createNamedQuery("getRatings", Integer.class)
                 .setParameter("id", studyCourseId)
                 .getResultList();
     }
+
+    public Course getCourseByStudyCourseId(Long studyCourseId) {
+        return em.createNamedQuery("getCourseByStudyCourseId", Course.class)
+                .setParameter("id", studyCourseId)
+                .getSingleResult();
+    }
+
 }

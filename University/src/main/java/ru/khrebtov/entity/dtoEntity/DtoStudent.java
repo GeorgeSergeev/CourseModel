@@ -35,10 +35,8 @@ public class DtoStudent {
     public DtoStudent(Student student) {
         this(student.getId(), student.getName(), student.getAddress(), student.getPhone(), student.getEmail(),
                 student.getRecordBook(), student.getProgress());
-        this.courses = new HashSet<>();
         this.studyCourses = new HashSet<>();
-        student.getCourses().forEach(c -> courses.add(new DtoCourse(c)));
-        student.getStudyCourses().forEach(sc -> studyCourses.add(new DtoStudyCourse(sc)));
+        student.getStudyCourses().forEach(sc -> studyCourses.add(new DtoStudyCourse(sc.getId(), sc.getRating(), new DtoCourse(sc.getCourse()))));
     }
 
 

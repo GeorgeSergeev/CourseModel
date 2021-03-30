@@ -4,8 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.khrebtov.entity.Course;
 import ru.khrebtov.entity.Student;
+import ru.khrebtov.entity.StudyCourse;
 import ru.khrebtov.entity.dtoEntity.DtoStudent;
 import ru.khrebtov.repositories.StudentRepository;
+import ru.khrebtov.repositories.StudyCourseRepository;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -20,6 +22,8 @@ public class StudentServiceImpl implements StudentServiceRest {
 
     @EJB
     private StudentRepository studentRepository;
+    @EJB
+    private StudyCourseRepository studyCourseRepository;
 
     @Override
     public List<DtoStudent> findAll() {
@@ -27,8 +31,13 @@ public class StudentServiceImpl implements StudentServiceRest {
         List<DtoStudent> list = new ArrayList<>();
         for (Student student : studentRepository.findAll()) {
             Long studentId = student.getId();
-            student.setCourses(studentRepository.getStudentCourses(studentId));
-            student.setStudyCourses(studentRepository.getStudentStudyCourse(studentId));
+            Set<StudyCourse> studentStudyCourse = studentRepository.getStudentStudyCourse(studentId);
+            studentStudyCourse
+                    .forEach(studyCourse -> {
+                        studyCourse.setRating(studyCourseRepository.getRatings(studyCourse.getId()));
+                        studyCourse.setCourse(studyCourseRepository.getCourseByStudyCourseId(studyCourse.getId()));
+                    });
+            student.setStudyCourses(studentStudyCourse);
             DtoStudent dtoStudent = new DtoStudent(student);
             list.add(dtoStudent);
         }
