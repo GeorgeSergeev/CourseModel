@@ -1,6 +1,7 @@
 package ru.khrebtov.entity.dtoEntity;
 
 
+import ru.khrebtov.entity.Course;
 import ru.khrebtov.entity.Student;
 
 import java.util.HashSet;
@@ -36,7 +37,15 @@ public class DtoStudent {
         this(student.getId(), student.getName(), student.getAddress(), student.getPhone(), student.getEmail(),
                 student.getRecordBook(), student.getProgress());
         this.studyCourses = new HashSet<>();
-        student.getStudyCourses().forEach(sc -> studyCourses.add(new DtoStudyCourse(sc.getId(), sc.getRating(), new DtoCourse(sc.getCourse()))));
+
+        student.getStudyCourses().forEach(sc -> {
+            Course course = sc.getCourse();
+            Set<DtoProfessor> professors = new HashSet<>();
+            course.getProfessors().forEach(p -> professors.add(new DtoProfessor(p.getId(), p.getName(),
+                    p.getAddress(), p.getPhone(), p.getPayment())));
+            studyCourses.add(new DtoStudyCourse(sc.getId(), sc.getRating(), new DtoCourse(course.getId(),
+                    course.getName(), course.getNumber(), course.getCost(), professors)));
+        });
     }
 
 

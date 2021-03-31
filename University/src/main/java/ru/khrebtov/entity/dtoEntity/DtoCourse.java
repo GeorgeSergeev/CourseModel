@@ -1,10 +1,8 @@
 package ru.khrebtov.entity.dtoEntity;
 
 import ru.khrebtov.entity.Course;
-import ru.khrebtov.entity.Professor;
-import ru.khrebtov.entity.Student;
-import ru.khrebtov.entity.StudyCourse;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class DtoCourse {
@@ -12,29 +10,38 @@ public class DtoCourse {
     private String name;
     private int number;
     private float cost;
-    private Set<Student> students;
-    private Set<StudyCourse> studyCourses;
-    private Set<Professor> professors;
+    private Set<DtoStudent> students;
+    private Set<DtoStudyCourse> studyCourses;
+    private Set<DtoProfessor> professors;
 
     public DtoCourse() {
     }
 
-    public DtoCourse(Course course) {
-        this.id = course.getId();
-        this.name = course.getName();
-        this.number = course.getNumber();
-        this.cost = course.getCost();
+    public DtoCourse(Long id, String name, int number, float cost) {
+        this.id = id;
+        this.name = name;
+        this.number = number;
+        this.cost = cost;
     }
 
-    public DtoCourse(Course course, Set<Student> students, Set<StudyCourse> studyCourses, Set<Professor> professors) {
-        this.id = course.getId();
-        this.name = course.getName();
-        this.number = course.getNumber();
-        this.cost = course.getCost();
-        this.students = students;
-        this.studyCourses = studyCourses;
+    public DtoCourse(Long id, String name, int number, float cost, Set<DtoProfessor> professors) {
+        this.id = id;
+        this.name = name;
+        this.number = number;
+        this.cost = cost;
         this.professors = professors;
     }
+
+    public DtoCourse(Course course) {
+        this(course.getId(), course.getName(), course.getNumber(), course.getCost());
+        this.students = new HashSet<>();
+        this.studyCourses = new HashSet<>();
+        this.professors = new HashSet<>();
+        course.getStudyCourses().forEach(studyCourse -> studyCourses.add(new DtoStudyCourse(studyCourse)));
+        course.getStudents().forEach(student -> students.add(new DtoStudent(student)));
+        course.getProfessors().forEach(p -> professors.add(new DtoProfessor(p)));
+    }
+
 
     public Long getId() {
         return id;
@@ -68,27 +75,29 @@ public class DtoCourse {
         this.cost = cost;
     }
 
-    public Set<Student> getStudents() {
+    public Set<DtoStudent> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<Student> students) {
+    public void setStudents(Set<DtoStudent> students) {
         this.students = students;
     }
 
-    public Set<StudyCourse> getStudyCourses() {
+    public Set<DtoStudyCourse> getStudyCourses() {
         return studyCourses;
     }
 
-    public void setStudyCourses(Set<StudyCourse> studyCourses) {
+    public void setStudyCourses(Set<DtoStudyCourse> studyCourses) {
         this.studyCourses = studyCourses;
     }
 
-    public Set<Professor> getProfessors() {
+    public Set<DtoProfessor> getProfessors() {
         return professors;
     }
 
-    public void setProfessors(Set<Professor> professors) {
+    public void setProfessors(Set<DtoProfessor> professors) {
         this.professors = professors;
     }
 }
+
+

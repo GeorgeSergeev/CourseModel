@@ -48,8 +48,13 @@ public class StudentServiceImpl implements StudentServiceRest {
     public DtoStudent findById(Long id) {
         logger.info("find student by id = {}", id);
         Student studentById = studentRepository.findById(id);
-        studentById.setCourses(studentRepository.getStudentCourses(id));
-        studentById.setStudyCourses(studentRepository.getStudentStudyCourse(id));
+        Set<StudyCourse> studentStudyCourse = studentRepository.getStudentStudyCourse(id);
+        studentStudyCourse
+                .forEach(studyCourse -> {
+                    studyCourse.setRating(studyCourseRepository.getRatings(studyCourse.getId()));
+                    studyCourse.setCourse(studyCourseRepository.getCourseByStudyCourseId(studyCourse.getId()));
+                });
+        studentById.setStudyCourses(studentStudyCourse);
         return new DtoStudent(studentById);
     }
 

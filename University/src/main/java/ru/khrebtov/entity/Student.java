@@ -64,10 +64,16 @@ public class Student implements Serializable {
     public Student(DtoStudent student) {
         this(student.getId(), student.getName(), student.getAddress(), student.getPhone(), student.getEmail(),
                 student.getRecordBook(), student.getProgress());
-        this.studyCourses = new HashSet<>();
-        this.courses = new HashSet<>();
-        student.getStudyCourses().forEach(sc -> studyCourses.add(new StudyCourse(sc)));
-        student.getCourses().forEach(c -> courses.add(new Course(c)));
+
+        if (student.getStudyCourses() != null) {
+            this.studyCourses = new HashSet<>();
+            student.getStudyCourses().forEach(sc -> studyCourses.add(new StudyCourse(sc)));
+        }
+        if (student.getCourses() != null) {
+            this.courses = new HashSet<>();
+            student.getCourses().forEach(c -> courses.add(new Course(c)));
+        }
+
     }
 
     public Long getId() {

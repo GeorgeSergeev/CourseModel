@@ -2,8 +2,12 @@ package ru.khrebtov.entity;
 
 
 import ru.khrebtov.entity.dtoEntity.DtoCourse;
+import ru.khrebtov.entity.dtoEntity.DtoProfessor;
+import ru.khrebtov.entity.dtoEntity.DtoStudent;
+import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -72,9 +76,12 @@ public class Course {
 
     public Course(DtoCourse course) {
         this(course.getId(), course.getName(), course.getNumber(), course.getCost());
-        this.students=course.getStudents();
-        this.studyCourses =course.getStudyCourses();
-        this.professors = course.getProfessors();
+        this.students = new HashSet<>();
+        this.studyCourses = new HashSet<>();
+        this.professors = new HashSet<>();
+        course.getStudyCourses().forEach(studyCourse -> studyCourses.add(new StudyCourse(studyCourse)));
+        course.getStudents().forEach(student -> students.add(new Student(student)));
+        course.getProfessors().forEach(p -> professors.add(new Professor(p)));
     }
 
 

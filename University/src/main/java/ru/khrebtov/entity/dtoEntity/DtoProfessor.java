@@ -27,7 +27,7 @@ public class DtoProfessor {
     public DtoProfessor(Professor professor) {
         this(professor.getId(), professor.getName(), professor.getAddress(), professor.getPhone(), professor.getPayment());
         this.course = new HashSet<>();
-        professor.getCourse().forEach(c -> this.course.add(new DtoCourse(c)));
+        professor.getCourse().forEach(c -> this.course.add(new DtoCourse(c.getId(), c.getName(), c.getNumber(), c.getCost())));
     }
 
     public Long getId() {
