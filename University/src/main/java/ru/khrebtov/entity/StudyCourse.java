@@ -1,6 +1,7 @@
 package ru.khrebtov.entity;
 
 
+import ru.khrebtov.entity.dtoEntity.DtoCourse;
 import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 
 import javax.persistence.*;
@@ -14,11 +15,13 @@ import java.util.List;
         @NamedQuery(name = "countAllStudyCourse", query = "select count(*) from StudyCourse"),
         @NamedQuery(name = "deleteStudyCourseById", query = "delete from StudyCourse sc where sc.id = :id"),
         @NamedQuery(name = "findStudyCourseById", query = "from StudyCourse sc where sc.id = :id"),
-        @NamedQuery(name = "getAverageRating",query = "select sum(rating)/count(*) from Rating r " +
+        @NamedQuery(name = "getAverageRating", query = "select sum(rating)/count(*) from Rating r " +
                 "where r.studyCourseId=:id"),
-        @NamedQuery(name = "getRatings",query = "select r.rating from Rating r where r.studyCourseId=:id"),
-        @NamedQuery(name = "getCourseByStudyCourseId",query = "select c from Course c " +
-                "left join StudyCourse sc on c.id=sc.course.id where sc.id = :id")
+        @NamedQuery(name = "getRatings", query = "select r.rating from Rating r where r.studyCourseId=:id"),
+        @NamedQuery(name = "getCourseByStudyCourseId", query = "select c from Course c " +
+                "left join StudyCourse sc on c.id=sc.course.id where sc.id = :id"),
+        @NamedQuery(name = "getStudentByStudyCourseId", query = "select s from Student s " +
+                "left join StudyCourse sc on s.id=sc.student.id where sc.id = :id")
 })
 public class StudyCourse {
     @Id
@@ -43,11 +46,19 @@ public class StudyCourse {
 
     public StudyCourse() {
     }
+
     public StudyCourse(DtoStudyCourse dtoStudyCourse) {
         this.id = dtoStudyCourse.getId();
-        this.rating = dtoStudyCourse.getRating();
-        this.student = new Student(dtoStudyCourse.getStudent());
-        this.course = new Course(dtoStudyCourse.getCourse());
+        if (dtoStudyCourse.getRating() != null) {
+            this.rating = dtoStudyCourse.getRating();
+        }
+        if (dtoStudyCourse.getStudent() != null) {
+            this.student = new Student(dtoStudyCourse.getStudent());
+        }
+        DtoCourse course = dtoStudyCourse.getCourse();
+        if (course != null) {
+            this.course = new Course(course.getId(), course.getName(), course.getNumber(), course.getCost());
+        }
     }
 
     public List<Integer> getRating() {

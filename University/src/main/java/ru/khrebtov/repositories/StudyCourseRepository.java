@@ -1,6 +1,7 @@
 package ru.khrebtov.repositories;
 
 import ru.khrebtov.entity.Course;
+import ru.khrebtov.entity.Student;
 import ru.khrebtov.entity.StudyCourse;
 
 import javax.ejb.Stateless;
@@ -58,6 +59,12 @@ public class StudyCourseRepository {
 
     public Course getCourseByStudyCourseId(Long studyCourseId) {
         return em.createNamedQuery("getCourseByStudyCourseId", Course.class)
+                .setParameter("id", studyCourseId)
+                .getSingleResult();
+    }
+
+    public Student getStudentByStudyCourseId(Long studyCourseId ){
+        return em.createNamedQuery("getStudentByStudyCourseId", Student.class)
                 .setParameter("id", studyCourseId)
                 .getSingleResult();
     }

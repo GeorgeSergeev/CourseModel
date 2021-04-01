@@ -25,10 +25,7 @@ public class DtoCourse {
     }
 
     public DtoCourse(Long id, String name, int number, float cost, Set<DtoProfessor> professors) {
-        this.id = id;
-        this.name = name;
-        this.number = number;
-        this.cost = cost;
+        this(id, name, number, cost);
         this.professors = professors;
     }
 

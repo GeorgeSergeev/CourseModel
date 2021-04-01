@@ -27,8 +27,12 @@ public class DtoStudyCourse {
     public DtoStudyCourse(StudyCourse studyCourse) {
         this.id = studyCourse.getId();
         this.rating = studyCourse.getRating();
-        this.student = new DtoStudent(studyCourse.getStudent());
-        this.course = new DtoCourse(studyCourse.getCourse());
+
+        Student student = studyCourse.getStudent();
+        this.student = new DtoStudent(student.getId(), student.getName(), student.getAddress(), student.getAddress(),
+                student.getEmail(), student.getRecordBook(), student.getProgress());
+        Course course = studyCourse.getCourse();
+        this.course = new DtoCourse(course.getId(), course.getName(), course.getNumber(), course.getCost());
     }
 
     public Long getId() {

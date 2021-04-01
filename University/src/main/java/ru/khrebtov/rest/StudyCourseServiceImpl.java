@@ -2,6 +2,7 @@ package ru.khrebtov.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.khrebtov.entity.Student;
 import ru.khrebtov.entity.StudyCourse;
 import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 import ru.khrebtov.repositories.StudyCourseRepository;
@@ -27,6 +28,9 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
         for (StudyCourse studyCourse : studyCourseRepository.findAll()) {
             List<Integer> rating = studyCourseRepository.getRatings(studyCourse.getId());
             studyCourse.setRating(rating);
+            Student student = studyCourseRepository.getStudentByStudyCourseId(studyCourse.getId());
+            studyCourse.setStudent(student);
+            studyCourse.setCourse(studyCourseRepository.getCourseByStudyCourseId(studyCourse.getId()));
             DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(studyCourse);
             list.add(dtoStudyCourse);
         }
@@ -39,6 +43,9 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
         List<Integer> rating = studyCourseRepository.getRatings(id);
         StudyCourse studyCourseById = studyCourseRepository.findById(id);
         studyCourseById.setRating(rating);
+        Student student = studyCourseRepository.getStudentByStudyCourseId(id);
+        studyCourseById.setStudent(student);
+        studyCourseById.setCourse(studyCourseRepository.getCourseByStudyCourseId(id));
         return new DtoStudyCourse(studyCourseById);
     }
 
@@ -51,8 +58,8 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
     @Override
     public void insert(DtoStudyCourse studyCourse) {
         logger.info("Try insert studyCourse with id {}", studyCourse.getId());
-        if (studyCourse.getId() == null) {
-            logger.error("Был передан не существующий studyCourse id==null");
+        if (studyCourse.getId() != null) {
+            logger.error("Был передан существующий studyCourse id!=null");
             throw new IllegalArgumentException();
         }
         saveOrUpdate(studyCourse);
