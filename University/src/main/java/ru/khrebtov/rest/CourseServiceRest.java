@@ -14,7 +14,7 @@ public interface CourseServiceRest {
     List<DtoCourse> findAll();
 
     @GET
-    @Path("/findById/{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     DtoCourse findById(@PathParam("id") Long id);
 

@@ -31,12 +31,20 @@ public class DtoCourse {
 
     public DtoCourse(Course course) {
         this(course.getId(), course.getName(), course.getNumber(), course.getCost());
-        this.students = new HashSet<>();
-        this.studyCourses = new HashSet<>();
-        this.professors = new HashSet<>();
-        course.getStudyCourses().forEach(studyCourse -> studyCourses.add(new DtoStudyCourse(studyCourse)));
-        course.getStudents().forEach(student -> students.add(new DtoStudent(student)));
-        course.getProfessors().forEach(p -> professors.add(new DtoProfessor(p)));
+        if (course.getStudyCourses() != null) {
+            this.studyCourses = new HashSet<>();
+            course.getStudyCourses().forEach(studyCourse -> studyCourses.add(new DtoStudyCourse(studyCourse)));
+        }
+        if (course.getStudents() != null) {
+            this.students = new HashSet<>();
+            course.getStudents().forEach(student -> students.add(new DtoStudent(student)));
+        }
+
+        if (course.getProfessors() != null) {
+            this.professors = new HashSet<>();
+            course.getProfessors().forEach(p -> professors.add(new DtoProfessor(p)));
+        }
+
     }
 
 

@@ -7,7 +7,9 @@ import ru.khrebtov.entity.StudyCourse;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Stateless
 public class StudyCourseRepository {
@@ -63,10 +65,17 @@ public class StudyCourseRepository {
                 .getSingleResult();
     }
 
-    public Student getStudentByStudyCourseId(Long studyCourseId ){
+    public Student getStudentByStudyCourseId(Long studyCourseId) {
         return em.createNamedQuery("getStudentByStudyCourseId", Student.class)
                 .setParameter("id", studyCourseId)
                 .getSingleResult();
     }
 
+    public Set<StudyCourse> findByCourseIdAndStudentId(Long courseId, Long studentId) {
+        return new HashSet<>(em.createNamedQuery("findByCourseIdAndStudentId", StudyCourse.class)
+                .setParameter("courseId", courseId)
+                .setParameter("studentId", studentId)
+                .getResultList());
+
+    }
 }

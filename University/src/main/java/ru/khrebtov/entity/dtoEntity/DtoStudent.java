@@ -43,9 +43,19 @@ public class DtoStudent {
             Set<DtoProfessor> professors = new HashSet<>();
             course.getProfessors().forEach(p -> professors.add(new DtoProfessor(p.getId(), p.getName(),
                     p.getAddress(), p.getPhone(), p.getPayment())));
-            studyCourses.add(new DtoStudyCourse(sc.getId(), sc.getRating(), new DtoCourse(course.getId(),
-                    course.getName(), course.getNumber(), course.getCost(), professors)));
+            DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(sc);
+            dtoStudyCourse.setCourse(new DtoCourse(course.getId(),
+                    course.getName(), course.getNumber(), course.getCost(), professors));
+            studyCourses.add(dtoStudyCourse);
         });
+    }
+
+    public DtoStudent(Student student, Set<DtoStudyCourse> studyCourse) {
+        this(student.getId(), student.getName(), student.getAddress(), student.getPhone(), student.getEmail(),
+                student.getRecordBook(), student.getProgress());
+        if (studyCourse != null) {
+            this.studyCourses = studyCourse;
+        }
     }
 
 

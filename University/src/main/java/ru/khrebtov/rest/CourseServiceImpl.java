@@ -3,14 +3,22 @@ package ru.khrebtov.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.khrebtov.entity.Course;
+import ru.khrebtov.entity.Student;
+import ru.khrebtov.entity.StudyCourse;
 import ru.khrebtov.entity.dtoEntity.DtoCourse;
+import ru.khrebtov.entity.dtoEntity.DtoProfessor;
+import ru.khrebtov.entity.dtoEntity.DtoStudent;
+import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 import ru.khrebtov.repositories.CourseRepository;
+import ru.khrebtov.repositories.StudyCourseRepository;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Stateless
 public class CourseServiceImpl implements CourseServiceRest {
@@ -18,16 +26,40 @@ public class CourseServiceImpl implements CourseServiceRest {
 
     @EJB
     private CourseRepository courseRepository;
+    @EJB
+    private StudyCourseRepository studyCourseRepository;
 
     @Override
     public List<DtoCourse> findAll() {
         logger.info("All courses");
         List<DtoCourse> list = new ArrayList<>();
         for (Course course : courseRepository.findAll()) {
-            course.setStudents(courseRepository.getCourseStudents(course.getId()));
-            course.setStudyCourses(courseRepository.getCourseStudy(course.getId()));
-            course.setProfessors(courseRepository.getCourseProfessor(course.getId()));
-            DtoCourse dtoCourse = new DtoCourse(course);
+            DtoCourse dtoCourse = new DtoCourse(course.getId(), course.getName(), course.getNumber(), course.getCost());
+            Set<DtoProfessor> professors = new HashSet<>();
+            courseRepository.getCourseProfessor(course.getId()).forEach(p -> professors.add(
+                    new DtoProfessor(p.getId(), p.getName(), p.getAddress(), p.getPhone(), p.getPayment())));
+            dtoCourse.setProfessors(professors);
+
+            Set<DtoStudent> dtoStudents = new HashSet<>();
+            Set<Student> students = courseRepository.getCourseStudents(course.getId());
+            students.forEach(s -> {
+
+                Set<StudyCourse> studyCourse = studyCourseRepository.findByCourseIdAndStudentId(course.getId(), s.getId());
+                Set<DtoStudyCourse> dtoStudyCourses = new HashSet<>();
+
+                if (!studyCourse.isEmpty()) {
+                    studyCourse.forEach(sc -> {
+                                DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(sc.getId(),
+                                        studyCourseRepository.getRatings(sc.getId()));
+                                dtoStudyCourses.add(dtoStudyCourse);
+                            }
+                    );
+
+                }
+                dtoStudents.add(new DtoStudent(s, dtoStudyCourses));
+            });
+            dtoCourse.setStudents(dtoStudents);
+
             list.add(dtoCourse);
         }
         return list;
@@ -37,10 +69,32 @@ public class CourseServiceImpl implements CourseServiceRest {
     public DtoCourse findById(Long id) {
         logger.info("find course by id = {}", id);
         Course course = courseRepository.findById(id);
-        course.setStudents(courseRepository.getCourseStudents(course.getId()));
-        course.setStudyCourses(courseRepository.getCourseStudy(course.getId()));
-        course.setProfessors(courseRepository.getCourseProfessor(course.getId()));
-        return new DtoCourse(course);
+        DtoCourse dtoCourse = new DtoCourse(course.getId(), course.getName(), course.getNumber(), course.getCost());
+        Set<DtoProfessor> professors = new HashSet<>();
+        courseRepository.getCourseProfessor(course.getId()).forEach(p -> professors.add(
+                new DtoProfessor(p.getId(), p.getName(), p.getAddress(), p.getPhone(), p.getPayment())));
+        dtoCourse.setProfessors(professors);
+
+        Set<DtoStudent> dtoStudents = new HashSet<>();
+        Set<Student> students = courseRepository.getCourseStudents(course.getId());
+        students.forEach(s -> {
+
+            Set<StudyCourse> studyCourse = studyCourseRepository.findByCourseIdAndStudentId(course.getId(), s.getId());
+            Set<DtoStudyCourse> dtoStudyCourses = new HashSet<>();
+
+            if (!studyCourse.isEmpty()) {
+                studyCourse.forEach(sc -> {
+                            DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(sc.getId(),
+                                    studyCourseRepository.getRatings(sc.getId()));
+                            dtoStudyCourses.add(dtoStudyCourse);
+                        }
+                );
+
+            }
+            dtoStudents.add(new DtoStudent(s, dtoStudyCourses));
+        });
+        dtoCourse.setStudents(dtoStudents);
+        return dtoCourse;
     }
 
     @Override

@@ -18,10 +18,9 @@ public class DtoStudyCourse {
     public DtoStudyCourse() {
     }
 
-    public DtoStudyCourse(Long id, List<Integer> rating, DtoCourse course) {
+    public DtoStudyCourse(Long id, List<Integer> rating) {
         this.id = id;
         this.rating = rating;
-        this.course = course;
     }
 
     public DtoStudyCourse(StudyCourse studyCourse) {
@@ -29,10 +28,14 @@ public class DtoStudyCourse {
         this.rating = studyCourse.getRating();
 
         Student student = studyCourse.getStudent();
-        this.student = new DtoStudent(student.getId(), student.getName(), student.getAddress(), student.getAddress(),
-                student.getEmail(), student.getRecordBook(), student.getProgress());
+        if (student != null) {
+            this.student = new DtoStudent(student.getId(), student.getName(), student.getAddress(), student.getAddress(),
+                    student.getEmail(), student.getRecordBook(), student.getProgress());
+        }
         Course course = studyCourse.getCourse();
-        this.course = new DtoCourse(course.getId(), course.getName(), course.getNumber(), course.getCost());
+        if (course != null) {
+            this.course = new DtoCourse(course.getId(), course.getName(), course.getNumber(), course.getCost());
+        }
     }
 
     public Long getId() {
