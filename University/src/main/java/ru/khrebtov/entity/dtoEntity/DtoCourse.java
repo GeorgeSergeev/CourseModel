@@ -24,11 +24,6 @@ public class DtoCourse {
         this.cost = cost;
     }
 
-    public DtoCourse(Long id, String name, int number, float cost, Set<DtoProfessor> professors) {
-        this(id, name, number, cost);
-        this.professors = professors;
-    }
-
     public DtoCourse(Course course) {
         this(course.getId(), course.getName(), course.getNumber(), course.getCost());
         if (course.getStudyCourses() != null) {
@@ -40,7 +35,7 @@ public class DtoCourse {
             course.getStudents().forEach(student -> students.add(new DtoStudent(student)));
         }
 
-        if (course.getProfessors() != null) {
+        if (course.getProfessors() != null && !(course.getProfessors().isEmpty())) {
             this.professors = new HashSet<>();
             course.getProfessors().forEach(p -> professors.add(new DtoProfessor(p)));
         }

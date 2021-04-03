@@ -24,8 +24,7 @@ public class ProfessorServiceImpl implements ProfessorServiceRest {
         logger.info("all professor");
         List<DtoProfessor> list = new ArrayList<>();
         for (Professor professor : professorRepository.findAll()) {
-            professor.setCourse(professorRepository.getProfessorCourse(professor.getId()));
-            DtoProfessor dtoProfessor = new DtoProfessor(professor);
+            DtoProfessor dtoProfessor = getDtoProfessor(professor);
             list.add(dtoProfessor);
         }
         return list;
@@ -35,8 +34,12 @@ public class ProfessorServiceImpl implements ProfessorServiceRest {
     public DtoProfessor findById(Long id) {
         logger.info("find professor by id = {}", id);
         Professor professorById = professorRepository.findById(id);
-        professorById.setCourse(professorRepository.getProfessorCourse(id));
-        return new DtoProfessor(professorById);
+        return getDtoProfessor(professorById);
+    }
+
+    private DtoProfessor getDtoProfessor(Professor professor) {
+        professor.setCourse(professorRepository.getProfessorCourse(professor.getId()));
+        return new DtoProfessor(professor);
     }
 
     @Override

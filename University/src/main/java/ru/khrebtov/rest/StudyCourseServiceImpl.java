@@ -26,12 +26,7 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
         logger.info("all StudyCourse");
         List<DtoStudyCourse> list = new ArrayList<>();
         for (StudyCourse studyCourse : studyCourseRepository.findAll()) {
-            List<Integer> rating = studyCourseRepository.getRatings(studyCourse.getId());
-            studyCourse.setRating(rating);
-            Student student = studyCourseRepository.getStudentByStudyCourseId(studyCourse.getId());
-            studyCourse.setStudent(student);
-            studyCourse.setCourse(studyCourseRepository.getCourseByStudyCourseId(studyCourse.getId()));
-            DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(studyCourse);
+            DtoStudyCourse dtoStudyCourse = getDtoStudyCourse(studyCourse);
             list.add(dtoStudyCourse);
         }
         return list;
@@ -40,13 +35,17 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
     @Override
     public DtoStudyCourse findById(Long id) {
         logger.info("find studyCourse by id = {}", id);
-        List<Integer> rating = studyCourseRepository.getRatings(id);
         StudyCourse studyCourseById = studyCourseRepository.findById(id);
-        studyCourseById.setRating(rating);
-        Student student = studyCourseRepository.getStudentByStudyCourseId(id);
-        studyCourseById.setStudent(student);
-        studyCourseById.setCourse(studyCourseRepository.getCourseByStudyCourseId(id));
-        return new DtoStudyCourse(studyCourseById);
+        return getDtoStudyCourse(studyCourseById);
+    }
+
+    private DtoStudyCourse getDtoStudyCourse(StudyCourse studyCourse) {
+        List<Integer> rating = studyCourseRepository.getRatings(studyCourse.getId());
+        studyCourse.setRating(rating);
+        Student student = studyCourseRepository.getStudentByStudyCourseId(studyCourse.getId());
+        studyCourse.setStudent(student);
+        studyCourse.setCourse(studyCourseRepository.getCourseByStudyCourseId(studyCourse.getId()));
+        return new DtoStudyCourse(studyCourse);
     }
 
     @Override

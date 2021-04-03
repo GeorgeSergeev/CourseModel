@@ -4,7 +4,7 @@ GET http://127.0.0.1:8080/university/api/v1/course/count
 GET http://127.0.0.1:8080/university/api/v1/course/
 
 ###
-GET http://127.0.0.1:8080/university/api/v1/course/1
+GET http://127.0.0.1:8080/university/api/v1/course/5
 
 ###
 DELETE http://127.0.0.1:8080/university/api/v1/course/9

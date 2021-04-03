@@ -23,6 +23,11 @@ public class DtoStudyCourse {
         this.rating = rating;
     }
 
+    public DtoStudyCourse(Long id, List<Integer> rating, DtoCourse course) {
+        this(id, rating);
+        this.course = course;
+    }
+
     public DtoStudyCourse(StudyCourse studyCourse) {
         this.id = studyCourse.getId();
         this.rating = studyCourse.getRating();

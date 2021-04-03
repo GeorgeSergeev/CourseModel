@@ -4,8 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.khrebtov.entity.Course;
 import ru.khrebtov.entity.Student;
-import ru.khrebtov.entity.StudyCourse;
+import ru.khrebtov.entity.dtoEntity.DtoCourse;
 import ru.khrebtov.entity.dtoEntity.DtoStudent;
+import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 import ru.khrebtov.repositories.StudentRepository;
 import ru.khrebtov.repositories.StudyCourseRepository;
 
@@ -13,6 +14,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,34 +30,35 @@ public class StudentServiceImpl implements StudentServiceRest {
     @Override
     public List<DtoStudent> findAll() {
         logger.info("all students");
-        List<DtoStudent> list = new ArrayList<>();
+        List<DtoStudent> dtoStudents = new ArrayList<>();
         for (Student student : studentRepository.findAll()) {
-            Long studentId = student.getId();
-            Set<StudyCourse> studentStudyCourse = studentRepository.getStudentStudyCourse(studentId);
-            studentStudyCourse
-                    .forEach(studyCourse -> {
-                        studyCourse.setRating(studyCourseRepository.getRatings(studyCourse.getId()));
-                        studyCourse.setCourse(studyCourseRepository.getCourseByStudyCourseId(studyCourse.getId()));
-                    });
-            student.setStudyCourses(studentStudyCourse);
-            DtoStudent dtoStudent = new DtoStudent(student);
-            list.add(dtoStudent);
+            DtoStudent dtoStudent = getDtoStudent(student);
+            dtoStudents.add(dtoStudent);
         }
-        return list;
+        return dtoStudents;
     }
 
     @Override
     public DtoStudent findById(Long id) {
         logger.info("find student by id = {}", id);
         Student studentById = studentRepository.findById(id);
-        Set<StudyCourse> studentStudyCourse = studentRepository.getStudentStudyCourse(id);
-        studentStudyCourse
-                .forEach(studyCourse -> {
-                    studyCourse.setRating(studyCourseRepository.getRatings(studyCourse.getId()));
-                    studyCourse.setCourse(studyCourseRepository.getCourseByStudyCourseId(studyCourse.getId()));
-                });
-        studentById.setStudyCourses(studentStudyCourse);
-        return new DtoStudent(studentById);
+        return getDtoStudent(studentById);
+    }
+
+    private DtoStudent getDtoStudent(Student student) {
+        DtoStudent dtoStudent = new DtoStudent(student);
+        Long studentId = student.getId();
+        Set<DtoStudyCourse> dtoStudyCourses = new HashSet<>();
+        studentRepository.getStudentStudyCourse(studentId).forEach(studyCourse -> {
+            studyCourse.setRating(studyCourseRepository.getRatings(studyCourse.getId()));
+            studyCourse.setCourse(studyCourseRepository.getCourseByStudyCourseId(studyCourse.getId()));
+
+            Course course = studyCourse.getCourse();
+            dtoStudyCourses.add(new DtoStudyCourse(studyCourse.getId(), studyCourse.getRating(),
+                    new DtoCourse(course.getId(), course.getName(), course.getNumber(), course.getCost())));
+        });
+        dtoStudent.setStudyCourses(dtoStudyCourses);
+        return dtoStudent;
     }
 
     @Override
