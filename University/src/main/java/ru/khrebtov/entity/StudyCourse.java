@@ -15,7 +15,7 @@ import java.util.List;
         @NamedQuery(name = "countAllStudyCourse", query = "select count(*) from StudyCourse"),
         @NamedQuery(name = "deleteStudyCourseById", query = "delete from StudyCourse sc where sc.id = :id"),
         @NamedQuery(name = "findStudyCourseById", query = "from StudyCourse sc where sc.id = :id"),
-        @NamedQuery(name = "getAverageRating", query = "select sum(rating)/count(*) from Rating r " +
+        @NamedQuery(name = "getAverageRating", query = "select 1.0*sum(rating)/count(*) from Rating r " +
                 "where r.studyCourseId=:id"),
         @NamedQuery(name = "getRatings", query = "select r.rating from Rating r where r.studyCourseId=:id"),
         @NamedQuery(name = "getCourseByStudyCourseId", query = "select c from Course c " +

@@ -47,8 +47,8 @@ public class StudyCourseRepository {
                 .executeUpdate();
     }
 
-    public Float getAverageRating(Long studyCourseId) {
-        return em.createNamedQuery("getAverageRating", Float.class)
+    public Double getAverageRating(Long studyCourseId) {
+        return em.createNamedQuery("getAverageRating", Double.class)
                 .setParameter("id", studyCourseId)
                 .getSingleResult();
     }

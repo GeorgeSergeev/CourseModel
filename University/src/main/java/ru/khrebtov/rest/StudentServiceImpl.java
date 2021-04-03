@@ -47,7 +47,7 @@ public class StudentServiceImpl implements StudentServiceRest {
 
     private DtoStudent getDtoStudent(Student student) {
         DtoStudent dtoStudent = new DtoStudent(student);
-        Long studentId = student.getId();
+        Long studentId = dtoStudent.getId();
         Set<DtoStudyCourse> dtoStudyCourses = new HashSet<>();
         studentRepository.getStudentStudyCourse(studentId).forEach(studyCourse -> {
             studyCourse.setRating(studyCourseRepository.getRatings(studyCourse.getId()));
@@ -58,7 +58,16 @@ public class StudentServiceImpl implements StudentServiceRest {
                     new DtoCourse(course.getId(), course.getName(), course.getNumber(), course.getCost())));
         });
         dtoStudent.setStudyCourses(dtoStudyCourses);
+        dtoStudent.setProgress(getAverageRatingForAllCourses(dtoStudyCourses));
         return dtoStudent;
+    }
+
+    private Float getAverageRatingForAllCourses(Set<DtoStudyCourse> studyCourses) {
+        float sumAverageRating = 0F;
+        for (DtoStudyCourse s : studyCourses) {
+            sumAverageRating += studyCourseRepository.getAverageRating(s.getId());
+        }
+        return (float) Math.round(100*(sumAverageRating / studyCourses.size()))/100;
     }
 
     @Override

@@ -34,32 +34,7 @@ public class CourseServiceImpl implements CourseServiceRest {
         logger.info("All courses");
         List<DtoCourse> list = new ArrayList<>();
         for (Course course : courseRepository.findAll()) {
-            DtoCourse dtoCourse = new DtoCourse(course.getId(), course.getName(), course.getNumber(), course.getCost());
-            Set<DtoProfessor> professors = new HashSet<>();
-            courseRepository.getCourseProfessor(course.getId()).forEach(p -> professors.add(
-                    new DtoProfessor(p.getId(), p.getName(), p.getAddress(), p.getPhone(), p.getPayment())));
-            dtoCourse.setProfessors(professors);
-
-            Set<DtoStudent> dtoStudents = new HashSet<>();
-            Set<Student> students = courseRepository.getCourseStudents(course.getId());
-            students.forEach(s -> {
-
-                Set<StudyCourse> studyCourse = studyCourseRepository.findByCourseIdAndStudentId(course.getId(), s.getId());
-                Set<DtoStudyCourse> dtoStudyCourses = new HashSet<>();
-
-                if (!studyCourse.isEmpty()) {
-                    studyCourse.forEach(sc -> {
-                                DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(sc.getId(),
-                                        studyCourseRepository.getRatings(sc.getId()));
-                                dtoStudyCourses.add(dtoStudyCourse);
-                            }
-                    );
-
-                }
-                dtoStudents.add(new DtoStudent(s, dtoStudyCourses));
-            });
-            dtoCourse.setStudents(dtoStudents);
-
+            DtoCourse dtoCourse = getDtoCourse(course);
             list.add(dtoCourse);
         }
         return list;
@@ -69,7 +44,11 @@ public class CourseServiceImpl implements CourseServiceRest {
     public DtoCourse findById(Long id) {
         logger.info("find course by id = {}", id);
         Course course = courseRepository.findById(id);
-        DtoCourse dtoCourse = new DtoCourse(course.getId(), course.getName(), course.getNumber(), course.getCost());
+        return getDtoCourse(course);
+    }
+
+    private DtoCourse getDtoCourse(Course course) {
+        DtoCourse dtoCourse = new DtoCourse(course);
         Set<DtoProfessor> professors = new HashSet<>();
         courseRepository.getCourseProfessor(course.getId()).forEach(p -> professors.add(
                 new DtoProfessor(p.getId(), p.getName(), p.getAddress(), p.getPhone(), p.getPayment())));

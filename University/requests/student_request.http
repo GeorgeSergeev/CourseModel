@@ -2,7 +2,7 @@ GET http://127.0.0.1:8080/university/api/v1/student/count
 ###
 GET http://127.0.0.1:8080/university/api/v1/student/
 ###
-GET http://127.0.0.1:8080/university/api/v1/student/7
+GET http://127.0.0.1:8080/university/api/v1/student/1
 ###
 DELETE http://127.0.0.1:8080/university/api/v1/student/4
 ###
