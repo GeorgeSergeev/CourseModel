@@ -17,8 +17,8 @@ import java.util.Set;
         @NamedQuery(name = "deleteById", query = "delete from Student s where s.id = :id"),
         @NamedQuery(name = "findByName", query = "from Student s where s.name = :name"),
         @NamedQuery(name = "findById", query = "from Student s where s.id = :id"),
-        @NamedQuery(name = "getStudentCourses", query = "select c from Course c left join CourseStudent cs " +
-                "on c.id=cs.courseId where cs.studentId = :studentId"),
+        @NamedQuery(name = "getStudentCourses", query = "select c from Course c left join StudyCourse cs " +
+                "on c.id=cs.course.id where cs.student.id = :studentId"),
         @NamedQuery(name = "getStudentStudyCourse", query = "from StudyCourse sc where sc.student.id = :studentId")
 })
 public class Student implements Serializable {
