@@ -6,7 +6,7 @@ GET http://127.0.0.1:8080/university/api/v1/student/1
 ###
 DELETE http://127.0.0.1:8080/university/api/v1/student/4
 ###
-POST http://127.0.0.1:8080/university/api/v1/student/
+POST http://127.0.0.1:8080/university/api/v1/student/new
 Content-Type: application/json
 
 {
@@ -30,5 +30,17 @@ Content-Type: application/json
   "phone": "+79787878755",
   "progress": 0.0,
   "recordBook": 667
+}
+###
+POST http://127.0.0.1:8080/university/api/v1/student/add
+Content-Type: application/json
+
+{
+  "course": {
+    "id": 7
+  },
+  "student": {
+    "id": 4
+  }
 }
 

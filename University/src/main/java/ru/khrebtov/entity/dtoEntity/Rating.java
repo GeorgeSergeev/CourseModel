@@ -8,7 +8,7 @@ public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name ="study_course_id" )
+    @Column(name = "study_course_id")
     private Long studyCourseId;
     @Column(name = "rating")
     private Integer rating;

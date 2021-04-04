@@ -2,6 +2,7 @@ package ru.khrebtov.rest;
 
 
 import ru.khrebtov.entity.dtoEntity.DtoCourse;
+import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -24,6 +25,7 @@ public interface CourseServiceRest {
     Long countAll();
 
     @POST
+    @Path("/new")
     @Consumes(MediaType.APPLICATION_JSON)
     void insert(DtoCourse course);
 
@@ -32,12 +34,15 @@ public interface CourseServiceRest {
     void update(DtoCourse course);
 
     @DELETE
-    @Path("/{id}")
+    @Path("/delete_course/{id}")
     void deleteById(@PathParam("id") Long id);
 
+    @POST
+    @Path("/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    void addStudentInCourse(DtoStudyCourse dtoStudyCourse);
 
-    boolean addStudentIntoCourse( Long course, Long student);
-
-
-    void deleteStudentFromCourse( Long courseId, Long studentId);
+    @DELETE
+    @Path("/delete_st")
+    void deleteStudentFromCourse(DtoStudyCourse dtoStudyCourse);
 }

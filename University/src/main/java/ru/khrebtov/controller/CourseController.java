@@ -49,6 +49,7 @@ public class CourseController implements Serializable {
         courseRepo.saveOrUpdate(course);
         return "/course.xhtml?faces-redirect=true";
     }
+
     public void preloadData(ComponentSystemEvent componentSystemEvent) {
         courses = courseRepo.findAll();
     }

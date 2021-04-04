@@ -10,6 +10,7 @@ import ru.khrebtov.entity.dtoEntity.DtoProfessor;
 import ru.khrebtov.entity.dtoEntity.DtoStudent;
 import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 import ru.khrebtov.repositories.CourseRepository;
+import ru.khrebtov.repositories.StudentRepository;
 import ru.khrebtov.repositories.StudyCourseRepository;
 
 import javax.ejb.EJB;
@@ -28,6 +29,10 @@ public class CourseServiceImpl implements CourseServiceRest {
     private CourseRepository courseRepository;
     @EJB
     private StudyCourseRepository studyCourseRepository;
+    @EJB
+    private StudentRepository studentRepository;
+    @EJB
+    private StudyCourseServiceRest studyCourseServiceRest;
 
     @Override
     public List<DtoCourse> findAll() {
@@ -47,6 +52,7 @@ public class CourseServiceImpl implements CourseServiceRest {
         return getDtoCourse(course);
     }
 
+    @TransactionAttribute
     private DtoCourse getDtoCourse(Course course) {
         DtoCourse dtoCourse = new DtoCourse(course);
         Set<DtoProfessor> professors = new HashSet<>();
@@ -58,18 +64,13 @@ public class CourseServiceImpl implements CourseServiceRest {
         Set<Student> students = courseRepository.getCourseStudents(course.getId());
         students.forEach(s -> {
 
-            Set<StudyCourse> studyCourse = studyCourseRepository.findByCourseIdAndStudentId(course.getId(), s.getId());
+            StudyCourse studyCourse = studyCourseRepository.findByCourseIdAndStudentId(course.getId(), s.getId());
             Set<DtoStudyCourse> dtoStudyCourses = new HashSet<>();
 
-            if (!studyCourse.isEmpty()) {
-                studyCourse.forEach(sc -> {
-                            DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(sc.getId(),
-                                    studyCourseRepository.getRatings(sc.getId()));
-                            dtoStudyCourses.add(dtoStudyCourse);
-                        }
-                );
+            DtoStudyCourse dtoStudyCourse = new DtoStudyCourse(studyCourse.getId(),
+                    studyCourseRepository.getRatings(studyCourse.getId()));
+            dtoStudyCourses.add(dtoStudyCourse);
 
-            }
             dtoStudents.add(new DtoStudent(s, dtoStudyCourses));
         });
         dtoCourse.setStudents(dtoStudents);
@@ -117,17 +118,17 @@ public class CourseServiceImpl implements CourseServiceRest {
 
     @Override
     @TransactionAttribute
-    public boolean addStudentIntoCourse(Long courseId, Long studentId) {
-        logger.info("Adding student into course with course_id {}, student_id{}", courseId, studentId);
-        //TODO
-        return courseRepository.addStudent(courseId, studentId);
+    public void addStudentInCourse(DtoStudyCourse studyCourse) {
+        logger.info("Adding student into course");
+        studyCourseServiceRest.insert(studyCourse);
     }
 
     @Override
     @TransactionAttribute
-    public void deleteStudentFromCourse(Long courseId, Long studentId) {
-        logger.info("Deleting student from course with course_id {}, student_id{}", courseId, studentId);
-        //TODO
-        courseRepository.deleteStudent(courseId, studentId);
+    public void deleteStudentFromCourse(DtoStudyCourse course) {
+        logger.info("Deleting student from course ");
+        StudyCourse studyCourse = studyCourseRepository.findByCourseIdAndStudentId(course.getCourse().getId(),
+                course.getStudent().getId());
+        studyCourseServiceRest.deleteById(studyCourse.getId());
     }
 }

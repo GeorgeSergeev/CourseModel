@@ -10,12 +10,18 @@ public class DtoStudyCourse {
 
     private Long id;
     private List<Integer> rating;
-    private Float finalRating;
 
     private DtoStudent student;
     private DtoCourse course;
 
     public DtoStudyCourse() {
+    }
+
+    public DtoStudyCourse(Long id, List<Integer> rating, DtoStudent student, DtoCourse course) {
+        this.id = id;
+        this.rating = rating;
+        this.student = student;
+        this.course = course;
     }
 
     public DtoStudyCourse(Long id, List<Integer> rating) {
@@ -57,14 +63,6 @@ public class DtoStudyCourse {
 
     public void setRating(List<Integer> rating) {
         this.rating = rating;
-    }
-
-    public Float getFinalRating() {
-        return finalRating;
-    }
-
-    public void setFinalRating(Float finalRating) {
-        this.finalRating = finalRating;
     }
 
     public DtoStudent getStudent() {

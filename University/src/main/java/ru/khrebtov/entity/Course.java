@@ -2,9 +2,6 @@ package ru.khrebtov.entity;
 
 
 import ru.khrebtov.entity.dtoEntity.DtoCourse;
-import ru.khrebtov.entity.dtoEntity.DtoProfessor;
-import ru.khrebtov.entity.dtoEntity.DtoStudent;
-import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -77,17 +74,17 @@ public class Course {
     public Course(DtoCourse course) {
         this(course.getId(), course.getName(), course.getNumber(), course.getCost());
 
-        if(course.getStudyCourses()!=null){
+        if (course.getStudyCourses() != null) {
             this.studyCourses = new HashSet<>();
             course.getStudyCourses().forEach(studyCourse -> studyCourses.add(new StudyCourse(studyCourse)));
         }
 
-        if(course.getStudents()!=null){
+        if (course.getStudents() != null) {
             this.students = new HashSet<>();
             course.getStudents().forEach(student -> students.add(new Student(student)));
         }
 
-        if(course.getProfessors()!=null){
+        if (course.getProfessors() != null) {
             this.professors = new HashSet<>();
             course.getProfessors().forEach(p -> professors.add(new Professor(p)));
         }

@@ -7,7 +7,7 @@ GET http://127.0.0.1:8080/university/api/v1/course/
 GET http://127.0.0.1:8080/university/api/v1/course/5
 
 ###
-DELETE http://127.0.0.1:8080/university/api/v1/course/9
+DELETE http://127.0.0.1:8080/university/api/v1/course/10
 
 ###
 POST http://127.0.0.1:8080/university/api/v1/course/
@@ -32,6 +32,31 @@ Content-Type: application/json
   "students": []
 }
 
+###
+POST http://127.0.0.1:8080/university/api/v1/course/add
+Content-Type: application/json
+
+{
+  "course": {
+    "id": 7
+  },
+  "student": {
+    "id": 4
+  }
+}
+
+###
+DELETE http://127.0.0.1:8080/university/api/v1/course/delete_st
+Content-Type: application/json
+
+{
+  "course": {
+    "id": 7
+  },
+  "student": {
+    "id": 4
+  }
+}
 
 
 

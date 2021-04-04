@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "study_course", uniqueConstraints = { @UniqueConstraint( columnNames = { "course_id", "student_id" } ) })
+@Table(name = "study_course", uniqueConstraints = {@UniqueConstraint(columnNames = {"course_id", "student_id"})})
 @NamedQueries({
         @NamedQuery(name = "findAllStudyCourse", query = "from StudyCourse "),
         @NamedQuery(name = "countAllStudyCourse", query = "select count(*) from StudyCourse"),
@@ -22,7 +22,7 @@ import java.util.List;
                 "left join StudyCourse sc on c.id=sc.course.id where sc.id = :id"),
         @NamedQuery(name = "getStudentByStudyCourseId", query = "select s from Student s " +
                 "left join StudyCourse sc on s.id=sc.student.id where sc.id = :id"),
-        @NamedQuery(name = "findByCourseIdAndStudentId",query = "from StudyCourse sc " +
+        @NamedQuery(name = "findByCourseIdAndStudentId", query = "from StudyCourse sc " +
                 "where sc.course.id=:courseId AND sc.student.id = :studentId")
 })
 public class StudyCourse {
@@ -47,6 +47,13 @@ public class StudyCourse {
 
 
     public StudyCourse() {
+    }
+
+    public StudyCourse(Long id, List<Integer> rating, @NotNull Student student, @NotNull Course course) {
+        this.id = id;
+        this.rating = rating;
+        this.student = student;
+        this.course = course;
     }
 
     public StudyCourse(DtoStudyCourse dtoStudyCourse) {

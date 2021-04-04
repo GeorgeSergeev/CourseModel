@@ -26,6 +26,8 @@ public class StudentServiceImpl implements StudentServiceRest {
     private StudentRepository studentRepository;
     @EJB
     private StudyCourseRepository studyCourseRepository;
+    @EJB
+    private StudyCourseServiceRest studyCourseServiceRest;
 
     @Override
     public List<DtoStudent> findAll() {
@@ -64,10 +66,15 @@ public class StudentServiceImpl implements StudentServiceRest {
 
     private Float getAverageRatingForAllCourses(Set<DtoStudyCourse> studyCourses) {
         float sumAverageRating = 0F;
+        int countStudyCoursesWithRatings = 0;
         for (DtoStudyCourse s : studyCourses) {
-            sumAverageRating += studyCourseRepository.getAverageRating(s.getId());
+            Double averageRating = studyCourseRepository.getAverageRating(s.getId());
+            if (averageRating != null) {
+                countStudyCoursesWithRatings++;
+                sumAverageRating += averageRating;
+            }
         }
-        return (float) Math.round(100*(sumAverageRating / studyCourses.size()))/100;
+        return (float) Math.round(100 * (sumAverageRating / countStudyCoursesWithRatings)) / 100;
     }
 
     @Override
@@ -109,8 +116,9 @@ public class StudentServiceImpl implements StudentServiceRest {
     }
 
     @Override
-    public void signIntoCourse(Course course, Student student) {
-        //TODO
+    public void signIntoCourse(DtoStudyCourse studyCourse) {
+        logger.info("Adding student into course");
+        studyCourseServiceRest.insert(studyCourse);
     }
 
     @Override

@@ -49,10 +49,6 @@ public class StudentRepository {
                 .executeUpdate();
     }
 
-    public void signIntoCourse(Course course, Student student) {
-        //TODO
-        courseRepository.addStudent(course.getId(), student.getId());
-    }
 
     public Set<Course> getStudentCourses(Long studentId) {
         if (studentId == null) {

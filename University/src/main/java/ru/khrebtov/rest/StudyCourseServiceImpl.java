@@ -75,7 +75,7 @@ public class StudyCourseServiceImpl implements StudyCourseServiceRest {
     }
 
     @TransactionAttribute
-    public void saveOrUpdate(DtoStudyCourse studyCourse) {
+    private void saveOrUpdate(DtoStudyCourse studyCourse) {
         logger.info("Saving studyCourse with id {}", studyCourse.getId());
         studyCourseRepository.saveOrUpdate(new StudyCourse(studyCourse));
     }
