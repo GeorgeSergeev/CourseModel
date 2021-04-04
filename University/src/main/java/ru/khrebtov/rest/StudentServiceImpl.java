@@ -122,9 +122,11 @@ public class StudentServiceImpl implements StudentServiceRest {
     }
 
     @Override
-    public Set<Course> getStudentCourses(Long studentId) {
+    public Set<DtoCourse> getStudentCourses(Long studentId) {
         logger.info("Get student Courses for student id {}", studentId);
-        //TODO
-        return studentRepository.getStudentCourses(studentId);
+        Set<DtoCourse> courses = new HashSet<>();
+        Set<Course> studentCourses = studentRepository.getStudentCourses(studentId);
+        studentCourses.forEach(course ->courses.add(new DtoCourse(course)));
+        return courses;
     }
 }

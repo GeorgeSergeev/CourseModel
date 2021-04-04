@@ -1,6 +1,6 @@
 package ru.khrebtov.rest;
 
-import ru.khrebtov.entity.Course;
+import ru.khrebtov.entity.dtoEntity.DtoCourse;
 import ru.khrebtov.entity.dtoEntity.DtoStudent;
 import ru.khrebtov.entity.dtoEntity.DtoStudyCourse;
 
@@ -48,5 +48,5 @@ public interface StudentServiceRest {
     @GET
     @Path("/course/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    Set<Course> getStudentCourses(@PathParam("id") Long studentId);
+    Set<DtoCourse> getStudentCourses(@PathParam("id") Long studentId);
 }

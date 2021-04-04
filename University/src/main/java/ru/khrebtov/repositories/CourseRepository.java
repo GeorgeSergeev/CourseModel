@@ -55,6 +55,11 @@ public class CourseRepository {
                 .setParameter("courseId", courseId).getResultList());
 
     }
+    public Long getCountCourseStudents(Long courseId) {
+        return em.createNamedQuery("getCountCourseStudents", Long.class)
+                .setParameter("courseId", courseId).getSingleResult();
+
+    }
 
     public Set<Professor> getCourseProfessor(Long courseId) {
         return new HashSet<>(em.createNamedQuery("getCourseProfessor", Professor.class)
