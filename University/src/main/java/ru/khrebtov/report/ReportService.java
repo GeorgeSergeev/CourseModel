@@ -13,8 +13,11 @@ import ru.khrebtov.repositories.StudyCourseRepository;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -37,11 +40,11 @@ public class ReportService implements ReportServiceRest {
 
     @Override
     public String createReport() {
+        String filePath = null;
         try {
             XSSFWorkbook book = new XSSFWorkbook();
-            LocalDate ld = LocalDate.now();
-            String s = String.format("C:\\git\\study\\CourseModel\\University\\report\\report_%s.xlsx", ld);
-            FileOutputStream fileOut = new FileOutputStream(s);
+            File file = createFile();
+            FileOutputStream fileOut = new FileOutputStream(file);
             XSSFSheet sheet = book.createSheet("professors");
             sheet.setColumnWidth(0, 12000);
             sheet.setColumnWidth(1, 12000);
@@ -84,14 +87,28 @@ public class ReportService implements ReportServiceRest {
                 cell.setCellValue(reportEntity.getAverageStudentsRating());
                 cell.setCellStyle(cellStyle);
             }
-
+            filePath = file.getAbsolutePath();
             book.write(fileOut);
             fileOut.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return "report created";
+        return String.format("report created: %s", filePath);
+    }
+
+    private File createFile() throws IOException {
+        LocalDate ld = LocalDate.now();
+        String fileSeparator = System.getProperty("file.separator");
+        String userName = System.getProperty("user.name");
+        String absoluteDirPath = String.format("C:%sUsers%s%s%sDownloads%sreports", fileSeparator,
+                fileSeparator, userName, fileSeparator, fileSeparator);
+
+        if (!Files.exists(Paths.get(absoluteDirPath))) {
+            Files.createDirectory(Paths.get(absoluteDirPath));
+        }
+
+        return new File(absoluteDirPath + File.separator + String.format("report_%s.xlsx", ld));
     }
 
     private List<ReportEntity> getReportEntities() {
