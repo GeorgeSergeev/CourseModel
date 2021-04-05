@@ -46,7 +46,9 @@ public class Professor {
         this.phone = professor.getPhone();
         this.payment = professor.getPayment();
         this.course = new HashSet<>();
-        professor.getCourse().forEach(c -> course.add(new Course(c)));
+        if(professor.getCourse() != null){
+            professor.getCourse().forEach(c -> course.add(new Course(c)));
+        }
     }
 
     public Long getId() {

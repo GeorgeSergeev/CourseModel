@@ -21,42 +21,45 @@
     <ui:insert name="header">
         <ui:include src="WEB-INF/menu/menu.xhtml"/>
     </ui:insert>
-    <f:event listener="#{courseController.preloadData}" type="preRenderView"/>
+        <f:event listener="#{professorsController.preloadData}" type="preRenderView"/>
     <div class="container">
         <div class="row py-2">
-            <h:form id="productForm">
+            <h:form id="professorForm">
                 <div class="col-12">
-                    <h:commandButton value="Add Course" styleClass="btn btn-primary"
-                                     action="#{courseController.createCourse}"/>
+                    <h:commandButton value="Add Professor" styleClass="btn btn-primary"
+                                     action="#{professorsController.createProfessor}"/>
                 </div>
 
                 <div class="col-12">
-                    <h:dataTable value="#{courseController.allCourses}" var="course"
+                    <h:dataTable value="#{professorsController.allProfessors}" var="professor"
                                  styleClass="table table-bordered my-2">
                         <h:column>
                             <f:facet name="header">Id</f:facet>
-                            #{course.id}
+                            #{professor.id}
                         </h:column>
                         <h:column>
                             <f:facet name="header">Name</f:facet>
-                            #{course.name}
+                            #{professor.name}
                         </h:column>
                         <h:column>
-                            <f:facet name="header">Number</f:facet>
-                            #{course.number}
+                            <f:facet name="header">Address</f:facet>
+                            #{professor.address}
                         </h:column>
                         <h:column>
-                            <f:facet name="header">Cost</f:facet>
-                            #{course.cost}
+                            <f:facet name="header">Phone</f:facet>
+                            #{professor.phone}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Payment</f:facet>
+                            #{professor.payment}
                         </h:column>
                         <h:column>
                             <f:facet name="header">Actions</f:facet>
-
                             <h:commandButton value="Edit" styleClass="btn btn-success"
-                                             action="#{courseController.editCourse(course)}"/>
+                                             action="#{professorsController.editProfessor(professor)}"/>
                             <h:commandButton value="Delete" styleClass="btn btn-danger"
-                                             action="#{courseController.deleteCourse(course)}">
-                                <f:ajax event="click" render="productForm"/>
+                                             action="#{professorsController.deleteProfessor(professor)}">
+                                <f:ajax event="click" render="professorForm"/>
                             </h:commandButton>
 
                         </h:column>

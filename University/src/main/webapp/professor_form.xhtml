@@ -22,7 +22,6 @@
     <ui:insert name="header">
         <ui:include src="WEB-INF/menu/menu.xhtml"/>
     </ui:insert>
-
     <div class="container">
         <div class="row py-2">
             <div class="col-12">
@@ -31,24 +30,29 @@
                     <div class="form-group">
                         <label>Name</label>
                         <h:inputText styleClass="form-control" id="name"
-                                     value="#{courseController.course.name}"
+                                     value="#{professorsController.professor.name}"
                                      placeholder="Enter name"/>
                     </div>
                     <div class="form-group">
-                        <label>Number</label>
-                        <h:inputText p:type="number" styleClass="form-control" id="number"
-                                     value="#{courseController.course.number}"
-                                     placeholder="Enter course number"/>
+                        <label>Address</label>
+                        <h:inputText styleClass="form-control" id="address"
+                                     value="#{professorsController.professor.address}"
+                                     placeholder="Enter address"/>
                     </div>
                     <div class="form-group">
-                        <label>Cost</label>
-                        <h:inputText p:type="number" styleClass="form-control" id="cost"
-                                     value="#{courseController.course.cost}"
-                                     placeholder="Enter course cost"/>
+                        <label>Phone</label>
+                        <h:inputText styleClass="form-control" id="phone"
+                                     value="#{professorsController.professor.phone}"
+                                     placeholder="Enter phone"/>
                     </div>
-
+                    <div class="form-group">
+                        <label>Payment</label>
+                        <h:inputText p:type="number" styleClass="form-control" id="payment"
+                                     value="#{professorsController.professor.payment}"
+                                     placeholder="Enter record book number"/>
+                    </div>
                     <h:commandButton value="Submit" styleClass="btn btn-primary"
-                                     action="#{courseController.saveCourse()}"/>
+                                     action="#{professorsController.saveProfessor()}"/>
                 </h:form>
             </div>
         </div>

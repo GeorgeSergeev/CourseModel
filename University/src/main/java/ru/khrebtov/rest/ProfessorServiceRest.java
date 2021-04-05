@@ -36,4 +36,6 @@ public interface ProfessorServiceRest {
     @Produces(MediaType.APPLICATION_JSON)
     void deleteById(@PathParam("id") Long id);
 
+    void saveOrUpdate(DtoProfessor professor);
+
 }
