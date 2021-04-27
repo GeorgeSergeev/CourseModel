@@ -12,12 +12,16 @@ import ru.khrebtov.university.entity.repository.ProfessorRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class ProfessorServiceImpl implements ProfessorServiceRest {
     Logger logger = LoggerFactory.getLogger(ProfessorServiceImpl.class);
 
+    private final ProfessorRepository professorRepository;
+
     @Autowired
-    private ProfessorRepository professorRepository;
+    public ProfessorServiceImpl(ProfessorRepository professorRepository) {
+        this.professorRepository = professorRepository;
+    }
 
     @Override
     public List<DtoProfessor> findAll() {

@@ -9,7 +9,7 @@ import ru.khrebtov.university.service.ProfessorServiceRest;
 import java.io.Serializable;
 import java.util.List;
 
-@RestController(value = "/professors")
+@RestController
 public class ProfessorsController implements Serializable {
 
 
