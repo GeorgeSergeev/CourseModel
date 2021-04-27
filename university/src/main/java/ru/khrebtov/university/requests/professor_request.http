@@ -1,0 +1,32 @@
+GET http://127.0.0.1:80/professorRest/count
+###
+GET http://127.0.0.1:80/professorRest/
+###
+GET http://127.0.0.1:80/professorRest/1
+###
+DELETE http://127.0.0.1:8080/university/api/v1/professor/3
+###
+POST http://127.0.0.1:80/professorRest/
+Content-Type: application/json
+
+{
+  "name": "Фиксик А.Б.H",
+  "address": "Луна22",
+  "phone": "+78888888898",
+  "payment": 25.0,
+  "course": []
+}
+
+###
+PUT http://127.0.0.1:80/professorRest
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "Фиксик А.Б.",
+  "address": "Луна22",
+  "phone": "+7888888889",
+  "payment": 28.0,
+  "course": []
+}
+

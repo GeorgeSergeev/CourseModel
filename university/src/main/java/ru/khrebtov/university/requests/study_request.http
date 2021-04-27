@@ -1,0 +1,37 @@
+GET http://127.0.0.1:8080/university/api/v1/study/count
+
+###
+GET http://127.0.0.1:8080/university/api/v1/study/
+
+###
+GET http://127.0.0.1:8080/university/api/v1/study/7
+
+###
+DELETE http://127.0.0.1:8080/university/api/v1/study/4
+
+###
+POST http://127.0.0.1:8080/university/api/v1/study/
+Content-Type: application/json
+
+{
+  "course": {
+    "id": 1
+  },
+  "student": {
+    "id": 3
+  }
+}
+
+###
+PUT http://localhost:8080/university/api/v1/study/
+Content-Type: application/json
+
+{
+  "id": 3,
+  "course": {
+    "id": 1
+  },
+  "student": {
+    "id": 5
+  }
+}
