@@ -1,16 +1,16 @@
-GET http://127.0.0.1:8080/university/api/v1/course/count
+GET http://127.0.0.1/rest/courses
 
 ###
-GET http://127.0.0.1:8080/university/api/v1/course/
+GET http://127.0.0.1/rest/courses/count
 
 ###
-GET http://127.0.0.1:8080/university/api/v1/course/5
+GET http://127.0.0.1/rest/courses/13
 
 ###
-DELETE http://127.0.0.1:8080/university/api/v1/course/10
+DELETE http://127.0.0.1/rest/courses/13
 
 ###
-POST http://127.0.0.1:8080/university/api/v1/course/
+POST http://127.0.0.1/rest/courses
 Content-Type: application/json
 
 {
@@ -20,42 +20,17 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8080/university/api/v1/course/
+PUT http://localhost/rest/courses
 Content-Type: application/json
 
 {
-  "cost": 700.0,
-  "id": 7,
-  "name": "Английский",
-  "number": 777,
-  "professors": [],
-  "students": []
-}
-
-###
-POST http://127.0.0.1:8080/university/api/v1/course/add
-Content-Type: application/json
-
-{
-  "course": {
-    "id": 7
-  },
-  "student": {
-    "id": 4
-  }
-}
-
-###
-DELETE http://127.0.0.1:8080/university/api/v1/course/delete_st
-Content-Type: application/json
-
-{
-  "course": {
-    "id": 7
-  },
-  "student": {
-    "id": 4
-  }
+  "id": 13,
+  "name": "Английский22",
+  "number": 7777,
+  "cost": 500.0,
+  "students": [],
+  "studyCourses": null,
+  "professors": []
 }
 
 

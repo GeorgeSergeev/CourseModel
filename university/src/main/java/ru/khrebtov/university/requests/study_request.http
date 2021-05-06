@@ -1,37 +1,37 @@
-GET http://127.0.0.1:8080/university/api/v1/study/count
+GET http://127.0.0.1/rest/studies/count
 
 ###
-GET http://127.0.0.1:8080/university/api/v1/study/
+GET http://127.0.0.1/rest/studies
 
 ###
-GET http://127.0.0.1:8080/university/api/v1/study/7
+GET http://127.0.0.1/rest/studies/3
 
 ###
-DELETE http://127.0.0.1:8080/university/api/v1/study/4
+DELETE http://127.0.0.1/rest/studies4
 
 ###
-POST http://127.0.0.1:8080/university/api/v1/study/
+POST http://127.0.0.1/rest/studies
 Content-Type: application/json
 
 {
-  "course": {
-    "id": 1
+   "student": {
+    "id": 4
   },
-  "student": {
-    "id": 3
+  "course": {
+    "id": 5
   }
 }
 
 ###
-PUT http://localhost:8080/university/api/v1/study/
+PUT http://localhost/rest/studies
 Content-Type: application/json
 
 {
-  "id": 3,
+  "id": 4,
   "course": {
-    "id": 1
+    "id": 5
   },
   "student": {
-    "id": 5
+    "id": 1
   }
 }

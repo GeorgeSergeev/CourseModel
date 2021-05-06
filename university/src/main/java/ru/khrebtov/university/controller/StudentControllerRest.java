@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.khrebtov.university.entity.dtoEntity.DtoStudent;
-import ru.khrebtov.university.service.StudentServiceRest;
+import ru.khrebtov.university.service.StudentService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/studentRest")
+@RequestMapping("/rest/students")
 public class StudentControllerRest {
-    private final StudentServiceRest studentService;
+    private final StudentService studentService;
 
     @Autowired
-    public StudentControllerRest(StudentServiceRest studentService) {
+    public StudentControllerRest(StudentService studentService) {
         this.studentService = studentService;
     }
 
@@ -28,18 +28,18 @@ public class StudentControllerRest {
         return studentService.findById(id);
     }
 
-    @GetMapping(path = "count",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/count", produces = MediaType.APPLICATION_JSON_VALUE)
     public Long countAll() {
-        return studentService.countAll();
+        return studentService.count();
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void insert(DtoStudent student) {
+    public void insert(@RequestBody DtoStudent student) {
         studentService.insert(student);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(DtoStudent student) {
+    public void update(@RequestBody DtoStudent student) {
         studentService.update(student);
     }
 
@@ -47,5 +47,4 @@ public class StudentControllerRest {
     public void deleteById(@PathVariable Long id) {
         studentService.deleteById(id);
     }
-
 }

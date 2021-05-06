@@ -1,6 +1,7 @@
 package ru.khrebtov.university.entity.dtoEntity;
 
 
+
 import ru.khrebtov.university.entity.Professor;
 
 import java.util.HashSet;

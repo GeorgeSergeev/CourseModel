@@ -1,7 +1,6 @@
 package ru.khrebtov.university.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,33 +9,29 @@ import ru.khrebtov.university.entity.Student;
 import ru.khrebtov.university.entity.dtoEntity.DtoCourse;
 import ru.khrebtov.university.entity.dtoEntity.DtoStudent;
 import ru.khrebtov.university.entity.dtoEntity.DtoStudyCourse;
-import ru.khrebtov.university.entity.repository.StudentRepository;
-import ru.khrebtov.university.entity.repository.StudyCourseRepository;
-
+import ru.khrebtov.university.repo.StudentRepository;
+import ru.khrebtov.university.repo.StudyCourseRepository;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
-public class StudentServiceImpl implements StudentServiceRest {
-    Logger logger = LoggerFactory.getLogger(StudentServiceImpl.class);
-
+@Slf4j
+public class StudentService implements AbstractService<DtoStudent> {
     private final StudentRepository studentRepository;
     private final StudyCourseRepository studyCourseRepository;
-    private final StudyCourseServiceRest studyCourseServiceRest;
+    private final StudyCourseService studyCourseService;
 
     @Autowired
-    public StudentServiceImpl(StudentRepository studentRepository, StudyCourseRepository studyCourseRepository, StudyCourseServiceRest studyCourseServiceRest) {
+    public StudentService(StudentRepository studentRepository, StudyCourseRepository studyCourseRepository, StudyCourseService studyCourseService) {
         this.studentRepository = studentRepository;
         this.studyCourseRepository = studyCourseRepository;
-        this.studyCourseServiceRest = studyCourseServiceRest;
+        this.studyCourseService = studyCourseService;
     }
 
     @Override
     public List<DtoStudent> findAll() {
-        logger.info("all students");
+        log.info("all students");
         List<DtoStudent> dtoStudents = new ArrayList<>();
         for (Student student : studentRepository.findAll()) {
             DtoStudent dtoStudent = getDtoStudent(student);
@@ -45,18 +40,12 @@ public class StudentServiceImpl implements StudentServiceRest {
         return dtoStudents;
     }
 
-    @Override
-    public DtoStudent findById(Long id) {
-        logger.info("find student by id = {}", id);
-        Student studentById = studentRepository.findById(id);
-        return getDtoStudent(studentById);
-    }
-
-    private DtoStudent getDtoStudent(Student student) {
+    @Transactional
+    public DtoStudent getDtoStudent(Student student) {
         DtoStudent dtoStudent = new DtoStudent(student);
         Long studentId = dtoStudent.getId();
-        Set<DtoStudyCourse> dtoStudyCourses = new HashSet<>();
-        studentRepository.getStudentStudyCourse(studentId).forEach(studyCourse -> {
+        List<DtoStudyCourse> dtoStudyCourses = new ArrayList<>();
+        studentRepository.getStudentStudyCourses(studentId).forEach(studyCourse -> {
             studyCourse.setRating(studyCourseRepository.getRatings(studyCourse.getId()));
             studyCourse.setCourse(studyCourseRepository.getCourseByStudyCourseId(studyCourse.getId()));
 
@@ -69,7 +58,8 @@ public class StudentServiceImpl implements StudentServiceRest {
         return dtoStudent;
     }
 
-    private Float getAverageRatingForAllCourses(Set<DtoStudyCourse> studyCourses) {
+    @Transactional
+    public Float getAverageRatingForAllCourses(List<DtoStudyCourse> studyCourses) {
         float sumAverageRating = 0F;
         int countStudyCoursesWithRatings = 0;
         for (DtoStudyCourse s : studyCourses) {
@@ -83,16 +73,23 @@ public class StudentServiceImpl implements StudentServiceRest {
     }
 
     @Override
-    public Long countAll() {
-        logger.info("count students");
-        return studentRepository.countAll();
+    public DtoStudent findById(Long id) {
+        log.info("find student by id = {}", id);
+        Student studentById = studentRepository.findById(id);
+        return getDtoStudent(studentById);
+    }
+
+    @Override
+    public Long count() {
+        log.info("count students");
+        return studentRepository.count();
     }
 
     @Override
     public void insert(DtoStudent student) {
-        logger.info("Try insert student with id {}", student.getId());
+        log.info("Try insert student with id {}", student.getId());
         if (student.getId() != null) {
-            logger.error("Был передан существующий студент id!=null");
+            log.error("Был передан существующий студент id!=null");
             throw new IllegalArgumentException();
         }
         saveOrUpdate(student);
@@ -100,37 +97,39 @@ public class StudentServiceImpl implements StudentServiceRest {
 
     @Override
     public void update(DtoStudent student) {
-        logger.info("Try update student with id {}", student.getId());
+        log.info("Try update student with id {}", student.getId());
         if (student.getId() == null) {
-            logger.error("Был передан новый студент id=null");
+            log.error("Был передан новый студент id=null");
             throw new IllegalArgumentException();
         }
         saveOrUpdate(student);
     }
 
-    @Transactional
-    public void saveOrUpdate(DtoStudent student) {
-        logger.info("Saving student with id {}", student.getId());
-        studentRepository.saveOrUpdate(new Student(student));
-    }
-
     @Override
     public void deleteById(Long id) {
-        logger.info("Deleting student with id {}", id);
+        log.info("Deleting student with id {}", id);
         studentRepository.deleteById(id);
     }
 
+    @Transactional
     @Override
-    public void signIntoCourse(DtoStudyCourse studyCourse) {
-        logger.info("Adding student into course");
-        studyCourseServiceRest.insert(studyCourse);
+    public void saveOrUpdate(DtoStudent student) {
+        log.info("Saving student with id {}", student.getId());
+        studentRepository.saveOrUpdate(new Student(student.getId(), student.getName(), student.getAddress(),
+                student.getPhone(), student.getEmail(), student.getRecordBook(), student.getProgress()));
     }
 
-    @Override
-    public Set<DtoCourse> getStudentCourses(Long studentId) {
-        logger.info("Get student Courses for student id {}", studentId);
-        Set<DtoCourse> courses = new HashSet<>();
-        Set<Course> studentCourses = studentRepository.getStudentCourses(studentId);
+
+    public void signIntoCourse(DtoStudyCourse studyCourse) {
+        log.info("Adding student into course");
+        studyCourseService.insert(studyCourse);
+    }
+
+
+    public List<DtoCourse> getStudentCourses(Long studentId) {
+        log.info("Get student Courses for student id {}", studentId);
+        List<DtoCourse> courses = new ArrayList<>();
+        List<Course> studentCourses = studentRepository.getStudentCourses(studentId);
         studentCourses.forEach(course ->courses.add(new DtoCourse(course)));
         return courses;
     }

@@ -1,32 +1,30 @@
-GET http://127.0.0.1:80/professorRest/count
+GET http://127.0.0.1:80/rest/professors/count
 ###
-GET http://127.0.0.1:80/professorRest/
+GET http://127.0.0.1:80/rest/professors/
 ###
-GET http://127.0.0.1:80/professorRest/1
+GET http://127.0.0.1:80/professors/15
 ###
-DELETE http://127.0.0.1:8080/university/api/v1/professor/3
+DELETE http://127.0.0.1:80/professors/13
 ###
-POST http://127.0.0.1:80/professorRest/
+POST http://127.0.0.1:80/rest/professors/
 Content-Type: application/json
 
 {
-  "name": "Фиксик А.Б.H",
+  "name": "Фиксик Dfcz",
   "address": "Луна22",
   "phone": "+78888888898",
-  "payment": 25.0,
-  "course": []
+  "payment": 25.0
 }
 
 ###
-PUT http://127.0.0.1:80/professorRest
+PUT http://127.0.0.1:80/rest/professors/
 Content-Type: application/json
 
 {
-  "id": 6,
-  "name": "Фиксик А.Б.",
-  "address": "Луна22",
-  "phone": "+7888888889",
-  "payment": 28.0,
-  "course": []
+  "id": 28,
+  "name": "Faradei334",
+  "address": "Солнце223",
+  "phone": "+7(999) 999 99 982",
+  "payment": 6567.0
 }
 

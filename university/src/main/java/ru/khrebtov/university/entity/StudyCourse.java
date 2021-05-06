@@ -11,21 +11,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "study_course", uniqueConstraints = {@UniqueConstraint(columnNames = {"course_id", "student_id"})})
-@NamedQueries({
-        @NamedQuery(name = "findAllStudyCourse", query = "select sc from StudyCourse sc "),
-        @NamedQuery(name = "countAllStudyCourse", query = "select count(sc) from StudyCourse sc"),
-        @NamedQuery(name = "deleteStudyCourseById", query = "delete from StudyCourse sc where sc.id = :id"),
-        @NamedQuery(name = "findStudyCourseById", query = "select sc from StudyCourse sc where sc.id = :id"),
-        @NamedQuery(name = "getAverageRating", query = "select 1.0*sum(r.rating)/count(r) from Rating r " +
-                "where r.studyCourseId=:id"),
-        @NamedQuery(name = "getRatings", query = "select r.rating from Rating r where r.studyCourseId=:id"),
-        @NamedQuery(name = "getCourseByStudyCourseId", query = "select c from Course c " +
-                "left join StudyCourse sc on c.id=sc.course.id where sc.id = :id"),
-        @NamedQuery(name = "getStudentByStudyCourseId", query = "select s from Student s " +
-                "left join StudyCourse sc on s.id=sc.student.id where sc.id = :id"),
-        @NamedQuery(name = "findByCourseIdAndStudentId", query = "select sc from StudyCourse sc " +
-                "where sc.course.id=:courseId AND sc.student.id = :studentId")
-})
 public class StudyCourse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

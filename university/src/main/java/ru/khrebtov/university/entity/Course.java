@@ -1,31 +1,14 @@
 package ru.khrebtov.university.entity;
 
 
-
 import ru.khrebtov.university.entity.dtoEntity.DtoCourse;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "course")
-@NamedQueries({
-        @NamedQuery(name = "findAllCourse", query = "select c from Course c "),
-        @NamedQuery(name = "countAllCourse", query = "select count(c) from Course c "),
-        @NamedQuery(name = "deleteCourseById", query = "delete from Course c where c.id = :id"),
-        @NamedQuery(name = "findCourseByNumber", query = "select c from Course c where c.number = :number"),
-        @NamedQuery(name = "findCourseById", query = "select c from Course c where c.id = :id"),
-        @NamedQuery(name = "getCourseStudents", query = "select s from Student s left join StudyCourse cs " +
-                "on s.id=cs.student.id where cs.course.id = :courseId"),
-        @NamedQuery(name = "getCountCourseStudents", query = "select count(s) from Student s left join StudyCourse cs " +
-                "on s.id=cs.student.id where cs.course.id = :courseId"),
-        @NamedQuery(name = "deleteStudentFromCourse", query = "delete from StudyCourse cs " +
-                "where cs.course.id=:courseId AND cs.student.id=:studentId"),
-        @NamedQuery(name = "getCourseStudy", query = "select sc from StudyCourse sc  where sc.course.id = :courseId "),
-        @NamedQuery(name = "getCourseProfessor", query = "select p from Professor p left join CourseProfessor cp" +
-                " on p.id=cp.professorsId where cp.courseId = :courseId")
-})
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,13 +30,13 @@ public class Course {
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id")
     )
-    private Set<Student> students;
+    private List<Student> students;
 
     @OneToMany(mappedBy = "course")
     @Transient
-    private Set<StudyCourse> studyCourses;
+    private List<StudyCourse> studyCourses;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
@@ -61,7 +44,7 @@ public class Course {
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "professors_id")
     )
-    private Set<Professor> professors;
+    private List<Professor> professors;
 
 
     public Course() {
@@ -78,17 +61,17 @@ public class Course {
         this(course.getId(), course.getName(), course.getNumber(), course.getCost());
 
         if (course.getStudyCourses() != null) {
-            this.studyCourses = new HashSet<>();
+            this.studyCourses = new ArrayList<>();
             course.getStudyCourses().forEach(studyCourse -> studyCourses.add(new StudyCourse(studyCourse)));
         }
 
         if (course.getStudents() != null) {
-            this.students = new HashSet<>();
+            this.students = new ArrayList<>();
             course.getStudents().forEach(student -> students.add(new Student(student)));
         }
 
         if (course.getProfessors() != null) {
-            this.professors = new HashSet<>();
+            this.professors = new ArrayList<>();
             course.getProfessors().forEach(p -> professors.add(new Professor(p)));
         }
 
@@ -127,27 +110,27 @@ public class Course {
         this.cost = cost;
     }
 
-    public Set<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 
-    public Set<StudyCourse> getStudyCourses() {
+    public List<StudyCourse> getStudyCourses() {
         return studyCourses;
     }
 
-    public void setStudyCourses(Set<StudyCourse> studyCourses) {
+    public void setStudyCourses(List<StudyCourse> studyCourses) {
         this.studyCourses = studyCourses;
     }
 
-    public Set<Professor> getProfessors() {
+    public List<Professor> getProfessors() {
         return professors;
     }
 
-    public void setProfessors(Set<Professor> professors) {
+    public void setProfessors(List<Professor> professors) {
         this.professors = professors;
     }
 

@@ -1,10 +1,10 @@
 package ru.khrebtov.university.entity.dtoEntity;
 
 
-
 import ru.khrebtov.university.entity.Student;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class DtoStudent {
@@ -18,7 +18,7 @@ public class DtoStudent {
 
     private Float progress;
     private Set<DtoCourse> courses;
-    private Set<DtoStudyCourse> studyCourses;
+    private List<DtoStudyCourse> studyCourses;
 
     public DtoStudent() {
     }
@@ -38,20 +38,19 @@ public class DtoStudent {
                 student.getRecordBook(), student.getProgress());
 
         if (student.getStudyCourses() != null) {
-            this.studyCourses = new HashSet<>();
+            this.studyCourses = new ArrayList<>();
             student.getStudyCourses().forEach(sc ->
                     studyCourses.add(new DtoStudyCourse(sc)));
         }
     }
 
-    public DtoStudent(Student student, Set<DtoStudyCourse> studyCourse) {
+    public DtoStudent(Student student, List<DtoStudyCourse> studyCourses) {
         this(student.getId(), student.getName(), student.getAddress(), student.getPhone(), student.getEmail(),
                 student.getRecordBook(), student.getProgress());
-        if (studyCourse != null) {
-            this.studyCourses = studyCourse;
+        if (studyCourses != null) {
+            this.studyCourses = studyCourses;
         }
     }
-
 
     public Long getId() {
         return id;
@@ -117,11 +116,11 @@ public class DtoStudent {
         this.courses = courses;
     }
 
-    public Set<DtoStudyCourse> getStudyCourses() {
+    public List<DtoStudyCourse> getStudyCourses() {
         return studyCourses;
     }
 
-    public void setStudyCourses(Set<DtoStudyCourse> studyCourses) {
+    public void setStudyCourses(List<DtoStudyCourse> studyCourses) {
         this.studyCourses = studyCourses;
     }
 }

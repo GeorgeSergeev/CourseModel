@@ -1,19 +1,20 @@
 package ru.khrebtov.university.entity.dtoEntity;
 
 
+
 import ru.khrebtov.university.entity.Course;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DtoCourse {
     private Long id;
     private String name;
     private int number;
     private float cost;
-    private Set<DtoStudent> students;
-    private Set<DtoStudyCourse> studyCourses;
-    private Set<DtoProfessor> professors;
+    private List<DtoStudent> students;
+    private List<DtoStudyCourse> studyCourses;
+    private List<DtoProfessor> professors;
 
     public DtoCourse() {
     }
@@ -28,16 +29,16 @@ public class DtoCourse {
     public DtoCourse(Course course) {
         this(course.getId(), course.getName(), course.getNumber(), course.getCost());
         if (course.getStudyCourses() != null) {
-            this.studyCourses = new HashSet<>();
+            this.studyCourses = new ArrayList<>();
             course.getStudyCourses().forEach(studyCourse -> studyCourses.add(new DtoStudyCourse(studyCourse)));
         }
         if (course.getStudents() != null) {
-            this.students = new HashSet<>();
+            this.students = new ArrayList<>();
             course.getStudents().forEach(student -> students.add(new DtoStudent(student)));
         }
 
         if (course.getProfessors() != null && !(course.getProfessors().isEmpty())) {
-            this.professors = new HashSet<>();
+            this.professors = new ArrayList<>();
             course.getProfessors().forEach(p -> professors.add(new DtoProfessor(p)));
         }
 
@@ -76,27 +77,27 @@ public class DtoCourse {
         this.cost = cost;
     }
 
-    public Set<DtoStudent> getStudents() {
+    public List<DtoStudent> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<DtoStudent> students) {
+    public void setStudents(List<DtoStudent> students) {
         this.students = students;
     }
 
-    public Set<DtoStudyCourse> getStudyCourses() {
+    public List<DtoStudyCourse> getStudyCourses() {
         return studyCourses;
     }
 
-    public void setStudyCourses(Set<DtoStudyCourse> studyCourses) {
+    public void setStudyCourses(List<DtoStudyCourse> studyCourses) {
         this.studyCourses = studyCourses;
     }
 
-    public Set<DtoProfessor> getProfessors() {
+    public List<DtoProfessor> getProfessors() {
         return professors;
     }
 
-    public void setProfessors(Set<DtoProfessor> professors) {
+    public void setProfessors(List<DtoProfessor> professors) {
         this.professors = professors;
     }
 }

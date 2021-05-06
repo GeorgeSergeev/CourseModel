@@ -4,18 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.khrebtov.university.entity.dtoEntity.DtoProfessor;
-import ru.khrebtov.university.service.ProfessorServiceImpl;
+import ru.khrebtov.university.service.ProfessorService;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
-@RequestMapping("/professorRest")
+@RequestMapping("/rest/professors")
 public class ProfessorControllerRest {
-    private final ProfessorServiceImpl professorService;
+    private final ProfessorService professorService;
 
     @Autowired
-    public ProfessorControllerRest(ProfessorServiceImpl professorService) {
+    public ProfessorControllerRest(ProfessorService professorService) {
         this.professorService = professorService;
     }
 
@@ -31,21 +30,21 @@ public class ProfessorControllerRest {
 
     @GetMapping(path = "/count", produces = MediaType.APPLICATION_JSON_VALUE)
     public Long countAll() {
-        return professorService.countAll();
+        return professorService.count();
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void insert(DtoProfessor professor) {
+    public void insert(@RequestBody DtoProfessor professor) {
         professorService.insert(professor);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(DtoProfessor professor) {
+    public void update(@RequestBody DtoProfessor professor) {
         professorService.update(professor);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable(value = "id") Long id) {
+    public void deleteById(@PathVariable Long id) {
         professorService.deleteById(id);
     }
 }

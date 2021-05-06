@@ -6,22 +6,10 @@ import ru.khrebtov.university.entity.dtoEntity.DtoStudent;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "students")
-@NamedQueries({
-        @NamedQuery(name = "findAll", query = "select s from Student s"),
-        @NamedQuery(name = "countAll", query = "select count(s) from Student s"),
-        @NamedQuery(name = "deleteById", query = "delete from Student s where s.id = :id"),
-        @NamedQuery(name = "findByName", query = "select s from Student s where s.name = :name"),
-        @NamedQuery(name = "findById", query = "select s from Student s where s.id = :id"),
-        @NamedQuery(name = "getStudentCourses", query = "select c from Course c left join StudyCourse cs " +
-                "on c.id=cs.course.id where cs.student.id = :studentId"),
-        @NamedQuery(name = "getStudentStudyCourse", query = "select sc from StudyCourse sc where sc.student.id = :studentId")
-})
 public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,11 +29,11 @@ public class Student implements Serializable {
 
     @ManyToMany(mappedBy = "students")
     @Transient
-    private Set<Course> courses;
+    private List<Course> courses;
 
     @OneToMany(mappedBy = "student")
     @Transient
-    private Set<StudyCourse> studyCourses;
+    private List<StudyCourse> studyCourses;
 
 
     public Student() {
@@ -67,11 +55,11 @@ public class Student implements Serializable {
                 student.getRecordBook(), student.getProgress());
 
         if (student.getStudyCourses() != null) {
-            this.studyCourses = new HashSet<>();
+            this.studyCourses = new ArrayList<>();
             student.getStudyCourses().forEach(sc -> studyCourses.add(new StudyCourse(sc)));
         }
         if (student.getCourses() != null) {
-            this.courses = new HashSet<>();
+            this.courses = new ArrayList<>();
             student.getCourses().forEach(c -> courses.add(new Course(c)));
         }
 
@@ -133,19 +121,19 @@ public class Student implements Serializable {
         this.progress = progress;
     }
 
-    public Set<Course> getCourses() {
+    public List<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(Set<Course> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 
-    public Set<StudyCourse> getStudyCourses() {
+    public List<StudyCourse> getStudyCourses() {
         return studyCourses;
     }
 
-    public void setStudyCourses(Set<StudyCourse> studyCourses) {
+    public void setStudyCourses(List<StudyCourse> studyCourses) {
         this.studyCourses = studyCourses;
     }
 

@@ -5,19 +5,10 @@ import ru.khrebtov.university.entity.dtoEntity.DtoProfessor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "professors")
-@NamedQueries({
-        @NamedQuery(name = "findAllProfessors", query = "select p from Professor p"),
-        @NamedQuery(name = "countAllProfessors", query = "select count(p) from Professor p "),
-        @NamedQuery(name = "deleteProfessorsById", query = "delete from Professor p where p.id = :id"),
-        @NamedQuery(name = "findProfessorById", query = "select p from Professor p where p.id = :id"),
-        @NamedQuery(name = "getProfessorCourse", query = "select c from Course c left join CourseProfessor cp" +
-                " on c.id=cp.courseId where cp.professorsId = :professorId")
-})
 public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,19 +25,22 @@ public class Professor {
     private Float payment;
     @ManyToMany(mappedBy = "professors")
     @Transient
-    private Set<Course> course;
+    private List<Course> course;
 
 
     public Professor() {
     }
 
+    public Professor(Long id, String name, String address, String phone, Float payment) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.payment = payment;
+    }
+
     public Professor(DtoProfessor professor) {
-        this.id = professor.getId();
-        this.name = professor.getName();
-        this.address = professor.getAddress();
-        this.phone = professor.getPhone();
-        this.payment = professor.getPayment();
-        this.course = new HashSet<>();
+        this(professor.getId(), professor.getName(), professor.getAddress(), professor.getPhone(), professor.getPayment());
         if(professor.getCourse() != null){
             professor.getCourse().forEach(c -> course.add(new Course(c)));
         }
@@ -92,11 +86,24 @@ public class Professor {
         this.payment = payment;
     }
 
-    public Set<Course> getCourse() {
+    public List<Course> getCourse() {
         return course;
     }
 
-    public void setCourse(Set<Course> course) {
+    public void setCourse(List<Course> course) {
         this.course = course;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Professor professor = (Professor) o;
+        return id.equals(professor.id) && name.equals(professor.name) && address.equals(professor.address) && phone.equals(professor.phone) && payment.equals(professor.payment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, address, phone, payment);
     }
 }
