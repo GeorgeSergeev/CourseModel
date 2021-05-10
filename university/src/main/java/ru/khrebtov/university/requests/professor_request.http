@@ -2,9 +2,9 @@ GET http://127.0.0.1:80/rest/professors/count
 ###
 GET http://127.0.0.1:80/rest/professors/
 ###
-GET http://127.0.0.1:80/professors/15
+GET http://127.0.0.1:80/rest/professors/15
 ###
-DELETE http://127.0.0.1:80/professors/13
+DELETE http://127.0.0.1:80/rest/professors/13
 ###
 POST http://127.0.0.1:80/rest/professors/
 Content-Type: application/json

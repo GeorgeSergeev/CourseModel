@@ -26,17 +26,17 @@
             </div>
 
             <div class="col-12">
-                <table class="table table-bordered my-2">
+                <table class="table table-bordered my-2" id="prof_table">
                     <tr>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Payment</th>
-                        <th>Actions</th>
+                        <th id="th_name">Name</th>
+                        <th id="th_address">Address</th>
+                        <th id="th_phone">Phone</th>
+                        <th id="th_payment">Payment</th>
+                        <th id="th_actions">Actions</th>
                     </tr>
                     <tr th:each="professor : ${professors}">
-                        <td><a th:href="@{professors/{id}(id = ${professor.getId()})}"
-                               th:text="${professor.getName()}">professor</a>
+                        <td th:id="${professor.getId()}"><a th:href="@{professors/{id}(id = ${professor.getId()})}"
+                                              th:text="${professor.getName()}">professor</a>
                         </td>
                         <td th:text="${professor.getAddress()}">Address</td>
                         <td th:text="${professor.getPhone()}">Phone</td>
@@ -46,10 +46,11 @@
                                th:href="@{/professors/{id}/edit(id=${professor.getId()})}">Edit</a>
                             <form th:object="${professor}" th:action="@{/professors/{id}(id=${professor.getId()})}"
                                   th:method="delete">
-<!--                                <input class="btn btn-danger" type="submit" value="Delete"/>-->
+                                <!--                                <input class="btn btn-danger" type="submit" value="Delete"/>-->
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
+
                     </tr>
                 </table>
 

@@ -4,6 +4,8 @@ package ru.khrebtov.university.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.jdbc.Sql;
 import ru.khrebtov.university.entity.Professor;
 import ru.khrebtov.university.entity.dtoEntity.DtoProfessor;
 
@@ -16,15 +18,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
+@Sql("/init_db_test.sql")
+@TestPropertySource("/db.properties")
 class ProfessorServiceTest {
 
-    private final Professor professor11 = new Professor(11L, "Фиксик А.Б.H", "Луна22", "+78888888898", 28f);
-    private final Professor professor6 = new Professor(6L, "Фиксик А.Б.", "Луна22", "+7888888889", 25.0f);
-    private final Professor professor4 = new Professor(4L, "Курчатов Ф.П.", "Василево 23", "8800253256", 2000.0f);
-    private final Professor professor2 = new Professor(2L, "Павлов В.П.", "Спортивная 23", "+79787594353", 1900.0f);
+    private final Professor professor2 = new Professor(2L, "Герберт А.А.", "Спортивная 24", "+79787594353", 24800f);
     private final Professor professor1 = new Professor(1L, "Амосов В.П.", "Спортивная 23", "+79787594352", 24000.0f);
-    private final Professor professor15 = new Professor(15L, "Обновленный профессор", "Обн. Новая ул", "+7333", 3382f);
-    private final List<Professor> professors = Arrays.asList(professor11, professor6, professor4, professor2, professor1, professor15);
+    private final List<Professor> professors = Arrays.asList(professor1, professor2);
 
 
     private List<Professor> professorsFromDto(List<DtoProfessor> dtoProfessors) {
@@ -49,7 +49,8 @@ class ProfessorServiceTest {
 
     @Test
     void findById() {
-        assertEquals(professor11, new Professor(professorService.findById(11L)));
+        DtoProfessor byId = professorService.findById(1L);
+        assertEquals(professor1, new Professor(byId.getId(), byId.getName(), byId.getAddress(), byId.getPhone(), byId.getPayment()));
     }
 
     @Test
@@ -71,8 +72,9 @@ class ProfessorServiceTest {
     }
 
     @Test
+    @Sql("/before_delete.sql")
     void update() {
-        Professor updatedProfessor = new Professor(15L, "Обновленный профессор", "Обн. Новая ул", "+7333", 3382f);
+        Professor updatedProfessor = new Professor(3L, "Обновленный профессор", "Обн. Новая ул", "+7333", 3382f);
         professorService.update(new DtoProfessor(updatedProfessor));
         assertEquals(updatedProfessor, new Professor(professorService.findById(updatedProfessor.getId())));
     }

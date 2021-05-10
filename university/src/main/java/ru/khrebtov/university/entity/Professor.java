@@ -5,7 +5,8 @@ import ru.khrebtov.university.entity.dtoEntity.DtoProfessor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "professors")
@@ -41,7 +42,7 @@ public class Professor {
 
     public Professor(DtoProfessor professor) {
         this(professor.getId(), professor.getName(), professor.getAddress(), professor.getPhone(), professor.getPayment());
-        if(professor.getCourse() != null){
+        if (professor.getCourse() != null) {
             professor.getCourse().forEach(c -> course.add(new Course(c)));
         }
     }
@@ -105,5 +106,15 @@ public class Professor {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, address, phone, payment);
+    }
+
+    @Override
+    public String toString() {
+        return "Professor{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", payment=" + payment +
+                '}';
     }
 }

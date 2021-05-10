@@ -24,16 +24,15 @@
             <div class="col-12">
                 <table class="table table-bordered my-2">
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Payment</th>
-                        <th>Actions</th>
+                        <th id="th_name">Name</th>
+                        <th id="th_address">Address</th>
+                        <th id="th_phone">Phone</th>
+                        <th id="th_payment">Payment</th>
+                        <th id="th_actions">Actions</th>
                     </tr>
                     <tr>
                         <td th:text="${professor.getId()}">Id</td>
-                        <td th:text="${professor.getName()}">Name</td>
+                        <td th:id="${professor.getId()}" th:text="${professor.getName()}">Name</td>
                         <td th:text="${professor.getAddress()}">Address</td>
                         <td th:text="${professor.getPhone()}">Phone</td>
                         <td th:text="${professor.getPayment()}">Payment</td>
