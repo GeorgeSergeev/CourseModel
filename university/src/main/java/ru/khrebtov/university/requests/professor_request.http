@@ -1,0 +1,30 @@
+GET http://127.0.0.1:80/rest/professors/count
+###
+GET http://127.0.0.1:80/rest/professors/
+###
+GET http://127.0.0.1:80/rest/professors/15
+###
+DELETE http://127.0.0.1:80/rest/professors/13
+###
+POST http://127.0.0.1:80/rest/professors/
+Content-Type: application/json
+
+{
+  "name": "Фиксик Dfcz",
+  "address": "Луна22",
+  "phone": "+78888888898",
+  "payment": 25.0
+}
+
+###
+PUT http://127.0.0.1:80/rest/professors/
+Content-Type: application/json
+
+{
+  "id": 28,
+  "name": "Faradei334",
+  "address": "Солнце223",
+  "phone": "+7(999) 999 99 982",
+  "payment": 6567.0
+}
+

@@ -1,0 +1,40 @@
+GET http://127.0.0.1/rest/courses
+
+###
+GET http://127.0.0.1/rest/courses/count
+
+###
+GET http://127.0.0.1/rest/courses/13
+
+###
+DELETE http://127.0.0.1/rest/courses/13
+
+###
+POST http://127.0.0.1/rest/courses
+Content-Type: application/json
+
+{
+  "cost": 500.0,
+  "name": "Английский2",
+  "number": 7777
+}
+
+###
+PUT http://localhost/rest/courses
+Content-Type: application/json
+
+{
+  "id": 13,
+  "name": "Английский22",
+  "number": 7777,
+  "cost": 500.0,
+  "students": [],
+  "studyCourses": null,
+  "professors": []
+}
+
+
+
+
+
+

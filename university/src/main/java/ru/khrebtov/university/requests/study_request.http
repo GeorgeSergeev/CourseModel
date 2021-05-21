@@ -1,0 +1,37 @@
+GET http://127.0.0.1/rest/studies/count
+
+###
+GET http://127.0.0.1/rest/studies
+
+###
+GET http://127.0.0.1/rest/studies/3
+
+###
+DELETE http://127.0.0.1/rest/studies4
+
+###
+POST http://127.0.0.1/rest/studies
+Content-Type: application/json
+
+{
+   "student": {
+    "id": 4
+  },
+  "course": {
+    "id": 5
+  }
+}
+
+###
+PUT http://localhost/rest/studies
+Content-Type: application/json
+
+{
+  "id": 4,
+  "course": {
+    "id": 5
+  },
+  "student": {
+    "id": 1
+  }
+}

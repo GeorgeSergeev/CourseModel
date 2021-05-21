@@ -1,0 +1,34 @@
+GET http://127.0.0.1/rest/students
+###
+GET http://127.0.0.1/rest/students/count
+###
+GET http://127.0.0.1/rest/students/13
+###
+DELETE http://127.0.0.1/rest/students/12
+###
+POST http://127.0.0.1/rest/students
+Content-Type: application/json
+
+{
+  "address": "Василевичес 20 кв 43/2",
+  "email": "ya42@yar.ru",
+  "name": "Рихард Зорге2",
+  "phone": "+79787878758858",
+  "recordBook": 6678858
+}
+
+###
+PUT http://127.0.0.1/rest/students
+Content-Type: application/json
+
+{
+  "id": 13,
+  "name": "Рихард Зорге2",
+  "address": "Василевичес 20 кв 43/2",
+  "phone": "+79787878758858",
+  "email": "ya42@yar.ru",
+  "recordBook": 6678858,
+  "progress": 12.0
+}
+
+
