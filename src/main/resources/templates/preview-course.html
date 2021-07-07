@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="fragments/init :: head">
+    <title>Заглавная страница блога</title>
+</head>
+<body>
+
+<!-- Шаблон Header'а -->
+<div th:replace="fragments/header :: header">
+    ...
+</div>
+
+<div class="container-fluid">
+
+    <h2 th:if="${course} != null" th:text="${course}"/>
+    <h2 th:unless="${course} != null">Все преподаваемые курсы</h2>
+
+    <div class="row content">
+        <div class="col-md-6">
+            <div class="form-group purple-border">
+                <label for="exampleFormControlTextarea4">Текст в формате json</label>
+                <textarea class="form-control" id="exampleFormControlTextarea4" rows="25" th:text="${json}" readonly />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Шаблон Footer'а -->
+<div th:replace="fragments/footer :: footer">...</div>
+
+</body>
+</html>

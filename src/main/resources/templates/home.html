@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="fragments/init :: head">
+    <title>Заглавная страница блога</title>
+</head>
+<body>
+
+<!-- Шаблон Header'а -->
+<div th:replace="fragments/header :: header">
+    ...
+</div>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="clo-sm-8 text-left">
+            <h1>Тестовое задание "Институт 1.0"</h1>
+
+            <h3>Что сделано:</h3>
+            <ul>
+                <li>Средствами Java разработана модель по картинке с заданием. В качестве CRUD интерфейса исполь-
+                зован Spring Boot + Spring Web Mvc + Bootstrap</li>
+                <li>Реализован класс LoadDatabase, который осуществляет загрузку демонстрационных данных (пока студенты
+                    и курсы)</li>
+                <li>Реализован класс ExchangeController с методами сериализации существующих объектов модели в Json
+                    (экспорт), а также десериализации содержимого Json файла в объекты Java (импорт) с созданием от-
+                    сутствующих / апдейтом существубщих. Методы экспота / импорта основаны на использовании средств
+                    фреймворка Jackson с враппером RootHolder.</li>
+                <li>Объекты Java сохраняются в базу по spring-jpa + hibernate, в качестве СУБД используется PostgreSQL
+                    10.5.21</li>
+                <li>Реализованы пара методов CRUD REST сервиса курсов.</li>
+            </ul>
+
+            <h3>Что не успел, но планирую доделать:</h3>
+            <ul>
+                <li>Реализация экспорта / импорта объектов модели средствами CRUD REST сервиса.</li>
+                <li>Реализация методов CRUD REST сервиса по работе с объектами модели Student, CourseProgress, Profes-
+                sor</li>
+                <li>Spring security</li>
+                <li>Доработка LoadDatabase в части заполнения Прохождения курса студентами, реализация CRUD методов в
+                REST и WebMVC по работе с этими объектами.</li>
+                <li>Наведение "красоты", тесты (в задании не упоминается), рефакторинг шаблонов страниц HTML.</li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<!-- Шаблон Footer'а -->
+<div th:replace="fragments/footer :: footer">...</div>
+
+</body>
+</html>

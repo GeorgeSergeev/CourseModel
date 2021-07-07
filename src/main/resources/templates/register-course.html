@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="fragments/init :: head">
+    <title>Заглавная страница блога</title>
+</head>
+<body>
+
+<!-- Шаблон Header'а -->
+<div th:replace="fragments/header :: header">
+    ...
+</div>
+
+<div class="container-fluid">
+    <h2>Создание нового курса</h2>
+
+    <div class="row content">
+        <div class="col-md-6">
+            <div class="col-md-8 text-left">
+                <form action="#" th:action="@{/activity/register-course}" th:object="${course}" method="post">
+
+                    <div class="form-group">
+                        <label for="name">Название курса</label>
+                        <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Какой-то курс...">
+                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gradeBook">Номер курса по классификатору ЕКК</label>
+                        <input class="form-control" type="text" th:field="*{number}" id="gradeBook" placeholder="1000000">
+                        <span th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cost">Стоимость курса</label>
+                        <input class="form-control" type="text" th:field="*{cost}" id="cost" placeholder="25000">
+                        <span th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modules">Количество модулей в курсе</label>
+                        <input class="form-control" type="text" th:field="*{modules}" id="modules" placeholder="10">
+                        <span th:if="${#fields.hasErrors('modules')}" th:errors="*{modules}"></span>
+                    </div>
+                    <input type="submit" value="Создать" class="btn btn-success">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Шаблон Footer'а -->
+<div th:replace="fragments/footer :: footer">...</div>
+
+</body>
+</html>

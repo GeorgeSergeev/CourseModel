@@ -1,0 +1,92 @@
+{
+  "import" : {
+    "student" : [ {
+      "id" : 1,
+      "version" : 0,
+      "name" : "Михеев Петр Петрович",
+      "address" : "298302, Республика Крым, г. Керчь, ул. Вознесенская, 15 / ф",
+      "phone" : "+7(978)111-22-33",
+      "gradeBook" : 1000121,
+      "averageProgress" : 0.0,
+      "progressList" : [ ]
+    }, {
+      "id" : 2,
+      "version" : 0,
+      "name" : "Бобби Джэксон Младший",
+      "address" : "298302, Республика Крым, г. Керчь, ул. Провансальная, 22 / 11",
+      "phone" : "+7(978)111-22-33",
+      "gradeBook" : 1000122,
+      "averageProgress" : 0.0,
+      "progressList" : [ ]
+    }, {
+      "id" : 3,
+      "version" : 0,
+      "name" : "Сэмми Смит Карлсон",
+      "address" : "298302, Республика Крым, г. Керчь, ул. Ленинская, 8а",
+      "phone" : "+7(978)222-33-44",
+      "gradeBook" : 1000123,
+      "averageProgress" : 0.0,
+      "progressList" : [ ]
+    }, {
+      "id" : 4,
+      "version" : 0,
+      "name" : "Гарри Дэйл Харрисон",
+      "address" : "298302, Республика Крым, г. Керчь, ул. Оборонная, 127a / 1",
+      "phone" : "111111111",
+      "gradeBook" : 1000124,
+      "averageProgress" : 0.0,
+      "progressList" : [ ]
+    }, {
+      "id" : 5,
+      "version" : 0,
+      "name" : "Линдси Джэфферсон Гомез",
+      "address" : "298302, Республика Крым, г. Керчь, ул. Суздальская, 200 / 112",
+      "phone" : "+7(978)555-66-77",
+      "gradeBook" : 1000125,
+      "averageProgress" : 0.0,
+      "progressList" : [ ]
+    }, {
+      "id" : 6,
+      "version" : 0,
+      "name" : "Рэйчел Джэксон Паркер",
+      "address" : "298302, Республика Крым, г. Керчь, Флотский переулок, 1",
+      "phone" : "+7(978)666-77-88",
+      "gradeBook" : 1000126,
+      "averageProgress" : 0.0,
+      "progressList" : [ ]
+    } ],
+    "course" : [ {
+      "id" : 7,
+      "version" : 0,
+      "name" : "Physics for 9-th grade",
+      "number" : 100292910,
+      "cost" : 25000.0,
+      "modules" : 0,
+      "participators" : [ ],
+      "modules_PER_COURSE" : 10,
+      "max_COURSES_PER_STUDENT" : 3
+    }, {
+      "id" : 8,
+      "version" : 0,
+      "name" : "Chemistry for 9-th grade",
+      "number" : 202554110,
+      "cost" : 22000.0,
+      "modules" : 0,
+      "participators" : [ ],
+      "modules_PER_COURSE" : 10,
+      "max_COURSES_PER_STUDENT" : 3
+    }, {
+      "id" : 9,
+      "version" : 0,
+      "name" : "Java for beginners",
+      "number" : 300235650,
+      "cost" : 30000.0,
+      "modules" : 0,
+      "participators" : [ ],
+      "modules_PER_COURSE" : 10,
+      "max_COURSES_PER_STUDENT" : 3
+    } ],
+    "courseProgress" : [ ],
+    "professor" : [ ]
+  }
+}

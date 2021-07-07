@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    ...
+</head>
+<body>
+...
+<div th:fragment="header">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/home}">
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    Институт 1.0</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Студенческая жизнь
+                            <span class="caret"/></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" th:href="@{/student-community/students}"><span class="glyphicon glyphicon-menu-hamburger"></span>  Список студентов</a></li>
+                            <li><a href="#" th:method="post" th:href="@{/student-community/register-student}">Добавить студента</a></li>
+                            <li class="disabled"><a href="#">Записать студента на курс</a></li>
+                            <li><a href="#" th:href="@{/student-community/preview-all-students(toFile=false)}">Показать Json</a></li>
+                            <li><a href="#" th:href="@{/student-community/preview-all-students(toFile=true)}">Выгрузить Json в файл</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" th:href="@{/activity/courses}">Учебные курсы
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" th:href="@{/activity/courses}"><span class="glyphicon glyphicon-menu-hamburger"></span>  Список курсов института</a></li>
+                            <li><a href="#" th:method="post" th:href="@{/activity/register-course}">Добавить курс</a></li>
+                            <li><a href="#" th:href="@{/activity/preview-all-courses(toFile=false)}">Показать Json</a></li>
+                            <li><a href="#" th:href="@{/activity/preview-all-courses(toFile=true)}">Выгрузить Json в файл</a></li>
+                         </ul>
+                    </li>
+                    <li class="disabled"><a class="disabled">Прохождение курсов</a></li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Обмен данными
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" th:href="@{/exchange/upload}"><span class="glyphicon glyphicon-upload"></span>  Импорт объектов из файлов json</a></li>
+                            <li><a href="#" th:href="@{/exchange/global-export(toFile=false)}"><span class="glyphicon glyphicon-edit"></span>   Показать объекты в Json</a></li>
+                            <li><a href="#" th:href="@{/exchange/global-export(toFile=true)}"><span class="glyphicon glyphicon-download"></span>   Экспорт объектов в файл Json</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="fragments/init :: head">
+    <title>Заглавная страница блога</title>
+</head>
+<body>
+
+<!-- Шаблон Header'а -->
+<div th:replace="fragments/header :: header">
+    ...
+</div>
+
+<div class="container-fluid">
+    <h2 th:text="${course}">...</h2>
+    <p>Сводная информация о курсе:</p>
+
+    <div class="row content">
+        <div class="col-md-8">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Свойство</th>
+                    <th>Значение</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Номер курса:</td>
+                    <td th:text="${course.getNumber()}"></td>
+                </tr>
+                <tr>
+                    <td>Стоимость курса, руб.:</td>
+                    <td th:text="${course.getCost()}"></td>
+                </tr>
+                <tr>
+                    <td>Количество модулей в курсе:</td>
+                    <td th:text="${course.getModules()}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <a th:href="@{/activity/preview-course(id=${course.getId()})}" class="btn btn-info">Показать в json</a>
+            <a th:href="@{/activity/edit-course(id=${course.getId()})}" class="btn btn-info">Редактировать</a>
+            <a th:href="@{/activity/dismiss(id=${course.getId()})}" class="btn btn-danger">Удалить из базы</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Шаблон Footer'а -->
+<div th:replace="fragments/footer :: footer">...</div>
+
+</body>
+</html>

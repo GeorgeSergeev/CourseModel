@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="fragments/init :: head">
+    <title>Базы 1С:Предприятия</title>
+</head>
+<body>
+
+<!-- Шаблон Header'а -->
+<div th:replace="fragments/header :: header">
+    ...
+</div>
+
+<div class="container-fluid text-justify">
+    <div class="row content">
+        <div class="col-md-12 text-left">
+            <h2>Общий список курсов, преподаваемых в "Университет 1.0"</h2>
+             <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th th:width="50px">#</th>
+                    <th>Курс</th>
+                    <th>Номер курса</th>
+                    <th>Модулей</th>
+                    <th>Стоимость</th>
+                    <th width="40px"></th>
+                    <th width="40px"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <div th:each="course : ${courses}">
+                    <tr>
+                        <td><p th:text="${course.getId()}"></p></td>
+                        <td><a href="#" th:text="${course.getName()}" th:method="get" th:href="@{/activity/course(id=${course.getId()})}"/>
+                        <td><p th:text="${course.getNumber()}"></p></td>
+                        <td><p th:text="${course.getModules()}"></p></td>
+                        <td><p th:text="${course.getCost()}"></p></td>
+                        <td><a th:href="@{/activity/edit-course(id=${course.getId()})}"><span class="glyphicon glyphicon-edit" /></a></td>
+                        <td><a th:href="@{/activity/dismiss(id=${course.getId()})}"><span class="glyphicon glyphicon-erase" /></a></td>
+
+                    </tr>
+                </div>
+                </tbody>
+            </table>
+            <a th:method="post" th:href="@{/activity/register-course}" class="btn btn-success">Ввести новый курс</a>
+        </div>
+    </div>
+</div>
+
+<!-- Шаблон Footer'а -->
+<div th:replace="fragments/footer :: footer">...</div>
+
+</body>
+</html>
