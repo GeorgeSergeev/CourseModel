@@ -9,6 +9,8 @@ import ru.softlab.coursemodel.model.converter.EntityDtoConverter;
 import ru.softlab.coursemodel.model.dto.BaseDto;
 import ru.softlab.coursemodel.repository.BaseEntityRepository;
 
+import javax.persistence.EntityNotFoundException;
+
 @Slf4j
 @Service
 @Transactional
@@ -28,21 +30,28 @@ public abstract class CrudServiceImpl<D extends BaseDto,
 
     @Override
     public D create(D dto) {
-        return null;
+        E entity = converter.toEntity(dto);
+        return converter.toDto(repository.save(entity));
     }
 
     @Override
     public D findById(Integer id) {
-        return null;
+        return converter.toDto(repository.findById(id).orElseThrow(() ->
+                new EntityNotFoundException(String.format(ENTITY_NOT_FOUND_MESSAGE, entityName, id))));
     }
 
     @Override
     public D update(D dto) {
-        return null;
+        if (repository.existsById(dto.getId())) {
+            E entity = converter.toEntity(dto);
+            return converter.toDto(repository.save(entity));
+        } else {
+            throw new EntityNotFoundException(String.format(ENTITY_NOT_FOUND_MESSAGE, entityName, dto.getId()));
+        }
     }
 
     @Override
-    public void logicalDelete(Integer id, boolean deleted, int version) {
-
+    public void delete(Integer id) {
+        repository.deleteById(id);
     }
 }

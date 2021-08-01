@@ -17,7 +17,7 @@ public class CourseConverter implements EntityDtoConverter<Course, CourseDto> {
         return CourseDto.builder()
                 .id(entity.getId())
                 .version(entity.getVersion())
-                .name(entity.getName())
+                .name(entity.getTitle())
                 .number(entity.getNumber())
                 .price(entity.getPrice())
                 .build();
@@ -34,7 +34,7 @@ public class CourseConverter implements EntityDtoConverter<Course, CourseDto> {
     public Course toEntity(CourseDto dto) {
         return Course.builder()
                 .id(dto.getId())
-                .name(dto.getName())
+                .name(dto.getTitle())
                 .number(dto.getNumber())
                 .price(dto.getPrice())
                 .build();

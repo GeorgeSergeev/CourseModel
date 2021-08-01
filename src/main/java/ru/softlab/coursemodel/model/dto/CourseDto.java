@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 public class CourseDto extends BaseDto {
 
     @NotBlank(groups = {Create.class, Update.class})
-    private String name;
+    private String title;
 
     @Size(max = 255, groups = {Create.class, Update.class})
     private Integer number;
@@ -29,7 +29,7 @@ public class CourseDto extends BaseDto {
     public static final class Builder {
         private Integer id;
         private Integer version;
-        private String name;
+        private String title;
         private Integer number;
         private Float price;
 
@@ -46,8 +46,8 @@ public class CourseDto extends BaseDto {
             return this;
         }
 
-        public Builder name(String name) {
-            this.name = name;
+        public Builder name(String title) {
+            this.title = title;
             return this;
         }
 
@@ -65,7 +65,7 @@ public class CourseDto extends BaseDto {
             CourseDto courseDto = new CourseDto();
             courseDto.setId(id);
             courseDto.setVersion(version);
-            courseDto.setName(name);
+            courseDto.setTitle(title);
             courseDto.setNumber(number);
             courseDto.setPrice(price);
             return courseDto;

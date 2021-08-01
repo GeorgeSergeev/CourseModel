@@ -10,7 +10,7 @@ import javax.validation.constraints.Null;
 
 @Getter
 @Setter
-public class BaseDto {
+public abstract class BaseDto {
 
     @NotNull(groups = Update.class)
     @Null(groups = Create.class)

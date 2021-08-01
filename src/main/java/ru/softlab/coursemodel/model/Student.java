@@ -2,17 +2,15 @@ package ru.softlab.coursemodel.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Lazy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "student")
+@Table(name = "students")
 public class Student extends BaseEntity {
 
     @Column
@@ -30,11 +28,16 @@ public class Student extends BaseEntity {
     @Column
     private Integer recordBookNumber;
 
-    @Column
+    @Lazy
+    @Column(name = "avg_performance")
     private Float averagePerformance;
 
-    //TODO
+    @Lazy
     @ManyToMany
+    @JoinTable(
+            name = "students_courses",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
     private Collection<Course> courses;
 
     public static Builder builder() {

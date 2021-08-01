@@ -4,11 +4,13 @@ import ru.softlab.coursemodel.model.dto.BaseDto;
 
 public interface CrudService<D extends BaseDto> {
 
+    String ENTITY_NOT_FOUND_MESSAGE = "%s with id='%s' not found";
+
     D create(D dto);
 
     D findById(Integer id);
 
     D update(D dto);
 
-    void logicalDelete(Integer id, boolean deleted, int version);
+    void delete(Integer id);
 }

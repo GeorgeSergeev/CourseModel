@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Course extends BaseEntity {
 
     @Column
-    private String name;
+    private String title;
 
     @Column
     private Integer number;
@@ -29,7 +29,7 @@ public class Course extends BaseEntity {
     public static final class Builder {
         private Integer id;
         private Integer version;
-        private String name;
+        private String title;
         private Integer number;
         private Float price;
 
@@ -46,8 +46,8 @@ public class Course extends BaseEntity {
             return this;
         }
 
-        public Builder name(String name) {
-            this.name = name;
+        public Builder name(String title) {
+            this.title = title;
             return this;
         }
 
@@ -65,7 +65,7 @@ public class Course extends BaseEntity {
             Course course = new Course();
             course.setId(id);
             course.setVersion(version);
-            course.setName(name);
+            course.setTitle(title);
             course.setNumber(number);
             course.setPrice(price);
             return course;

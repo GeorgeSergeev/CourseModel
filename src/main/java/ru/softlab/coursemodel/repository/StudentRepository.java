@@ -9,12 +9,10 @@ import ru.softlab.coursemodel.model.Student;
 @Repository
 public interface StudentRepository extends BaseEntityRepository<Student> {
 
-    int findAveragePerformanceById(int id);
-
     @Modifying
-    @Query(value = "INSERT INTO students_courses(student_id, course_id, mark) VALUES(:studentId, :courseId, :mark)",
+    @Query(value = "INSERT INTO completing_courses(student_id, course_id, mark) VALUES(:studentId, :courseId, :mark)",
             nativeQuery = true)
-    void bindStudentAndCourse(@Param("studentId") Integer studentId,
-                              @Param("courseId") Integer courseId,
-                              @Param("mark") Integer mark);
+    void setMarkForStudentByCourse(@Param("studentId") Integer studentId,
+                                   @Param("courseId") Integer courseId,
+                                   @Param("mark") Integer mark);
 }

@@ -18,6 +18,9 @@ public class StudentConverter implements EntityDtoConverter<Student, StudentDto>
     @Autowired
     private CourseService courseService;
 
+    @Autowired
+    private CourseConverter courseConverter;
+
     @Override
     public StudentDto toDto(Student entity) {
         return StudentDto.builder()
@@ -53,9 +56,10 @@ public class StudentConverter implements EntityDtoConverter<Student, StudentDto>
                 .email(dto.getEmail())
                 .recordBookNumber(dto.getRecordBookNumber())
                 .avgPerformance(dto.getAvgPerformance())
-                .courses(dto.getCourseIds().stream()
+                .courses(dto.getCourseIds() != null ? dto.getCourseIds().stream()
                         .map(id -> courseService.findById(id))
-                        .collect(Collectors.toList()))
+                        .map(courseDto -> courseConverter.toEntity(courseDto))
+                        .collect(Collectors.toList()) : null)
                 .build();
     }
 

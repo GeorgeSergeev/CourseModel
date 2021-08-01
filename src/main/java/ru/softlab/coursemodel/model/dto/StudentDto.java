@@ -13,17 +13,18 @@ import java.util.Collection;
 public class StudentDto extends BaseDto {
 
     @NotBlank(groups = {Create.class, Update.class})
+    @Size(min = 3, groups = {Create.class, Update.class})
     private String name;
 
     @Size(max = 255, groups = {Create.class, Update.class})
     private String address;
 
-    @NotNull(groups = {Create.class, Update.class})
-    @Size(max = 255, groups = {Create.class, Update.class})
+    @NotBlank(groups = {Create.class, Update.class})
+    @Size(min = 5, max = 10, groups = {Create.class, Update.class})
     private String phone;
 
-    @NotNull(groups = {Create.class, Update.class})
-    @Size(max = 255, groups = {Create.class, Update.class})
+    @NotBlank(groups = {Create.class, Update.class})
+    @Size(min = 5, max = 30, groups = {Create.class, Update.class})
     private String email;
 
     @Positive(groups = {Create.class, Update.class})

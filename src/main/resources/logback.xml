@@ -1,0 +1,41 @@
+<configuration debug="true">
+
+    <property name="LOGS" value="./course-logs"/>
+    <property name="ARCHIVE" value="${LOGS}/archived"/>
+
+    <appender name="Console"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/course.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] %-5level %29.29c{1} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${ARCHIVE}/course-log-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <!-- each file should be at most 1MB, keep 7 days worth of history, but at most 10MB -->
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>500MB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="ru.softlab.coursemodel" level="INFO" additivity="false">
+        <appender-ref ref="Console"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+    <root level="ERROR" additivity="false">
+        <appender-ref ref="Console"/>
+        <appender-ref ref="FILE" level="ERROR"/>
+    </root>
+</configuration>
