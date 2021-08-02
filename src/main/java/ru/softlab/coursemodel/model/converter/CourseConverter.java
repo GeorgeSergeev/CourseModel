@@ -34,6 +34,7 @@ public class CourseConverter implements EntityDtoConverter<Course, CourseDto> {
     public Course toEntity(CourseDto dto) {
         return Course.builder()
                 .id(dto.getId())
+                .version(dto.getVersion())
                 .name(dto.getTitle())
                 .number(dto.getNumber())
                 .price(dto.getPrice())

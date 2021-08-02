@@ -19,8 +19,8 @@ import java.util.Collection;
 
 @Validated
 @RestController
-@RequestMapping("/students")
-public class StudentController {
+@RequestMapping("/professors")
+public class ProfessorController {
 
     @Autowired
     private StudentService service;

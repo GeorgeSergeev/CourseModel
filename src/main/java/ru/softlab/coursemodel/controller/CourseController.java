@@ -12,6 +12,8 @@ import ru.softlab.coursemodel.model.dto.validation.scenario.Create;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Update;
 import ru.softlab.coursemodel.service.CourseService;
 
+import javax.validation.constraints.NotNull;
+
 @Validated
 @RestController
 @RequestMapping("/courses")
@@ -37,8 +39,8 @@ public class CourseController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    @DeleteMapping
+    public ResponseEntity<Void> delete(@RequestParam @NotNull Integer id) {
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

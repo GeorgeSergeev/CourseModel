@@ -6,6 +6,7 @@ import ru.softlab.coursemodel.model.dto.validation.scenario.Create;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Update;
 
 import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Getter
@@ -13,14 +14,14 @@ import java.util.Collection;
 public class StudentDto extends BaseDto {
 
     @NotBlank(groups = {Create.class, Update.class})
-    @Size(min = 3, groups = {Create.class, Update.class})
+    @Size(min = 2, max = 255, groups = {Create.class, Update.class})
     private String name;
 
-    @Size(max = 255, groups = {Create.class, Update.class})
+    @Size(min = 3, max = 255, groups = {Create.class, Update.class})
     private String address;
 
     @NotBlank(groups = {Create.class, Update.class})
-    @Size(min = 5, max = 10, groups = {Create.class, Update.class})
+    @Size(min = 5, max = 12, groups = {Create.class, Update.class})
     private String phone;
 
     @NotBlank(groups = {Create.class, Update.class})
@@ -34,7 +35,7 @@ public class StudentDto extends BaseDto {
 
     private Float avgPerformance;
 
-    private Collection<Integer> courseIds;
+    private Collection<Integer> courseIds = new ArrayList<>();
 
     public static Builder builder() {
         return new Builder();

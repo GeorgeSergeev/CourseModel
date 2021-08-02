@@ -56,10 +56,10 @@ public class StudentConverter implements EntityDtoConverter<Student, StudentDto>
                 .email(dto.getEmail())
                 .recordBookNumber(dto.getRecordBookNumber())
                 .avgPerformance(dto.getAvgPerformance())
-                .courses(dto.getCourseIds() != null ? dto.getCourseIds().stream()
+                .courses(dto.getCourseIds().stream()
                         .map(id -> courseService.findById(id))
                         .map(courseDto -> courseConverter.toEntity(courseDto))
-                        .collect(Collectors.toList()) : null)
+                        .collect(Collectors.toList()))
                 .build();
     }
 

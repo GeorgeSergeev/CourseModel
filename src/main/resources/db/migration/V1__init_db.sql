@@ -5,18 +5,8 @@ CREATE TABLE IF NOT EXISTS students (
     address             VARCHAR,
     phone               VARCHAR NOT NULL,
     email               VARCHAR NOT NULL,
-    record_book_number  INT4,
+    record_book_number  INT4 NOT NULL,
     avg_performance     REAL
-);
-
-CREATE TABLE IF NOT EXISTS professors (
-    id                  SERIAL PRIMARY KEY,
-    version             INT4 NOT NULL DEFAULT(0),
-    name                VARCHAR NOT NULL,
-    address             VARCHAR,
-    phone               VARCHAR NOT NULL,
-    payment             REAL NOT NULL,
-    course_id           INT4 NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS courses (
@@ -25,6 +15,16 @@ CREATE TABLE IF NOT EXISTS courses (
     title               VARCHAR NOT NULL,
     number              INT4 NOT NULL,
     price               REAL NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS professors (
+    id                  SERIAL PRIMARY KEY,
+    version             INT4 NOT NULL DEFAULT(0),
+    name                VARCHAR NOT NULL,
+    address             VARCHAR,
+    phone               VARCHAR,
+    payment             REAL NOT NULL,
+    course_id           INT4 NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS students_courses (
@@ -40,3 +40,9 @@ CREATE TABLE IF NOT EXISTS completing_courses (
     course_id           INT4 NOT NULL,
     mark                INT4 NOT NULL
 );
+
+ALTER TABLE students            ADD CONSTRAINT student_phone_unique         UNIQUE (phone);
+ALTER TABLE students            ADD CONSTRAINT email_unique                 UNIQUE (email);
+ALTER TABLE students            ADD CONSTRAINT record_book_number_unique    UNIQUE (record_book_number);
+ALTER TABLE courses             ADD CONSTRAINT number_unique                UNIQUE (number);
+ALTER TABLE professors          ADD CONSTRAINT professor_phone_unique       UNIQUE (phone);
