@@ -32,31 +32,73 @@ public class CompletingCourseService extends CrudServiceImpl<CompletingCourseDto
 
     @Override
     public CompletingCourseDto create(CompletingCourseDto dto) {
-        StudentDto studentDto = studentService.findById(dto.getStudentId());
-        CourseDto courseDto = courseService.findById(dto.getCourseId());
-        if (repository.existsFinalMarkByStudentIdAndCourseId(studentDto.getId(), courseDto.getId())) {
+        CompletingCourse completingCourse = converter.toEntity(dto);
+        Integer studentId = completingCourse.getStudent().getId();
+        Integer courseId = completingCourse.getCourse().getId();
+        if (!repository.existsFinalMarkByStudentIdAndCourseId(studentId, courseId)) {
             return super.create(dto);
         } else {
             throw new OperationForbiddenException(
                     String.format("Forbidden add new mark. Student with id '%s' already finished course with id '%s'",
-                            studentDto.getId(), courseDto.getId()));
+                            studentId, courseId));
+        }
+    }
+
+    @Override
+    public CompletingCourseDto update(CompletingCourseDto dto) {
+        CompletingCourse completingCourse = converter.toEntity(dto);
+        Integer studentId = completingCourse.getStudent().getId();
+        Integer courseId = completingCourse.getCourse().getId();
+        if (!repository.existsFinalMarkByStudentIdAndCourseId(studentId, courseId)) {
+            return super.update(dto);
+        } else {
+            throw new OperationForbiddenException(
+                    String.format("Forbidden update mark. Student with id '%s' already finished course with id '%s'",
+                            studentId, courseId));
+        }
+    }
+
+    @Override
+    public void delete(Integer id) {
+        CompletingCourseDto completingCourseDto = findById(id);
+        CompletingCourse completingCourse = converter.toEntity(completingCourseDto);
+        Integer studentId = completingCourse.getStudent().getId();
+        Integer courseId = completingCourse.getCourse().getId();
+        if (!repository.existsFinalMarkByStudentIdAndCourseId(studentId, courseId)) {
+            super.delete(id);
+        } else {
+            throw new OperationForbiddenException(
+                    String.format("Forbidden delete mark. Student with id '%s' already finished course with id '%s'",
+                            studentId, courseId));
         }
     }
 
     public float summariseMark(Integer studentId, Integer courseId) {
+        float mark = findAverageMark(studentId, courseId);
+
         StudentDto studentDto = studentService.findById(studentId);
         CourseDto courseDto = courseService.findById(courseId);
-        float mark = findAverageMark(studentDto.getId(), courseDto.getId());
-        repository.setMarkByStudentIdAndCourseId(studentDto.getId(), courseDto.getId(), mark);
-        return mark;
+        if (studentDto.getCourseIds().contains(courseDto.getId())) {
+            float mark = findAverageMark(studentDto.getId(), courseDto.getId());
+            repository.setMarkByStudentIdAndCourseId(studentDto.getId(), courseDto.getId(), mark);
+            return mark;
+        } else {
+            throw new OperationForbiddenException(String.format(
+                    "Student with id '%d' is not enrolled int course with id '%s'", studentId, courseId));
+        }
     }
 
     public float findAverageMark(Integer studentId, Integer courseId) {
         StudentDto studentDto = studentService.findById(studentId);
         CourseDto courseDto = courseService.findById(courseId);
-        Collection<Integer> marks =
-                repository.findAllMarksByStudentIdAndCourseId(studentDto.getId(), courseDto.getId());
-        return findAverageNumber(marks);
+        if (studentDto.getCourseIds().contains(courseDto.getId())) {
+            Collection<Integer> marks =
+                    repository.findAllMarksByStudentIdAndCourseId(studentDto.getId(), courseDto.getId());
+            return findAverageNumber(marks);
+        } else {
+            throw new OperationForbiddenException(String.format(
+                    "Student with id '%d' is not enrolled int course with id '%s'", studentId, courseId));
+        }
     }
 
     public void recountAveragePerformance(Integer studentId) {
@@ -71,6 +113,6 @@ public class CompletingCourseService extends CrudServiceImpl<CompletingCourseDto
         return (float) numbers.stream()
                 .mapToInt(m -> m)
                 .average()
-                .orElseThrow();
+                .orElse(0f);
     }
 }

@@ -11,6 +11,9 @@ import java.util.Collection;
 @Repository
 public interface CompletingCourseRepository extends BaseEntityRepository<CompletingCourse> {
 
+    @Modifying
+    @Query(value = "DELETE FROM completing_courses WHERE student_id = :studentId AND course_id = :courseId",
+            nativeQuery = true)
     void deleteAllByStudentIdAndCourseId(Integer studentId, Integer courseId);
 
     @Query(value = "SELECT mark FROM completing_courses WHERE student_id = :studentId AND course_id = :courseId",
@@ -22,16 +25,18 @@ public interface CompletingCourseRepository extends BaseEntityRepository<Complet
     Collection<Integer> findAllMarksByStudentId(Integer studentId);
 
     @Modifying
-    @Query(value = "UPDATE completing_courses SET final_mark = :finalMark WHERE student = :studentId AND course_id = :courseId",
-            nativeQuery = true)
+    @Query(value = """
+            UPDATE completing_courses SET final_mark = :finalMark
+            WHERE student_id = :studentId AND course_id = :courseId
+            """, nativeQuery = true)
     void setMarkByStudentIdAndCourseId(@Param("studentId") Integer studentId,
                                        @Param("courseId") Integer courseId,
-                                       @Param("mark") Float finalMark);
+                                       @Param("finalMark") Float finalMark);
 
     @Query(value = """
             SELECT EXISTS(
-            SELECT 1 FROM completing_courses
-            WHERE student = :studentId AND course_id = :courseId AND final_mark IS NOT NULL)
+            SELECT 1 FROM students_courses
+            WHERE student_id = :studentId AND course_id = :courseId AND final_mark IS NOT NULL)
             """, nativeQuery = true)
     boolean existsFinalMarkByStudentIdAndCourseId(@Param("studentId") Integer studentId,
                                                   @Param("courseId") Integer courseId);

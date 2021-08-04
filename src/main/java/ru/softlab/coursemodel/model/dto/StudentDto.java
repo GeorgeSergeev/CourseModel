@@ -5,11 +5,7 @@ import lombok.Setter;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Create;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Update;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
-import java.util.ArrayList;
+import javax.validation.constraints.*;
 import java.util.Collection;
 
 @Getter
@@ -38,7 +34,8 @@ public class StudentDto extends BaseDto {
 
     private Float averagePerformance;
 
-    private Collection<Integer> courseIds = new ArrayList<>();
+    @NotNull(groups = {Create.class, Update.class})
+    private Collection<Integer> courseIds;
 
     public static Builder builder() {
         return new Builder();

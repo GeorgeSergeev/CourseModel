@@ -5,10 +5,7 @@ import lombok.Setter;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Create;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Update;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Getter
 @Setter
@@ -23,6 +20,7 @@ public class CourseDto extends BaseDto {
             message = "should be less then " + Integer.MAX_VALUE)
     private Integer number;
 
+    @NotNull
     @Positive(groups = {Create.class, Update.class})
     private Float price;
 

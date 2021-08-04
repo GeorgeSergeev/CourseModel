@@ -58,6 +58,10 @@ public abstract class CrudServiceImpl<D extends BaseDto,
 
     @Override
     public void delete(Integer id) {
-        repository.deleteById(id);
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException(String.format(ENTITY_NOT_FOUND_MESSAGE, entityName, id));
+        }
     }
 }

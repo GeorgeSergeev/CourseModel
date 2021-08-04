@@ -1,6 +1,5 @@
 package ru.softlab.coursemodel.service;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +13,8 @@ import ru.softlab.coursemodel.repository.CompletingCourseRepository;
 import ru.softlab.coursemodel.repository.CourseRepository;
 import ru.softlab.coursemodel.repository.StudentRepository;
 
-@Slf4j
+import java.util.Collection;
+
 @Service
 @Transactional
 public class CourseService extends CrudServiceImpl<CourseDto,
@@ -33,6 +33,14 @@ public class CourseService extends CrudServiceImpl<CourseDto,
 
     public CourseService() {
         entityName = Course.class.getSimpleName();
+    }
+
+    @Override
+    public void delete(Integer id) {
+        Collection<Integer> studentIds = studentRepository.findAllByCourseId(id);
+        studentIds.forEach(studentId -> repository.unbindStudentAndCourse(studentId, id));
+        studentIds.forEach(studentId -> completingCourseRepository.deleteAllByStudentIdAndCourseId(studentId, id));
+        super.delete(id);
     }
 
     public void enrollInCourse(EnrollInCourseDto dto) {
@@ -55,5 +63,10 @@ public class CourseService extends CrudServiceImpl<CourseDto,
             completingCourseRepository.deleteAllByStudentIdAndCourseId(studentId, courseId);
             repository.unbindStudentAndCourse(studentId, courseId);
         }
+    }
+
+    public Collection<CourseDto> findAllFinishedCourses(StudentDto studentDto) {
+        Collection<Course> courses = repository.findAllByStudentIdAndFinalMarkIsNotNull(studentDto.getId());
+        return converter.toDto(courses);
     }
 }

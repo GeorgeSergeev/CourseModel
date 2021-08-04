@@ -30,4 +30,12 @@ public interface CourseRepository extends BaseEntityRepository<Course> {
             """,
             nativeQuery = true)
     Collection<Course> findAllByStudentIdAndFinalMarkIsNotNull(Integer studentId);
+
+    @Query(value = """
+            SELECT c.id FROM students_courses s_c
+            LEFT JOIN courses c ON s_c.course_id = c.id
+            WHERE s_c.student_id = :studentId
+            """,
+            nativeQuery = true)
+    Collection<Integer> findAllCourseIdsByStudentId(Integer studentId);
 }
