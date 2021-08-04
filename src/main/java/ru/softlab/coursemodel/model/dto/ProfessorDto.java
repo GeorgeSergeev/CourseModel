@@ -6,8 +6,10 @@ import ru.softlab.coursemodel.model.dto.validation.scenario.Create;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Update;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
+import java.util.Collection;
 
 @Getter
 @Setter
@@ -26,7 +28,8 @@ public class ProfessorDto extends BaseDto {
     @Positive(groups = {Create.class, Update.class})
     private Float payment;
 
-    private Integer courseId;
+    @NotNull(groups = {Create.class, Update.class})
+    private Collection<Integer> courseIds;
 
     public static Builder builder() {
         return new Builder();
@@ -39,7 +42,7 @@ public class ProfessorDto extends BaseDto {
         private String address;
         private String phone;
         private Float payment;
-        private Integer courseId;
+        private Collection<Integer> courseIds;
 
         private Builder() {
         }
@@ -74,8 +77,8 @@ public class ProfessorDto extends BaseDto {
             return this;
         }
 
-        public Builder courseId(Integer courseId) {
-            this.courseId = courseId;
+        public Builder courseIds(Collection<Integer> courseIds) {
+            this.courseIds = courseIds;
             return this;
         }
 
@@ -87,7 +90,7 @@ public class ProfessorDto extends BaseDto {
             professorDto.setAddress(address);
             professorDto.setPhone(phone);
             professorDto.setPayment(payment);
-            professorDto.setCourseId(courseId);
+            professorDto.setCourseIds(courseIds);
             return professorDto;
         }
     }

@@ -2,8 +2,10 @@ package ru.softlab.coursemodel.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Getter
 @Setter
@@ -23,9 +25,13 @@ public class Professor extends BaseEntity {
     @Column
     private Float payment;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id")
-    private Course course;
+    @Lazy
+    @ManyToMany
+    @JoinTable(
+            name = "professors_courses",
+            joinColumns = @JoinColumn(name = "professor_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private Collection<Course> courses;
 
     public static Builder builder() {
         return new Builder();
@@ -38,7 +44,7 @@ public class Professor extends BaseEntity {
         private String address;
         private String phone;
         private Float payment;
-        private Course course;
+        private Collection<Course> courses;
 
         private Builder() {
         }
@@ -73,8 +79,8 @@ public class Professor extends BaseEntity {
             return this;
         }
 
-        public Builder course(Course course) {
-            this.course = course;
+        public Builder courses(Collection<Course> courses) {
+            this.courses = courses;
             return this;
         }
 
@@ -86,7 +92,7 @@ public class Professor extends BaseEntity {
             professor.setAddress(address);
             professor.setPhone(phone);
             professor.setPayment(payment);
-            professor.setCourse(course);
+            professor.setCourses(courses);
             return professor;
         }
     }

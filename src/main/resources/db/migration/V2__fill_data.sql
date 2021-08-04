@@ -10,10 +10,6 @@ INSERT INTO courses (title, number, price) VALUES
 ('Kotlin', 12, 59.99),
 ('Scala', 13, 69.99);
 
-INSERT INTO professors (name, payment, course_id) VALUES
-('Andrey Breslav', 1500, 2),
-('Martin Odersky', 1500, 3);
-
 INSERT INTO students_courses (student_id, course_id) VALUES
 (1, 1), (1, 2), (1, 3),
 (2, 1), (2, 2),
@@ -22,6 +18,14 @@ INSERT INTO students_courses (student_id, course_id) VALUES
 
 INSERT INTO students_courses (student_id, course_id, final_mark) VALUES
 (5, 3, 5);
+
+INSERT INTO professors (name, payment) VALUES
+('Andrey Breslav', 1500),
+('Martin Odersky', 1500);
+
+INSERT INTO professors_courses (professor_id, course_id) VALUES
+(1, 1), (1, 2),
+(2, 1);
 
 INSERT INTO completing_courses (student_id, course_id, mark) VALUES
 (1, 1, 3), (1, 2, 4),
