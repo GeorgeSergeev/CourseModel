@@ -48,3 +48,9 @@ ALTER TABLE students            ADD CONSTRAINT record_book_number_unique    UNIQ
 ALTER TABLE courses             ADD CONSTRAINT number_unique                UNIQUE (number);
 ALTER TABLE professors          ADD CONSTRAINT professor_phone_unique       UNIQUE (phone);
 ALTER TABLE students_courses    ADD CONSTRAINT students_courses_unique      UNIQUE (student_id, course_id);
+
+ALTER TABLE professors          ADD CONSTRAINT fk_professor_course_id       FOREIGN KEY (course_id)         REFERENCES courses (id);
+ALTER TABLE students_courses    ADD CONSTRAINT fk_sc_student_id             FOREIGN KEY (student_id)        REFERENCES students (id);
+ALTER TABLE students_courses    ADD CONSTRAINT fk_sc_course_id              FOREIGN KEY (course_id)         REFERENCES courses (id);
+ALTER TABLE completing_courses  ADD CONSTRAINT fk_cc_student_id             FOREIGN KEY (student_id)        REFERENCES students (id);
+ALTER TABLE completing_courses  ADD CONSTRAINT fk_cc_course_id              FOREIGN KEY (course_id)         REFERENCES courses (id);

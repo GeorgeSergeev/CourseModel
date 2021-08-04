@@ -19,10 +19,6 @@ public class ProfessorConverter extends AbstractConverter<Professor, ProfessorDt
 
     @Override
     public ProfessorDto toDto(Professor entity) {
-        Integer courseId = null;
-        if (entity.getCourse() != null) {
-            courseId = entity.getCourse().getId();
-        }
         return ProfessorDto.builder()
                 .id(entity.getId())
                 .version(entity.getVersion())
@@ -30,7 +26,7 @@ public class ProfessorConverter extends AbstractConverter<Professor, ProfessorDt
                 .address(entity.getAddress())
                 .phone(entity.getPhone())
                 .payment(entity.getPayment())
-                .courseId(courseId)
+                .courseId(entity.getCourse() != null ? entity.getCourse().getId() : null)
                 .build();
     }
 

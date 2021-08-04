@@ -74,18 +74,11 @@ public class CompletingCourseService extends CrudServiceImpl<CompletingCourseDto
     }
 
     public float summariseMark(Integer studentId, Integer courseId) {
-        float mark = findAverageMark(studentId, courseId);
-
-        StudentDto studentDto = studentService.findById(studentId);
-        CourseDto courseDto = courseService.findById(courseId);
-        if (studentDto.getCourseIds().contains(courseDto.getId())) {
-            float mark = findAverageMark(studentDto.getId(), courseDto.getId());
-            repository.setMarkByStudentIdAndCourseId(studentDto.getId(), courseDto.getId(), mark);
-            return mark;
-        } else {
-            throw new OperationForbiddenException(String.format(
-                    "Student with id '%d' is not enrolled int course with id '%s'", studentId, courseId));
+        float finalMark = findAverageMark(studentId, courseId);
+        if (repository.existsNotSetFinalMarkByStudentIdAndCourseId(studentId, courseId)) {
+            repository.setFinalMarkByStudentIdAndCourseId(studentId, courseId, finalMark);
         }
+        return finalMark;
     }
 
     public float findAverageMark(Integer studentId, Integer courseId) {

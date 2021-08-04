@@ -26,12 +26,20 @@ public interface CompletingCourseRepository extends BaseEntityRepository<Complet
 
     @Modifying
     @Query(value = """
-            UPDATE completing_courses SET final_mark = :finalMark
+            UPDATE students_courses SET final_mark = :finalMark
             WHERE student_id = :studentId AND course_id = :courseId
             """, nativeQuery = true)
-    void setMarkByStudentIdAndCourseId(@Param("studentId") Integer studentId,
-                                       @Param("courseId") Integer courseId,
-                                       @Param("finalMark") Float finalMark);
+    void setFinalMarkByStudentIdAndCourseId(@Param("studentId") Integer studentId,
+                                            @Param("courseId") Integer courseId,
+                                            @Param("finalMark") Float finalMark);
+
+    @Query(value = """
+            SELECT EXISTS(
+            SELECT 1 FROM students_courses
+            WHERE student_id = :studentId AND course_id = :courseId AND final_mark IS NULL)
+            """, nativeQuery = true)
+    boolean existsNotSetFinalMarkByStudentIdAndCourseId(@Param("studentId") Integer studentId,
+                                                        @Param("courseId") Integer courseId);
 
     @Query(value = """
             SELECT EXISTS(
