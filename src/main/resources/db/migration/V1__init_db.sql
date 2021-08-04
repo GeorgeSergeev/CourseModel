@@ -24,10 +24,11 @@ CREATE TABLE IF NOT EXISTS professors (
     address             VARCHAR,
     phone               VARCHAR,
     payment             REAL NOT NULL,
-    course_id           INT4 NOT NULL
+    course_id           INT4
 );
 
 CREATE TABLE IF NOT EXISTS students_courses (
+    id                  SERIAL PRIMARY KEY,
     student_id          INT4 NOT NULL,
     course_id           INT4 NOT NULL,
     final_mark          REAL
@@ -46,3 +47,4 @@ ALTER TABLE students            ADD CONSTRAINT email_unique                 UNIQ
 ALTER TABLE students            ADD CONSTRAINT record_book_number_unique    UNIQUE (record_book_number);
 ALTER TABLE courses             ADD CONSTRAINT number_unique                UNIQUE (number);
 ALTER TABLE professors          ADD CONSTRAINT professor_phone_unique       UNIQUE (phone);
+ALTER TABLE students_courses    ADD CONSTRAINT students_courses_unique      UNIQUE (student_id, course_id);

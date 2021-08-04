@@ -1,7 +1,8 @@
 package ru.softlab.coursemodel.service;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.softlab.coursemodel.model.BaseEntity;
@@ -11,7 +12,6 @@ import ru.softlab.coursemodel.repository.BaseEntityRepository;
 
 import javax.persistence.EntityNotFoundException;
 
-@Slf4j
 @Service
 @Transactional
 public abstract class CrudServiceImpl<D extends BaseDto,
@@ -44,7 +44,13 @@ public abstract class CrudServiceImpl<D extends BaseDto,
     public D update(D dto) {
         if (repository.existsById(dto.getId())) {
             E entity = converter.toEntity(dto);
-            return converter.toDto(repository.save(entity));
+            try {
+                return converter.toDto(repository.save(entity));
+            } catch (ObjectOptimisticLockingFailureException e) {
+                String message = String
+                        .format(VERSION_INVALID_MESSAGE, entity.getClass().getSimpleName(), entity.getId());
+                throw new OptimisticLockingFailureException(message);
+            }
         } else {
             throw new EntityNotFoundException(String.format(ENTITY_NOT_FOUND_MESSAGE, entityName, dto.getId()));
         }

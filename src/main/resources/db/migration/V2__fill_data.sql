@@ -20,6 +20,9 @@ INSERT INTO students_courses (student_id, course_id) VALUES
 (3, 1), (3, 3),
 (4, 2), (4, 3);
 
+INSERT INTO students_courses (student_id, course_id, final_mark) VALUES
+(5, 3, 5);
+
 INSERT INTO completing_courses (student_id, course_id, mark) VALUES
 (1, 1, 3), (1, 2, 4),
 (1, 1, 4), (1, 2, 5),
@@ -34,4 +37,6 @@ INSERT INTO completing_courses (student_id, course_id, mark) VALUES
            (3, 3, 5),
 
 (4, 2, 3), (4, 3, 5),
-(4, 2, 4), (4, 3, 4);
+(4, 2, 4), (4, 3, 4),
+
+(5, 3, 5);

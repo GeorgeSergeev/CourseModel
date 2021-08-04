@@ -52,14 +52,14 @@ public class StudentController {
     }
 
     @PostMapping(value = "/enroll", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> enrollInCourse(@RequestBody EnrollInCourseDto dto) {
+    public ResponseEntity<Void> enrollInCourse(@Validated @RequestBody EnrollInCourseDto dto) {
         courseService.enrollInCourse(dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping(value = "/courses/completed")
-    public ResponseEntity<Collection<CourseDto>> findAllCompletedCourses(@PathVariable Integer studentId) {
-        Collection<CourseDto> response = service.findAllCompletedCourses(studentId);
+    @GetMapping(value = "/{id}/completed-courses")
+    public ResponseEntity<Collection<CourseDto>> findAllCompletedCourses(@PathVariable(value = "id") Integer id) {
+        Collection<CourseDto> response = service.findAllCompletedCourses(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

@@ -1,19 +1,18 @@
 package ru.softlab.coursemodel.model.converter;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.softlab.coursemodel.model.BaseEntity;
+import ru.softlab.coursemodel.model.Course;
 import ru.softlab.coursemodel.model.Student;
 import ru.softlab.coursemodel.model.dto.StudentDto;
 import ru.softlab.coursemodel.service.CourseService;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
-@Slf4j
 @Component
-public class StudentConverter implements EntityDtoConverter<Student, StudentDto> {
+public class StudentConverter extends AbstractConverter<Student, StudentDto> {
 
     @Autowired
     private CourseService courseService;
@@ -31,7 +30,7 @@ public class StudentConverter implements EntityDtoConverter<Student, StudentDto>
                 .phone(entity.getPhone())
                 .email(entity.getEmail())
                 .recordBookNumber(entity.getRecordBookNumber())
-                .avgPerformance(entity.getAveragePerformance())
+                .averagePerformance(entity.getAveragePerformance())
                 .courseIds(entity.getCourses().stream()
                         .map(BaseEntity::getId)
                         .collect(Collectors.toList()))
@@ -39,14 +38,14 @@ public class StudentConverter implements EntityDtoConverter<Student, StudentDto>
     }
 
     @Override
-    public Collection<StudentDto> toDto(Collection<Student> entities) {
-        return entities.stream()
-                .map(this::toDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public Student toEntity(StudentDto dto) {
+        List<Course> courses = null;
+        if (dto.getCourseIds() != null) {
+            courses = dto.getCourseIds().stream()
+                    .map(id -> courseService.findById(id))
+                    .map(courseDto -> courseConverter.toEntity(courseDto))
+                    .collect(Collectors.toList());
+        }
         return Student.builder()
                 .id(dto.getId())
                 .version(dto.getVersion())
@@ -55,18 +54,8 @@ public class StudentConverter implements EntityDtoConverter<Student, StudentDto>
                 .phone(dto.getPhone())
                 .email(dto.getEmail())
                 .recordBookNumber(dto.getRecordBookNumber())
-                .avgPerformance(dto.getAvgPerformance())
-                .courses(dto.getCourseIds().stream()
-                        .map(id -> courseService.findById(id))
-                        .map(courseDto -> courseConverter.toEntity(courseDto))
-                        .collect(Collectors.toList()))
+                .averagePerformance(dto.getAveragePerformance())
+                .courses(courses)
                 .build();
-    }
-
-    @Override
-    public Collection<Student> toEntity(Collection<StudentDto> dtoCollection) {
-        return dtoCollection.stream()
-                .map(this::toEntity)
-                .collect(Collectors.toList());
     }
 }

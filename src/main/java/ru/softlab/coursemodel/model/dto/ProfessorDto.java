@@ -20,7 +20,6 @@ public class ProfessorDto extends BaseDto {
     @Size(min = 3, max = 255, groups = {Create.class, Update.class})
     private String address;
 
-    @NotBlank(groups = {Create.class, Update.class})
     @Size(min = 5, max = 12, groups = {Create.class, Update.class})
     private String phone;
 

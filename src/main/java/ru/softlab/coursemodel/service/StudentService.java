@@ -41,26 +41,8 @@ public class StudentService extends CrudServiceImpl<StudentDto,
     }
 
     public Collection<CourseDto> findAllCompletedCourses(Integer studentId) {
-        Collection<Course> courses = courseRepository.findAllByStudentIdAndFinalMarkIsNotNull(studentId);
+        StudentDto studentDto = findById(studentId);
+        Collection<Course> courses = courseRepository.findAllByStudentIdAndFinalMarkIsNotNull(studentDto.getId());
         return courseConverter.toDto(courses);
-    }
-
-    public float findAverageMarkByCourse(Student student, Course course) {
-        Collection<Integer> marks = completingCourseRepository.findAllMarksByStudentAndCourse(student, course);
-        return findAverageNumber(marks);
-    }
-
-    public void recountAveragePerformance(Student student) {
-        Collection<Integer> marks = completingCourseRepository.findAllMarksByStudent(student);
-        float mark = findAverageNumber(marks);
-        student.setAveragePerformance(mark);
-        repository.save(student);
-    }
-
-    private float findAverageNumber(Collection<Integer> numbers) {
-        return (float) numbers.stream()
-                .mapToInt(m -> m)
-                .average()
-                .orElseThrow();
     }
 }

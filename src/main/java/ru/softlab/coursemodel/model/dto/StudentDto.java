@@ -5,7 +5,10 @@ import lombok.Setter;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Create;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Update;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -33,7 +36,7 @@ public class StudentDto extends BaseDto {
             message = "should be less then " + Integer.MAX_VALUE)
     private Integer recordBookNumber;
 
-    private Float avgPerformance;
+    private Float averagePerformance;
 
     private Collection<Integer> courseIds = new ArrayList<>();
 
@@ -49,7 +52,7 @@ public class StudentDto extends BaseDto {
         private String phone;
         private String email;
         private Integer recordBookNumber;
-        private Float avgPerformance;
+        private Float averagePerformance;
         private Collection<Integer> courseIds;
 
         private Builder() {
@@ -90,8 +93,8 @@ public class StudentDto extends BaseDto {
             return this;
         }
 
-        public Builder avgPerformance(Float avgPerformance) {
-            this.avgPerformance = avgPerformance;
+        public Builder averagePerformance(Float averagePerformance) {
+            this.averagePerformance = averagePerformance;
             return this;
         }
 
@@ -109,7 +112,7 @@ public class StudentDto extends BaseDto {
             studentDto.setPhone(phone);
             studentDto.setEmail(email);
             studentDto.setRecordBookNumber(recordBookNumber);
-            studentDto.setAvgPerformance(avgPerformance);
+            studentDto.setAveragePerformance(averagePerformance);
             studentDto.setCourseIds(courseIds);
             return studentDto;
         }

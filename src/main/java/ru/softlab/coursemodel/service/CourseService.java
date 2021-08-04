@@ -10,6 +10,7 @@ import ru.softlab.coursemodel.model.converter.CourseConverter;
 import ru.softlab.coursemodel.model.dto.CourseDto;
 import ru.softlab.coursemodel.model.dto.EnrollInCourseDto;
 import ru.softlab.coursemodel.model.dto.StudentDto;
+import ru.softlab.coursemodel.repository.CompletingCourseRepository;
 import ru.softlab.coursemodel.repository.CourseRepository;
 import ru.softlab.coursemodel.repository.StudentRepository;
 
@@ -26,6 +27,9 @@ public class CourseService extends CrudServiceImpl<CourseDto,
 
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    private CompletingCourseRepository completingCourseRepository;
 
     public CourseService() {
         entityName = Course.class.getSimpleName();
@@ -45,8 +49,11 @@ public class CourseService extends CrudServiceImpl<CourseDto,
     public void removeFromCourse(EnrollInCourseDto dto) {
         StudentDto studentDto = studentService.findById(dto.getStudentId());
         CourseDto courseDto = findById(dto.getCourseId());
+        Integer studentId = studentDto.getId();
+        Integer courseId = courseDto.getId();
         if (studentDto.getCourseIds().contains(courseDto.getId())) {
-            repository.unbindStudentAndCourse(studentDto.getId(), courseDto.getId());
+            completingCourseRepository.deleteAllByStudentIdAndCourseId(studentId, courseId);
+            repository.unbindStudentAndCourse(studentId, courseId);
         }
     }
 }

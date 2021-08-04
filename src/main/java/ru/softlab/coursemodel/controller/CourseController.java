@@ -46,13 +46,13 @@ public class CourseController {
     }
 
     @PostMapping(value = "/enroll", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> enrollStudent(@RequestBody EnrollInCourseDto dto) {
+    public ResponseEntity<Void> enrollStudent(@Validated @RequestBody EnrollInCourseDto dto) {
         service.enrollInCourse(dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/enroll", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> removeStudent(@RequestBody EnrollInCourseDto dto) {
+    public ResponseEntity<Void> removeStudent(@Validated @RequestBody EnrollInCourseDto dto) {
         service.removeFromCourse(dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -52,7 +52,7 @@ public class Student extends BaseEntity {
         private String phone;
         private String email;
         private Integer recordBookNumber;
-        private Float avgPerformance;
+        private Float averagePerformance;
         private Collection<Course> courses;
 
         private Builder() {
@@ -93,8 +93,8 @@ public class Student extends BaseEntity {
             return this;
         }
 
-        public Builder avgPerformance(Float avgPerformance) {
-            this.avgPerformance = avgPerformance;
+        public Builder averagePerformance(Float averagePerformance) {
+            this.averagePerformance = averagePerformance;
             return this;
         }
 
@@ -112,7 +112,7 @@ public class Student extends BaseEntity {
             student.setPhone(phone);
             student.setEmail(email);
             student.setRecordBookNumber(recordBookNumber);
-            student.setAveragePerformance(avgPerformance);
+            student.setAveragePerformance(averagePerformance);
             student.setCourses(courses);
             return student;
         }

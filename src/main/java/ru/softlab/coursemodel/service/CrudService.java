@@ -5,6 +5,7 @@ import ru.softlab.coursemodel.model.dto.BaseDto;
 public interface CrudService<D extends BaseDto> {
 
     String ENTITY_NOT_FOUND_MESSAGE = "%s with id='%s' not found";
+    String VERSION_INVALID_MESSAGE = "%s with id='%s' was already modified";
 
     D create(D dto);
 

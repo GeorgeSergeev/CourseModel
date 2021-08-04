@@ -8,9 +8,6 @@ import ru.softlab.coursemodel.model.dto.CourseDto;
 import ru.softlab.coursemodel.model.dto.ProfessorDto;
 import ru.softlab.coursemodel.service.CourseService;
 
-import java.util.Collection;
-import java.util.stream.Collectors;
-
 @Component
 public class ProfessorConverter extends AbstractConverter<Professor, ProfessorDto> {
 
@@ -22,6 +19,10 @@ public class ProfessorConverter extends AbstractConverter<Professor, ProfessorDt
 
     @Override
     public ProfessorDto toDto(Professor entity) {
+        Integer courseId = null;
+        if (entity.getCourse() != null) {
+            courseId = entity.getCourse().getId();
+        }
         return ProfessorDto.builder()
                 .id(entity.getId())
                 .version(entity.getVersion())
@@ -29,14 +30,17 @@ public class ProfessorConverter extends AbstractConverter<Professor, ProfessorDt
                 .address(entity.getAddress())
                 .phone(entity.getPhone())
                 .payment(entity.getPayment())
-                .courseId(entity.getCourse().getId())
+                .courseId(courseId)
                 .build();
     }
 
     @Override
     public Professor toEntity(ProfessorDto dto) {
-        CourseDto courseDto = courseService.findById(dto.getCourseId());
-        Course course = courseConverter.toEntity(courseDto);
+        Course course = null;
+        if (dto.getCourseId() != null) {
+            CourseDto courseDto = courseService.findById(dto.getCourseId());
+            course = courseConverter.toEntity(courseDto);
+        }
         return Professor.builder()
                 .id(dto.getId())
                 .version(dto.getVersion())
