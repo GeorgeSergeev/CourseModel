@@ -35,3 +35,5 @@ Required:
 - docker;
 - free ports 5432, 80, 8080;
 
+### Postman collection:
+Postman collection and restricted information in root folder: CourseModel.postman_collection.json
