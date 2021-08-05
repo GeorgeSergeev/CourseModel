@@ -8,11 +8,11 @@
         <version>2.3.4.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>ru.quickstich</groupId>
-    <artifactId>cash-calculator</artifactId>
+    <groupId>ru.softlab.coursemodel</groupId>
+    <artifactId>course-model</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cash-calculator</name>
-    <description>Cash calculator</description>
+    <name>course-model</name>
+    <description>Course model</description>
 
     <properties>
         <java.version>15</java.version>

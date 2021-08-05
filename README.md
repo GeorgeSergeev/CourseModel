@@ -1,9 +1,37 @@
 # CourseModel
-Тестовое задание для кандидатов 
 
-1) Создать клон данного репозитория	в своем профиле github. Исправить файл readme. Указать ФИО автора, контактную информацию.
-2) Разработать схему отношений на на основании модели, представленной в courses.gif
-3) Разработать микросервис, реализующий REST-API с CRUD-сервисами для этой модели 
-4) Реализовать сервис, позволяющий построить отчет по загрузке препадавательского состава. Поля отчета: ФИО профессора, Суммарное количество студентов по всем курсам, Средння успеваемость студентов по всем курсам. Отчет сформировать в формате xlsx.
-5) Разработать web-интерфейс для редактирования списка профессоров. (Дополнительное задание)
-6) Прислать merge request
+* Автор: Новосельцев Никита Евгеньевич
+* Контакты: nick.novoseltsev@gmail.com, +79789052606
+
+## Build the JARs and Docker images
+To build application docker image run script from root directory:
+* on Windows:
+```
+build-local-back.cmd
+```
+* on Linux:
+```
+build-local-back.sh
+```
+To run the application on dockers type from root directory:
+```
+docker-compose up -d
+```
+To run only database:
+```
+docker-compose up -d postgres
+```
+To run only backend:
+```
+docker-compose up -d postgres course-model-back
+```
+:warning: If it asks you smth - answer him ``yes``
+
+To stop application:
+```
+docker-compose down
+```
+Required:
+- docker;
+- free ports 5432, 80, 8080;
+
