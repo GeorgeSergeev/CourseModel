@@ -24,7 +24,7 @@ public interface CourseRepository extends BaseEntityRepository<Course> {
                                 @Param("courseId") Integer courseId);
 
     @Query(value = """
-            SELECT * FROM students_courses s_c
+            SELECT c.id, c.version, c.title, c.number, c.price FROM students_courses s_c
             LEFT JOIN courses c ON s_c.course_id = c.id
             WHERE student_id = :studentId AND final_mark IS NOT NULL
             """,

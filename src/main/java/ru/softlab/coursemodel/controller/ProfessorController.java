@@ -10,6 +10,7 @@ import ru.softlab.coursemodel.model.dto.ProfessorDto;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Create;
 import ru.softlab.coursemodel.model.dto.validation.scenario.Update;
 import ru.softlab.coursemodel.service.ProfessorService;
+import ru.softlab.coursemodel.service.ReportCreator;
 
 import javax.validation.constraints.NotNull;
 
@@ -20,6 +21,9 @@ public class ProfessorController {
 
     @Autowired
     private ProfessorService service;
+
+    @Autowired
+    private ReportCreator reportCreator;
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ProfessorDto> findById(@PathVariable(value = "id") Integer id) {
@@ -41,6 +45,12 @@ public class ProfessorController {
     @DeleteMapping
     public ResponseEntity<Void> delete(@RequestParam @NotNull Integer id) {
         service.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/create-report")
+    public ResponseEntity<Void> createReport() {
+        reportCreator.createXlsxReport();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

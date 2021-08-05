@@ -23,7 +23,7 @@
             <!-- rollover daily -->
             <fileNamePattern>${ARCHIVE}/course-log-%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
-            <!-- each file should be at most 1MB, keep 7 days worth of history, but at most 10MB -->
+            <!-- each file should be at most 10MB, keep 30 days worth of history, but at most 100MB -->
             <maxFileSize>10MB</maxFileSize>
             <maxHistory>30</maxHistory>
             <totalSizeCap>500MB</totalSizeCap>
