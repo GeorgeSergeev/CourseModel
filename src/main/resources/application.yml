@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${PTM_DB_HOST:localhost}:${PTM_DB_PORT:5432}/${PTM_DB_NAME:course-model}?useSSL=false
+    username: ${PTM_DB_USER:admin}
+    password: ${PTM_DB_PASS:admin}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

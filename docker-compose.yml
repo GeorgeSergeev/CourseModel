@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  postgres:
+    container_name: course-model-db
+    image: postgres:alpine
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d course-model -U admin" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+    env_file:
+      - web_env/database.env
+
+  conference-back:
+    image: coursemodelback/back:latest
+    container_name: "course-model-back"
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    env_file:
+      - web_env/application.env

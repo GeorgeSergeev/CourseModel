@@ -1,0 +1,700 @@
+{
+	"info": {
+		"_postman_id": "bb83db9d-8de0-4ea0-82cf-1e89a452a742",
+		"name": "CourseModel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/students/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Test\",\r\n    \"phone\": \"12345\",\r\n    \"email\": \"test@mail.ru\",\r\n    \"recordBookNumber\": 1011,\r\n    \"courseIds\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						"1"
+					]
+				},
+				"description": "Найти студента по id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/students/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Test\",\r\n    \"phone\": \"12345\",\r\n    \"email\": \"test@mail.ru\",\r\n    \"recordBookNumber\": 1011,\r\n    \"courseIds\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						"1"
+					]
+				},
+				"description": "Добавить нового студента"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/students/",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"version\": 0,\r\n    \"name\": \"Test\",\r\n    \"phone\": \"123456\",\r\n    \"email\": \"test1@mail.ru\",\r\n    \"recordBookNumber\": 109,\r\n    \"courseIds\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/students/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						""
+					]
+				},
+				"description": "Обновить студента"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/students/",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/students/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						""
+					]
+				},
+				"description": "Удалить студента"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/students/enroll",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\": 2,\r\n    \"courseId\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/students/enroll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						"enroll"
+					]
+				},
+				"description": "Записать студента на курс"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/students/1/completed-courses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/students/1/completed-courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						"1",
+						"completed-courses"
+					]
+				},
+				"description": "Получить все пройденные курсы студента по id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/courses/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Java\",\r\n    \"number\": 11,\r\n    \"price\": 999.50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/courses/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"courses",
+						"1"
+					]
+				},
+				"description": "Найти курс по id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/courses/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test\",\r\n    \"number\": 111,\r\n    \"price\": 999.50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/courses/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"courses",
+						""
+					]
+				},
+				"description": "Добавить новый курс"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/courses/",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 5,\r\n    \"version\": 0,\r\n    \"title\": \"Test\",\r\n    \"number\": 19,\r\n    \"price\": 999.50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/courses/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"courses",
+						""
+					]
+				},
+				"description": "Обновить курс"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/courses/",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "5",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/courses/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"courses",
+						""
+					]
+				},
+				"description": "Удалить курс"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/courses/enroll",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\": 2,\r\n    \"courseId\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/courses/enroll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"courses",
+						"enroll"
+					]
+				},
+				"description": "Убрать студента с курса"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/professors/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Stas Morozov\",\r\n    \"payment\": 9950.90\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/professors/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professors",
+						"1"
+					]
+				},
+				"description": "Найти профессора по id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/professors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Stas Morozov\",\r\n    \"payment\": 9950,\r\n    \"courseIds\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/professors/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professors",
+						""
+					]
+				},
+				"description": "Добавить профессора"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/professors",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"version\": 0,\r\n    \"name\": \"Stas Morozov\",\r\n    \"payment\": 9950.90,\r\n    \"courseIds\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/professors/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professors",
+						""
+					]
+				},
+				"description": "Обновить профессора"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/professors",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/professors/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professors",
+						""
+					]
+				},
+				"description": "Удалить профессора"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/professors/create-report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/professors/create-report",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"professors",
+						"create-report"
+					]
+				},
+				"description": "Создать отчет"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/completing-courses/10",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\": 1,\r\n    \"courseId\": 1,\r\n    \"mark\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/completing-courses/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"completing-courses",
+						"10"
+					]
+				},
+				"description": "Получить оценку по id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/completing-courses/10",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\": 3,\r\n    \"courseId\": 3,\r\n    \"mark\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/completing-courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"completing-courses"
+					]
+				},
+				"description": "Добавить оценку студенту"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/completing-courses/10",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 21,\r\n    \"version\": 0,\r\n    \"studentId\": 3,\r\n    \"courseId\": 3,\r\n    \"mark\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/completing-courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"completing-courses"
+					]
+				},
+				"description": "Обновить оценку студенту"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/completing-courses/10",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "21",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/completing-courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"completing-courses"
+					]
+				},
+				"description": "Удалить оценку"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/completing-courses/average-mark",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "studentId",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "courseId",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/completing-courses/average-mark",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"completing-courses",
+						"average-mark"
+					]
+				},
+				"description": "Получить среднюю оценку студента за курс"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/completing-courses/summarise-mark",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "studentId",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "courseId",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/completing-courses/summarise-mark",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"completing-courses",
+						"summarise-mark"
+					]
+				},
+				"description": "Получить финальную среднюю оценку (больше оценки студенту за этот курс ставить нельзя)"
+			},
+			"response": []
+		}
+	]
+}
