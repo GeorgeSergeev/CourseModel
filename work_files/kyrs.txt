@@ -1,0 +1,39 @@
+﻿{
+  "caption": "kyrs 1",
+  "number": 1,
+  "price": 123.11,
+  "studList": [
+    {
+      "name": "Иван",
+      "adres": "Tixonova,24",
+      "phone": "123-4531",
+      "eMeail": "test@mail.ru",
+      "nZach": 1,
+      "avgBall": 10.0,
+      "listFinishedKyrs": [
+        {
+          "nameKyrs": "kyrs 21",
+          "nKyrs": 21,
+          "state": "IN_PROCESS"
+        },
+        {
+          "nameKyrs": "kyrs 22",
+          "nKyrs": 22,
+          "state": "IN_PROCESS"
+        },
+        {
+          "nameKyrs": "kyrs 23",
+          "nKyrs": 23,
+          "state": "IN_PROCESS"
+        },
+        {
+          "nameKyrs": "kyrs 1",
+          "nKyrs": 1,
+          "state": "IN_PROCESS"
+        }
+      ]
+    }
+  ],
+  "ballList": [],
+  "profList": []
+}

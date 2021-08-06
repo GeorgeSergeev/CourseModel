@@ -1,0 +1,30 @@
+﻿{
+  "name": "Иван",
+  "adres": "Tixonova,24",
+  "phone": "123-4531",
+  "eMeail": "test@mail.ru",
+  "nZach": 1,
+  "avgBall": 10.0,
+  "listFinishedKyrs": [
+    {
+      "nameKyrs": "kyrs 21",
+      "nKyrs": 21,
+      "state": "FINISH"
+    },
+    {
+      "nameKyrs": "kyrs 22",
+      "nKyrs": 22,
+      "state": "FINISH"
+    },
+    {
+      "nameKyrs": "kyrs 23",
+      "nKyrs": 23,
+      "state": "FINISH"
+    },
+    {
+      "nameKyrs": "kyrs 1",
+      "nKyrs": 1,
+      "state": "IN_PROCESS"
+    }
+  ]
+}
