@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="282.0" prefWidth="281.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxComponents.Controllers.AddProfessorController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Введите информацию о профессоре:" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="281.0">
+         <children>
+            <Label text="Имя: " />
+            <TextField fx:id="nameProfessor" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="12.0" prefWidth="281.0">
+         <children>
+            <Label text="Адрес: " />
+            <TextField fx:id="adressProfessor" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="307.0">
+         <children>
+            <Label text="Телефон: " />
+            <TextField fx:id="phoneProfessor" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="281.0">
+         <children>
+            <Label text="Оплата" />
+            <TextField fx:id="paymentProfessor" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
+         <children>
+            <Button fx:id="defaultButton" defaultButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#actionAdd" text="Добавить" />
+            <Button cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#actionClose" text="Отмена" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

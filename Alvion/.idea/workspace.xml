@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="74b8969c-c5d2-4b7a-8f56-5f6f85dcd4a2" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/MainController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="31">
+              <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#updateLabelCountStudents#0;class#MainController#0" expanded="false" />
+                <element signature="method#updateLabelCountProfessors#0;class#MainController#0" expanded="false" />
+                <element signature="method#updateLabelCountCourses#0;class#MainController#0" expanded="false" />
+                <element signature="method#initStudentTable#0;class#MainController#0" expanded="false" />
+                <element signature="method#initProfessorTable#0;class#MainController#0" expanded="false" />
+                <element signature="method#initCourseTable#0;class#MainController#0" expanded="false" />
+                <element signature="method#actionProfessorButtonPressed#0;class#MainController#0" expanded="false" />
+                <element signature="method#actionCourseButtonPressed#0;class#MainController#0" expanded="false" />
+                <element signature="method#ationCoursePassingButtonPressed#0;class#MainController#0" expanded="false" />
+                <element signature="method#actionMarkButtonPressed#0;class#MainController#0" expanded="false" />
+                <element signature="method#actionJsonPressed#0;class#MainController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/main.fxml">
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="634">
+              <caret line="103" column="98" lean-forward="false" selection-start-line="103" selection-start-column="98" selection-end-line="103" selection-end-column="98" />
+              <folding>
+                <marker date="1501761194427" expanded="true" signature="2656:4221" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="2676:4207" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="2773:3638" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="2799:3618" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="2977:3503" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="3008:3472" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="3728:4186" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="3754:4166" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="4289:6166" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="4309:6152" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="4406:5225" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="4432:5205" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="4566:5098" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="4597:5067" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="5315:6131" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="5341:6111" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="6216:7276" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="6236:7262" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="6326:6800" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="6352:6780" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="6719:6780" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="6890:7241" ph="..." />
+                <marker date="1501761194427" expanded="true" signature="6916:7221" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Student.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Student.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="88" column="75" lean-forward="true" selection-start-line="88" selection-start-column="75" selection-end-line="88" selection-end-column="75" />
+              <folding>
+                <element signature="method#equals#0;class#Student#0" expanded="false" />
+                <element signature="method#hashCode#0;class#Student#0" expanded="false" />
+                <element signature="method#canEnroll#0;class#Student#0" expanded="false" />
+                <element signature="e#1196#1204#0" expanded="true" />
+                <element signature="e#2124#2132#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CollectionStudentList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Collections/CollectionStudentList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+              <folding>
+                <element signature="method#testDate#0;class#CollectionStudentList#0" expanded="false" />
+                <element signature="method#getStudentsWithUnfinishedCourses#0;class#CollectionStudentList#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoursePassing.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/CoursePassing.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="15" column="57" lean-forward="false" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
+              <folding>
+                <element signature="method#CoursePassing#0;class#CoursePassing#0" expanded="false" />
+                <element signature="method#getFinalRating#0;class#CoursePassing#0" expanded="false" />
+                <element signature="method#getAverageRating#0;class#CoursePassing#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CollectionCourseList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Collections/CollectionCourseList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="640">
+              <caret line="133" column="23" lean-forward="false" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
+              <folding>
+                <element signature="method#add#0;class#CollectionCourseList#0" expanded="false" />
+                <element signature="method#delete#0;class#CollectionCourseList#0" expanded="false" />
+                <element signature="method#getAccessibleCoursesByStudent#0;class#CollectionCourseList#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CollectionCoursePassingList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Collections/CollectionCoursePassingList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding>
+                <element signature="method#getCoursePassingByStudentAndCourse#0;class#CollectionCoursePassingList#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Sys</find>
+      <find>updateLabelCountProfessors</find>
+    </findStrings>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/interfaces/impls/IStudentList.java" />
+        <option value="$PROJECT_DIR$/src/interfaces/IStudentList.java" />
+        <option value="$PROJECT_DIR$/src/interfaces/impls/CollectionStudentList.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/addStudentController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/mainController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/addStudent.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/addProfessor.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/AddProfessorController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/addCourseController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/addCourse.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/AddCourseController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/AddStudentController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/enrollCourse.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/EnrollCourseController.java" />
+        <option value="$PROJECT_DIR$/src/interfaces/CollectionProfessorList.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/deleteCoursePassing.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/MainController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/main.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/DeleteCoursePassingController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Scenes/main.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Scenes/enrollCourse.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Scenes/deleteCoursePassing.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Scenes/addStudent.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Scenes/addProfessor.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Scenes/addCourse.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Main.java" />
+        <option value="$PROJECT_DIR$/src/Start/Main.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/resultCourse.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/fnishCourse.fxml" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/ResultCourseController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/averageRating.fxml" />
+        <option value="$PROJECT_DIR$/src/model/CoursePassing.java" />
+        <option value="$PROJECT_DIR$/lib/gson-2.8.0.jar!/com/google/gson/internal/ConstructorConstructor.class" />
+        <option value="$PROJECT_DIR$/src/model/Professor.java" />
+        <option value="$PROJECT_DIR$/src/model/Course.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/DialogManager.java" />
+        <option value="$PROJECT_DIR$/src/interfaces/CollectionCourseList.java" />
+        <option value="$PROJECT_DIR$/src/JSON/JsonWorker.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/AddProfessorController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/AddCourseController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/AddStudentController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/AddMarkController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/AverageRatingController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/FinishCourseController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/EnrollCourseController.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/DeleteCoursePassingController.java" />
+        <option value="$PROJECT_DIR$/src/interfaces/CollectionStudentList.java" />
+        <option value="$PROJECT_DIR$/src/interfaces/CollectionCoursePassingList.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/main.fxml" />
+        <option value="$PROJECT_DIR$/src/model/Student.java" />
+        <option value="$PROJECT_DIR$/src/javafxComponents/Controllers/MainController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-6" />
+    <option name="y" value="75" />
+    <option name="width" value="1296" />
+    <option name="height" value="347" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Alvion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Alvion" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Alvion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Alvion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Alvion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Alvion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Start" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="interfaces.impls" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\valentina\IdeaProjects\Alvion\src\javafxComponents\Scenes" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="JsonWorker" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="JSON.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="JSON.JsonWorker" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Alvion" />
+      <envs />
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="javafxComponents.Controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="Start.Main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Alvion" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="1" class="java.lang.String" itemvalue="Application.JsonWorker" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.JsonWorker" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="74b8969c-c5d2-4b7a-8f56-5f6f85dcd4a2" name="Default" comment="" />
+      <created>1501072029301</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1501072029301</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1296" height="1040" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.49676377" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.48058254" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20066153" sideWeight="0.12944984" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20066153" sideWeight="0.87055016" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3090615" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39911798" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1096" height="840" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39911798" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1096" height="840" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20066153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28478965" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="15" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="54" column="109" lean-forward="false" selection-start-line="54" selection-start-column="109" selection-end-line="54" selection-end-column="109" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#updateLabelCountStudents#0;class#MainController#0" expanded="false" />
+            <element signature="method#updateLabelCountProfessors#0;class#MainController#0" expanded="false" />
+            <element signature="method#updateLabelCountCourses#0;class#MainController#0" expanded="false" />
+            <element signature="method#initStudentTable#0;class#MainController#0" expanded="false" />
+            <element signature="method#initProfessorTable#0;class#MainController#0" expanded="false" />
+            <element signature="method#initCourseTable#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionStudentButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionProfessorButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionCourseButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#ationCoursePassingButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionMarkButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionJsonPressed#0;class#MainController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/main.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="63" lean-forward="false" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+          <folding>
+            <marker date="1501761194427" expanded="true" signature="2656:4221" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2676:4207" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2773:3638" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2799:3618" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2977:3503" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="3008:3472" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="3728:4186" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="3754:4166" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4289:6166" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4309:6152" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4406:5225" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4432:5205" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4566:5098" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4597:5067" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="5315:6131" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="5341:6111" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6216:7276" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6236:7262" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6326:6800" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6352:6780" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6719:6780" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6890:7241" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6916:7221" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="57" column="38" lean-forward="false" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
+          <folding>
+            <element signature="method#equals#0;class#Student#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interfaces/IStudentList.java" />
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/AddStudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding>
+            <element signature="method#actionClose#0;class#AddStudentController#0" expanded="false" />
+            <element signature="method#setStudentValues#0;class#AddStudentController#0" expanded="false" />
+            <element signature="method#addTextLimiter#0;class#AddStudentController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/students.fxml" />
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/studentsController.java" />
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/main.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="88" lean-forward="false" selection-start-line="9" selection-start-column="88" selection-end-line="9" selection-end-column="88" />
+          <folding>
+            <marker date="1501761194427" expanded="true" signature="2656:4221" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2676:4207" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2773:3638" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2799:3618" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2977:3503" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="3008:3472" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="3728:4186" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="3754:4166" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4289:6166" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4309:6152" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4406:5225" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4432:5205" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4566:5098" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4597:5067" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="5315:6131" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="5341:6111" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6216:7276" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6236:7262" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6326:6800" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6352:6780" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6719:6780" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6890:7241" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6916:7221" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#updateLabelCountStudents#0;class#MainController#0" expanded="false" />
+            <element signature="method#updateLabelCountProfessors#0;class#MainController#0" expanded="false" />
+            <element signature="method#updateLabelCountCourses#0;class#MainController#0" expanded="false" />
+            <element signature="method#initStudentTable#0;class#MainController#0" expanded="false" />
+            <element signature="method#initProfessorTable#0;class#MainController#0" expanded="false" />
+            <element signature="method#initCourseTable#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionStudentButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionProfessorButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionCourseButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#ationCoursePassingButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionMarkButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionJsonPressed#0;class#MainController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/addStudent.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="60" lean-forward="true" selection-start-line="50" selection-start-column="60" selection-end-line="50" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Start/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/students.fxml" />
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/studentsController.java" />
+    <entry file="file://$PROJECT_DIR$/src/interfaces/StudentList.java" />
+    <entry file="file://$PROJECT_DIR$/src/interfaces/impls/IStudentList.java" />
+    <entry file="file://$PROJECT_DIR$/src/interfaces/IStudentList.java" />
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_141/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Collections/CollectionProfessorList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="34" column="29" lean-forward="false" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+          <folding>
+            <element signature="method#getProfessorByName#0;class#CollectionProfessorList#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_141/src.zip!/java/util/AbstractList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5525">
+          <caret line="362" column="38" lean-forward="false" selection-start-line="362" selection-start-column="16" selection-end-line="362" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/addProfessor.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="259" lean-forward="false" selection-start-line="6" selection-start-column="259" selection-end-line="6" selection-end-column="259" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/addStudent.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="265" lean-forward="false" selection-start-line="8" selection-start-column="265" selection-end-line="8" selection-end-column="265" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/deleteCoursePassing.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/enrollCourse.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="278" lean-forward="false" selection-start-line="6" selection-start-column="278" selection-end-line="6" selection-end-column="278" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/addMark.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/ResultCourseController.java" />
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/resultCourse.fxml" />
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/finishCourse.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/averageRating.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="68" lean-forward="false" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JSON/students.json" />
+    <entry file="jar://$PROJECT_DIR$/lib/gson-2.8.0.jar!/com/google/gson/internal/ConstructorConstructor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="64" column="17" lean-forward="true" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Professor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+          <folding>
+            <element signature="e#442#443#0" expanded="false" />
+            <element signature="e#469#470#0" expanded="false" />
+            <element signature="e#502#503#0" expanded="false" />
+            <element signature="e#531#532#0" expanded="false" />
+            <element signature="e#563#564#0" expanded="false" />
+            <element signature="e#591#592#0" expanded="false" />
+            <element signature="e#624#625#0" expanded="false" />
+            <element signature="e#654#655#0" expanded="false" />
+            <element signature="e#694#695#0" expanded="false" />
+            <element signature="e#726#727#0" expanded="false" />
+            <element signature="e#770#771#0" expanded="false" />
+            <element signature="e#806#807#0" expanded="false" />
+            <element signature="e#848#849#0" expanded="false" />
+            <element signature="e#882#883#0" expanded="false" />
+            <element signature="e#927#928#0" expanded="false" />
+            <element signature="e#965#966#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding>
+            <element signature="method#Course#0;class#Course#0" expanded="false" />
+            <element signature="method#equals#0;class#Course#0" expanded="false" />
+            <element signature="method#hashCode#0;class#Course#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/DialogManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/addCourse.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="259" lean-forward="false" selection-start-line="6" selection-start-column="259" selection-end-line="6" selection-end-column="259" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Start/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JSON/JsonWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="24" column="40" lean-forward="false" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#studentsToJson#0;class#JsonWorker#0" expanded="false" />
+            <element signature="method#studentsFromJson#0;class#JsonWorker#0" expanded="false" />
+            <element signature="method#professorsToJson#0;class#JsonWorker#0" expanded="false" />
+            <element signature="method#professorsFromJson#0;class#JsonWorker#0" expanded="false" />
+            <element signature="method#coursesToJson#0;class#JsonWorker#0" expanded="false" />
+            <element signature="method#coursesFromJson#0;class#JsonWorker#0" expanded="false" />
+            <element signature="method#coursesPassingToJson#0;class#JsonWorker#0" expanded="false" />
+            <element signature="method#coursesPassingFromJson#0;class#JsonWorker#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/AddCourseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="103" column="9" lean-forward="true" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
+          <folding>
+            <element signature="method#actionClose#0;class#AddCourseController#0" expanded="false" />
+            <element signature="method#setCorseValues#0;class#AddCourseController#0" expanded="false" />
+            <element signature="method#saveChanges#0;class#AddCourseController#0" expanded="false" />
+            <element signature="method#addTextLimiter#0;class#AddCourseController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/AddProfessorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="111" column="47" lean-forward="false" selection-start-line="111" selection-start-column="47" selection-end-line="111" selection-end-column="47" />
+          <folding>
+            <element signature="method#initialize#0;class#AddProfessorController#0" expanded="false" />
+            <element signature="method#actionClose#0;class#AddProfessorController#0" expanded="false" />
+            <element signature="method#setProfessorValues#0;class#AddProfessorController#0" expanded="false" />
+            <element signature="method#saveChanges#0;class#AddProfessorController#0" expanded="false" />
+            <element signature="method#addTextLimiter#0;class#AddProfessorController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/FinishCourseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="57" column="32" lean-forward="false" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+          <folding>
+            <element signature="method#actionClose#0;class#FinishCourseController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/EnrollCourseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="46" column="51" lean-forward="false" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
+          <folding>
+            <element signature="method#actionAdd#0;class#EnrollCourseController#0" expanded="false" />
+            <element signature="method#actionClose#0;class#EnrollCourseController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/AddStudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="129" column="32" lean-forward="false" selection-start-line="129" selection-start-column="32" selection-end-line="129" selection-end-column="32" />
+          <folding>
+            <element signature="method#actionClose#0;class#AddStudentController#0" expanded="false" />
+            <element signature="method#setStudentValues#0;class#AddStudentController#0" expanded="false" />
+            <element signature="method#addTextLimiter#0;class#AddStudentController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/AddMarkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="69" column="32" lean-forward="true" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/AverageRatingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="54" column="32" lean-forward="false" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
+          <folding>
+            <element signature="method#actionClose#0;class#AverageRatingController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CoursePassing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="57" lean-forward="false" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
+          <folding>
+            <element signature="method#CoursePassing#0;class#CoursePassing#0" expanded="false" />
+            <element signature="method#getFinalRating#0;class#CoursePassing#0" expanded="false" />
+            <element signature="method#getAverageRating#0;class#CoursePassing#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Collections/CollectionCourseList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="133" column="23" lean-forward="false" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
+          <folding>
+            <element signature="method#add#0;class#CollectionCourseList#0" expanded="false" />
+            <element signature="method#delete#0;class#CollectionCourseList#0" expanded="false" />
+            <element signature="method#getAccessibleCoursesByStudent#0;class#CollectionCourseList#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Collections/CollectionStudentList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+          <folding>
+            <element signature="method#testDate#0;class#CollectionStudentList#0" expanded="false" />
+            <element signature="method#getStudentsWithUnfinishedCourses#0;class#CollectionStudentList#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Collections/CollectionCoursePassingList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="method#getCoursePassingByStudentAndCourse#0;class#CollectionCoursePassingList#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/DeleteCoursePassingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-476">
+          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding>
+            <element signature="method#actionClose#0;class#DeleteCoursePassingController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/Scenes/main.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="103" column="98" lean-forward="false" selection-start-line="103" selection-start-column="98" selection-end-line="103" selection-end-column="98" />
+          <folding>
+            <marker date="1501761194427" expanded="true" signature="2656:4221" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2676:4207" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2773:3638" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2799:3618" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="2977:3503" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="3008:3472" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="3728:4186" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="3754:4166" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4289:6166" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4309:6152" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4406:5225" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4432:5205" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4566:5098" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="4597:5067" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="5315:6131" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="5341:6111" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6216:7276" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6236:7262" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6326:6800" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6352:6780" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6719:6780" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6890:7241" ph="..." />
+            <marker date="1501761194427" expanded="true" signature="6916:7221" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="88" column="75" lean-forward="true" selection-start-line="88" selection-start-column="75" selection-end-line="88" selection-end-column="75" />
+          <folding>
+            <element signature="method#equals#0;class#Student#0" expanded="false" />
+            <element signature="method#hashCode#0;class#Student#0" expanded="false" />
+            <element signature="method#canEnroll#0;class#Student#0" expanded="false" />
+            <element signature="e#1196#1204#0" expanded="true" />
+            <element signature="e#2124#2132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/javafxComponents/Controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="51" column="20" lean-forward="false" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#updateLabelCountStudents#0;class#MainController#0" expanded="false" />
+            <element signature="method#updateLabelCountProfessors#0;class#MainController#0" expanded="false" />
+            <element signature="method#updateLabelCountCourses#0;class#MainController#0" expanded="false" />
+            <element signature="method#initStudentTable#0;class#MainController#0" expanded="false" />
+            <element signature="method#initProfessorTable#0;class#MainController#0" expanded="false" />
+            <element signature="method#initCourseTable#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionProfessorButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionCourseButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#ationCoursePassingButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionMarkButtonPressed#0;class#MainController#0" expanded="false" />
+            <element signature="method#actionJsonPressed#0;class#MainController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Alvion</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>com.google.code.gson:gson:2.8.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

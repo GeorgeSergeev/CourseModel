@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="338.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxComponents.Controllers.DeleteCoursePassingController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Выберите студента и необходимый курс" />
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_LEFT" prefHeight="18.0" prefWidth="398.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="33.0" prefWidth="300.0">
+               <children>
+                  <Label text="Студент" />
+                  <ComboBox fx:id="studentComboBox" prefHeight="25.0" prefWidth="150.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="42.0" prefWidth="300.0">
+               <children>
+                  <Label text="Курс" />
+                  <ComboBox fx:id="courseComboBox" prefHeight="25.0" prefWidth="150.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
+         <children>
+            <Button fx:id="defaultButton" defaultButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#actionAdd" text="Удалить" />
+            <Button cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#actionClose" text="Отмена" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

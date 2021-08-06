@@ -1,0 +1,50 @@
+[
+  {
+    "name": "ООП",
+    "num": 1,
+    "studentCount": 0,
+    "cost": 10000.0,
+    "professor": {
+      "name": "Сысоев А.А.",
+      "adress": "г. Севастополь",
+      "phone": "+79789807984",
+      "payment": 60000.0
+    }
+  },
+  {
+    "name": "C#",
+    "num": 2,
+    "studentCount": 0,
+    "cost": 8000.0,
+    "professor": {
+      "name": "Андреев О.А.",
+      "adress": "г. Севастополь",
+      "phone": "+79788044500",
+      "payment": 50000.0
+    }
+  },
+  {
+    "name": "Java",
+    "num": 3,
+    "studentCount": 0,
+    "cost": 10000.0,
+    "professor": {
+      "name": "Пушкин А.С.",
+      "adress": "г. Санкт-Петербург",
+      "phone": "+79857480845",
+      "payment": 80000.0
+    }
+  },
+  {
+    "name": "Реляционные БД",
+    "num": 4,
+    "studentCount": 0,
+    "cost": 9000.0,
+    "professor": {
+      "name": "Галкина С.С.",
+      "adress": "г. Симферополь",
+      "phone": "+79780454665",
+      "payment": 48500.0
+    }
+  }
+]
