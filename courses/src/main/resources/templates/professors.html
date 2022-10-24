@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Professors List</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <p>Professors List</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="professors">
+            <table>
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>address</th>
+                        <th>phone</th>
+                        <th>payment</th>
+                        <th colspan="2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="professor: ${professors}">
+                        <td th:text="${professor.name}"></td>
+                        <td th:text="${professor.address}"></td>
+                        <td th:text="${professor.phone}"></td>
+                        <td th:text="${professor.payment}"></td>
+                        <td><a th:href="@{edit/{id}(id=${professor.id})}">edit</a></td>
+                        <td><a th:href="@{delete/{id}(id=${professor.id})}">delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="button">
+        <a href="/professors/signup">create</a>
+    </div>
+    <div class="button">
+        <a href="/index">index</a>
+    </div>
+    <div class="button">
+        <a href="/professors/excel">professor's workload</a>
+    </div>
+</body>
+</html>

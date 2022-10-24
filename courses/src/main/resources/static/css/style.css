@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+	font-size: 16px;
+	line-height: 30px;
+	background-color: #dddddd;
+	color: #404040;
+	min-width: 1015px;
+}
+
+.header p {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+a {
+    margin: 0 auto;
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 12px 50px;
+    cursor: default;
+}
+
+.container {
+    margin: 0 auto;
+    width: 800px;
+}
+
+.button {
+    text-align: center;
+    margin-right: 50px;
+    padding-top: 14px;
+    padding-bottom: 16px;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.button a:hover {
+    background-color: #acacac;
+}
+
+.button a:active {
+    background-color: #b7b5b5;
+    opacity: 0.7;
+}
+
+.button input[type=submit] {
+    padding-top: 14px;
+    padding-bottom: 16px;
+}
+
+table {
+    /*table-layout: fixed;*/
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #565656;
+}
+
+th {
+    background-color: #bdd8de;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/*** courses table ***/
+
+.courses thead th:nth-child(1) {
+    width: 30%;
+}
+
+.courses thead th:nth-child(2) {
+    width: 20%;
+}
+
+.courses thead th:nth-child(3) {
+    width: 15%;
+}
+
+.courses thead th:nth-child(4) {
+    width: 35%;
+}
+
+/*** professors table ***/
+
+.professors thead th:nth-child(1) {
+    width: 25%;
+}
+
+.professors thead th:nth-child(2) {
+    width: 25%;
+}
+
+.professors thead th:nth-child(3) {
+    width: 10%;
+}
+
+.professors thead th:nth-child(4) {
+    width: 10%;
+}
+
+/*** students table ***/
+
+/*.students thead th:nth-child(1) {
+    width: 20%;
+}
+
+.students thead th:nth-child(2) {
+    width: 15%;
+}
+
+.students thead th:nth-child(3) {
+    width: 10%;
+}
+
+.students thead th:nth-child(4) {
+    width: 25%;
+}
+
+.students thead th:nth-child(5) {
+    width: 7%;
+}
+
+.students thead th:nth-child(6) {
+    width: 7%;
+}*/
+
+
+th, td {
+    padding: 20px;
+    border: 1px solid #565656;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #def2ff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #d1e7f1;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid red;
+}

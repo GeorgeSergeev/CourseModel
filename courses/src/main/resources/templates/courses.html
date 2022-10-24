@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Course List</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <p>Course List</p>
+        </div>
+    </div>
+    <div class="container">
+        <table class="courses">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>number</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="course: ${courses}">
+                    <td th:text="${course.name}"></td>
+                    <td th:text="${course.number}"></td>
+                    <td th:text="${course.price}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="button">
+        <a href="/index">Index</a>
+    </div>
+</body>
+</html>
